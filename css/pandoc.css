@@ -1,0 +1,14 @@
+/* tag */
+pre {
+    overflow-x: scroll;
+}
+
+pre code {
+    white-space: pre;
+}
+
+/* div class */
+/* div.xxx { } */
+
+/* div id */
+/* div#id.xxx { } */

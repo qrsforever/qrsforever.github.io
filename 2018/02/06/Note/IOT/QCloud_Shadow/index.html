@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?cb4be66237379541488b8502a6eca006"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>(原创)万物互联之腾讯Shadow | 奥卡姆剃刀 | 你们都是大傻瓜, 我是天下大赢家</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="IOT,DrawIt">
+    <meta name="description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta name="keywords" content="IOT,DrawIt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(原创)万物互联之腾讯Shadow">
+<meta property="og:url" content="https://qrsforever.github.io/2018/02/06/Note/IOT/QCloud_Shadow/index.html">
+<meta property="og:site_name" content="奥卡姆剃刀">
+<meta property="og:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-04T13:49:29.593Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="(原创)万物互联之腾讯Shadow">
+<meta name="twitter:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+    
+        <link rel="alternate" type="application/atom+xml" title="奥卡姆剃刀" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">qrsforever</h5>
+          <a href="mailto:985612771@qq.com" title="985612771@qq.com" class="mail">985612771@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/705723886/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://zytforever.github.io" target="_blank" >
+                <i class="icon icon-lg icon-eye"></i>
+                Stocktech
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">(原创)万物互联之腾讯Shadow</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">(原创)万物互联之腾讯Shadow</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-02-06T02:01:00.000Z" itemprop="datePublished" class="page-time">
+  2018-02-06
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#shadow学习"><span class="post-toc-number">1.</span> <span class="post-toc-text">2 Shadow学习</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#框架api接口"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">2.1 1.框架API接口</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#静态类图"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2.2 2.静态类图</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#时序图"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">2.3 3.时序图</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设备影子接口"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">2.4 4.设备影子接口</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#sample回调函数"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">2.5 5.Sample回调函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#调试运行sample"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">2.6 6.调试运行Sample</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Note/IOT/QCloud_Shadow"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">(原创)万物互联之腾讯Shadow</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-02-06 10:01:00" datetime="2018-02-06T02:01:00.000Z"  itemprop="datePublished">2018-02-06</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#shadow学习">Shadow学习</a>
+<ul>
+<li><a href="#1框架api接口">1.框架API接口</a></li>
+<li><a href="#2静态类图">2.静态类图</a></li>
+<li><a href="#3时序图">3.时序图</a></li>
+<li><a href="#4设备影子接口">4.设备影子接口</a></li>
+<li><a href="#5sample回调函数">5.Sample回调函数</a></li>
+<li><a href="#6调试运行sample">6.调试运行Sample</a></li>
+</ul></li>
+</ul>
+<!-- vim-markdown-toc -->
+<a id="more"></a>
+<h1 id="shadow学习"><span class="header-section-number">2</span> Shadow学习</h1>
+<h2 id="框架api接口"><span class="header-section-number">2.1</span> 1.框架API接口</h2>
+<pre><code>----------------------------------------------------------------------------------------------------------------
+Sample
+
+               on_request_handler  on_message_callback on_prop_xxx_callback  event_handler
+
+
+                        register_subscribe_topics    register_config_property
+
+
+                                        do_report_prop_xxx()
+
+
+----------------------------------------------------------------------------------------------------------------
+Shadow                                                                                                       ^
+                                                                                                             |
+                                  IOT_Shadow_Register_Property                                               |
+                                                                                                             |
+                                                                                                             |
+                IOT_Shadow_Update  IOT_Shadow_Get  IOT_Shadow_Subscribe  IOT_Shadow_Yield                    |
+                                                                                                             |
+
+----------------------------------------------------------------------------------------------------------- SDK
+MQTT
+                                                                                                             |
+                       IOT_MQTT_Publish    IOT_MQTT_Subscribe  IOT_MQTT_Yield                                |
+                                                                                                             |
+                               send_mqtt_packet      read_mqtt_packet                                        |
+                                                                                                             v
+----------------------------------------------------------------------------------------------------------------
+</code></pre>
+<!-- more -->
+<h2 id="静态类图"><span class="header-section-number">2.2</span> 2.静态类图</h2>
+<pre><code>                                      +------------------+                                                  +-----------------+
+      +------------------+            |     Request      |                   +------------------+           | SubTopicHandle  |
+      | RequestParams    |            +------------------+                   |  PropertyHandler |           +-----------------+
+      +------------------+            |   client_token   |                   +------------------+           |     qos         |
+      |   method         |   copy     |     method       |                   |     property     |           |  topic_filter   |
+      |   timeout_sec    |-----------&gt;|     timer        |                   +------------------+           |  message_data   |
+      |   user_context   |            |   user_context   |                   |     callback     |           +-----------------+
+      +------------------+            +------------------+                   +------------------+           | message_handler |
+      | request_callback |            |    callback      |                            |                     +-----------------+
+      +------------------+            +------------------+                            |                              ^
+                                               |                                      |                              |
+                                               |                                      |                              |
+                                               |          +------------------+        |                              |
+                                               |          | ShadowInnerData  |        |                              |
+                                               |          +------------------+        |                              |
+                                               |          |   token_num      |        |                              |
+                                               |          |    version       |        |                              |
+                                               +----------|  request_list    |        |                              |
+                                             List         |  property_list   |--------+                              |
+                                                          |  result_topic    |       List                            |
+                                                          +------------------+                                       |
+                                                                     ^                                               |
+                                                                      \                                              |
+                                                                       \            +-------------------+            |
+                                                                        \           | Qcloud_IoT_Shadow |            |
+                                                                         \          +-------------------+   mqtt     |
+                                                                          \         |      mqtt         |◆ ----+     |
+  +----------------------+           +----------------------+              -------◇ |    inner_data     |      |     |
+  |  ShadowInitParams    |           |  MQTTInitParams      |                       +-------------------+      |     |
+  |--------------------- |           |------------------    |                       |   event_handle    |      |     |
+  |   product_id         |   copy    |   product_id         |                       +-------------------+      |     |
+  |   device_name        |----------&gt;|   device_name        |                                 ◆                |     |
+  |   cert_file          |           |   cert_file          |                                 | event_hander   |     |
+  |   cert_key           |           |   cert_key           |                                 |                |     |
+  |   auto_connect_enable|           |   auto_connect_enable|                                 |                |     |
+  +----------------------+           +----------------------|                                 |                |     |
+  |   event_handle       |           |   event_handle       |                                 v                |     |
+  +----------------------+           +----------------------+                        +-------------------+     |     |
+           ◆                                  ◆                                      | MQTTEventHandler  |     |     |
+           |                                  |   event_handle                       +-------------------+     |     |
+           | event_handle                     +------------------------------------&gt; |      context      |     |     |
+           +-----------------------------------------------------------------------&gt; +-------------------+     |     |
+                                                                                     |       h_fp        |     |     |
+                                                           +--------------------+    +-------------------+     |     |
+                                                           | Qcloud_IoT_Client  |             ^                |     |
+                                                           +--------------------+             |                |     |
+                                    +--------------------◇ |  network_stack     |             |                |     |
+                                    |                    ◇ |     options        |             |                |     |
+                                    |                   /  | list_pub_wait_ack  |             |                |     |
+                                    v                  /   | list_sub_wait_ack  |             |                |     |
+                           +----------------+         /    +--------------------+             |                |     |
+                           |     Network    |        /     |    event_handle    |◆ -----------+                |     |
+                           +----------------+        |     |    sub_handles     |                              |     |
+                           |     sockfd     |        |     +--------------------+                              |     |
+          +--------------◇ |ssl_conn_params |        |              ◇       ^                                  |     |
+          |                +----------------+        |              |        \                                 |     |
+          |                |     connect    |        |              |         \--------------------------------+     |
+          |                |      read      |        |              |                                                |
+          v                |      write     |        |              +------------------------------------------------+
+  +-----------------+      +----------------+        |
+  |SSLConnectParams |                                |
+  +-----------------+                                v
+  |     host        |                     +----------------------+
+  |     port        |                     | MQTTConnectParams    |
+  |   cert_file     |                     +----------------------+
+  |   key_file      |                     |     client_id        |
+  +-----------------+                     |      conn_id         |
+                                          | auto_connect_enable  |
+                                          | keep_alive_interval  |
+                                          +----------------------+
+</code></pre>
+<h2 id="时序图"><span class="header-section-number">2.3</span> 3.时序图</h2>
+<pre><code>
+                            Shadow               MQTT
+
+                                                              *******
+         Aircond                                           ***       ***        Qcloud Shadow                                Door
+            |                                              * host:port *               |                                      |
+            |                                              ***       ***               |                                      |
+    init_shadow_params                                        *******                  |                                      |
+            |    |                                                                     |                                      |
+            |    +------&gt; Shadow_Construct          &quot;$shadow/operation/result/P/D&quot;     |                                      |
+            |                     |                             (cb1)                  |                                      |
+            |\                    +--------&gt; MQTT_Construct                            |                                      |
+            | \                                   |                                    |&lt;---------+                           |
+            |  \                                  |              sub                   |          |                           |
+            |   \                            MQTT_Subscribe   ----------------------&gt;  |          |                           |
+            |    +------&gt; Shadow_Get[_Sync]                                            |          |                           |
+            |                     |                          pub                       |          |                           |
+            |                     +--------&gt; MQTT_Publish  -------------------------&gt;  |          |                           |
+  register_config_property                                                             |          |                           |
+            |    |                                                                     |          |                           |
+            |    +------&gt; Shadow_Register_Property                                     |          |                           |
+            |                                                                          |          |                           |
+  register_subscribe_topics                                                            |          |                           |
+            |    |                                     &quot;P/D/control&quot;   &quot;P/D/xxx&quot;       |          |        &quot;P/D/event&quot;        |
+            |    +------&gt; Shadow_Subscribe                 (cb2)         (cb3)         |          | pub                       |
+            |                     |                              sub                   |          | &lt;-------------------------|
+            |                     +--------&gt; send_mqtt_packet -----------------------&gt; |          | {                         |
+            |                                                                          |          |  &quot;action&quot;: &quot;come_home&quot;,   |
+  +---&gt; loooooop                                                                       |          |  &quot;targetDevice&quot;: &quot;airCon&quot; |
+  |           |                                                                        |          | }                         |
+  |           +---------&gt; Shadow_Yield                                                 |          |                           |
+  |                               |                                                    |          |                           |
+  |                               +--------&gt; MQTT_Yield                                |          |                           |
+  |                                              |                                     |          |                           |
+  |                                              |                                     |          |                           |
+  |                                        read_mqtt_packet &lt;------------------------- |-repub &lt;--|                           |
+  |                      packet type:            |                                     |          |                           |
+  |                       ---------------------------------------------                |          |                           |
+  |                       |          |           |         |          |                |          |                           |
+  |                       v          v           v         v          v                |          |                           |
+  |                     CONNACK    PUBACK     SUBACK     PUBLISH   PINGRESP            |          |                           |
+  |                         \         \          |         /          /                |          |                           |
+  |                          \         v         v        v          /                 |          |                           |
+  |                           --------&gt;  handle_xxx_packet  &lt;--------                  |          |                           |
+  |                                              |                                     |          |                           |
+  |                                              |                                     |          |                           |
+  |             on_operation_result_handler &lt;----+----&gt; on_message_callback     cb3    |          |                           |
+  |                        (cb1)                               (cb2)                   |          |                           |
+  |                          |                                   |                     |          |                           |
+  |                          |                                   |                     |          |                           |
+  |                +---------+----------+                        |                     |          |                           |
+  |         delta  |                    | client_token           |                     |          |                           |
+  |                v                    v                        |                     |          |                           |
+  |      on_prop_xxx_callback    on_request_handler              |                     |          |                           |
+  |                                                              v                     |          |                           |
+  |    ---------------------------------------------------------------------           |          |                           |
+  |             /                                                                      |          |                           |
+  |            /                                                                       |          |                           |
+  |           /                                                                        |          |                           |
+  | deal_with_desired                                                                  |          |                           |
+  |        |                                                                           |          |                           |
+  |        |                                                                           |          |                           |
+  |  do_report_prop_xxx                                                                |          |                           |
+  |            |                                                                       |          |                           |
+  |            +--------&gt; Shaow_Update[_Sync]                                          |          |                           |
+  |                              |                            pub                      |          |                           |
+  |                              +--------&gt;  MQTT_Publish --------------------------&gt;  |----------+                           |
+  |                                                        &quot;$shadow/operation/P/D&quot;     |                                      |
+  +----- eeeeend                                                                       |                                      |
+           |  |                                                                        |                                      |
+           |  +---------&gt; Shadow_Destroy                                               |                                      |
+           |                                                                           |                                      |
+          END                                                                          |                                      |</code></pre>
+<h2 id="设备影子接口"><span class="header-section-number">2.4</span> 4.设备影子接口</h2>
+<pre><code>1. IOT_Shadow_Construct
+    原型: void* IOT_Shadow_Construct(ShadowInitParams *pParams);
+    功能: 构造ShadowClient
+    参数:
+          pParams: 连接接入与连接维持阶段所需要的参数
+    返回:
+          0: 失败
+
+2. IOT_Shadow_Destroy
+    原型: int IOT_Shadow_Destroy(void *handle);
+    功能: 销毁ShadowClient, 关闭连接
+    参数:
+          handle: ShadowClient实例
+    返回:
+          0: 成功
+
+3. IOT_Shadow_Get
+    原型: int IOT_Shadow_Get(void *handle, OnRequestCallback callback, void *userContext, uint32_t timeout_ms);
+    功能: 获取设备影子文档
+    参数:
+          handle     :  ShadowClient结构体
+          callback   :  请求响应处理回调函数
+          userContext:  用户数据, 请求响应返回时通过回调函数返回
+          timeout_ms :  请求超时时间, 单位:s
+    返回:
+          0: 成功
+
+4. IOT_Shadow_Update
+    原型: int IOT_Shadow_Update(void *handle, char *jsonDoc, size_t sizeOfBuffer, OnRequestCallback callback, void *userContext, uint32_t timeout_ms);
+    功能: 异步方式更新设备影子文档
+    参数:
+          handle       :  ShadowClient结构体
+          jsonDoc      :  更新到云端的设备文档
+          sizeOfBuffer :  文档长度
+          callback     :  请求响应处理回调函数
+          userContext  :  用户数据, 请求响应返回时通过回调函数返回
+          timeout_ms   :  请求超时时间, 单位:ms
+    返回:
+          0: 成功
+
+5. IOT_Shadow_Yield
+    原型: int IOT_Shadow_Yield(void *handle, uint32_t timeout_ms);
+    功能: 消息接收, 心跳包管理, 超时请求处理
+    参数:
+          handle     :  ShadowClient实例
+          timeout_ms :  超时时间, 单位:ms
+    返回:
+          0: 成功
+
+6. IOT_Shadow_Publish
+    原型: int IOT_Shadow_Publish(void *handle, char *topicName, PublishParams *pParams);
+    功能: 发布消息(目前阶段是MQTT消息)
+    参数:
+          handle    : ShadowClient实例
+          topicName : 主题名
+          pParams   : 发布参数
+    返回:
+          &lt; 0: 失败
+          &gt;=0: 成功
+    TODO:
+          后续修改, 需要隐藏MQTT相关结构体
+
+7. IOT_Shadow_Subscribe
+    原型: int IOT_Shadow_Subscribe(void *handle, char *topicFilter, SubscribeParams *pParams);
+    功能: 订阅消息
+    参数:
+          handle    :   ShadowClient实例
+          topicName :   主题名
+          pParams   :   订阅参数
+    返回:
+          &lt; 0: 失败
+          &gt;=0: 成功
+    TODO:
+          后续修改, 需要隐藏MQTT相关结构体
+
+8. IOT_Shadow_Register_Property
+    原型: int IOT_Shadow_Register_Property(void *handle, DeviceProperty *pProperty, OnPropResigtCallback callback);
+    功能: 注册当前设备的设备属性
+    参数:
+          handle    : ShadowClient实例
+          pProperty : 设备属性
+          callback  : 设备属性更新回调处理函数
+    返回:
+          0: 成功
+
+9. IOT_Shadow_UnRegister_Property
+    原型: int IOT_Shadow_UnRegister_Property(void *handle, DeviceProperty *pProperty);
+    功能: 删除已经注册过的设备属性
+    参数:
+          handle    : ShadowClient实例
+          pProperty : 设备属性
+    返回:
+          0: 成功
+
+10. IOT_Shadow_JSON_ConstructReport
+    原型: int IOT_Shadow_JSON_ConstructReport(void *handle, char *jsonBuffer, size_t sizeOfBuffer, uint8_t count, ...);
+    功能: 在JSON文档中添加reported字段
+    参数:
+          handle       :  ShadowClient实例
+          jsonBuffer   :  为存储JSON文档准备的字符串缓冲区
+          sizeOfBuffer :  缓冲区大小
+          count        :  可变参数的个数, 即需上报的设备属性的个数
+    返回:
+          0 : 成功
+
+11. IOT_Shadow_JSON_ConstructReportAndDesireAllNull
+    原型: int IOT_Shadow_JSON_ConstructReportAndDesireAllNull(void *handle, char *jsonBuffer, size_t sizeOfBuffer, uint8_t count, ...);
+    功能: 在JSON文档中添加reported字段，同时清空desired字段
+    参数:
+          handle       :  ShadowClient实例
+          jsonBuffer   :  为存储JSON文档准备的字符串缓冲区
+          sizeOfBuffer :  缓冲区大小
+          count        :  可变参数的个数, 即需上报的设备属性的个数
+    返回:
+          0 : 成功
+
+12. IOT_Shadow_JSON_ConstructDesireAllNull
+    原型: int IOT_Shadow_JSON_ConstructDesireAllNull(void *handle, char *jsonBuffer, size_t sizeOfBuffer);
+    功能: 在JSON文档中添加 &quot;desired&quot;: null 字段
+    参数:
+          handle       :  ShadowClient实例
+          jsonBuffer   :  为存储JSON文档准备的字符串缓冲区
+          sizeOfBuffer :  缓冲区大小
+    返回:
+          0 : 成功</code></pre>
+<h2 id="sample回调函数"><span class="header-section-number">2.5</span> 5.Sample回调函数</h2>
+<pre><code>1. on_request_handler
+    原型: typedef void (*OnRequestCallback)(void *handle, Method method, RequestAck requestAck, const char *jsonDoc, void *userContext);
+    功能: 每次对设备影子操作请求响应的回调函数
+    参数:
+          handle        :  ShadowClient实例
+          method        :  文档操作方式
+          requestAck    :  请求响应类型
+          jsonDoc       :  云端响应返回的文档
+          userContext   :  用户数据
+    返回:
+          0 : 成功
+
+2. on_message_callback
+    原型: typedef void (*OnMessageHandler)(void *handle, MQTTMessage *message, void *userContext);
+    功能: PUBLISH消息回调处理函数
+    参数:
+          handle        :  ShadowClient实例
+          message       :  发布或接收已订阅消息的结构体数据
+          userContext   :  用户数据
+    TODO:
+          后续修改, 需要隐藏MQTT相关结构体
+
+3. on_prop_xxx_callback
+    原型: void (*OnPropResigtCallback)(void *handle, const char *jsonVal, uint32_t length, DeviceProperty *pProperty);
+    功能: 设备属性处理回调函数
+    参数:
+          handle    : ShadowClient实例
+          jsonVal   : 设备属性值
+          length    : 设备属性值长度
+          pProperty : 设备属性结构体
+
+4. event_handler
+    原型: typedef void (*MQTTEventHandleFun)(void *handle, void *context, MQTTEventMsg *msg);
+    功能: MQTT相关事件回调函数
+    参数:
+          handle   : MQTTClient 实例
+          context  : MQTTClient 上下文
+          msg      : MQTT事件消息
+    TODO:
+          后续修改, 需要隐藏MQTT相关结构体</code></pre>
+<h2 id="调试运行sample"><span class="header-section-number">2.6</span> 6.调试运行Sample</h2>
+<pre><code>    1. 设置Ares的Top目录, eg: export ARES_TOP_DIR=xxx
+    2.  cd $ARES_TOP_DIR; make
+    3. 打开两个终端启动本地模拟的引擎脚本
+        cd $ARES_TOP_DIR/doc/shadow
+        console1: ./rule_engine_for_operation.sh
+        console2: ./rule_engine_for_event.sh
+        备注:
+        rule_engine_for_operation.sh 接收topic:leiot/operation/*
+        rule_engine_for_event.sh 接收topic: productID/deviceName/control
+
+    4. 再打开两个终端启动sample程序
+        cd $ARES_TOP_DIR/output/release/bin
+        console3: ./aircond_shadow_sample_v2
+        console4: ./door_mqtt_sample come_home aircond_sample</code></pre>
+</body>
+</html>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-06-04T13:49:29.593Z" itemprop="dateUpdated">2019-06-04 21:49:29</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://qrsforever.github.io">
+            <img src="/img/avatar.jpg" alt="qrsforever">
+            qrsforever
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DrawIt/">DrawIt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOT/">IOT</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2018/02/06/Note/IOT/QCloud_Shadow/&title=《(原创)万物互联之腾讯Shadow》 — 奥卡姆剃刀&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2018/02/06/Note/IOT/QCloud_Shadow/&title=《(原创)万物互联之腾讯Shadow》 — 奥卡姆剃刀&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2018/02/06/Note/IOT/QCloud_Shadow/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《(原创)万物互联之腾讯Shadow》 — 奥卡姆剃刀&url=https://qrsforever.github.io/2018/02/06/Note/IOT/QCloud_Shadow/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2018/02/06/Note/IOT/QCloud_Shadow/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/03/08/Note/Android/MediaBinder/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">(原创)MediaBinder-草稿</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/11/13/Note/Hadoop/Hadoop-Proxy-Delete/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">(原创)Hadoop之Delete实例代理流程</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "bpShGWdW8DpODhnDko5O2IBB-gzGzoHsz",
+            appKey: "rwmasTllBbHE69ADuLjFyFWf",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢打赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>qrsforever &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2018/02/06/Note/IOT/QCloud_Shadow/&title=《(原创)万物互联之腾讯Shadow》 — 奥卡姆剃刀&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2018/02/06/Note/IOT/QCloud_Shadow/&title=《(原创)万物互联之腾讯Shadow》 — 奥卡姆剃刀&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2018/02/06/Note/IOT/QCloud_Shadow/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《(原创)万物互联之腾讯Shadow》 — 奥卡姆剃刀&url=https://qrsforever.github.io/2018/02/06/Note/IOT/QCloud_Shadow/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2018/02/06/Note/IOT/QCloud_Shadow/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://qrsforever.github.io/2018/02/06/Note/IOT/QCloud_Shadow/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- lidong cha. -->
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- lidong end. -->
+
+</body>
+</html>

@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?cb4be66237379541488b8502a6eca006"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Ubutnu编辑器VIM配置 | 奥卡姆剃刀 | 你们都是大傻瓜, 我是天下大赢家</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="How">
+    <meta name="description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta name="keywords" content="How">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubutnu编辑器VIM配置">
+<meta property="og:url" content="https://qrsforever.github.io/2018/06/25/Tools/How/vim/index.html">
+<meta property="og:site_name" content="奥卡姆剃刀">
+<meta property="og:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-26T15:15:46.744Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ubutnu编辑器VIM配置">
+<meta name="twitter:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+    
+        <link rel="alternate" type="application/atom+xml" title="奥卡姆剃刀" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">qrsforever</h5>
+          <a href="mailto:985612771@qq.com" title="985612771@qq.com" class="mail">985612771@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/705723886/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://zytforever.github.io" target="_blank" >
+                <i class="icon icon-lg icon-eye"></i>
+                Stocktech
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Ubutnu编辑器VIM配置</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Ubutnu编辑器VIM配置</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-06-25T02:26:15.000Z" itemprop="datePublished" class="page-time">
+  2018-06-25
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Tools/">Tools</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#一把利剑"><span class="post-toc-number">1.</span> <span class="post-toc-text">2 一把利剑</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#目录结构"><span class="post-toc-number">2.</span> <span class="post-toc-text">3 目录结构</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#基本配置vimrc"><span class="post-toc-number">3.</span> <span class="post-toc-text">4 基本配置vimrc</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#依赖"><span class="post-toc-number">4.</span> <span class="post-toc-text">5 依赖</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Tools/How/vim"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Ubutnu编辑器VIM配置</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-06-25 10:26:15" datetime="2018-06-25T02:26:15.000Z"  itemprop="datePublished">2018-06-25</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Tools/">Tools</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#一把利剑">一把利剑</a></li>
+<li><a href="#目录结构">目录结构</a></li>
+<li><a href="#基本配置vimrc">基本配置vimrc</a></li>
+<li><a href="#依赖">依赖</a></li>
+</ul>
+<!-- vim-markdown-toc -->
+<p><a href="https://github.com/qrsforever/vim" target="_blank" rel="noopener">VIM配置</a></p>
+<a id="more"></a>
+<h1 id="一把利剑"><span class="header-section-number">2</span> 一把利剑</h1>
+<pre><code>
+                         ∆
+                        /.\
+                      _/   \_
+                     /       \
+                    /  ﬆ   ﬆ  \
+                    |         |
+                    | ∾  ∾  ∾ |
+                    | ∾  ∾  ∾ |
+                    | ∾  ∾  ∾ |
+                    | ∾  ∾  ∾ |
+                    |         |
+                    |   VIM   |
+                    |         |
+                    |  编 程  |
+                    |         |
+                    | ∾  ∾  ∾ |
+                    | ∾  ∾  ∾ |
+                    | ∾  ∾  ∾ |
+                    | ∾  ∾  ∾ |
+             ┌------┴---------┴------┐
+             «      ✠    う   ✠      »
+             └--------┬-----┬--------┘
+                      |  ◎  |
+                      |  ◎  |
+                      └¤¤◎¤¤┘</code></pre>
+<h1 id="目录结构"><span class="header-section-number">3</span> 目录结构</h1>
+<pre><code>.
+├── autoload
+├── bin
+├── bundle
+│   ├── .configs                              ----&gt; 插件配置目录, 每个插件对应一个文件
+│   │    ├── asyncrun.vim_conf.vim
+│   │    ├── bufexplorer_conf.vim
+│   │    ├── CCTree_conf.vim
+│   │    ├── CompleteParameter.vim_conf.vim
+│   │    ├── deoplete-jedi_conf.vim
+│   │    ├── deoplete.nvim_conf.vim
+│   │    ├── dict.vim_conf.vim
+│   │    ├── DoxygenToolkit.vim_conf.vim
+│   │    ├── DrawIt_conf.vim
+│   │    ├── EasyMotion_conf.vim
+│   │    ├── eclim_conf.vim
+│   │    ├── errormarker.vim_conf.vim
+│   │    ├── FuzzyFinder_conf.vim
+│   │    ├── fzf_conf.vim
+│   │    ├── fzf.vim_conf.vim
+│   │    ├── grep.vim_conf.vim
+│   │    ├── init.vim                         ----&gt; 配置插件, 有选择的配置需要使用的插件
+│   │    ├── jedi-vim_conf.vim
+│   │    ├── jupyter-vim_conf.vim
+│   │    ├── LeaderF_conf.vim
+│   │    ├── lookupfile_conf.vim
+│   │    ├── neocomplcache_conf.vim
+│   │    ├── neocomplete.vim_conf.vim
+│   │    ├── neosnippet_conf.vim
+│   │    ├── nerdcommenter_conf.vim
+│   │    ├── nerdtree_conf.vim
+│   │    ├── Nvim-R_conf.vim
+│   │    ├── supertab_conf.vim
+│   │    ├── syntastic_conf.vim
+│   │    ├── tagbar_conf.vim
+│   │    ├── ultisnips_conf.vim
+│   │    ├── unite.vim_conf.vim
+│   │    ├── vcscommand.vim_conf.vim
+│   │    ├── vim-align_conf.vim
+│   │    ├── VimIM_conf.vim
+│   │    ├── vim-instant-markdown_conf.vim
+│   │    ├── vim-markdown-toc_conf.vim
+│   │    ├── vim-maximizer_conf.vim
+│   │    ├── vim-pandoc_conf.vim
+│   │    ├── vim-pandoc-syntax_conf.vim
+│   │    ├── vim-powerline_conf.vim
+│   │    ├── vimshell.vim_conf.vim
+│   │    ├── vim-snippets_conf.vim
+│   │    └── YouCompleteMe_conf.vim
+.   .   .   .   .
+│   ├── Vundle.vim
+│   └── YouCompleteMe
+├── colors
+├── configure
+├── dict                       ---&gt; 补全字典
+├── doc
+├── extern                     ---&gt; 外部有用的工具, vim通过程序间接调用
+│   ├── git-blog-setting       ---&gt; markdown生成blog页面
+│   ├── instant-markdown-ext   ---&gt; markdown快速生成html, 使用pandoc
+│   ├── ripgrep                ---&gt; rg
+│   └── YCM-Generator 
+├── plugin
+├── res
+│   └── icons
+├── src
+├── syntax
+├── tags
+├── UltiSnips   ---&gt; 定义自己的snips
+└── xml</code></pre>
+<h1 id="基本配置vimrc"><span class="header-section-number">4</span> 基本配置vimrc</h1>
+<div class="sourceCode" id="cb3" data-startfrom="1"><pre class="sourceCode numberSource vim numberLines"><code class="sourceCode"><a class="sourceLine" id="cb3-1" title="1">let g:mapleader = &quot;,&quot;</a>
+<a class="sourceLine" id="cb3-2" title="2"></a>
+<a class="sourceLine" id="cb3-3" title="3">autocmd!</a>
+<a class="sourceLine" id="cb3-4" title="4">:mapclear</a>
+<a class="sourceLine" id="cb3-5" title="5"></a>
+<a class="sourceLine" id="cb3-6" title="6">&quot; 插件依赖设置 &quot;</a>
+<a class="sourceLine" id="cb3-7" title="7"></a>
+<a class="sourceLine" id="cb3-8" title="8">&quot;打开关键字色</a>
+<a class="sourceLine" id="cb3-9" title="9">syntax on</a>
+<a class="sourceLine" id="cb3-10" title="10"></a>
+<a class="sourceLine" id="cb3-11" title="11">&quot;载入文件类型插件</a>
+<a class="sourceLine" id="cb3-12" title="12">filetype plugin on</a>
+<a class="sourceLine" id="cb3-13" title="13"></a>
+<a class="sourceLine" id="cb3-14" title="14">&quot;为特定文件类型载入相关缩进文件</a>
+<a class="sourceLine" id="cb3-15" title="15">filetype indent on</a>
+<a class="sourceLine" id="cb3-16" title="16">&quot;</a>
+<a class="sourceLine" id="cb3-17" title="17"></a>
+<a class="sourceLine" id="cb3-18" title="18">&quot; The search prefix key.</a>
+<a class="sourceLine" id="cb3-19" title="19">nnoremap [search] &lt;Nop&gt;</a>
+<a class="sourceLine" id="cb3-20" title="20">nmap s [search]</a>
+<a class="sourceLine" id="cb3-21" title="21"></a>
+<a class="sourceLine" id="cb3-22" title="22">source ~/.vim/bundle/.configs/init.vim</a>
+<a class="sourceLine" id="cb3-23" title="23"></a>
+<a class="sourceLine" id="cb3-24" title="24">&quot;F1~F12快捷键映射&quot;</a>
+<a class="sourceLine" id="cb3-25" title="25">nmap &lt;unique&gt; &lt;silent&gt; &lt;F1&gt;         :MyMarksBrowser&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-26" title="26">nmap &lt;unique&gt; &lt;silent&gt; &lt;F2&gt;         :MyBufExplorer&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-27" title="27">nmap &lt;unique&gt; &lt;silent&gt; &lt;F3&gt;         :NERDTreeToggle %:p:h&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-28" title="28">nmap &lt;unique&gt; &lt;silent&gt; &lt;F4&gt;         :TagbarToggle&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-29" title="29">nmap &lt;unique&gt; &lt;silent&gt; &lt;F5&gt;         :MyLookupFile&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-30" title="30">&quot; nmap &lt;unique&gt; &lt;silent&gt; &lt;F6&gt;         :&lt;c-u&gt;call MyMake(&#39;n&#39;)&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-31" title="31">&quot; nmap &lt;unique&gt; &lt;silent&gt; &lt;F7&gt;         :&lt;c-u&gt;call MyGrep(&#39;n&#39;)&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-32" title="32">nmap &lt;unique&gt; &lt;silent&gt; &lt;F8&gt;         :&lt;c-u&gt;call MyTags(&#39;n&#39;)&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-33" title="33">nmap &lt;unique&gt; &lt;silent&gt; &lt;F9&gt;         :MyMarkColor&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-34" title="34">nmap &lt;unique&gt; &lt;silent&gt; &lt;F11&gt;        :MaximizerToggle&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-35" title="35">nmap &lt;unique&gt; &lt;silent&gt; &lt;F12&gt;        ,ra</a>
+<a class="sourceLine" id="cb3-36" title="36"></a>
+<a class="sourceLine" id="cb3-37" title="37">imap &lt;unique&gt; &lt;silent&gt; &lt;F1&gt;    &lt;ESC&gt;:MarksBrowser&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-38" title="38">imap &lt;unique&gt; &lt;silent&gt; &lt;F2&gt;    &lt;ESC&gt;:MyBufExplorer&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-39" title="39">imap &lt;unique&gt; &lt;silent&gt; &lt;F3&gt;    &lt;ESC&gt;:NERDTreeToggle %:p:h&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-40" title="40">imap &lt;unique&gt; &lt;silent&gt; &lt;F4&gt;    &lt;ESC&gt;:TagbarToggle&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-41" title="41">imap &lt;unique&gt; &lt;silent&gt; &lt;F5&gt;    &lt;ESC&gt;:MyLookupFile&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-42" title="42">&quot; imap &lt;unique&gt; &lt;silent&gt; &lt;F6&gt;    &lt;ESC&gt;:&lt;c-u&gt;call MyMake(&#39;i&#39;)&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-43" title="43">&quot; imap &lt;unique&gt; &lt;silent&gt; &lt;F7&gt;    &lt;ESC&gt;:&lt;c-u&gt;call MyGrep(&#39;i&#39;)&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-44" title="44">imap &lt;unique&gt; &lt;silent&gt; &lt;F8&gt;    &lt;ESC&gt;:&lt;c-u&gt;call MyTags(&#39;i&#39;)&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-45" title="45">imap &lt;unique&gt; &lt;silent&gt; &lt;F9&gt;    &lt;ESC&gt;:MyMarkColor&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-46" title="46">imap &lt;unique&gt; &lt;silent&gt; &lt;F11&gt;   &lt;ESC&gt;:MaximizerToggle&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-47" title="47">imap &lt;unique&gt; &lt;silent&gt; &lt;F12&gt;   &lt;ESC&gt;,ra</a>
+<a class="sourceLine" id="cb3-48" title="48"></a>
+<a class="sourceLine" id="cb3-49" title="49">&quot; vmap &lt;unique&gt; &lt;silent&gt; &lt;F6&gt;         :&lt;c-u&gt;call MyMake(&#39;v&#39;)&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-50" title="50">vmap &lt;unique&gt; &lt;silent&gt; &lt;F12&gt;        :&lt;c-u&gt;call MyYank2Reg(&#39;v&#39;)&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-51" title="51"></a>
+<a class="sourceLine" id="cb3-52" title="52">&quot; &quot;Shift&quot;</a>
+<a class="sourceLine" id="cb3-53" title="53">nmap &lt;unique&gt; &lt;silent&gt; &lt;S-F1&gt;       :lnext&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-54" title="54">nmap &lt;unique&gt; &lt;silent&gt; &lt;S-F2&gt;       :cprevious&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-55" title="55">nmap &lt;unique&gt; &lt;silent&gt; &lt;S-F3&gt;       :cnext&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-56" title="56">&quot; nmap &lt;unique&gt; &lt;silent&gt; &lt;S-F6&gt;       :MyAsyncRun&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-57" title="57">nmap &lt;unique&gt; &lt;silent&gt; &lt;S-F9&gt;       :MyVimShellS&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-58" title="58">nmap &lt;unique&gt; &lt;silent&gt; &lt;S-F10&gt;      :MyColColor&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-59" title="59">nmap &lt;unique&gt; &lt;silent&gt; &lt;S-F12&gt;      :MyUMLCharConvert&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-60" title="60"></a>
+<a class="sourceLine" id="cb3-61" title="61">imap &lt;unique&gt; &lt;silent&gt; &lt;S-F1&gt;  &lt;ESC&gt;:lnext&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-62" title="62">imap &lt;unique&gt; &lt;silent&gt; &lt;S-F2&gt;  &lt;ESC&gt;:cprevious&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-63" title="63">imap &lt;unique&gt; &lt;silent&gt; &lt;S-F3&gt;  &lt;ESC&gt;:cnext&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-64" title="64">&quot; imap &lt;unique&gt; &lt;silent&gt; &lt;S-F6&gt;  &lt;ESC&gt;:MyAsyncRun&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-65" title="65">imap &lt;unique&gt; &lt;silent&gt; &lt;S-F9&gt;  &lt;ESC&gt;:MyVimShellS&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-66" title="66">imap &lt;unique&gt; &lt;silent&gt; &lt;S-F10&gt; &lt;ESC&gt;:MyColColor&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-67" title="67">imap &lt;unique&gt; &lt;silent&gt; &lt;S-F12&gt; &lt;ESC&gt;:MyUMLCharConvert&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-68" title="68"></a>
+<a class="sourceLine" id="cb3-69" title="69">&quot; &quot;Ctrl&quot;</a>
+<a class="sourceLine" id="cb3-70" title="70">nmap &lt;unique&gt; &lt;silent&gt; &lt;C-F1&gt;       :lprevious&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-71" title="71">nmap &lt;unique&gt; &lt;silent&gt; &lt;C-F2&gt;       :tprevious&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-72" title="72">nmap &lt;unique&gt; &lt;silent&gt; &lt;C-F3&gt;       :tnext&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-73" title="73">nmap &lt;unique&gt; &lt;silent&gt; &lt;C-F9&gt;       :MyVimShellV&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-74" title="74">nmap &lt;unique&gt; &lt;silent&gt; &lt;C-F10&gt;      :g/&lt;C-R&gt;=expand(&quot;&lt;cword&gt;&quot;)&lt;CR&gt;/d&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-75" title="75"></a>
+<a class="sourceLine" id="cb3-76" title="76">imap &lt;unique&gt; &lt;silent&gt; &lt;C-F1&gt;  &lt;ESC&gt;:lprevious&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-77" title="77">imap &lt;unique&gt; &lt;silent&gt; &lt;C-F2&gt;  &lt;ESC&gt;:tprevious&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-78" title="78">imap &lt;unique&gt; &lt;silent&gt; &lt;C-F3&gt;  &lt;ESC&gt;:tnext&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-79" title="79">imap &lt;unique&gt; &lt;silent&gt; &lt;C-F9&gt;  &lt;ESC&gt;:MyVimShellV&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-80" title="80">imap &lt;unique&gt; &lt;silent&gt; &lt;C-F10&gt; &lt;ESC&gt;:g/&lt;C-R&gt;=expand(&quot;&lt;cword&gt;&quot;)&lt;CR&gt;/d&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-81" title="81"></a>
+<a class="sourceLine" id="cb3-82" title="82">&quot;Shift and Ctrl &amp;term不同特殊映射 ctrl+F1不可用</a>
+<a class="sourceLine" id="cb3-83" title="83">map  &lt;Esc&gt;O1;2P  &lt;S-F1&gt;</a>
+<a class="sourceLine" id="cb3-84" title="84">map  &lt;Esc&gt;O1;2Q  &lt;S-F2&gt;</a>
+<a class="sourceLine" id="cb3-85" title="85">map  &lt;Esc&gt;O1;2R  &lt;S-F3&gt;</a>
+<a class="sourceLine" id="cb3-86" title="86">map  &lt;Esc&gt;O1;2S  &lt;S-F4&gt;</a>
+<a class="sourceLine" id="cb3-87" title="87">map  &lt;Esc&gt;[15;2~ &lt;S-F5&gt;</a>
+<a class="sourceLine" id="cb3-88" title="88">map  &lt;Esc&gt;[17;2~ &lt;S-F6&gt;</a>
+<a class="sourceLine" id="cb3-89" title="89">map  &lt;Esc&gt;[18;2~ &lt;S-F7&gt;</a>
+<a class="sourceLine" id="cb3-90" title="90">map  &lt;Esc&gt;[19;2~ &lt;S-F8&gt;</a>
+<a class="sourceLine" id="cb3-91" title="91">map  &lt;Esc&gt;[20;2~ &lt;S-F9&gt;</a>
+<a class="sourceLine" id="cb3-92" title="92">map! &lt;Esc&gt;O1;2P  &lt;S-F1&gt;</a>
+<a class="sourceLine" id="cb3-93" title="93">map! &lt;Esc&gt;O1;2Q  &lt;S-F2&gt;</a>
+<a class="sourceLine" id="cb3-94" title="94">map! &lt;Esc&gt;O1;2R  &lt;S-F3&gt;</a>
+<a class="sourceLine" id="cb3-95" title="95">map! &lt;Esc&gt;O1;2S  &lt;S-F4&gt;</a>
+<a class="sourceLine" id="cb3-96" title="96">map! &lt;Esc&gt;[15;2~ &lt;S-F5&gt;</a>
+<a class="sourceLine" id="cb3-97" title="97">map! &lt;Esc&gt;[17;2~ &lt;S-F6&gt;</a>
+<a class="sourceLine" id="cb3-98" title="98">map! &lt;Esc&gt;[18;2~ &lt;S-F7&gt;</a>
+<a class="sourceLine" id="cb3-99" title="99">map! &lt;Esc&gt;[19;2~ &lt;S-F8&gt;</a>
+<a class="sourceLine" id="cb3-100" title="100">map! &lt;Esc&gt;[20;2~ &lt;S-F9&gt;</a>
+<a class="sourceLine" id="cb3-101" title="101"></a>
+<a class="sourceLine" id="cb3-102" title="102">map  &lt;Esc&gt;O1;5P  &lt;C-F1&gt;</a>
+<a class="sourceLine" id="cb3-103" title="103">map  &lt;Esc&gt;O1;5Q  &lt;C-F2&gt;</a>
+<a class="sourceLine" id="cb3-104" title="104">map  &lt;Esc&gt;O1;5R  &lt;C-F3&gt;</a>
+<a class="sourceLine" id="cb3-105" title="105">map  &lt;Esc&gt;O1;5S  &lt;C-F4&gt;</a>
+<a class="sourceLine" id="cb3-106" title="106">map  &lt;Esc&gt;[15;5~ &lt;C-F5&gt;</a>
+<a class="sourceLine" id="cb3-107" title="107">map  &lt;Esc&gt;[17;5~ &lt;C-F6&gt;</a>
+<a class="sourceLine" id="cb3-108" title="108">map  &lt;Esc&gt;[18;5~ &lt;C-F7&gt;</a>
+<a class="sourceLine" id="cb3-109" title="109">map  &lt;Esc&gt;[19;5~ &lt;C-F8&gt;</a>
+<a class="sourceLine" id="cb3-110" title="110">map  &lt;Esc&gt;[20;5~ &lt;C-F9&gt;</a>
+<a class="sourceLine" id="cb3-111" title="111">map  &lt;Esc&gt;[21;5~ &lt;C-F10&gt;</a>
+<a class="sourceLine" id="cb3-112" title="112">map  &lt;Esc&gt;[23;5~ &lt;C-F11&gt;</a>
+<a class="sourceLine" id="cb3-113" title="113">map  &lt;Esc&gt;[24;5~ &lt;C-F12&gt;</a>
+<a class="sourceLine" id="cb3-114" title="114">map! &lt;Esc&gt;O1;5P  &lt;C-F1&gt;</a>
+<a class="sourceLine" id="cb3-115" title="115">map! &lt;Esc&gt;O1;5Q  &lt;C-F2&gt;</a>
+<a class="sourceLine" id="cb3-116" title="116">map! &lt;Esc&gt;O1;5R  &lt;C-F3&gt;</a>
+<a class="sourceLine" id="cb3-117" title="117">map! &lt;Esc&gt;O1;5S  &lt;C-F4&gt;</a>
+<a class="sourceLine" id="cb3-118" title="118">map! &lt;Esc&gt;[15;5~ &lt;C-F5&gt;</a>
+<a class="sourceLine" id="cb3-119" title="119">map! &lt;Esc&gt;[17;5~ &lt;C-F6&gt;</a>
+<a class="sourceLine" id="cb3-120" title="120">map! &lt;Esc&gt;[18;5~ &lt;C-F7&gt;</a>
+<a class="sourceLine" id="cb3-121" title="121">map! &lt;Esc&gt;[19;5~ &lt;C-F8&gt;</a>
+<a class="sourceLine" id="cb3-122" title="122">map! &lt;Esc&gt;[20;5~ &lt;C-F9&gt;</a>
+<a class="sourceLine" id="cb3-123" title="123">map! &lt;Esc&gt;[21;5~ &lt;C-F10&gt;</a>
+<a class="sourceLine" id="cb3-124" title="124">map! &lt;Esc&gt;[23;5~ &lt;C-F11&gt;</a>
+<a class="sourceLine" id="cb3-125" title="125">map! &lt;Esc&gt;[24;5~ &lt;C-F12&gt;</a>
+<a class="sourceLine" id="cb3-126" title="126"></a>
+<a class="sourceLine" id="cb3-127" title="127">&quot;F1~F12快捷键映射&quot;</a>
+<a class="sourceLine" id="cb3-128" title="128"></a>
+<a class="sourceLine" id="cb3-129" title="129">&quot;非F1~F12快捷键&quot;</a>
+<a class="sourceLine" id="cb3-130" title="130">nmap &lt;silent&gt; ga :MyGoAlternate&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-131" title="131">nmap &lt;silent&gt; &lt;leader&gt;tt :tabnew&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-132" title="132"></a>
+<a class="sourceLine" id="cb3-133" title="133">&quot;Quickfix 编译出错信息调试很有用</a>
+<a class="sourceLine" id="cb3-134" title="134">nmap &lt;silent&gt; &lt;C-w&gt;e :MyBelowCopen&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-135" title="135">&quot;Location list windows 打开</a>
+<a class="sourceLine" id="cb3-136" title="136">nmap &lt;silent&gt; &lt;C-w&gt;d :MyBelowLopen&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-137" title="137"></a>
+<a class="sourceLine" id="cb3-138" title="138">nmap cd :lchdir %:p:h&lt;CR&gt;:pwd&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-139" title="139"></a>
+<a class="sourceLine" id="cb3-140" title="140">&quot; Insert模式下&lt;C-L&gt;清楚后面所有的字符直到), 类似Normal模式下的d$动作, C-u清楚前面的字符直到(</a>
+<a class="sourceLine" id="cb3-141" title="141">&quot; imap &lt;unique&gt; &lt;silent&gt; &lt;C-l&gt; &lt;Esc&gt;&lt;Esc&gt;l&lt;C-v&gt;f)hdi</a>
+<a class="sourceLine" id="cb3-142" title="142">&quot; imap &lt;unique&gt; &lt;silent&gt; &lt;C-u&gt; &lt;Esc&gt;&lt;Esc&gt;l&lt;C-v&gt;F(ldi</a>
+<a class="sourceLine" id="cb3-143" title="143"></a>
+<a class="sourceLine" id="cb3-144" title="144">&quot;单手保存 ctrl+s 在BASH中,是Lock the console, 解锁ctrl+q, 解决方法是在.bashrc中添加stty stop &#39;&#39; 或者 alias vim=&quot;stty stop &#39;&#39;; vim&quot;</a>
+<a class="sourceLine" id="cb3-145" title="145">&quot; nmap &lt;C-s&gt; :update&lt;CR&gt;:echo expand(&#39;%:p&#39;)&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-146" title="146">imap &lt;C-s&gt; &lt;ESC&gt;:&lt;c-u&gt;update&lt;CR&gt;:echo expand(&#39;%:p&#39;)&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-147" title="147">nmap &lt;C-s&gt; :silent update!&lt;CR&gt;:silent lchdir %:p:h&lt;CR&gt;:pwd&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-148" title="148">&quot; imap &lt;C-s&gt; &lt;ESC&gt;:&lt;c-u&gt;silent update!&lt;CR&gt;:silent lchdir %:p:h&lt;CR&gt;:pwd&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-149" title="149">imap \\ &lt;C-x&gt;&lt;C-o&gt;</a>
+<a class="sourceLine" id="cb3-150" title="150"></a>
+<a class="sourceLine" id="cb3-151" title="151">&quot; 标签跳转页面</a>
+<a class="sourceLine" id="cb3-152" title="152">nmap g0 :tabl&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-153" title="153">nmap g1 1gt</a>
+<a class="sourceLine" id="cb3-154" title="154">nmap g2 2gt</a>
+<a class="sourceLine" id="cb3-155" title="155">nmap g3 3gt</a>
+<a class="sourceLine" id="cb3-156" title="156">nmap g4 4gt</a>
+<a class="sourceLine" id="cb3-157" title="157">nmap g5 5gt</a>
+<a class="sourceLine" id="cb3-158" title="158">nmap g6 6gt</a>
+<a class="sourceLine" id="cb3-159" title="159">nmap g7 7gt</a>
+<a class="sourceLine" id="cb3-160" title="160">nmap g8 8gt</a>
+<a class="sourceLine" id="cb3-161" title="161">nmap g9 9gt</a>
+<a class="sourceLine" id="cb3-162" title="162"></a>
+<a class="sourceLine" id="cb3-163" title="163">&quot;非F1~F12快捷键&quot;</a>
+<a class="sourceLine" id="cb3-164" title="164"></a>
+<a class="sourceLine" id="cb3-165" title="165">&quot;自己定义的命令 &quot;</a>
+<a class="sourceLine" id="cb3-166" title="166">command XCCTags !ctags --c++-kinds=+p --fields=+ialS --extra=+q -R .</a>
+<a class="sourceLine" id="cb3-167" title="167">command XRS %s/\s\+$//ge     &quot;消除每行后面的多余的空格</a>
+<a class="sourceLine" id="cb3-168" title="168">command XRW %s///ge        &quot;消除文件中的^M字符</a>
+<a class="sourceLine" id="cb3-169" title="169">command XONE 0,$s/\n//       &quot;多行变一行  </a>
+<a class="sourceLine" id="cb3-170" title="170">&quot;自己定义的命令 &quot;</a>
+<a class="sourceLine" id="cb3-171" title="171"></a>
+<a class="sourceLine" id="cb3-172" title="172">&quot;窗口配置&quot;</a>
+<a class="sourceLine" id="cb3-173" title="173">noremap &lt;C-j&gt; &lt;C-W&gt;j</a>
+<a class="sourceLine" id="cb3-174" title="174">noremap &lt;C-k&gt; &lt;C-W&gt;k</a>
+<a class="sourceLine" id="cb3-175" title="175">noremap &lt;C-h&gt; &lt;C-W&gt;h</a>
+<a class="sourceLine" id="cb3-176" title="176">noremap &lt;C-l&gt; &lt;C-W&gt;l</a>
+<a class="sourceLine" id="cb3-177" title="177"></a>
+<a class="sourceLine" id="cb3-178" title="178">&quot; 让terminal进入norm模式</a>
+<a class="sourceLine" id="cb3-179" title="179">&quot; tnoremap &lt;Esc&gt; &lt;C-W&gt;N</a>
+<a class="sourceLine" id="cb3-180" title="180">tnoremap &lt;C-j&gt; &lt;C-W&gt;j</a>
+<a class="sourceLine" id="cb3-181" title="181">tnoremap &lt;C-k&gt; &lt;C-W&gt;k</a>
+<a class="sourceLine" id="cb3-182" title="182">tnoremap &lt;C-h&gt; &lt;C-W&gt;h</a>
+<a class="sourceLine" id="cb3-183" title="183">tnoremap &lt;C-l&gt; &lt;C-W&gt;l</a>
+<a class="sourceLine" id="cb3-184" title="184"></a>
+<a class="sourceLine" id="cb3-185" title="185">&quot; &lt;C-W&gt;r --&gt; 交换窗口</a>
+<a class="sourceLine" id="cb3-186" title="186">noremap &lt;C-W&gt;v &lt;C-W&gt;v&lt;C-W&gt;l</a>
+<a class="sourceLine" id="cb3-187" title="187">noremap &lt;C-W&gt;s &lt;C-W&gt;s&lt;C-W&gt;j</a>
+<a class="sourceLine" id="cb3-188" title="188">&quot;窗口配置&quot;</a>
+<a class="sourceLine" id="cb3-189" title="189"></a>
+<a class="sourceLine" id="cb3-190" title="190">&quot;简单配置&quot;</a>
+<a class="sourceLine" id="cb3-191" title="191"></a>
+<a class="sourceLine" id="cb3-192" title="192">&quot;侦测文件类型</a>
+<a class="sourceLine" id="cb3-193" title="193">filetype on</a>
+<a class="sourceLine" id="cb3-194" title="194"></a>
+<a class="sourceLine" id="cb3-195" title="195">&quot;设置终端支持256颜色</a>
+<a class="sourceLine" id="cb3-196" title="196">set t_Co=256</a>
+<a class="sourceLine" id="cb3-197" title="197"></a>
+<a class="sourceLine" id="cb3-198" title="198">&quot;设置VIM颜色主题 你可以借助插件scrollcolor.vim和color_sample_pack.vim来选择你喜爱的主题(150多个)(请参考下面插件)</a>
+<a class="sourceLine" id="cb3-199" title="199">colorscheme elflord</a>
+<a class="sourceLine" id="cb3-200" title="200"></a>
+<a class="sourceLine" id="cb3-201" title="201">&quot;预览窗口,eg. ctr+w { 时的窗口大小</a>
+<a class="sourceLine" id="cb3-202" title="202">set previewheight=20</a>
+<a class="sourceLine" id="cb3-203" title="203"></a>
+<a class="sourceLine" id="cb3-204" title="204">&quot;设置弹出菜单的高度</a>
+<a class="sourceLine" id="cb3-205" title="205">set pumheight=15</a>
+<a class="sourceLine" id="cb3-206" title="206"></a>
+<a class="sourceLine" id="cb3-207" title="207">&quot;使用鼠标</a>
+<a class="sourceLine" id="cb3-208" title="208">set mouse=a  &quot;在vim里可以用鼠标复制粘贴, 用鼠标左键选中,中键粘贴(中键), shift + 选中:可复制(右键)</a>
+<a class="sourceLine" id="cb3-209" title="209"></a>
+<a class="sourceLine" id="cb3-210" title="210">&quot;可以在buffer中任意地方使用鼠标</a>
+<a class="sourceLine" id="cb3-211" title="211">&quot; set selection=exclusive</a>
+<a class="sourceLine" id="cb3-212" title="212">&quot; set selectmode=mouse,key</a>
+<a class="sourceLine" id="cb3-213" title="213"></a>
+<a class="sourceLine" id="cb3-214" title="214">&quot;autocmd 如果切换文件, 自动切换当前路径, BufEnter * 会使 eclim插件的JavaImpl冲突</a>
+<a class="sourceLine" id="cb3-215" title="215">&quot;if has(&quot;autocmd&quot;)</a>
+<a class="sourceLine" id="cb3-216" title="216">&quot;  autocmd BufWinEnter * :lchdir %:p:h</a>
+<a class="sourceLine" id="cb3-217" title="217">&quot;endif</a>
+<a class="sourceLine" id="cb3-218" title="218">&quot;将当前编辑文件的路径设置为当前路径</a>
+<a class="sourceLine" id="cb3-219" title="219">&quot; set autochdir</a>
+<a class="sourceLine" id="cb3-220" title="220">&quot;autocmd</a>
+<a class="sourceLine" id="cb3-221" title="221"></a>
+<a class="sourceLine" id="cb3-222" title="222">&quot;解决consle输出乱码</a>
+<a class="sourceLine" id="cb3-223" title="223">language messages zh_CN.utf-8</a>
+<a class="sourceLine" id="cb3-224" title="224"></a>
+<a class="sourceLine" id="cb3-225" title="225">&quot;可用来改动补全时采用的方式</a>
+<a class="sourceLine" id="cb3-226" title="226">set wildmode=list:full</a>
+<a class="sourceLine" id="cb3-227" title="227"></a>
+<a class="sourceLine" id="cb3-228" title="228">&quot;Alt组合键不映射到菜单上</a>
+<a class="sourceLine" id="cb3-229" title="229">set winaltkeys=no</a>
+<a class="sourceLine" id="cb3-230" title="230"></a>
+<a class="sourceLine" id="cb3-231" title="231">&quot;可用来取得菜单式的匹配列表 高亮首个匹配</a>
+<a class="sourceLine" id="cb3-232" title="232">&quot;:set wildmenu  &quot;当set wildmode=list:full默认set wildmenu已启动, 但是set wildmode=longest:list时不启动</a>
+<a class="sourceLine" id="cb3-233" title="233"></a>
+<a class="sourceLine" id="cb3-234" title="234">&quot;设置粘贴模式和恢复</a>
+<a class="sourceLine" id="cb3-235" title="235">&quot;:set paste</a>
+<a class="sourceLine" id="cb3-236" title="236">&quot;:set nopaste</a>
+<a class="sourceLine" id="cb3-237" title="237"></a>
+<a class="sourceLine" id="cb3-238" title="238">&quot;修改一个文件后，自动进行备份，备份的文件名为原文件名加“~“后缀</a>
+<a class="sourceLine" id="cb3-239" title="239">&quot;if has(&quot;vms&quot;)</a>
+<a class="sourceLine" id="cb3-240" title="240">&quot;    set nobackup</a>
+<a class="sourceLine" id="cb3-241" title="241">&quot;else</a>
+<a class="sourceLine" id="cb3-242" title="242">&quot;    set backup  &quot;vim main.c  多出 main.c~文件用来保存打开前的原文件, 最后可用vimdiff main.c main.c~比较</a>
+<a class="sourceLine" id="cb3-243" title="243">&quot;endif</a>
+<a class="sourceLine" id="cb3-244" title="244"></a>
+<a class="sourceLine" id="cb3-245" title="245">&quot;写备份但关闭vim后自动删除</a>
+<a class="sourceLine" id="cb3-246" title="246">set writebackup</a>
+<a class="sourceLine" id="cb3-247" title="247">&quot;set nowritebackup</a>
+<a class="sourceLine" id="cb3-248" title="248"></a>
+<a class="sourceLine" id="cb3-249" title="249">&quot;vi兼容开关 当使用omni自动补全时,要设置</a>
+<a class="sourceLine" id="cb3-250" title="250">set nocompatible</a>
+<a class="sourceLine" id="cb3-251" title="251"></a>
+<a class="sourceLine" id="cb3-252" title="252">&quot;不使用swap文件</a>
+<a class="sourceLine" id="cb3-253" title="253">set noswapfile</a>
+<a class="sourceLine" id="cb3-254" title="254"></a>
+<a class="sourceLine" id="cb3-255" title="255">&quot;关闭遇到错误时的声音提示</a>
+<a class="sourceLine" id="cb3-256" title="256">set noerrorbells</a>
+<a class="sourceLine" id="cb3-257" title="257"></a>
+<a class="sourceLine" id="cb3-258" title="258">&quot;不要闪烁</a>
+<a class="sourceLine" id="cb3-259" title="259">set novisualbell</a>
+<a class="sourceLine" id="cb3-260" title="260"></a>
+<a class="sourceLine" id="cb3-261" title="261">&quot;使用空格来替换tab</a>
+<a class="sourceLine" id="cb3-262" title="262">set expandtab</a>
+<a class="sourceLine" id="cb3-263" title="263"></a>
+<a class="sourceLine" id="cb3-264" title="264">&quot;多标签设置</a>
+<a class="sourceLine" id="cb3-265" title="265">set showtabline=1 &quot;0表示从不显示标签栏 1表示打开文件多于一个时显示标签栏 2表示总是显示标签栏</a>
+<a class="sourceLine" id="cb3-266" title="266">set tabpagemax=15 &quot;标签个数</a>
+<a class="sourceLine" id="cb3-267" title="267"></a>
+<a class="sourceLine" id="cb3-268" title="268">&quot;在vim编辑器下方不显示命令</a>
+<a class="sourceLine" id="cb3-269" title="269">&quot;&quot;To reduce the number of hit-enter prompts:</a>
+<a class="sourceLine" id="cb3-270" title="270">&quot;   Set &#39;cmdheight&#39; to 2 or higher.</a>
+<a class="sourceLine" id="cb3-271" title="271">&quot;   Add flags to &#39;shortmess&#39;.</a>
+<a class="sourceLine" id="cb3-272" title="272">&quot;   Reset &#39;showcmd&#39; and/or &#39;ruler&#39;.</a>
+<a class="sourceLine" id="cb3-273" title="273">set cmdheight=1</a>
+<a class="sourceLine" id="cb3-274" title="274">set showcmd</a>
+<a class="sourceLine" id="cb3-275" title="275">&quot; set noshowcmd</a>
+<a class="sourceLine" id="cb3-276" title="276"></a>
+<a class="sourceLine" id="cb3-277" title="277">&quot;打开 VIM 的状态栏标尺</a>
+<a class="sourceLine" id="cb3-278" title="278">set ruler</a>
+<a class="sourceLine" id="cb3-279" title="279">set laststatus=2 &quot;always show</a>
+<a class="sourceLine" id="cb3-280" title="280"></a>
+<a class="sourceLine" id="cb3-281" title="281">&quot;当光标达到上端或下端时 翻滚的行数</a>
+<a class="sourceLine" id="cb3-282" title="282">set scrolljump=0</a>
+<a class="sourceLine" id="cb3-283" title="283"></a>
+<a class="sourceLine" id="cb3-284" title="284">&quot;当光标达到水平极端时 移动的列数</a>
+<a class="sourceLine" id="cb3-285" title="285">set sidescroll=0</a>
+<a class="sourceLine" id="cb3-286" title="286"></a>
+<a class="sourceLine" id="cb3-287" title="287">&quot;当光标距离极端(上,下,左,右)多少时发生窗口滚动</a>
+<a class="sourceLine" id="cb3-288" title="288">set scrolloff=2</a>
+<a class="sourceLine" id="cb3-289" title="289"></a>
+<a class="sourceLine" id="cb3-290" title="290">&quot;当使用vimdiff比较文件,相比较的比较文件同步滚动,但是splite分割窗口, 两个窗口也同步, 有时候挺有用的．</a>
+<a class="sourceLine" id="cb3-291" title="291">&quot;set scrollbind</a>
+<a class="sourceLine" id="cb3-292" title="292"></a>
+<a class="sourceLine" id="cb3-293" title="293">&quot;自动读写相关</a>
+<a class="sourceLine" id="cb3-294" title="294">&quot; autoread not work: https://stackoverflow.com/questions/2490227/how-does-vims-autoread-work</a>
+<a class="sourceLine" id="cb3-295" title="295">&quot; manually exec :e</a>
+<a class="sourceLine" id="cb3-296" title="296">set autoread              &quot; read open files again when changed outside Vim ( 同步 )</a>
+<a class="sourceLine" id="cb3-297" title="297">set autowrite             &quot; write a modified buffer on each :next , ... ( 跳到另一个文件时,自动保存上个文件 )</a>
+<a class="sourceLine" id="cb3-298" title="298">set modified</a>
+<a class="sourceLine" id="cb3-299" title="299"></a>
+<a class="sourceLine" id="cb3-300" title="300">&quot;设置VIM行号</a>
+<a class="sourceLine" id="cb3-301" title="301">set nu</a>
+<a class="sourceLine" id="cb3-302" title="302"></a>
+<a class="sourceLine" id="cb3-303" title="303">&quot;Tab 宽度</a>
+<a class="sourceLine" id="cb3-304" title="304">set ts=4</a>
+<a class="sourceLine" id="cb3-305" title="305"></a>
+<a class="sourceLine" id="cb3-306" title="306">&quot;自动缩进的时候, 缩进尺寸</a>
+<a class="sourceLine" id="cb3-307" title="307">set sw=4</a>
+<a class="sourceLine" id="cb3-308" title="308">set softtabstop=4</a>
+<a class="sourceLine" id="cb3-309" title="309"></a>
+<a class="sourceLine" id="cb3-310" title="310">&quot;显示括号配对情况 wrong</a>
+<a class="sourceLine" id="cb3-311" title="311">set sm  &quot;smartmatch</a>
+<a class="sourceLine" id="cb3-312" title="312"></a>
+<a class="sourceLine" id="cb3-313" title="313">&quot; 开启新行时使用智能自动缩进</a>
+<a class="sourceLine" id="cb3-314" title="314">set smartindent</a>
+<a class="sourceLine" id="cb3-315" title="315"></a>
+<a class="sourceLine" id="cb3-316" title="316">&quot; 搜索时忽略大小写，但在有一个或以上大写字母时仍保持对大小写敏感</a>
+<a class="sourceLine" id="cb3-317" title="317">set ignorecase smartcase</a>
+<a class="sourceLine" id="cb3-318" title="318"></a>
+<a class="sourceLine" id="cb3-319" title="319">&quot; 输入搜索内容时就显示搜索结果</a>
+<a class="sourceLine" id="cb3-320" title="320">set incsearch</a>
+<a class="sourceLine" id="cb3-321" title="321"></a>
+<a class="sourceLine" id="cb3-322" title="322">&quot; 搜索时高亮显示被找到的文本</a>
+<a class="sourceLine" id="cb3-323" title="323">set hlsearch</a>
+<a class="sourceLine" id="cb3-324" title="324"></a>
+<a class="sourceLine" id="cb3-325" title="325">&quot;use backspace delete a word.</a>
+<a class="sourceLine" id="cb3-326" title="326">set backspace=indent,eol,start</a>
+<a class="sourceLine" id="cb3-327" title="327">&quot;indent: 如果用了:set indent,:set ai 等自动缩进,想用退格键将字段缩进的删掉,必须设置这个选项.否则不响应.</a>
+<a class="sourceLine" id="cb3-328" title="328">&quot;eol:如果插入模式下在行开头,想通过退格键合并两行,需要设置eol.</a>
+<a class="sourceLine" id="cb3-329" title="329">&quot;start：要想删除此次插入前的输入,需设置这个.</a>
+<a class="sourceLine" id="cb3-330" title="330"></a>
+<a class="sourceLine" id="cb3-331" title="331">&quot;显示TAB健</a>
+<a class="sourceLine" id="cb3-332" title="332">&quot; set list</a>
+<a class="sourceLine" id="cb3-333" title="333">&quot; set listchars=tab:&gt;-,trail:-</a>
+<a class="sourceLine" id="cb3-334" title="334"></a>
+<a class="sourceLine" id="cb3-335" title="335">&quot;允许backspace和光标键跨越行边界 ( 不习惯 )</a>
+<a class="sourceLine" id="cb3-336" title="336">&quot;set whichwrap+=&lt;,&gt;,h,l</a>
+<a class="sourceLine" id="cb3-337" title="337"></a>
+<a class="sourceLine" id="cb3-338" title="338">&quot;内容多时,是否换行显示</a>
+<a class="sourceLine" id="cb3-339" title="339">set nowrap</a>
+<a class="sourceLine" id="cb3-340" title="340"></a>
+<a class="sourceLine" id="cb3-341" title="341">&quot; characters to show before wrapped lines</a>
+<a class="sourceLine" id="cb3-342" title="342">set showbreak=&lt;&lt;&gt;&gt;</a>
+<a class="sourceLine" id="cb3-343" title="343"></a>
+<a class="sourceLine" id="cb3-344" title="344">&quot;启动的时候不显示那个援助乌干达儿童的提示</a>
+<a class="sourceLine" id="cb3-345" title="345">set shortmess=aoOWtI</a>
+<a class="sourceLine" id="cb3-346" title="346"></a>
+<a class="sourceLine" id="cb3-347" title="347">&quot;通过使用: commands命令，告诉我们文件的哪一行被改变过 ( 不习惯 )</a>
+<a class="sourceLine" id="cb3-348" title="348">&quot; set report=1</a>
+<a class="sourceLine" id="cb3-349" title="349"></a>
+<a class="sourceLine" id="cb3-350" title="350">&quot;在被分割的窗口间显示空白，便于阅读 (没看到效果)</a>
+<a class="sourceLine" id="cb3-351" title="351">&quot;stl:\       : 当前窗口状态栏显示&#39;空格&#39; (&#39;\&#39;转义字符)</a>
+<a class="sourceLine" id="cb3-352" title="352">&quot;stlnc:-     : 非当前窗口状态栏显示---</a>
+<a class="sourceLine" id="cb3-353" title="353">&quot;vert:\|     : 垂直分割线为|</a>
+<a class="sourceLine" id="cb3-354" title="354">&quot;fold:-      : 若设置折叠功能,折叠后显示---</a>
+<a class="sourceLine" id="cb3-355" title="355">&quot;set fillchars=stl:\ ,stlnc:-,vert:\|,fold:-,diff:-</a>
+<a class="sourceLine" id="cb3-356" title="356">set fillchars=stl:\ ,stlnc:\ ,vert:\|,fold:-,diff:-</a>
+<a class="sourceLine" id="cb3-357" title="357">&quot;set fillchars=vert:\ ,stl:\ ,stlnc:\</a>
+<a class="sourceLine" id="cb3-358" title="358"></a>
+<a class="sourceLine" id="cb3-359" title="359">&quot;带有如下符号的单词不要被换行分割</a>
+<a class="sourceLine" id="cb3-360" title="360">set iskeyword+=_,$,@,%,#</a>
+<a class="sourceLine" id="cb3-361" title="361"></a>
+<a class="sourceLine" id="cb3-362" title="362">&quot; 中文帮助</a>
+<a class="sourceLine" id="cb3-363" title="363">&quot; set helplang=cn</a>
+<a class="sourceLine" id="cb3-364" title="364"></a>
+<a class="sourceLine" id="cb3-365" title="365">&quot; 设定doc文档目录</a>
+<a class="sourceLine" id="cb3-366" title="366">&quot; let helptags=$VIMFILES.&#39;/doc&#39;</a>
+<a class="sourceLine" id="cb3-367" title="367"></a>
+<a class="sourceLine" id="cb3-368" title="368">&quot; 保留历史记录</a>
+<a class="sourceLine" id="cb3-369" title="369">set history=500</a>
+<a class="sourceLine" id="cb3-370" title="370"></a>
+<a class="sourceLine" id="cb3-371" title="371">&quot; 英文单词在换行时不被截断</a>
+<a class="sourceLine" id="cb3-372" title="372">set linebreak</a>
+<a class="sourceLine" id="cb3-373" title="373"></a>
+<a class="sourceLine" id="cb3-374" title="374">&quot; 设置每行多少个字符自动换行，加上换行符</a>
+<a class="sourceLine" id="cb3-375" title="375">set textwidth=106</a>
+<a class="sourceLine" id="cb3-376" title="376">&quot; 选中已有行执行 gq 可以自动换行 或者 gq=G 或者 gggqG</a>
+<a class="sourceLine" id="cb3-377" title="377">&quot;highlight column after &#39;textwidth&#39;</a>
+<a class="sourceLine" id="cb3-378" title="378">&quot; set cc=+1</a>
+<a class="sourceLine" id="cb3-379" title="379">&quot; fo = formatoptions:</a>
+<a class="sourceLine" id="cb3-380" title="380">&quot; t：根据 textwidth 自动折行；</a>
+<a class="sourceLine" id="cb3-381" title="381">&quot; c：在（程序源代码中的）注释中自动折行，插入合适的注释起始字符；</a>
+<a class="sourceLine" id="cb3-382" title="382">&quot; r：插入模式下在注释中键入回车时，插入合适的注释起始字符；</a>
+<a class="sourceLine" id="cb3-383" title="383">&quot; q：允许使用“gq”命令对注释进行格式化；</a>
+<a class="sourceLine" id="cb3-384" title="384">&quot; n：识别编号列表，编号行的下一行的缩进由数字后的空白决定（与“2”冲突，需要“autoindent”）；</a>
+<a class="sourceLine" id="cb3-385" title="385">&quot; 2：使用一段的第二行的缩进来格式化文本；</a>
+<a class="sourceLine" id="cb3-386" title="386">&quot; l：在当前行长度超过 textwidth 时，不自动重新格式化；</a>
+<a class="sourceLine" id="cb3-387" title="387">&quot; m：在多字节字符处可以折行，对中文特别有效（否则只在空白字符处折行）；</a>
+<a class="sourceLine" id="cb3-388" title="388">&quot; M：在拼接两行时（重新格式化，或者是手工使用“J”命令），如果前一行的结尾或后一行的开头是多字节字符，则不插入空格，非常适合中文</a>
+<a class="sourceLine" id="cb3-389" title="389">set fo+=Mm</a>
+<a class="sourceLine" id="cb3-390" title="390"></a>
+<a class="sourceLine" id="cb3-391" title="391">&quot; 光标可以定位在没有实际字符的地方</a>
+<a class="sourceLine" id="cb3-392" title="392">&quot;set ve=block</a>
+<a class="sourceLine" id="cb3-393" title="393"></a>
+<a class="sourceLine" id="cb3-394" title="394">&quot;显示匹配的括号([{和}])</a>
+<a class="sourceLine" id="cb3-395" title="395">set showmatch</a>
+<a class="sourceLine" id="cb3-396" title="396"></a>
+<a class="sourceLine" id="cb3-397" title="397">&quot; 短暂跳转到匹配括号的时(0.5s)</a>
+<a class="sourceLine" id="cb3-398" title="398">set matchtime=1</a>
+<a class="sourceLine" id="cb3-399" title="399"></a>
+<a class="sourceLine" id="cb3-400" title="400">&quot;多少个键被敲下后执行一次交换文件刷新</a>
+<a class="sourceLine" id="cb3-401" title="401">&quot;set updatecount=40  &quot;设置敲入40个字符后执行</a>
+<a class="sourceLine" id="cb3-402" title="402"></a>
+<a class="sourceLine" id="cb3-403" title="403">&quot;交换文件刷新后的超时时间</a>
+<a class="sourceLine" id="cb3-404" title="404">set updatetime=5000  &quot;x毫秒秒后刷新</a>
+<a class="sourceLine" id="cb3-405" title="405">&quot;:preserve &quot;若设置的时间过长,该命令会手工的存入交换文件中.</a>
+<a class="sourceLine" id="cb3-406" title="406"></a>
+<a class="sourceLine" id="cb3-407" title="407">&quot; When using make, where should it dump the file, please see ./bundle/.config/errormarker.vim_conf.vim</a>
+<a class="sourceLine" id="cb3-408" title="408">&quot; set makeprg=make\ -j4</a>
+<a class="sourceLine" id="cb3-409" title="409">&quot; set makeprg=ant</a>
+<a class="sourceLine" id="cb3-410" title="410">set makeef=errors</a>
+<a class="sourceLine" id="cb3-411" title="411"></a>
+<a class="sourceLine" id="cb3-412" title="412">&quot;lz 如果设置本选项,执行宏,寄存器和其它不通过输入的命令时屏幕不会重画.另外,窗口标题的刷新也被推迟.要强迫刷新,使用:redraw.</a>
+<a class="sourceLine" id="cb3-413" title="413">&quot;set lz &quot;lazyredraw / &#39;lz&#39;   (缺省关闭)</a>
+<a class="sourceLine" id="cb3-414" title="414">&quot; set redrawtime=4000</a>
+<a class="sourceLine" id="cb3-415" title="415"></a>
+<a class="sourceLine" id="cb3-416" title="416">&quot;过长的行显示不全</a>
+<a class="sourceLine" id="cb3-417" title="417">set display=lastline</a>
+<a class="sourceLine" id="cb3-418" title="418"></a>
+<a class="sourceLine" id="cb3-419" title="419">&quot; horiz split new windows below current</a>
+<a class="sourceLine" id="cb3-420" title="420">set splitbelow</a>
+<a class="sourceLine" id="cb3-421" title="421">&quot; vert split new windows to right of current</a>
+<a class="sourceLine" id="cb3-422" title="422">set splitright</a>
+<a class="sourceLine" id="cb3-423" title="423"></a>
+<a class="sourceLine" id="cb3-424" title="424">&quot; Ignore compiled files</a>
+<a class="sourceLine" id="cb3-425" title="425">set wildignore=*.o,*~,*.pyc,*.sh,*.png,.git\*,.hg\*,.svn\*</a>
+<a class="sourceLine" id="cb3-426" title="426"></a>
+<a class="sourceLine" id="cb3-427" title="427">&quot;简单配置&quot;</a>
+<a class="sourceLine" id="cb3-428" title="428"></a>
+<a class="sourceLine" id="cb3-429" title="429">&quot;Gui选项 放到.gvimrc&quot;</a>
+<a class="sourceLine" id="cb3-430" title="430">set tabline=%!MyTabLine()  &quot; custom tab pages line</a>
+<a class="sourceLine" id="cb3-431" title="431">if has(&quot;gui_running&quot;)</a>
+<a class="sourceLine" id="cb3-432" title="432">   &quot;set noruler</a>
+<a class="sourceLine" id="cb3-433" title="433">    set guifont=Monospace\ 12  &quot;在Linux下设置字体的命令是：</a>
+<a class="sourceLine" id="cb3-434" title="434">   &quot;set guicursor=a:blinkon0 &quot;停止光标闪烁</a>
+<a class="sourceLine" id="cb3-435" title="435">   set guioptions=</a>
+<a class="sourceLine" id="cb3-436" title="436">   &quot;set guioptions=e    &quot; GUI Tabbar</a>
+<a class="sourceLine" id="cb3-437" title="437">   &quot;set guioptions+=m   &quot; 菜单栏</a>
+<a class="sourceLine" id="cb3-438" title="438">   &quot;set guioptions+=T   &quot; 工具栏</a>
+<a class="sourceLine" id="cb3-439" title="439">   &quot; set guioptions+=b   &quot; 底边滚动条</a>
+<a class="sourceLine" id="cb3-440" title="440">   &quot; set guioptions+=l   &quot; 左边滚动条</a>
+<a class="sourceLine" id="cb3-441" title="441">   &quot;set guioptions+=L   &quot; 垂直分隔窗口左边滚动条</a>
+<a class="sourceLine" id="cb3-442" title="442">   &quot; set guioptions+=r   &quot; 右边滚动条</a>
+<a class="sourceLine" id="cb3-443" title="443">   &quot;set guioptions+=R   &quot; 垂直分隔窗口右边滚动条</a>
+<a class="sourceLine" id="cb3-444" title="444">    set mousemodel=popup</a>
+<a class="sourceLine" id="cb3-445" title="445">    map! &lt;S-Insert&gt; &lt;MiddleMouse&gt;</a>
+<a class="sourceLine" id="cb3-446" title="446">    &quot;MiddleMouse: 粘贴</a>
+<a class="sourceLine" id="cb3-447" title="447">    colorscheme spring</a>
+<a class="sourceLine" id="cb3-448" title="448"></a>
+<a class="sourceLine" id="cb3-449" title="449">    set kp=man\ -P\ more  &quot; remove the [m when using K man help</a>
+<a class="sourceLine" id="cb3-450" title="450"></a>
+<a class="sourceLine" id="cb3-451" title="451">    map &lt;M-0&gt; :tabl&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-452" title="452">    map &lt;M-1&gt; 1gt</a>
+<a class="sourceLine" id="cb3-453" title="453">    map &lt;M-2&gt; 2gt</a>
+<a class="sourceLine" id="cb3-454" title="454">    map &lt;M-3&gt; 3gt</a>
+<a class="sourceLine" id="cb3-455" title="455">    map &lt;M-4&gt; 4gt</a>
+<a class="sourceLine" id="cb3-456" title="456">    map &lt;M-5&gt; 5gt</a>
+<a class="sourceLine" id="cb3-457" title="457">    map &lt;M-6&gt; 6gt</a>
+<a class="sourceLine" id="cb3-458" title="458">    map &lt;M-7&gt; 7gt</a>
+<a class="sourceLine" id="cb3-459" title="459">    map &lt;M-8&gt; 8gt</a>
+<a class="sourceLine" id="cb3-460" title="460">    map &lt;M-9&gt; 9gt</a>
+<a class="sourceLine" id="cb3-461" title="461">    map! &lt;M-0&gt; &lt;esc&gt;:tabl&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-462" title="462">    map! &lt;M-1&gt; &lt;esc&gt;1gt</a>
+<a class="sourceLine" id="cb3-463" title="463">    map! &lt;M-2&gt; &lt;esc&gt;2gt</a>
+<a class="sourceLine" id="cb3-464" title="464">    map! &lt;M-3&gt; &lt;esc&gt;3gt</a>
+<a class="sourceLine" id="cb3-465" title="465">    map! &lt;M-4&gt; &lt;esc&gt;4gt</a>
+<a class="sourceLine" id="cb3-466" title="466">    map! &lt;M-5&gt; &lt;esc&gt;5gt</a>
+<a class="sourceLine" id="cb3-467" title="467">    map! &lt;M-6&gt; &lt;esc&gt;6gt</a>
+<a class="sourceLine" id="cb3-468" title="468">    map! &lt;M-7&gt; &lt;esc&gt;7gt</a>
+<a class="sourceLine" id="cb3-469" title="469">    map! &lt;M-8&gt; &lt;esc&gt;8gt</a>
+<a class="sourceLine" id="cb3-470" title="470">    map! &lt;M-9&gt; &lt;esc&gt;9gt</a>
+<a class="sourceLine" id="cb3-471" title="471">endif</a>
+<a class="sourceLine" id="cb3-472" title="472">&quot;Gui选项 放到.gvimrc&quot;</a>
+<a class="sourceLine" id="cb3-473" title="473"></a>
+<a class="sourceLine" id="cb3-474" title="474">&quot;高亮 注释代码的颜色&quot;</a>
+<a class="sourceLine" id="cb3-475" title="475">&quot;hi Comment ctermfg=6</a>
+<a class="sourceLine" id="cb3-476" title="476">&quot;hi cComment ctermfg=LightBlue guifg=LightBlue</a>
+<a class="sourceLine" id="cb3-477" title="477">&quot;hi cCommentL ctermfg=DarkGray guifg=DarkGray</a>
+<a class="sourceLine" id="cb3-478" title="478">&quot;高亮 注释代码的颜色&quot;</a>
+<a class="sourceLine" id="cb3-479" title="479"></a>
+<a class="sourceLine" id="cb3-480" title="480">&quot;高亮 menu color &quot;</a>
+<a class="sourceLine" id="cb3-481" title="481">highlight Pmenu         ctermbg=LightGreen ctermfg=black    guibg=LightGreen</a>
+<a class="sourceLine" id="cb3-482" title="482">highlight PmenuSel      ctermbg=LightBlue                   guibg=LightBlue</a>
+<a class="sourceLine" id="cb3-483" title="483">highlight PmenuSbar     ctermbg=Blue                        guibg=Blue</a>
+<a class="sourceLine" id="cb3-484" title="484">highlight PmenuThumb    ctermbg=Yellow                      guibg=Yellow</a>
+<a class="sourceLine" id="cb3-485" title="485">&quot;高亮 menu color &quot;</a>
+<a class="sourceLine" id="cb3-486" title="486"></a>
+<a class="sourceLine" id="cb3-487" title="487">&quot;高亮 当前行(列)&quot;</a>
+<a class="sourceLine" id="cb3-488" title="488">set cursorline</a>
+<a class="sourceLine" id="cb3-489" title="489">&quot; set cursorcolumn</a>
+<a class="sourceLine" id="cb3-490" title="490">&quot; ctermfg : red(1) yellow(2) blue green grey brown cyan magenta 数字</a>
+<a class="sourceLine" id="cb3-491" title="491">hi CursorLine   term=none cterm=underline ctermbg=none    ctermfg=none   gui=underline guibg=NONE</a>
+<a class="sourceLine" id="cb3-492" title="492">&quot; hi CursorColumn term=none cterm=bold      ctermbg=none    ctermfg=none   gui=bold  guibg=NONE</a>
+<a class="sourceLine" id="cb3-493" title="493">&quot;高亮 当前行(列)&quot;</a>
+<a class="sourceLine" id="cb3-494" title="494"></a>
+<a class="sourceLine" id="cb3-495" title="495">&quot; 高亮列&quot;</a>
+<a class="sourceLine" id="cb3-496" title="496">hi ColorColumn ctermbg=darkgrey guibg=lightgrey</a>
+<a class="sourceLine" id="cb3-497" title="497">&quot;&quot;</a>
+<a class="sourceLine" id="cb3-498" title="498"></a>
+<a class="sourceLine" id="cb3-499" title="499">&quot;高亮tab标签&quot;</a>
+<a class="sourceLine" id="cb3-500" title="500">&quot;hi! TabWinNum term=bold,underline cterm=underline gui=bold,underline ctermfg=green guifg=Green ctermbg=darkgrey guibg=DarkGrey</a>
+<a class="sourceLine" id="cb3-501" title="501">&quot;hi! TabWinNumSel term=bold,underline cterm=underline gui=bold,underline ctermfg=magenta ctermbg=blue guifg=Magenta guibg=#0000ff</a>
+<a class="sourceLine" id="cb3-502" title="502">&quot;hi! TabPunct term=bold,underline cterm=underline gui=bold,underline ctermfg=cyan guifg=cyan ctermbg=darkgrey guibg=DarkGrey</a>
+<a class="sourceLine" id="cb3-503" title="503">&quot;hi! TabPunctSel term=bold,underline cterm=underline gui=bold,underline ctermfg=magenta ctermbg=blue guifg=Magenta guibg=#0000ff</a>
+<a class="sourceLine" id="cb3-504" title="504">hi! TabLineFill ctermfg=darkcyan guifg=darkgrey</a>
+<a class="sourceLine" id="cb3-505" title="505">hi! TabLineFillEnd ctermfg=lightred ctermbg=black guifg=lightred guibg=black</a>
+<a class="sourceLine" id="cb3-506" title="506">hi! TabLineSel term=bold ctermfg=blue ctermbg=green gui=bold guifg=blue guibg=green</a>
+<a class="sourceLine" id="cb3-507" title="507">&quot;hi! TabModded term=underline cterm=underline ctermfg=black ctermbg=yellow gui=underline guifg=black guibg=yellow</a>
+<a class="sourceLine" id="cb3-508" title="508">&quot;hi! TabExit term=underline,bold ctermfg=red guifg=#ff0000 guibg=darkgrey cterm=underline gui=underline</a>
+<a class="sourceLine" id="cb3-509" title="509">&quot;hi! TabExitSel gui=underline term=underline,bold guifg=green guibg=blue cterm=underline ctermfg=green ctermbg=blue</a>
+<a class="sourceLine" id="cb3-510" title="510">&quot;hi! TabSep term=reverse,standout,underline cterm=reverse,standout,underline gui=reverse,standout,underline ctermfg=black ctermbg=white</a>
+<a class="sourceLine" id="cb3-511" title="511">&quot;高亮tab标签&quot;</a>
+<a class="sourceLine" id="cb3-512" title="512"></a>
+<a class="sourceLine" id="cb3-513" title="513">&quot;高亮 其他&quot;</a>
+<a class="sourceLine" id="cb3-514" title="514">&quot;hi statusline cterm=bold ctermfg=LightGreen ctermbg=DarkMagenta gui=bold guifg=Green guibg=DarkMagenta</a>
+<a class="sourceLine" id="cb3-515" title="515">hi Folded       term=none   cterm=bold    ctermbg=none      ctermfg=none    gui=bold    guibg=NONE</a>
+<a class="sourceLine" id="cb3-516" title="516">hi FoldColumn   term=none   cterm=bold    ctermbg=none      ctermfg=none    gui=bold    guibg=NONE</a>
+<a class="sourceLine" id="cb3-517" title="517">hi SignColumn   term=none   cterm=bold    ctermbg=none      ctermfg=none    gui=bold    guibg=NONE</a>
+<a class="sourceLine" id="cb3-518" title="518">hi VertSplit    term=none   cterm=bold    ctermbg=none      ctermfg=none    gui=bold    guibg=NONE</a>
+<a class="sourceLine" id="cb3-519" title="519">hi DebugBreak   term=bold   cterm=bold    ctermbg=cyan      ctermfg=none    gui=bold    guibg=magenta  guifg=NONE</a>
+<a class="sourceLine" id="cb3-520" title="520">hi Cursor       term=none   cterm=bold    ctermbg=white     ctermfg=none</a>
+<a class="sourceLine" id="cb3-521" title="521">&quot;高亮 其他&quot;</a>
+<a class="sourceLine" id="cb3-522" title="522"></a>
+<a class="sourceLine" id="cb3-523" title="523">&quot;字符编码(多字节)&quot;</a>
+<a class="sourceLine" id="cb3-524" title="524">if has(&quot;multi_byte&quot;)</a>
+<a class="sourceLine" id="cb3-525" title="525">    set fileencodings=ucs-bom,utf-8,gb18030,gbk,gb2312,chinese,big5,latin1,cp936</a>
+<a class="sourceLine" id="cb3-526" title="526">    set termencoding=utf-8</a>
+<a class="sourceLine" id="cb3-527" title="527">    set encoding=utf-8</a>
+<a class="sourceLine" id="cb3-528" title="528">endif</a>
+<a class="sourceLine" id="cb3-529" title="529">&quot;VIM中显示信息都为英文的.</a>
+<a class="sourceLine" id="cb3-530" title="530">language en_US.utf8</a>
+<a class="sourceLine" id="cb3-531" title="531">&quot;字符编码(多字节)&quot;</a>
+<a class="sourceLine" id="cb3-532" title="532"></a>
+<a class="sourceLine" id="cb3-533" title="533">&quot;设置C/C++语言的具体缩进方式 eg. switch case 缩进&quot;</a>
+<a class="sourceLine" id="cb3-534" title="534">&quot;打开 C/C++ 风格的自动缩进 ( =a{ , gg=G 代码美化 )</a>
+<a class="sourceLine" id="cb3-535" title="535">set cin</a>
+<a class="sourceLine" id="cb3-536" title="536">set cinoptions={0,1s,t0,n-2,p2s,(03s,=.5s,&gt;1s,=1s,:1s</a>
+<a class="sourceLine" id="cb3-537" title="537">set cino=:4g0t0(sus</a>
+<a class="sourceLine" id="cb3-538" title="538">&quot;工作需要不缩进,不习惯也要习惯</a>
+<a class="sourceLine" id="cb3-539" title="539">&quot; set cino=:0g0t0(sus</a>
+<a class="sourceLine" id="cb3-540" title="540">&quot; :0  -- switch 语句之下的 case 语句缩进 0 个空格</a>
+<a class="sourceLine" id="cb3-541" title="541">&quot; g0  -- class,struct,等权限控制语句(public,protected,private)相对class,struct等所在的块缩进 0 个空格</a>
+<a class="sourceLine" id="cb3-542" title="542">&quot; t0  -- 如果函数返回值与函数名不在同一行，则返回值缩进 0 个空格</a>
+<a class="sourceLine" id="cb3-543" title="543">&quot; (sus - 当一对括号跨越多行时，其后的行缩进前面 sw 指定的距离</a>
+<a class="sourceLine" id="cb3-544" title="544">&quot;设置C/C++语言的具体缩进方式 eg. switch case 缩进&quot;</a>
+<a class="sourceLine" id="cb3-545" title="545"></a>
+<a class="sourceLine" id="cb3-546" title="546">&quot;vim折叠功能&quot;</a>
+<a class="sourceLine" id="cb3-547" title="547">&quot;折叠方式,可用选项 ‘foldmethod’ 来设定折叠方式：set fdm=***</a>
+<a class="sourceLine" id="cb3-548" title="548">&quot;有 6 种方法来选定折叠：</a>
+<a class="sourceLine" id="cb3-549" title="549">&quot;manual           手工定义折叠</a>
+<a class="sourceLine" id="cb3-550" title="550">&quot;indent           更多的缩进表示更高级别的折叠</a>
+<a class="sourceLine" id="cb3-551" title="551">&quot;expr             用表达式来定义折叠</a>
+<a class="sourceLine" id="cb3-552" title="552">&quot;syntax           用语法高亮来定义折叠</a>
+<a class="sourceLine" id="cb3-553" title="553">&quot;diff             对没有更改的文本进行折叠</a>
+<a class="sourceLine" id="cb3-554" title="554">&quot;marker           对文中的标志折叠</a>
+<a class="sourceLine" id="cb3-555" title="555">&quot;常用的折叠快捷键</a>
+<a class="sourceLine" id="cb3-556" title="556">&quot;zf  创建折叠 (marker 有效)</a>
+<a class="sourceLine" id="cb3-557" title="557">&quot;zo  打开折叠</a>
+<a class="sourceLine" id="cb3-558" title="558">&quot;zO  对所在范围内所有嵌套的折叠点展开</a>
+<a class="sourceLine" id="cb3-559" title="559">&quot;zc  关闭当前折叠</a>
+<a class="sourceLine" id="cb3-560" title="560">&quot;zC  对所在范围内所有嵌套的折叠点进行折叠</a>
+<a class="sourceLine" id="cb3-561" title="561">&quot;[z  到当前打开的折叠的开始处。</a>
+<a class="sourceLine" id="cb3-562" title="562">&quot;]z  到当前打开的折叠的末尾处。</a>
+<a class="sourceLine" id="cb3-563" title="563">&quot;zM  关闭所有折叠 (我喜欢)</a>
+<a class="sourceLine" id="cb3-564" title="564">&quot;zr  打开所有折叠</a>
+<a class="sourceLine" id="cb3-565" title="565">&quot;zR  循环地打开所有折叠 (我喜欢)</a>
+<a class="sourceLine" id="cb3-566" title="566">&quot;zE  删除所有折叠</a>
+<a class="sourceLine" id="cb3-567" title="567">&quot;zd  删除当前折叠</a>
+<a class="sourceLine" id="cb3-568" title="568">&quot;zD  循环删除 (Delete) 光标下的折叠，即嵌套删除折叠</a>
+<a class="sourceLine" id="cb3-569" title="569">&quot;za  若当前打开则关闭，若当前关闭则打开  ( 这个就足够了)</a>
+<a class="sourceLine" id="cb3-570" title="570">&quot;zA  循环地打开/关闭当前折叠</a>
+<a class="sourceLine" id="cb3-571" title="571">&quot;zj  到下一折叠的开始处 ( 我喜欢 )</a>
+<a class="sourceLine" id="cb3-572" title="572">&quot;zk  到上一折叠的末尾   ( 我喜欢 )</a>
+<a class="sourceLine" id="cb3-573" title="573">&quot;set foldmethod=indent</a>
+<a class="sourceLine" id="cb3-574" title="574">&quot;set foldmethod=marker</a>
+<a class="sourceLine" id="cb3-575" title="575">&quot;要想在{  } 代码块中折叠，按空格键</a>
+<a class="sourceLine" id="cb3-576" title="576">&quot;syntax 与 c.vim 中的 \cc 注释功能冲突</a>
+<a class="sourceLine" id="cb3-577" title="577">&quot;set foldmethod=syntax</a>
+<a class="sourceLine" id="cb3-578" title="578">set foldmethod=marker</a>
+<a class="sourceLine" id="cb3-579" title="579">set foldenable              &quot; 开始折叠</a>
+<a class="sourceLine" id="cb3-580" title="580">set foldcolumn=0            &quot; 设置折叠区域的宽度</a>
+<a class="sourceLine" id="cb3-581" title="581">set foldlevel=0             &quot; 设置折叠层数为</a>
+<a class="sourceLine" id="cb3-582" title="582">&quot;set foldopen=all</a>
+<a class="sourceLine" id="cb3-583" title="583">&quot;set foldclose=all           &quot; 设置为自动关闭折叠</a>
+<a class="sourceLine" id="cb3-584" title="584">&quot;使&quot;用空格打开或关闭折叠</a>
+<a class="sourceLine" id="cb3-585" title="585">nnoremap &lt;space&gt; @=((foldclosed(line(&#39;.&#39;)) &lt; 0) ? &#39;zC&#39; : &#39;zO&#39;)&lt;CR&gt;</a>
+<a class="sourceLine" id="cb3-586" title="586">&quot;vim折叠功能&quot;</a>
+<a class="sourceLine" id="cb3-587" title="587"></a>
+<a class="sourceLine" id="cb3-588" title="588">&quot;文件比较&quot;</a>
+<a class="sourceLine" id="cb3-589" title="589">    &quot;:vertical diffsplit FILE_RIGHT   &quot;与已打开的文件进行比较</a>
+<a class="sourceLine" id="cb3-590" title="590">    &quot;设置不同之处显示上下三行</a>
+<a class="sourceLine" id="cb3-591" title="591">    set diffopt=context:3</a>
+<a class="sourceLine" id="cb3-592" title="592">    &quot;命令模式（ESC键进入）：</a>
+<a class="sourceLine" id="cb3-593" title="593">    &quot;[c  跳转到下一个差异点</a>
+<a class="sourceLine" id="cb3-594" title="594">    &quot;]c  跳到上一个差异点</a>
+<a class="sourceLine" id="cb3-595" title="595">    &quot;dp  左边文件差异复制到右边文件(直接在键盘上行按下dp)</a>
+<a class="sourceLine" id="cb3-596" title="596">    &quot;do  右边文件差异复制到左边文件(直接在键盘上行按下do)</a>
+<a class="sourceLine" id="cb3-597" title="597">    &quot;zo  隐藏相同行</a>
+<a class="sourceLine" id="cb3-598" title="598">    &quot;zc  展开向同行</a>
+<a class="sourceLine" id="cb3-599" title="599">    &quot;u 撤销</a>
+<a class="sourceLine" id="cb3-600" title="600">    &quot;Ctrl+ww  文件切换</a>
+<a class="sourceLine" id="cb3-601" title="601">    &quot;</a>
+<a class="sourceLine" id="cb3-602" title="602">    &quot;:qa! 退出不保存</a>
+<a class="sourceLine" id="cb3-603" title="603">    &quot;:wa  保存</a>
+<a class="sourceLine" id="cb3-604" title="604">    &quot;:wqa 保存退出</a>
+<a class="sourceLine" id="cb3-605" title="605">    &quot;:diffupdate 重新比较</a>
+<a class="sourceLine" id="cb3-606" title="606">&quot;文件比较&quot;</a>
+<a class="sourceLine" id="cb3-607" title="607"></a>
+<a class="sourceLine" id="cb3-608" title="608">&quot;单词列表匹配&quot;</a>
+<a class="sourceLine" id="cb3-609" title="609">&quot;ctrl+x ctrl+k</a>
+<a class="sourceLine" id="cb3-610" title="610">&quot;apt-get install wordlist</a>
+<a class="sourceLine" id="cb3-611" title="611">set dictionary=~/.vim/dict/math.txt</a>
+<a class="sourceLine" id="cb3-612" title="612">set dictionary+=~/.vim/dict/wordlist.txt</a>
+<a class="sourceLine" id="cb3-613" title="613">set cpt=.,w,b,u,t,k,i</a>
+<a class="sourceLine" id="cb3-614" title="614">&quot; set cpt=.</a>
+<a class="sourceLine" id="cb3-615" title="615">&quot;    .  scan the current buffer (&#39;wrapscan&#39; is ignored)</a>
+<a class="sourceLine" id="cb3-616" title="616">&quot;    w  scan buffers from other windows</a>
+<a class="sourceLine" id="cb3-617" title="617">&quot;    b  scan other loaded buffers that are in the buffer list</a>
+<a class="sourceLine" id="cb3-618" title="618">&quot;    u  scan the unloaded buffers that are in the buffer list</a>
+<a class="sourceLine" id="cb3-619" title="619">&quot;    U  scan the buffers that are not in the buffer list</a>
+<a class="sourceLine" id="cb3-620" title="620">&quot;    k  scan the files given with the &#39;dictionary&#39; option</a>
+<a class="sourceLine" id="cb3-621" title="621">&quot;    kspell  use the currently active spell checking |spell|</a>
+<a class="sourceLine" id="cb3-622" title="622">&quot;    k{dict}    scan the file {dict}.  Several &quot;k&quot; flags can be given,</a>
+<a class="sourceLine" id="cb3-623" title="623">&quot;       patterns are valid too.  For example: &gt;</a>
+<a class="sourceLine" id="cb3-624" title="624">&quot;           :set cpt=k/usr/dict/*,k~/spanish</a>
+<a class="sourceLine" id="cb3-625" title="625">&quot;    s  scan the files given with the &#39;thesaurus&#39; option</a>
+<a class="sourceLine" id="cb3-626" title="626">&quot;    s{tsr} scan the file {tsr}.  Several &quot;s&quot; flags can be given, patterns</a>
+<a class="sourceLine" id="cb3-627" title="627">&quot;       are valid too.</a>
+<a class="sourceLine" id="cb3-628" title="628">&quot;    i  scan current and included files</a>
+<a class="sourceLine" id="cb3-629" title="629">&quot;    d  scan current and included files for defined name or macro</a>
+<a class="sourceLine" id="cb3-630" title="630">&quot;       |i_CTRL-X_CTRL-D|</a>
+<a class="sourceLine" id="cb3-631" title="631">&quot;    ]  tag completion</a>
+<a class="sourceLine" id="cb3-632" title="632">&quot;    t  same as &quot;]&quot;</a>
+<a class="sourceLine" id="cb3-633" title="633">&quot;单词列表匹配&quot;</a>
+<a class="sourceLine" id="cb3-634" title="634"></a>
+<a class="sourceLine" id="cb3-635" title="635">&quot;打开文件后自动回到上一次最后编辑的地方&quot;</a>
+<a class="sourceLine" id="cb3-636" title="636">&quot;如果不起作用查看 ~/.viminfo 文件属性</a>
+<a class="sourceLine" id="cb3-637" title="637">au BufReadPost *</a>
+<a class="sourceLine" id="cb3-638" title="638">            \ if line(&quot;&#39;\&quot;&quot;) &gt; 1 &amp;&amp; line(&quot;&#39;\&quot;&quot;) &lt;= line(&quot;$&quot;) |</a>
+<a class="sourceLine" id="cb3-639" title="639">            \ exe &quot;normal! g&#39;\&quot;&quot; |</a>
+<a class="sourceLine" id="cb3-640" title="640">            \ endif</a>
+<a class="sourceLine" id="cb3-641" title="641">&quot;打开文件后自动回到上一次最后编辑的地方&quot;</a>
+<a class="sourceLine" id="cb3-642" title="642"></a>
+<a class="sourceLine" id="cb3-643" title="643">&quot;completeopt 弹出菜单 输入字母实现即时的过滤和匹配 ( 参考 neocomplcache  )&quot;</a>
+<a class="sourceLine" id="cb3-644" title="644">&quot;&quot;关掉智能补全时的预览窗口 (Scratch)</a>
+<a class="sourceLine" id="cb3-645" title="645">&quot;&quot; menu     使用弹出菜单来显示可能的补全</a>
+<a class="sourceLine" id="cb3-646" title="646">&quot;&quot; longest  只插入匹配的最长公共文本</a>
+<a class="sourceLine" id="cb3-647" title="647">&quot;&quot;set completeopt=menuone,menu,longest,preview</a>
+<a class="sourceLine" id="cb3-648" title="648">&quot; set completeopt=menu</a>
+<a class="sourceLine" id="cb3-649" title="649">set completeopt=longest,menu</a>
+<a class="sourceLine" id="cb3-650" title="650">&quot;completeopt 弹出菜单 输入字母实现即时的过滤和匹配 ( 参考 neocomplcache  )&quot;</a>
+<a class="sourceLine" id="cb3-651" title="651"></a>
+<a class="sourceLine" id="cb3-652" title="652">&quot; 设置Logcat文件类型&quot;</a>
+<a class="sourceLine" id="cb3-653" title="653">&quot; au BufRead,BufNewFile *logcat* set filetype=logcat</a>
+<a class="sourceLine" id="cb3-654" title="654">&quot;</a>
+<a class="sourceLine" id="cb3-655" title="655"></a>
+<a class="sourceLine" id="cb3-656" title="656">&quot;a.vim实现源文件与头文件切换&quot;</a>
+<a class="sourceLine" id="cb3-657" title="657">let alternateNoDefaultAlternate = 1</a>
+<a class="sourceLine" id="cb3-658" title="658">&quot;</a>
+<a class="sourceLine" id="cb3-659" title="659"></a>
+<a class="sourceLine" id="cb3-660" title="660">&quot;按q之后按:进入histroy command</a>
+<a class="sourceLine" id="cb3-661" title="661"></a>
+<a class="sourceLine" id="cb3-662" title="662">&quot; 0~ 1~ workaround: https://github.com/vim/vim/issues/1671</a>
+<a class="sourceLine" id="cb3-663" title="663">if has(&quot;unix&quot;)&quot;</a>
+<a class="sourceLine" id="cb3-664" title="664">    let s:uname = system(&quot;echo -n \&quot;$(uname)\&quot;&quot;)</a>
+<a class="sourceLine" id="cb3-665" title="665">    if !v:shell_error &amp;&amp; s:uname == &quot;Linux&quot;</a>
+<a class="sourceLine" id="cb3-666" title="666">        set t_BE=</a>
+<a class="sourceLine" id="cb3-667" title="667">        &quot; 影响R concose</a>
+<a class="sourceLine" id="cb3-668" title="668">        set t_SH=</a>
+<a class="sourceLine" id="cb3-669" title="669">    endif</a>
+<a class="sourceLine" id="cb3-670" title="670">endif&quot;</a>
+<a class="sourceLine" id="cb3-671" title="671"></a>
+<a class="sourceLine" id="cb3-672" title="672">&quot; gu gU 大小写互转</a>
+<a class="sourceLine" id="cb3-673" title="673">&quot; gitm89$</a>
+<a class="sourceLine" id="cb3-674" title="674"></a>
+<a class="sourceLine" id="cb3-675" title="675">&quot; workaround for autoread not work</a>
+<a class="sourceLine" id="cb3-676" title="676">au FocusGained,BufEnter * :silent! !</a></code></pre></div>
+<h1 id="依赖"><span class="header-section-number">5</span> 依赖</h1>
+<pre><code>1. 要求vim版本：vim8.0 or high 
+
+2. 管理插件: git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+3. 安装插件: Open vim, 执行:PluginInstall
+
+4. cd bundle/vimproc.vim; make -f make_unix.mk
+
+5. 保证系统clang版本3.9 or high， 到YouCompleteMe执行python3 ./install.py --clang-completer --clangd-completer or --all (时间比较久)
+    ./install.py --clangd-completer --clang-completer --go-completer --ts-completer --java-completer
+    python3: 修改一下install.sh
+
+6. jedi补全sudo pip3 install -U jedi
+    git clone https://github.com/davidhalter/jedi
+    sudo python setup.py install
+    or
+    (推荐)
+    sudo pip3 install -e git://github.com/davidhalter/jedi.git#egg=jedi
+
+    安装numpydoc:
+    sudo apt-get install python-numpydoc
+    sudo apt-get install python3-numpydoc (ubuntu16)
+
+    补全(某些)时有个错误:
+    docscrape.py:140: UserWarning: Unknown section Note
+    打开文件加一个&quot;Note&quot; Section
+
+
+7. 使用universal-ctags, https://github.com/universal-ctags/ctags 下载编译
+
+8. 使用markdown, 并根据对应的配置里面的说明进行修改
+    `npm -g install instant-markdown-d`
+
+9. Js
+   `cd bundle/tern_for_vim; npm install`
+    sudo npm i -g eslint eslint-plugin-vue
+
+10. fzf
+    把export FZF_DEFAULT_OPTS=&quot;--bind=&#39;ctrl-o:execute(vim {})&#39;&quot; 放到~/.fzf.bash
+    cd ./bundle/fzf/; ./install --all
+    sudo apt-get install silversearcher-ag
+
+    sudo apt-get install ripgrep (ubuntu18.10)
+    or
+    git clone https://github.com/BurntSushi/ripgrep
+    cd ripgrep ; cargo build --release; ./target/release/rg --version
+    or 
+    cargo install ripgrep (推荐)
+
+11. LeaderF
+    cd ./bundle/LeaderF; ./install.sh
+
+12. jupyter
+    sudo pip3 install jupyter_contrib_nbextensions
+    jupyter nbextensions_configurator enable --user
+    # Now clone the repository
+    cd $(jupyter --data-dir)/nbextensions
+    git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding
+    chmod -R go-w vim_binding
+    jupyter nbextension enable vim_binding/vim_binding
+
+    配置jupyter
+    jupyter notebook --generate-config
+    jupyter notebook password
+
+13. 语法检查
+
+    sudo apt-get install pyflakes
+    sudo apt-get install python-flake8 (推荐)
+
+14. 数学公式
+    sudo apt-get install texlive</code></pre>
+</body>
+</html>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-06-26T15:15:46.744Z" itemprop="dateUpdated">2019-06-26 23:15:46</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://qrsforever.github.io">
+            <img src="/img/avatar.jpg" alt="qrsforever">
+            qrsforever
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How/">How</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2018/06/25/Tools/How/vim/&title=《Ubutnu编辑器VIM配置》 — 奥卡姆剃刀&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2018/06/25/Tools/How/vim/&title=《Ubutnu编辑器VIM配置》 — 奥卡姆剃刀&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2018/06/25/Tools/How/vim/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Ubutnu编辑器VIM配置》 — 奥卡姆剃刀&url=https://qrsforever.github.io/2018/06/25/Tools/How/vim/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2018/06/25/Tools/How/vim/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/10/30/Story/Math/Frequentist_Bayesian/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Frequentist和Bayesian之前的故事</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/06/24/Books/Math/derivative_rules/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">求导法则</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "bpShGWdW8DpODhnDko5O2IBB-gzGzoHsz",
+            appKey: "rwmasTllBbHE69ADuLjFyFWf",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢打赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>qrsforever &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2018/06/25/Tools/How/vim/&title=《Ubutnu编辑器VIM配置》 — 奥卡姆剃刀&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2018/06/25/Tools/How/vim/&title=《Ubutnu编辑器VIM配置》 — 奥卡姆剃刀&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2018/06/25/Tools/How/vim/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Ubutnu编辑器VIM配置》 — 奥卡姆剃刀&url=https://qrsforever.github.io/2018/06/25/Tools/How/vim/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2018/06/25/Tools/How/vim/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://qrsforever.github.io/2018/06/25/Tools/How/vim/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- lidong cha. -->
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- lidong end. -->
+
+</body>
+</html>

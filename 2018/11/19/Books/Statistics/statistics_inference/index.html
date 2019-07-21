@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?cb4be66237379541488b8502a6eca006"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>统计推断 | 奥卡姆剃刀 | 你们都是大傻瓜, 我是天下大赢家</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Statistics">
+    <meta name="description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta name="keywords" content="Statistics">
+<meta property="og:type" content="article">
+<meta property="og:title" content="统计推断">
+<meta property="og:url" content="https://qrsforever.github.io/2018/11/19/Books/Statistics/statistics_inference/index.html">
+<meta property="og:site_name" content="奥卡姆剃刀">
+<meta property="og:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-02T13:38:28.516Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="统计推断">
+<meta name="twitter:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+    
+        <link rel="alternate" type="application/atom+xml" title="奥卡姆剃刀" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">qrsforever</h5>
+          <a href="mailto:985612771@qq.com" title="985612771@qq.com" class="mail">985612771@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/705723886/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://zytforever.github.io" target="_blank" >
+                <i class="icon icon-lg icon-eye"></i>
+                Stocktech
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">统计推断</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">统计推断</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-11-19T02:38:12.000Z" itemprop="datePublished" class="page-time">
+  2018-11-19
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Books/">Books</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考书籍"><span class="post-toc-number">1.</span> <span class="post-toc-text">2 参考书籍</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参数估计"><span class="post-toc-number">2.</span> <span class="post-toc-text">3 参数估计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#矩估计"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">3.1 矩估计</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#极大似然估计mle"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">3.2 极大似然估计(MLE)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#评价估计量的标准"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">3.3 评价估计量的标准</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#区间估计"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">3.4 区间估计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何理解"><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">3.4.1 如何理解</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#单总体均值的估计"><span class="post-toc-number">2.4.2.</span> <span class="post-toc-text">3.4.2 单总体均值的估计</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#单总体方差的估计"><span class="post-toc-number">2.4.3.</span> <span class="post-toc-text">3.4.3 单总体方差的估计</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#贝叶斯估计"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">3.5 贝叶斯估计</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#假设检验"><span class="post-toc-number">3.</span> <span class="post-toc-text">4 假设检验</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原理"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">4.1 原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#拒绝域"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">4.2 拒绝域</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#假设"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">4.3 假设</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#p值"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">4.4 P值</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总体检验"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">4.5 总体检验</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一个总体参数检验"><span class="post-toc-number">3.5.1.</span> <span class="post-toc-text">4.5.1 一个总体参数检验</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#两个总体参数检验"><span class="post-toc-number">3.5.2.</span> <span class="post-toc-text">4.5.2 两个总体参数检验</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参数检验和非参数检验"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">4.6 参数检验和非参数检验</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#其他"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">4.7 其他</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#列联分析"><span class="post-toc-number">3.7.1.</span> <span class="post-toc-text">4.7.1 列联分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方差分析"><span class="post-toc-number">3.7.2.</span> <span class="post-toc-text">4.7.2 方差分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#回归分析"><span class="post-toc-number">3.7.3.</span> <span class="post-toc-text">4.7.3 回归分析</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Books/Statistics/statistics_inference"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">统计推断</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-11-19 10:38:12" datetime="2018-11-19T02:38:12.000Z"  itemprop="datePublished">2018-11-19</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Books/">Books</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#参考书籍">参考书籍</a></li>
+<li><a href="#参数估计">参数估计</a>
+<ul>
+<li><a href="#矩估计">矩估计</a></li>
+<li><a href="#极大似然估计mle">极大似然估计(MLE)</a></li>
+<li><a href="#评价估计量的标准">评价估计量的标准</a></li>
+<li><a href="#区间估计">区间估计</a>
+<ul>
+<li><a href="#如何理解">如何理解</a></li>
+<li><a href="#单总体均值的估计">单总体均值的估计</a></li>
+<li><a href="#单总体方差的估计">单总体方差的估计</a></li>
+</ul></li>
+<li><a href="#贝叶斯估计">贝叶斯估计</a></li>
+</ul></li>
+<li><a href="#假设检验">假设检验</a>
+<ul>
+<li><a href="#原理">原理</a></li>
+<li><a href="#拒绝域">拒绝域</a></li>
+<li><a href="#假设">假设</a></li>
+<li><a href="#p值">P值</a></li>
+<li><a href="#总体检验">总体检验</a>
+<ul>
+<li><a href="#一个总体参数检验">一个总体参数检验</a></li>
+<li><a href="#两个总体参数检验">两个总体参数检验</a></li>
+</ul></li>
+<li><a href="#参数检验和非参数检验">参数检验和非参数检验</a></li>
+<li><a href="#其他">其他</a>
+<ul>
+<li><a href="#列联分析">列联分析</a></li>
+<li><a href="#方差分析">方差分析</a></li>
+<li><a href="#回归分析">回归分析</a></li>
+</ul></li>
+</ul></li>
+</ul>
+<!-- vim-markdown-toc -->
+<h1 id="参考书籍"><span class="header-section-number">2</span> 参考书籍</h1>
+<ol type="1">
+<li><a href="https://pan.baidu.com/s/16FU_ZwFqw7wxH85Ry59chw" title="提取码: u4w4" target="_blank" rel="noopener">概率论与数理统计(第二版)-茆诗松</a></li>
+<li><a href="https://pan.baidu.com/s/16FU_ZwFqw7wxH85Ry59chw" title="提取码: u4w4" target="_blank" rel="noopener">概率论与数理统计(第四版)-盛骤</a></li>
+<li><a href="https://pan.baidu.com/s/16FU_ZwFqw7wxH85Ry59chw" title="提取码: u4w4" target="_blank" rel="noopener">统计学(第四版)-贾俊平</a></li>
+<li><a href="https://pan.baidu.com/s/16FU_ZwFqw7wxH85Ry59chw" title="提取码: u4w4" target="_blank" rel="noopener">计量经济学(第三版)-李子奈</a></li>
+<li><a href="https://pan.baidu.com/s/16FU_ZwFqw7wxH85Ry59chw" title="提取码: u4w4" target="_blank" rel="noopener">Probability and Statistics (4th)-Morris H. DeGroot</a></li>
+</ol>
+<a id="more"></a>
+<h1 id="参数估计"><span class="header-section-number">3</span> 参数估计</h1>
+<p>最小二乘法(勒让德)</p>
+<p>贝叶斯估计法(贝叶斯)</p>
+<p>矩估计法(卡尔·皮尔逊)</p>
+<p>极大似然估计(费歇尔)</p>
+<h2 id="矩估计"><span class="header-section-number">3.1</span> 矩估计</h2>
+<p>样本矩估计总体矩, 不需要知道总体的分布, 几个未知参数, 构造几个<span class="math inline">\(A_k\)</span>, 解方程组.</p>
+<p>使用<span class="math inline">\(A_k\)</span>估计<span class="math inline">\(\mu_k\)</span>: <span class="math inline">\(\hat{\mu_k} = A_k\)</span></p>
+<p><span class="math display">\[
+A_k = \frac{1}{n}\sum_{i=1}^nx_i^k
+\]</span></p>
+<p>方法(k个位置参数):</p>
+<ol type="1">
+<li><p>矩方程组: <span class="math inline">\(\mu_j = g_j(\theta_1, \theta_2, \cdots, \theta_k)\)</span></p></li>
+<li><p>解方程组: <span class="math inline">\(\theta_j = h_j(\mu_1, \mu_2, \cdots, \mu_k)\)</span></p></li>
+<li><p>样本估计: <span class="math inline">\(\hat{\theta_j} = h_j(A_1, A_2, \cdots, A_k)\)</span></p></li>
+<li><p>样本值带入计算</p></li>
+</ol>
+<p>优点: 简单,总体分布可以不知道 缺点: 不唯一, 受样本异常值影响大, 不稳健</p>
+<h2 id="极大似然估计mle"><span class="header-section-number">3.2</span> 极大似然估计(MLE)</h2>
+<p>Book:概率论与数理统计(第二版)-茆诗松, 例5.3.1, 黑白球</p>
+<p>思想:</p>
+<blockquote>
+<p>总体分布已知, 参数<span class="math inline">\(\theta\)</span>可能的取值, 取使样本观测值的概率最大的<span class="math inline">\(\theta\)</span>作为<span class="math inline">\(\hat\theta\)</span>估计</p>
+</blockquote>
+<p>容量为n的样本, n个观测值出现的联合分布<span class="math inline">\(\prod_{i = 1}^np(x_i; \theta)\)</span></p>
+<p>似然函数(关于参数的函数):</p>
+<p><span class="math display">\[
+    L(\theta) = \prod_{i=1}^np(x_i, \theta)
+\]</span></p>
+<p>极大似然:</p>
+<p><span class="math display">\[
+    L(\hat{\theta}) = \underset{\theta \in \Theta}{max}L(\theta)
+\]</span></p>
+<hr>
+<h2 id="评价估计量的标准"><span class="header-section-number">3.3</span> 评价估计量的标准</h2>
+<ol type="1">
+<li><p>无偏性: 多次抽样, 抽样分布的数学期望等于被估计的总体的参数. <span class="math inline">\(E(\hat{\theta}) = \theta, \text(\theta 无偏无偏估计量)\)</span></p></li>
+<li><p>有效性: E(-100, 100) = 0, E(-10, 10) = 0, 但是明显后者更有效</p></li>
+<li><p>一致性: 样本量越大越接近总体参数, 例如: 样本均值抽样分布的方差<span class="math inline">\(\sigma/\sqrt{n}\)</span>, n越大, 方差越小, 越有效.</p></li>
+</ol>
+<hr>
+<h2 id="区间估计"><span class="header-section-number">3.4</span> 区间估计</h2>
+<p><a href="https://zhuanlan.zhihu.com/p/37847495" target="_blank" rel="noopener">置信区间是一个范围值，由样本统计量所构造的对总体参数的估计区间。因为它的随机性，不可能从一个给定总体的两个样本产生相同的置信区间。但是如果你重复构造置信区间很多次，得到的置信区间中有一定比例将包含总体参数真值。置信区间中包含总体参数真值的次数所占的比率称为置信水平。</a></p>
+<h3 id="如何理解"><span class="header-section-number">3.4.1</span> 如何理解</h3>
+<p>通过一次抽样样本的估计量去估计总体参数, 这个估计到底有多<strong>接近</strong>总体的参数, 一般我们以样本估计值为<strong>中心</strong>画一个区域, 那么总体参数的真值有可能在该区域内, 也可能不在, 我们称这个区域叫置信区间(<span class="math inline">\(1-\alpha\)</span>), <strong>我们把通过构造一个以样本参数的估计值为中心的区间, 来考察这个区间有多大的可能性包含总体参数真值, 这个检验方法叫参数的置信区间估计</strong>.</p>
+<hr>
+<h3 id="单总体均值的估计"><span class="header-section-number">3.4.2</span> 单总体均值的估计</h3>
+<p>统计量: z(正态分布), t(t-分布), 对称分布</p>
+<p><span class="math display">\[
+\begin{cases} 
+    z = \frac{\bar{x} - \mu}{\sigma/\sqrt{n}} \sim \  N(0, 1) &amp;  \text{总体方差已知} \\
+    t = \frac{\bar{x} - \mu}{\mathcal{S}/\sqrt{n}} \sim \  t(n-1) &amp;  \text{总体方差未知, 且小样本} \\
+    z = \frac{\bar{x} - \mu}{\mathcal{S}/\sqrt{n}} \sim \  N(0, 1) &amp; \text{总体方差未知, 且大样本} \\
+\end{cases}
+\]</span></p>
+<h3 id="单总体方差的估计"><span class="header-section-number">3.4.3</span> 单总体方差的估计</h3>
+<p>统计量: <span class="math inline">\(\chi^2\)</span>(<span class="math inline">\(\chi^2\)</span>-分布), 偏态分布</p>
+<h2 id="贝叶斯估计"><span class="header-section-number">3.5</span> 贝叶斯估计</h2>
+<h1 id="假设检验"><span class="header-section-number">4</span> 假设检验</h1>
+<p>参数估计使用样本信息估计总体参数, 假设检验则是先假设总体的某个参数的值, 然后判断H0的显著性</p>
+<p>本章的参数一般指: T检验统计量</p>
+<h2 id="原理"><span class="header-section-number">4.1</span> 原理</h2>
+<p>基本思想: 概率性质的反正法(根据小概率事件原理: 小概率事件在一次随机试验是几乎不可能发生的)</p>
+<h2 id="拒绝域"><span class="header-section-number">4.2</span> 拒绝域</h2>
+<p>拒绝域<span class="math inline">\(W\)</span>, 接受域<span class="math inline">\(A\)</span></p>
+<p>如果给定了总体的分布以及显著性水平<span class="math inline">\(\alpha\)</span>, 则拒绝域就可以定了.</p>
+<h2 id="假设"><span class="header-section-number">4.3</span> 假设</h2>
+<p>H0: (1)普遍被认为的道理 (2)拒绝它后果很严重(比如, 药效)</p>
+<p>H1: (1)研究人员想要证明的</p>
+<p>例如:</p>
+<ul>
+<li>H0: 运动健康</li>
+<li>H0: 这个药无效</li>
+<li>H1: 新方法改善效率</li>
+</ul>
+<p>一般<strong>H0</strong>没有<span class="math inline">\(\neq\)</span>的假设, 但可以含有等号"<span class="math inline">\(\leqslant\)</span>, <span class="math inline">\(\geqslant\)</span>"</p>
+<p>临界值由<span class="math inline">\(\mu = \mu_0\)</span> (<span class="math inline">\(1-\alpha\)</span>的自信区间)的U分布决定 <span class="math inline">\(U = \dfrac{\bar{X} - \mu_0}{\sigma/\sqrt{n}} \  \sim \  N(0, 1)\)</span></p>
+<p><span class="math display">\[
+z = \dfrac{\bar{X} - \mu_0}{\sigma/\sqrt{n}}
+\]</span></p>
+<p>拒绝域由H1决定</p>
+<p>均值假设检验(<span class="math inline">\(\mu\)</span>是变量, <span class="math inline">\(\mu_0\)</span>是已知量均值):</p>
+<table>
+<colgroup>
+<col style="width: 32%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">类型</th>
+<th style="text-align: center;">H1统计变量</th>
+<th style="text-align: center;">临界值</th>
+<th style="text-align: center;">拒绝域</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">右边检测</td>
+<td style="text-align: center;"><span class="math inline">\(\mu &gt; \mu_0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\mu_{1-\alpha}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\mu &gt; \mu_{1-\alpha}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">左边检测</td>
+<td style="text-align: center;"><span class="math inline">\(\mu &lt; \mu_0\)</span></td>
+<td style="text-align: center;">-<span class="math inline">\(\mu_{1-\alpha}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\mu &lt; -\mu_{1-\alpha}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">双侧检测</td>
+<td style="text-align: center;"><span class="math inline">\(\mu \neq \mu_0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\mu_{1-\alpha/2} \quad -\mu_{1-\alpha/2}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\mu &gt; \mu_{1- \alpha/2} \quad \mu &lt; -\mu_{1-\alpha/2}\)</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="p值"><span class="header-section-number">4.4</span> P值</h2>
+<p>为什么有P值, 用临界值有什么弊端? P值用来说明什么的?</p>
+<p>以前为了计算方便, 通常将统计量标准化转换, 计算z值, 现在计算能力的发展, 容易计算P值, P值是个概率, 和H0假设差距的概率</p>
+<p>假设H0是对的, 根据样本计算出来的估计统计量(均值)的实际数据与原假设H0之间不一致的概率, 与<span class="math inline">\(\alpha\)</span>对比, P值越小, H0越不靠谱</p>
+<h2 id="总体检验"><span class="header-section-number">4.5</span> 总体检验</h2>
+<h3 id="一个总体参数检验"><span class="header-section-number">4.5.1</span> 一个总体参数检验</h3>
+<p>适用于均值,方差和比率</p>
+<p>统计量: <span class="math inline">\(z, t, \chi^2\)</span></p>
+<p><span class="math inline">\(\chi^2\)</span>: 来之标准正态总体的n个随机变量的平方之和, <span class="math inline">\(\sum_{i = 0}^{n}(\frac{x_i - \bar{x}}{\sigma})^2\)</span></p>
+<p>$$ <span class="math display">\[\begin{alignat}{1}
+    z = \frac{\bar{x} - \mu_0}{\sigma/\sqrt{n}} \qquad &amp; \text{大样本均值检验统计量} \\
+
+    t = \frac{\bar{x} - \mu_0}{s_2/\sqrt{n}} \qquad &amp; \text{小样本均值检验统计量} \\
+
+    z = \frac{p - \pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}} \qquad &amp; \text{大样本比率检验统计量} \\
+
+    \chi^2 = \frac{(n-1)s^2}{\sigma^2} \qquad &amp; \text{方差检验统计量}
+
+\end{alignat}\]</span> $$</p>
+<pre><code>|
+|                                                       样本量
+|                                                         |
+|                                            大           |               小
+|                                          +--------------+------------------+
+|                                          |                                 |
+|                                          |                                 |
+|                                       统计量                           总体方差
+|                                         z                                  |
+|                                                                已知        |      未知
+|                                                                 +----------+--------+
+|                                                                 |                   |
+|                                                                 |                   |
+|                                                               统计量              统计量
+|                                                                 z                   t
+|</code></pre>
+<h3 id="两个总体参数检验"><span class="header-section-number">4.5.2</span> 两个总体参数检验</h3>
+<p>重温 "抽样分布"</p>
+<hr>
+<h2 id="参数检验和非参数检验"><span class="header-section-number">4.6</span> 参数检验和非参数检验</h2>
+<p>假设检验分为参数检验(parametric tests)和非参数检验(nonparametric tests).</p>
+<p>Parametric tests assume that the data can be well described by a distribution that is defined by one or more parameters, in most cases by a normal distribution. Nonparametric tests do not depend on the data following a specific distribution.</p>
+<h2 id="其他"><span class="header-section-number">4.7</span> 其他</h2>
+<p>拟合优度检验</p>
+<ul>
+<li><p>用来检验一批<strong>分类</strong>数据所来自的总体的分布是否与某种理论分布相一致</p></li>
+<li><p><strong>分类</strong>变量之间的相关性</p></li>
+</ul>
+<p>独立性检验</p>
+<h3 id="列联分析"><span class="header-section-number">4.7.1</span> 列联分析</h3>
+<p>离散</p>
+<h3 id="方差分析"><span class="header-section-number">4.7.2</span> 方差分析</h3>
+<p>离散 + 连续</p>
+<h3 id="回归分析"><span class="header-section-number">4.7.3</span> 回归分析</h3>
+<p>连续 + 连续</p>
+</body>
+</html>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-06-02T13:38:28.516Z" itemprop="dateUpdated">2019-06-02 21:38:28</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://qrsforever.github.io">
+            <img src="/img/avatar.jpg" alt="qrsforever">
+            qrsforever
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Statistics/">Statistics</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2018/11/19/Books/Statistics/statistics_inference/&title=《统计推断》 — 奥卡姆剃刀&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2018/11/19/Books/Statistics/statistics_inference/&title=《统计推断》 — 奥卡姆剃刀&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2018/11/19/Books/Statistics/statistics_inference/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《统计推断》 — 奥卡姆剃刀&url=https://qrsforever.github.io/2018/11/19/Books/Statistics/statistics_inference/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2018/11/19/Books/Statistics/statistics_inference/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/11/22/Books/Statistics/analysis_variance/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">方差分析</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/11/13/Books/Statistics/Bayesian/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">贝叶斯</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "bpShGWdW8DpODhnDko5O2IBB-gzGzoHsz",
+            appKey: "rwmasTllBbHE69ADuLjFyFWf",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢打赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>qrsforever &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2018/11/19/Books/Statistics/statistics_inference/&title=《统计推断》 — 奥卡姆剃刀&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2018/11/19/Books/Statistics/statistics_inference/&title=《统计推断》 — 奥卡姆剃刀&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2018/11/19/Books/Statistics/statistics_inference/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《统计推断》 — 奥卡姆剃刀&url=https://qrsforever.github.io/2018/11/19/Books/Statistics/statistics_inference/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2018/11/19/Books/Statistics/statistics_inference/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://qrsforever.github.io/2018/11/19/Books/Statistics/statistics_inference/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- lidong cha. -->
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- lidong end. -->
+
+</body>
+</html>

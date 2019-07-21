@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/07/19/ML/Scratch/backpropagation_algorithm/</loc>
+    
+    <lastmod>2019-07-21T06:55:33.927Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/06/03/ML/Scratch/simple_perceptron/</loc>
+    
+    <lastmod>2019-07-21T05:31:48.413Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/06/02/ML/Scratch/snowflake_neural_logic/</loc>
+    
+    <lastmod>2019-07-21T05:31:48.413Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/07/19/Story/Website/dataset/</loc>
+    
+    <lastmod>2019-07-21T05:31:48.413Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/07/18/Tools/How/china_images/</loc>
+    
+    <lastmod>2019-07-21T05:31:48.413Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/05/28/ML/Scratch/GD/</loc>
+    
+    <lastmod>2019-07-21T05:31:48.409Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/06/25/ML/Scratch/CE_error/</loc>
+    
+    <lastmod>2019-07-21T05:31:48.409Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/06/14/ML/Scratch/convolution_plot/</loc>
+    
+    <lastmod>2019-07-21T05:31:48.409Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/07/19/ML/Scratch/nn_convolution/</loc>
+    
+    <lastmod>2019-07-21T05:31:48.409Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/07/01/ML/Scratch/nn_crossent/</loc>
+    
+    <lastmod>2019-07-21T05:31:48.409Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/10/31/Tutorial/Latex/</loc>
+    
+    <lastmod>2019-07-16T15:50:14.743Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2017/08/30/Tutorial/Markdown/</loc>
+    
+    <lastmod>2019-07-16T15:50:14.743Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/06/23/ML/Guide/cross_entropy_loss/</loc>
+    
+    <lastmod>2019-07-16T15:50:14.735Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/06/25/Story/Passage/diff_mse_ce/</loc>
+    
+    <lastmod>2019-06-27T13:59:11.975Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/06/25/Tools/Math/symbols/</loc>
+    
+    <lastmod>2019-06-27T13:59:11.975Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/06/25/Tools/How/vim/</loc>
+    
+    <lastmod>2019-06-26T15:15:46.744Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/06/12/Story/Math/Guide_Vectors_and_Tensors/</loc>
+    
+    <lastmod>2019-06-24T15:12:29.198Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/06/03/ML/Guide/cnn_intro/</loc>
+    
+    <lastmod>2019-06-24T15:12:29.178Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2016/06/24/Note/Android/Ashmem/</loc>
+    
+    <lastmod>2019-06-24T15:12:29.178Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2016/03/17/Note/Android/Binder-Add-Service/</loc>
+    
+    <lastmod>2019-06-24T15:12:29.178Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2016/03/24/Note/Android/BinderDriver/</loc>
+    
+    <lastmod>2019-06-24T15:12:29.178Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2017/09/05/Note/Android/Dalvik-Art-Snippet/</loc>
+    
+    <lastmod>2019-06-24T15:12:29.178Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/03/08/Note/Android/MediaBinder/</loc>
+    
+    <lastmod>2019-06-24T15:12:29.178Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/06/14/Note/IOT/Rule-Engine-Design2/</loc>
+    
+    <lastmod>2019-06-24T15:12:29.178Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/06/17/Note/IOT/Rule-Engine-Summary/</loc>
+    
+    <lastmod>2019-06-24T15:12:29.178Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/06/13/Note/Jupyter/animations/</loc>
+    
+    <lastmod>2019-06-24T15:12:29.178Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/06/24/Books/Math/derivative_rules/</loc>
+    
+    <lastmod>2019-06-24T15:12:29.174Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/12/18/Tutorial/Hexo/</loc>
+    
+    <lastmod>2019-06-04T13:49:29.597Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2017/09/20/Note/Python/Note-Scrapy-Request-URLs/</loc>
+    
+    <lastmod>2019-06-04T13:49:29.597Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2017/08/31/Note/Python/Note-Scrapy-Start-Flow/</loc>
+    
+    <lastmod>2019-06-04T13:49:29.597Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2017/09/01/Note/Python/Note-Twisted-Deffered-Machanism/</loc>
+    
+    <lastmod>2019-06-04T13:49:29.597Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2017/09/11/Note/Python/Note-Twisted-InlineCallback/</loc>
+    
+    <lastmod>2019-06-04T13:49:29.597Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2017/09/13/Tools/How/How-Install-OpenGrok/</loc>
+    
+    <lastmod>2019-06-04T13:49:29.597Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/04/27/Note/IOT/Iotivity-Batch-LinkedList/</loc>
+    
+    <lastmod>2019-06-04T13:49:29.593Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/04/25/Note/IOT/Iotivity-Client-Server/</loc>
+    
+    <lastmod>2019-06-04T13:49:29.593Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/05/10/Note/IOT/Iotivity-Payload/</loc>
+    
+    <lastmod>2019-06-04T13:49:29.593Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/04/26/Note/IOT/Iotivity-Presence-Observe/</loc>
+    
+    <lastmod>2019-06-04T13:49:29.593Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/05/08/Note/IOT/Iotivity-RE/</loc>
+    
+    <lastmod>2019-06-04T13:49:29.593Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/04/24/Note/IOT/Iotivity-Request-Response/</loc>
+    
+    <lastmod>2019-06-04T13:49:29.593Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/05/16/Note/IOT/Iotivity-SmartHome/</loc>
+    
+    <lastmod>2019-06-04T13:49:29.593Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/02/06/Note/IOT/QCloud_Shadow/</loc>
+    
+    <lastmod>2019-06-04T13:49:29.593Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/05/27/Note/IOT/Rule-Engine-Design/</loc>
+    
+    <lastmod>2019-06-04T13:49:29.593Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/12/25/Books/Statistics/Multiple_Linear_Regression/</loc>
+    
+    <lastmod>2019-06-04T13:49:29.589Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/05/31/ML/API/embedding_lookup/</loc>
+    
+    <lastmod>2019-06-04T13:49:29.589Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/05/30/ML/Guide/activation_functions/</loc>
+    
+    <lastmod>2019-06-04T13:49:29.589Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2017/10/24/Note/Hadoop/Hadoop-FsShell-Delete/</loc>
+    
+    <lastmod>2019-06-04T13:49:29.589Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2017/11/10/Note/Hadoop/Hadoop-Namenode-Delete/</loc>
+    
+    <lastmod>2019-06-04T13:49:29.589Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2017/11/13/Note/Hadoop/Hadoop-Proxy-Delete/</loc>
+    
+    <lastmod>2019-06-04T13:49:29.589Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/06/03/Story/Website/fav/</loc>
+    
+    <lastmod>2019-06-03T15:28:03.050Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/05/30/Tools/How/googleapis.com/</loc>
+    
+    <lastmod>2019-06-03T15:28:03.050Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/02/21/Books/Statistics/statistics_index/</loc>
+    
+    <lastmod>2019-06-02T15:36:04.106Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/12/20/Books/Statistics/outliers_and_leverage/</loc>
+    
+    <lastmod>2019-06-02T13:38:28.516Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/03/22/Books/Statistics/statistics_charts/</loc>
+    
+    <lastmod>2019-06-02T13:38:28.516Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/11/05/Books/Statistics/statistics_elements/</loc>
+    
+    <lastmod>2019-06-02T13:38:28.516Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/11/19/Books/Statistics/statistics_inference/</loc>
+    
+    <lastmod>2019-06-02T13:38:28.516Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/12/18/Books/Statistics/statistics_websites/</loc>
+    
+    <lastmod>2019-06-02T13:38:28.516Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/03/18/Books/Statistics/wiki_chi-square/</loc>
+    
+    <lastmod>2019-06-02T13:38:28.516Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/11/22/Books/Statistics/analysis_variance/</loc>
+    
+    <lastmod>2019-06-02T13:38:28.500Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/03/15/Books/Statistics/cases_nonparametric_analysis_1/</loc>
+    
+    <lastmod>2019-06-02T13:38:28.500Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/02/27/Books/Statistics/cases_t_and_variance_analysis/</loc>
+    
+    <lastmod>2019-06-02T13:38:28.500Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/11/13/Books/Statistics/Bayesian/</loc>
+    
+    <lastmod>2019-06-02T13:38:28.496Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/03/22/Books/Statistics/analysis_cluster/</loc>
+    
+    <lastmod>2019-06-02T13:38:28.496Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/12/07/Books/Statistics/analysis_correlation/</loc>
+    
+    <lastmod>2019-06-02T13:38:28.496Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/03/22/Books/Statistics/analysis_discriminatory/</loc>
+    
+    <lastmod>2019-06-02T13:38:28.496Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/03/23/Books/Statistics/analysis_factor/</loc>
+    
+    <lastmod>2019-06-02T13:38:28.496Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/03/22/Books/Statistics/analysis_principal_components/</loc>
+    
+    <lastmod>2019-06-02T13:38:28.496Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/11/26/Books/Statistics/analysis_regression/</loc>
+    
+    <lastmod>2019-06-02T13:38:28.496Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/12/29/Company/Leshi/Device_Operate_API/</loc>
+    
+    <lastmod>2019-03-16T12:09:11.926Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/12/29/Company/Leshi/Scene_Operate_API/</loc>
+    
+    <lastmod>2019-03-16T12:09:11.926Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/12/18/Books/Statistics/Heteroscedasticity_Test/</loc>
+    
+    <lastmod>2019-03-16T12:09:11.882Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/12/14/Books/Statistics/Hypothesis_Tests/</loc>
+    
+    <lastmod>2019-03-16T12:09:11.882Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/12/14/Books/Statistics/Kernel_Density_Estimation/</loc>
+    
+    <lastmod>2019-03-16T12:09:11.882Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/12/05/Books/Statistics/Naked_Statistics/</loc>
+    
+    <lastmod>2019-03-16T12:09:11.882Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/11/27/Books/Statistics/Normality_Test/</loc>
+    
+    <lastmod>2019-03-16T12:09:11.882Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/12/18/Books/Statistics/OLS_WLS_GLS/</loc>
+    
+    <lastmod>2019-03-16T12:09:11.882Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/12/20/Books/Statistics/Simple_Linear_Regression/</loc>
+    
+    <lastmod>2019-03-16T12:09:11.882Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/12/18/Books/Statistics/Confidence_Prediction_Intervals/</loc>
+    
+    <lastmod>2019-03-16T12:09:11.878Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/10/30/Story/Math/Frequentist_Bayesian/</loc>
+    
+    <lastmod>2018-11-24T02:13:37.329Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/05/31/Design/C++/Log-Pool/</loc>
+    
+    <lastmod>2018-11-24T02:13:37.321Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/05/31/Design/C++/Message-Handler/</loc>
+    
+    <lastmod>2018-11-24T02:13:37.321Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/categories/index.html</loc>
+    
+    <lastmod>2017-08-30T15:37:25.574Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/tags/index.html</loc>
+    
+    <lastmod>2017-08-30T15:37:25.574Z</lastmod>
+    
+  </url>
+  
+</urlset>

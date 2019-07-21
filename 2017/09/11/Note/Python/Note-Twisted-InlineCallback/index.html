@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?cb4be66237379541488b8502a6eca006"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>(原创)Twisted InlineCallback 机制 | 奥卡姆剃刀 | 你们都是大傻瓜, 我是天下大赢家</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Python">
+    <meta name="description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(原创)Twisted InlineCallback 机制">
+<meta property="og:url" content="https://qrsforever.github.io/2017/09/11/Note/Python/Note-Twisted-InlineCallback/index.html">
+<meta property="og:site_name" content="奥卡姆剃刀">
+<meta property="og:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-04T13:49:29.597Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="(原创)Twisted InlineCallback 机制">
+<meta name="twitter:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+    
+        <link rel="alternate" type="application/atom+xml" title="奥卡姆剃刀" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">qrsforever</h5>
+          <a href="mailto:985612771@qq.com" title="985612771@qq.com" class="mail">985612771@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/705723886/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://zytforever.github.io" target="_blank" >
+                <i class="icon icon-lg icon-eye"></i>
+                Stocktech
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">(原创)Twisted InlineCallback 机制</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">(原创)Twisted InlineCallback 机制</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-09-11T07:06:16.000Z" itemprop="datePublished" class="page-time">
+  2017-09-11
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#deferred的callback和addcallbacks方法"><span class="post-toc-number">1.</span> <span class="post-toc-text">2 Deferred的callback和addCallbacks方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#addcallbacks"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">2.1 addCallbacks()</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#callback"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2.2 callback()</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#runcallbacks"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">2.3 runCallbacks()</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#inlinecallbacks-实例"><span class="post-toc-number">2.</span> <span class="post-toc-text">3 InlineCallbacks 实例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实例源码"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">3.1 实例源码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#三个deffered对象"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">3.2 三个Deffered对象</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#getremotedata生成器"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">3.3 getRemoteData()生成器</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#inlinecallbacks-源码分析"><span class="post-toc-number">3.</span> <span class="post-toc-text">4 InlineCallbacks 源码分析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#源码"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">4.1 源码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#defer.inlinecallbacks-展开"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">4.2 @defer.inlineCallbacks 展开</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#揭开谜底"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">4.3 揭开谜底</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Note/Python/Note-Twisted-InlineCallback"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">(原创)Twisted InlineCallback 机制</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-09-11 15:06:16" datetime="2017-09-11T07:06:16.000Z"  itemprop="datePublished">2017-09-11</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#deferred的callback和addcallbacks方法">Deferred的callback和addCallbacks方法</a>
+<ul>
+<li><a href="#addcallbacks">addCallbacks()</a></li>
+<li><a href="#callback">callback()</a></li>
+<li><a href="#runcallbacks">runCallbacks()</a></li>
+</ul></li>
+<li><a href="#inlinecallbacks-实例">InlineCallbacks 实例</a>
+<ul>
+<li><a href="#实例源码">实例源码</a></li>
+<li><a href="#三个deffered对象">三个Deffered对象</a></li>
+<li><a href="#getremotedata生成器">getRemoteData()生成器</a></li>
+</ul></li>
+<li><a href="#inlinecallbacks-源码分析">InlineCallbacks 源码分析</a>
+<ul>
+<li><a href="#源码">源码</a></li>
+<li><span class="citation" data-cites="defer.inlineCallbacks">[@defer.inlineCallbacks 展开]</span>(#deferinlinecallbacks-展开)</li>
+<li><a href="#揭开谜底">揭开谜底</a></li>
+</ul></li>
+</ul>
+<!-- vim-markdown-toc -->
+<a id="more"></a>
+<p><span id="code-flow"></span></p>
+<pre><code>                                                d0.addCallback()
+ +----------------------------------------------------------------------------------------------------------------------+
+ |                                                                                                                      |
+ |                                                (g)                                                                   v
+ |    main      inlineCallbacks              getRemoteData          loadRemoteData          loadRemoteData2         getResult
+ |     |              |     \                      |                        |                      |                    |
+ |     |              |      \inner                |                        |                      |                    |
+ |     |              |       \                    |                        |                      |                    |
+ |     |-------------&gt;|        \                   |                        |                      |                    |
+ |     |              |       gotResult            |                        |                      |                    |
+ |     |              |d0         |                |                        |                      |                    |
+ |     |              |           |   g.send(None) |                        |                      |                    |
+ |     |              |---------------------------&gt;|                        |                      |                    |
+ |     |              |           |                |                        |                      |                    |
+ |     |              |           |                |d1                      |                      |                    |
+ +-- d0|&lt;-------------|           |                |                        |                      |                    |
+       |              |           |return is deffer|---callInThread         |                      |                    |
+       |        ----d1|&lt;---------------------------|        |               |                      |                    |
+       |       /                 -|                |        |               |                      |                    |
+       |      /       |         / |                |        |               |                      |                    |
+       |    addBoth() |        /  |                | Thread |--------------&gt;|                      |                    |
+       |       |      |       /   |                |        |               |                      |                    |
+       |       +--------------    |  r = 1         |                        | callback(1)          |                    |
+       |              |           |&lt;----------------------------------------|                      |                    |
+       |              |  r = 1    |                |                        =                      |                    |
+       |              |&lt;----------|                |                                               |                    |
+       |              |           |                |                                               |                    |
+       |              |           |    g.send(1)   |                                               |                    |
+       |              |---------------------------&gt;|r1 = 1                                         |                    |
+       |              |           |                |                                               |                    |
+       |              |           |                |d2                                             |                    |
+       |              |           |                |                                               |                    |
+       |              |           |return is deffer|--callInThread                                 |                    |
+       |        ----d2|&lt;---------------------------|        |                                      |                    |
+       |       /      |           |                |        |                                      |                    |
+       |      /       |           |                |        |                                      |                    |
+       |    addBoth() |           |                | Thread |-------------------------------------&gt;|                    |
+       |       |      |           |                |        |                                      |                    |
+       |       +------|           |  r = 2         |                                               |callback(2)         |
+       |              |           |&lt;---------------------------------------------------------------|                    |
+       |              |   r = 2   |                |                                               =                    |
+       |              |&lt;----------|                |                                                                    |
+       |              |           |                |                                                                    |
+       |              |                g.send(2)   |                                                                    |
+       |              |---------------------------&gt;|r2 = 2                                                              |
+       |              |                            |                                                                    |
+       |              |                            |--returnValue(r1+r2)                                                |
+       |              |                            =        |                                                           |
+       |              |  try.catch                          |                                                           |
+       |              |&lt;------------------------------------|raise e(3)                                                 |
+       |              |                                                                                                 |
+       |              |                                                                                                 |
+       |              | d0.callback(3)                                                                                  |
+       |              |------------------------------------------------------------------------------------------------&gt;|
+       |              =                                                                                                 |
+       |                                                                                                                |
+       |                                                                                                         3 &lt;----|output
+       |                                                                                                                =
+       =
+</code></pre>
+<p><a href="#demo-code">此图对应源码</a></p>
+<hr>
+<h1 id="deferred的callback和addcallbacks方法"><span class="header-section-number">2</span> Deferred的callback和addCallbacks方法</h1>
+<h2 id="addcallbacks"><span class="header-section-number">2.1</span> addCallbacks()</h2>
+<pre><code>
+    def addCallbacks(self, callback, errback=None,
+                     callbackArgs=None, callbackKeywords=None,
+                     errbackArgs=None, errbackKeywords=None):
+        cbs = ((callback, callbackArgs, callbackKeywords),
+               (errback or (passthru), errbackArgs, errbackKeywords))
+        self.callbacks.append(cbs)
+
+        if self.called:
+            self._runCallbacks()
+        return self
+</code></pre>
+<h2 id="callback"><span class="header-section-number">2.2</span> callback()</h2>
+<pre><code>
+    def callback(self, result):
+        self._startRunCallbacks(result)
+
+    def _startRunCallbacks(self, result):
+        self.called = True
+        self.result = result
+        self._runCallbacks()
+</code></pre>
+<p>由 <strong>self.called</strong> 变量控制执行_runCallbacks(), 默认为False, 只有调用callback之后才赋值True, 所以在没有调用callback之前调用 addCallBacks只是把cbs存放到self.callbacks变量中. 一般在调用callback之前会处理好需要的数据(eg: Request), 调用时把结果result作为 参数传给之前加进来的callbacks.</p>
+<h2 id="runcallbacks"><span class="header-section-number">2.3</span> runCallbacks()</h2>
+<pre><code>
+  while current.callbacks:
+      item = current.callbacks.pop(0)
+      callback, args, kw = item[
+          isinstance(current.result, failure.Failure)]
+      args = args or ()
+      kw = kw or {}
+      ...
+      try:
+          current._runningCallbacks = True
+          try:
+              current.result = callback(current.result, *args, **kw)
+              if current.result is current:
+                ...
+          finally:
+              current._runningCallbacks = False
+      except:
+          current.result = failure.Failure(captureVars=self.debug)
+      else:
+          if isinstance(current.result, Deferred):
+              resultResult = getattr(current.result, &#39;result&#39;, _NO_RESULT)
+              if resultResult is _NO_RESULT or isinstance(resultResult, Deferred) or current.result.paused:
+                  ...
+                  break
+              else:
+                  # Yep, it did.  Steal it.
+                  current.result.result = None
+                  # Make sure _debugInfo&#39;s failure state is updated.
+                  if current.result._debugInfo is not None:
+                      current.result._debugInfo.failResult = None
+                  current.result = resultResult
+</code></pre>
+<p>pop(0)始终弹出最早放进去的item(cb,eb), 也就是按addCallbacks的先入先出的顺序, 这个很关键, 以为前一个callback回调的返回是下一个 回调函数的输入. &gt; current.result = callback(current.result, *args, **kw)</p>
+<h1 id="inlinecallbacks-实例"><span class="header-section-number">3</span> InlineCallbacks 实例</h1>
+<h2 id="实例源码"><span class="header-section-number">3.1</span> 实例源码</h2>
+<p><span id="demo-code"></span></p>
+<pre><code>
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
+from twisted.internet import defer, reactor
+
+def loadRemoteData(callback):
+    print(&quot;---&gt; loadRemoteData  callback: &quot;, callback)
+    import time
+    time.sleep(1)
+    callback(1) # 将1传给getResult, 只有callback之后才能触发callbacks结果
+
+def loadRemoteData2(callback):
+    print(&quot;---&gt; loadRemoteData2 callback: &quot;, callback)
+    import time
+    time.sleep(1)
+    callback(2)
+
+@defer.inlineCallbacks
+def getRemoteData():
+    d1 = defer.Deferred()
+    # d1.callback 遍历回调所有callbacks
+    reactor.callInThread(loadRemoteData, d1.callback)
+    print(&quot;yiled d1: &quot;, d1)
+    r1 = yield d1
+    d2 = defer.Deferred()
+    reactor.callInThread(loadRemoteData2, d2.callback)
+    print(&quot;yiled d2: &quot;, d2)
+    r2 = yield d2
+
+    # 主动抛出_DefGen_Return异常, 异常的内容就是r1+r2
+    defer.returnValue(r1+r2) # 函数中调用raise
+    # 或者return导致抛StopIteration
+    # return r1 + r2
+
+def getResult(v):
+    print (&quot;result = &quot;, v)
+
+if __name__ == &#39;__main__&#39;:
+    d0 = getRemoteData()
+    print(&quot;main d0 : &quot;, d0)
+    d0.addCallback(getResult)
+
+    #  import time
+    #  time.sleep(4)
+    # 以下两行可以使用sleep替换, 不影响功能测试
+    reactor.callLater(4, reactor.stop);
+    reactor.run()
+</code></pre>
+<p>执行:</p>
+<pre><code>
+twisted$ ./inlineCallback.py
+yiled d1:  &lt;Deferred at 0x7f6b2a57fdd8&gt;
+main d0 :  &lt;Deferred at 0x7f6b2a57fe10&gt;
+---&gt; loadRemoteData  callback:  &lt;bound method Deferred.callback of &lt;Deferred at 0x7f6b2a57fdd8&gt;&gt;
+yiled d2:  &lt;Deferred at 0x7f6b25f75668&gt;
+---&gt; loadRemoteData2 callback:  &lt;bound method Deferred.callback of &lt;Deferred at 0x7f6b25f75668&gt;&gt;
+result =  3
+twisted$
+</code></pre>
+<p><a href="#code-flow">代码流程图</a></p>
+<h2 id="三个deffered对象"><span class="header-section-number">3.2</span> 三个Deffered对象</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">对象名</th>
+<th style="text-align: center;">对象地址</th>
+<th style="text-align: left;">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">d0</td>
+<td style="text-align: center;">0x7f6b2a57fe10</td>
+<td style="text-align: left;">由@defer.inlineCallbacks内部创建, 且getResult回调持有者</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">d1</td>
+<td style="text-align: center;">0x7f6b2a57fdd8</td>
+<td style="text-align: left;">由getRemoteData函数创建, 被@defer.inlineCallbacks包装</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">d2</td>
+<td style="text-align: center;">0x7f6b25f75668</td>
+<td style="text-align: left;">同上</td>
+</tr>
+</tbody>
+</table>
+<h2 id="getremotedata生成器"><span class="header-section-number">3.3</span> getRemoteData()生成器</h2>
+<p>该函数中有yield调用, 则getRemoteData转变为生成器, 函数不会阻塞马上会返回, 而且被@defer.inlineCallbacks封装起来, 只有生成器函数 调用next()/send()方法才触发getRemoteData代码继续执行, 上面的实例并没有任何地方调用send/next, 程序是如何运行的? 还有通过d0的打印 来看d0的类型是Deffered对象而不是生成器函数? 带着这些疑问继续往下看.</p>
+<h1 id="inlinecallbacks-源码分析"><span class="header-section-number">4</span> InlineCallbacks 源码分析</h1>
+<h2 id="源码"><span class="header-section-number">4.1</span> 源码</h2>
+<pre><code>
+def inlineCallbacks(f):
+    @wraps(f)
+    def unwindGenerator(*args, **kwargs):
+        try:
+            gen = f(*args, **kwargs)
+        except _DefGen_Return:
+            raise TypeError()
+        if not isinstance(gen, types.GeneratorType):
+            raise TypeError()
+        return _inlineCallbacks(None, gen, Deferred())
+    return unwindGenerator
+
+def _inlineCallbacks(result, g, deferred):
+
+    waiting = [True, # waiting for result?
+               None] # result
+
+    while 1:
+        try:
+            isFailure = isinstance(result, failure.Failure)
+            if isFailure:
+                result = result.throwExceptionIntoGenerator(g)
+            else:
+                result = g.send(result)
+        except StopIteration as e:
+            deferred.callback(getattr(e, &quot;value&quot;, None))
+            return deferred
+        except _DefGen_Return as e:
+            ...
+            deferred.callback(e.value)
+            return deferred
+        except:
+            deferred.errback()
+            return deferred
+
+        if isinstance(result, Deferred):
+            def gotResult(r):
+                if waiting[0]:
+                    waiting[0] = False
+                    waiting[1] = r
+                else:
+                    _inlineCallbacks(r, g, deferred)
+
+            result.addBoth(gotResult)
+            if waiting[0]:
+                waiting[0] = False
+                return deferred
+
+            result = waiting[1]
+            waiting[0] = True
+            waiting[1] = None
+    return deferred
+
+class _DefGen_Return(BaseException):
+    def __init__(self, value):
+        self.value = value
+
+def returnValue(val):
+    raise _DefGen_Return(val)
+</code></pre>
+<p>g.send()返回如果是个Defferred, 需要对改Defferred注册cb,eb方法, 等待Defferred执行callbacks时会触发回调,并将结果传下来,再次调用 _inlineCallbacks(), 如果g.send()返回是非Defferred对象, 则直接将该返回值作为g.send()的参数, 继续...</p>
+<h2 id="defer.inlinecallbacks-展开"><span class="header-section-number">4.2</span> <span class="citation" data-cites="defer.inlineCallbacks">@defer.inlineCallbacks</span> 展开</h2>
+<pre><code>
+def getRemoteData():
+    d1 = defer.Deferred()
+    # d1.callback 遍历回调所有callbacks
+    reactor.callInThread(loadRemoteData, d1.callback)
+    print(&quot;yiled d1: &quot;, d1)
+    r1 = yield d1
+    d2 = defer.Deferred()
+    reactor.callInThread(loadRemoteData2, d2.callback)
+    print(&quot;yiled d2: &quot;, d2)
+    r2 = yield d2
+
+    # 主动抛出_DefGen_Return异常, 异常的内容就是r1+r2
+    defer.returnValue(r1+r2) # 函数中调用raise
+    # 或者return导致抛StopIteration
+    # return r1 + r2
+
+
+def inlineCallbacks.unwindGenerator(*args, **kwargs):
+    try:
+        gen = getRemoteData(*args, **kwargs)
+    except _DefGen_Return:
+        raise TypeError()
+    if not isinstance(gen, types.GeneratorType):
+        raise TypeError()
+    return _inlineCallbacks(None, gen, Deferred())
+
+d0 = inlineCallbacks.unwindGenerator()
+
+</code></pre>
+<p>前面说过getRemoteData是个生成器, gen = getRemoteData(*args, **kwargs)这个调用会立即返回, 并作为参数传给_inlineCallbacks, 猜测 生成器gen的next/send的调用应该发生再_inlineCallbacks中.</p>
+<h2 id="揭开谜底"><span class="header-section-number">4.3</span> 揭开谜底</h2>
+<p>查看源码会发现<strong>_inlineCallbacks()</strong>函数所有的return都是deferred变量, 这个变量是在InlineCallBacks的闭包函数里传入的Deffered(),实 际上这个值就是上层函数中的d0对象, d0对象在哪创建的疑问解决了; <strong>_inlineCallbacks()</strong>里虽然有while 1循环, 但是调用它并不会使其阻塞 ,原因就是return直接返回.</p>
+<p>调用路线: result = g.send(result) --&gt; if isinstance(result, Deferred) --&gt; result.addBoth(gotResult) --&gt; return deferred;</p>
+<p>根据生成器规则(r = yield x), send的参数会传给r(第一次特殊None), 生成器函数返回x(=g.send()). 第一次send: result = g.send(result), 此时参数result是None, 返回result是d1 result.addBoth(gotResult) == d1.addBoth(gotResult) 当某线程调用d1.callback()时, 会触发gotResult()函数调用, 并且d1.callback传入的参数1会传给gotResult(1), 又会触发_inlineCallbacks().</p>
+<p>第二次send: result = g.send(result), 此时参数result就是1, 返回result是d2 result.addBoth(gotResult) == d2.addBoth(gotResult) 当某线程调用d2.callback()时, 会触发gotResult()函数调用, 并且d2.callback传入的参数2会传给gotResult(2), 又会触发_inlineCallbacks().</p>
+<p>第三次send: result = g.send(result), 此时参数result就是2, getRemoteData()结束调用defer.returnValue(1+2), 触发异常_DefGen_Return().</p>
+<p>捕捉异常, 获取异常值3 deferred.callback(e.value) return deferred</p>
+</body>
+</html>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-06-04T13:49:29.597Z" itemprop="dateUpdated">2019-06-04 21:49:29</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://qrsforever.github.io">
+            <img src="/img/avatar.jpg" alt="qrsforever">
+            qrsforever
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2017/09/11/Note/Python/Note-Twisted-InlineCallback/&title=《(原创)Twisted InlineCallback 机制》 — 奥卡姆剃刀&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2017/09/11/Note/Python/Note-Twisted-InlineCallback/&title=《(原创)Twisted InlineCallback 机制》 — 奥卡姆剃刀&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2017/09/11/Note/Python/Note-Twisted-InlineCallback/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《(原创)Twisted InlineCallback 机制》 — 奥卡姆剃刀&url=https://qrsforever.github.io/2017/09/11/Note/Python/Note-Twisted-InlineCallback/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2017/09/11/Note/Python/Note-Twisted-InlineCallback/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/09/13/Tools/How/How-Install-OpenGrok/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">(原创)如何使用Opengrok</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/09/05/Note/Android/Dalvik-Art-Snippet/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">(原创)Dalvik与Art虚拟机-笔记片段</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "bpShGWdW8DpODhnDko5O2IBB-gzGzoHsz",
+            appKey: "rwmasTllBbHE69ADuLjFyFWf",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢打赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>qrsforever &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2017/09/11/Note/Python/Note-Twisted-InlineCallback/&title=《(原创)Twisted InlineCallback 机制》 — 奥卡姆剃刀&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2017/09/11/Note/Python/Note-Twisted-InlineCallback/&title=《(原创)Twisted InlineCallback 机制》 — 奥卡姆剃刀&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2017/09/11/Note/Python/Note-Twisted-InlineCallback/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《(原创)Twisted InlineCallback 机制》 — 奥卡姆剃刀&url=https://qrsforever.github.io/2017/09/11/Note/Python/Note-Twisted-InlineCallback/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2017/09/11/Note/Python/Note-Twisted-InlineCallback/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://qrsforever.github.io/2017/09/11/Note/Python/Note-Twisted-InlineCallback/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- lidong cha. -->
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- lidong end. -->
+
+</body>
+</html>

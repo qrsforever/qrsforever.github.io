@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?cb4be66237379541488b8502a6eca006"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>(原创)匿名共享内存之文件描述符传递 | 奥卡姆剃刀 | 你们都是大傻瓜, 我是天下大赢家</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Android">
+    <meta name="description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(原创)匿名共享内存之文件描述符传递">
+<meta property="og:url" content="https://qrsforever.github.io/2016/06/24/Note/Android/Ashmem/index.html">
+<meta property="og:site_name" content="奥卡姆剃刀">
+<meta property="og:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-24T15:12:29.178Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="(原创)匿名共享内存之文件描述符传递">
+<meta name="twitter:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+    
+        <link rel="alternate" type="application/atom+xml" title="奥卡姆剃刀" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">qrsforever</h5>
+          <a href="mailto:985612771@qq.com" title="985612771@qq.com" class="mail">985612771@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/705723886/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://zytforever.github.io" target="_blank" >
+                <i class="icon icon-lg icon-eye"></i>
+                Stocktech
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">(原创)匿名共享内存之文件描述符传递</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">(原创)匿名共享内存之文件描述符传递</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-06-24T07:52:36.000Z" itemprop="datePublished" class="page-time">
+  2016-06-24
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#目录树"><span class="post-toc-number">1.</span> <span class="post-toc-text">1.1 目录树</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#源码"><span class="post-toc-number">2.</span> <span class="post-toc-text">1.2 源码</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#common.h"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">1.2.1 2.1 Common.h</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ashmemserver.cpp"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">1.2.2 2.2 AshmemServer.cpp</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ashmemclient.cpp"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">1.2.3 2.3 AshmemClient.cpp</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#android.mk"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">1.2.4 2.4 Android.mk</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#输出结果"><span class="post-toc-number">3.</span> <span class="post-toc-text">1.3 3. 输出结果</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#dataashmemserver"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">1.3.1 3.1 /data/AshmemServer</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#dataashmemclient"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">1.3.2 3.2 /data/AshmemClient</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">4.</span> <span class="post-toc-text">1.4 4. 总结</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Note/Android/Ashmem"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">(原创)匿名共享内存之文件描述符传递</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016-06-24 15:52:36" datetime="2016-06-24T07:52:36.000Z"  itemprop="datePublished">2016-06-24</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#目录树">目录树</a></li>
+<li><a href="#源码">源码</a>
+<ul>
+<li><a href="#21-commonh">2.1 Common.h</a></li>
+<li><a href="#22-ashmemservercpp">2.2 AshmemServer.cpp</a></li>
+<li><a href="#23-ashmemclientcpp">2.3 AshmemClient.cpp</a></li>
+<li><a href="#24--androidmk">2.4 Android.mk</a></li>
+</ul></li>
+<li><a href="#3-输出结果">3. 输出结果</a>
+<ul>
+<li><a href="#31-dataashmemserver">3.1 /data/AshmemServer</a></li>
+<li><a href="#32-dataashmemclient">3.2 /data/AshmemClient</a></li>
+</ul></li>
+<li><a href="#4-总结">4. 总结</a></li>
+</ul>
+<!-- vim-markdown-toc -->
+<a id="more"></a>
+<p><a href="http://pan.baidu.com/s/1skrrTpz" target="_blank" rel="noopener">源码下载</a></p>
+<h2 id="目录树"><span class="header-section-number">1.1</span> 目录树</h2>
+<pre class="txt"><code>Ashmem/
+`-- jni
+    |-- Android.mk
+    |-- AshmemClient.cpp
+    |-- AshmemServer.cpp
+    `-- Common.h</code></pre>
+<h2 id="源码"><span class="header-section-number">1.2</span> 源码</h2>
+<h3 id="common.h"><span class="header-section-number">1.2.1</span> 2.1 Common.h</h3>
+<div class="sourceCode" id="cb2" data-startfrom="1"><pre class="sourceCode numberSource cpp numberLines"><code class="sourceCode cpp"><a class="sourceLine" id="cb2-1" title="1"><span class="pp">#ifndef __Common__H_</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="pp">#define _</span>_Common__H_</a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="pp">#define ASHMEM_SIZE </span><span class="dv">1024</span></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="pp">#define ASHEME_DEV </span><span class="st">&quot;/dev/ashmem&quot;</span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="pp">#define OPEN_FILE </span><span class="st">&quot;/var/_cmsg_file&quot;</span></a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="pp">#define CLIENT_SOCK_PATH </span><span class="st">&quot;/var/_client_sock&quot;</span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="pp">#define SERVER_SOCK_PATH </span><span class="st">&quot;/var/_server_sock&quot;</span></a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="pp">#define TEST_STRING </span><span class="st">&quot;HelloWorld&quot;</span></a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="pp">#endif</span></a></code></pre></div>
+<h3 id="ashmemserver.cpp"><span class="header-section-number">1.2.2</span> 2.2 AshmemServer.cpp</h3>
+<div class="sourceCode" id="cb3" data-startfrom="1"><pre class="sourceCode numberSource cpp numberLines"><code class="sourceCode cpp"><a class="sourceLine" id="cb3-1" title="1"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="pp">#include </span><span class="im">&lt;stddef.h&gt;</span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="pp">#include </span><span class="im">&lt;fcntl.h&gt;</span></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="pp">#include </span><span class="im">&lt;unistd.h&gt;</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="pp">#include </span><span class="im">&lt;sys/socket.h&gt;</span></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="pp">#include </span><span class="im">&lt;sys/stat.h&gt;</span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="pp">#include </span><span class="im">&lt;sys/types.h&gt;</span></a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="pp">#include </span><span class="im">&lt;sys/un.h&gt;</span></a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="pp">#include </span><span class="im">&lt;sys/mman.h&gt;</span></a>
+<a class="sourceLine" id="cb3-10" title="10"><span class="pp">#include </span><span class="im">&lt;errno.h&gt;</span></a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="pp">#include </span><span class="im">&lt;sys/uio.h&gt;</span></a>
+<a class="sourceLine" id="cb3-12" title="12"><span class="pp">#include </span><span class="im">&lt;linux/ashmem.h&gt;</span></a>
+<a class="sourceLine" id="cb3-13" title="13"><span class="pp">#include </span><span class="im">&quot;Common.h&quot;</span></a>
+<a class="sourceLine" id="cb3-14" title="14"></a>
+<a class="sourceLine" id="cb3-15" title="15"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> <span class="at">const</span>* argv[])</a>
+<a class="sourceLine" id="cb3-16" title="16">{</a>
+<a class="sourceLine" id="cb3-17" title="17">    <span class="dt">int</span> sockfd = -<span class="dv">1</span>, clientfd = -<span class="dv">1</span>, memfd = -<span class="dv">1</span>, testfd = -<span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb3-18" title="18">    <span class="dt">int</span> len = <span class="dv">0</span>, ret = <span class="dv">0</span>, err = -<span class="dv">1</span>, readn = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb3-19" title="19">    <span class="dt">char</span> buf1[<span class="dv">5</span>];</a>
+<a class="sourceLine" id="cb3-20" title="20">    <span class="dt">char</span> buf2[<span class="dv">4</span>];</a>
+<a class="sourceLine" id="cb3-21" title="21">    <span class="dt">char</span>* mapaddr = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb3-22" title="22">    <span class="kw">struct</span> sockaddr_un un;</a>
+<a class="sourceLine" id="cb3-23" title="23">    <span class="kw">struct</span> cmsghdr* cmptr = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb3-24" title="24">    <span class="kw">struct</span> cmsghdr* pcmsg = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb3-25" title="25">    <span class="kw">struct</span> iovec iov[<span class="dv">2</span>];</a>
+<a class="sourceLine" id="cb3-26" title="26">    <span class="kw">struct</span> msghdr msg;</a>
+<a class="sourceLine" id="cb3-27" title="27">    </a>
+<a class="sourceLine" id="cb3-28" title="28">    sockfd = socket(PF_UNIX, SOCK_STREAM, <span class="dv">0</span>);</a>
+<a class="sourceLine" id="cb3-29" title="29">    <span class="cf">if</span> (sockfd &lt; <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb3-30" title="30">        <span class="cf">return</span> err;</a>
+<a class="sourceLine" id="cb3-31" title="31">    unlink(SERVER_SOCK_PATH);</a>
+<a class="sourceLine" id="cb3-32" title="32">    memset(&amp;un, <span class="dv">0</span>, <span class="kw">sizeof</span>(un));</a>
+<a class="sourceLine" id="cb3-33" title="33">    un.sun_family = AF_UNIX;</a>
+<a class="sourceLine" id="cb3-34" title="34">    strcpy(un.sun_path, SERVER_SOCK_PATH);</a>
+<a class="sourceLine" id="cb3-35" title="35">    len = offsetof(<span class="kw">struct</span> sockaddr_un, sun_path) + strlen(SERVER_SOCK_PATH);</a>
+<a class="sourceLine" id="cb3-36" title="36">    ret = bind(sockfd, (<span class="kw">struct</span> sockaddr*)&amp;un, len);</a>
+<a class="sourceLine" id="cb3-37" title="37">    <span class="cf">if</span> (ret &lt; <span class="dv">0</span>) {</a>
+<a class="sourceLine" id="cb3-38" title="38">        err = -<span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb3-39" title="39">        <span class="cf">goto</span> Err;</a>
+<a class="sourceLine" id="cb3-40" title="40">    }</a>
+<a class="sourceLine" id="cb3-41" title="41">    ret = listen(sockfd, <span class="dv">1</span>);</a>
+<a class="sourceLine" id="cb3-42" title="42">    <span class="cf">if</span> (ret &lt; <span class="dv">0</span>) {</a>
+<a class="sourceLine" id="cb3-43" title="43">        err = -<span class="dv">3</span>;</a>
+<a class="sourceLine" id="cb3-44" title="44">        <span class="cf">goto</span> Err;</a>
+<a class="sourceLine" id="cb3-45" title="45">    }</a>
+<a class="sourceLine" id="cb3-46" title="46">    len = <span class="kw">sizeof</span>(un);</a>
+<a class="sourceLine" id="cb3-47" title="47">    memset(&amp;un, <span class="dv">0</span>, len);</a>
+<a class="sourceLine" id="cb3-48" title="48">    clientfd = accept(sockfd, (<span class="kw">struct</span> sockaddr*)&amp;un, &amp;len); </a>
+<a class="sourceLine" id="cb3-49" title="49">    <span class="cf">if</span> (clientfd &lt; <span class="dv">0</span>) {</a>
+<a class="sourceLine" id="cb3-50" title="50">        err = -<span class="dv">4</span>;</a>
+<a class="sourceLine" id="cb3-51" title="51">        <span class="cf">goto</span> Err;</a>
+<a class="sourceLine" id="cb3-52" title="52">    }</a>
+<a class="sourceLine" id="cb3-53" title="53">    printf(<span class="st">&quot;accept client fd = </span><span class="sc">%d\n</span><span class="st">&quot;</span>, clientfd);</a>
+<a class="sourceLine" id="cb3-54" title="54">    cmptr = (<span class="kw">struct</span> cmsghdr*)malloc(CMSG_SPACE(<span class="kw">sizeof</span>(<span class="dt">int</span>)));</a>
+<a class="sourceLine" id="cb3-55" title="55">    <span class="cf">if</span> (!cmptr) {</a>
+<a class="sourceLine" id="cb3-56" title="56">        err = -<span class="dv">5</span>;</a>
+<a class="sourceLine" id="cb3-57" title="57">        <span class="cf">goto</span> Err;</a>
+<a class="sourceLine" id="cb3-58" title="58">    }</a>
+<a class="sourceLine" id="cb3-59" title="59">    iov[<span class="dv">0</span>].iov_base = buf1; </a>
+<a class="sourceLine" id="cb3-60" title="60">    iov[<span class="dv">0</span>].iov_len = <span class="kw">sizeof</span>(buf1);</a>
+<a class="sourceLine" id="cb3-61" title="61">    iov[<span class="dv">1</span>].iov_base = buf2; </a>
+<a class="sourceLine" id="cb3-62" title="62">    iov[<span class="dv">1</span>].iov_len = <span class="kw">sizeof</span>(buf2);</a>
+<a class="sourceLine" id="cb3-63" title="63">    msg.msg_iov = iov;</a>
+<a class="sourceLine" id="cb3-64" title="64">    msg.msg_iovlen = <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb3-65" title="65">    msg.msg_name = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb3-66" title="66">    msg.msg_namelen = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb3-67" title="67">    msg.msg_control = cmptr;</a>
+<a class="sourceLine" id="cb3-68" title="68">    msg.msg_controllen = CMSG_SPACE(<span class="kw">sizeof</span>(<span class="dt">int</span>));</a>
+<a class="sourceLine" id="cb3-69" title="69">    readn = recvmsg(clientfd, &amp;msg, <span class="dv">0</span>);</a>
+<a class="sourceLine" id="cb3-70" title="70">    <span class="cf">if</span> (readn &lt;= <span class="dv">0</span>) {</a>
+<a class="sourceLine" id="cb3-71" title="71">        err = -<span class="dv">6</span>;</a>
+<a class="sourceLine" id="cb3-72" title="72">        printf(<span class="st">&quot;Errno = </span><span class="sc">%d</span><span class="st"> </span><span class="sc">%s\n</span><span class="st">&quot;</span>, errno, strerror(errno));</a>
+<a class="sourceLine" id="cb3-73" title="73">        <span class="cf">goto</span> Err;</a>
+<a class="sourceLine" id="cb3-74" title="74">    }</a>
+<a class="sourceLine" id="cb3-75" title="75">    printf(<span class="st">&quot;buf1 = </span><span class="sc">%s\n</span><span class="st">buf2 = </span><span class="sc">%s\n</span><span class="st">&quot;</span>, buf1, buf2); </a>
+<a class="sourceLine" id="cb3-76" title="76">    pcmsg = CMSG_FIRSTHDR(&amp;msg);</a>
+<a class="sourceLine" id="cb3-77" title="77">    <span class="cf">while</span> (pcmsg) {</a>
+<a class="sourceLine" id="cb3-78" title="78">        <span class="cf">if</span> ((pcmsg-&gt;cmsg_level == SOL_SOCKET) </a>
+<a class="sourceLine" id="cb3-79" title="79">            &amp;&amp; (pcmsg-&gt;<span class="dt">cmsg_type</span> == SCM_RIGHTS)) {</a>
+<a class="sourceLine" id="cb3-80" title="80">            <span class="cf">if</span> (pcmsg-&gt;cmsg_len == CMSG_LEN(<span class="kw">sizeof</span>(<span class="dt">int</span>))) {</a>
+<a class="sourceLine" id="cb3-81" title="81">                memfd = *(<span class="dt">int</span>*)CMSG_DATA(pcmsg);</a>
+<a class="sourceLine" id="cb3-82" title="82">                <span class="cf">break</span>;</a>
+<a class="sourceLine" id="cb3-83" title="83">            }</a>
+<a class="sourceLine" id="cb3-84" title="84">        }</a>
+<a class="sourceLine" id="cb3-85" title="85">        pcmsg = CMSG_NXTHDR(&amp;msg, pcmsg);</a>
+<a class="sourceLine" id="cb3-86" title="86">    }</a>
+<a class="sourceLine" id="cb3-87" title="87">    <span class="cf">if</span> (memfd &gt; <span class="dv">0</span>) {</a>
+<a class="sourceLine" id="cb3-88" title="88">        mapaddr = (<span class="dt">char</span>*)mmap(<span class="dv">0</span>, ASHMEM_SIZE, PROT_READ|PROT_WRITE, MAP_SHARED, memfd, <span class="dv">0</span>);  </a>
+<a class="sourceLine" id="cb3-89" title="89">        printf(<span class="st">&quot;get memfd = </span><span class="sc">%d</span><span class="st"> mapaddr = </span><span class="sc">%p\n</span><span class="st">&quot;</span>, memfd, mapaddr);</a>
+<a class="sourceLine" id="cb3-90" title="90">    }</a>
+<a class="sourceLine" id="cb3-91" title="91">    memcpy(mapaddr, TEST_STRING, strlen(TEST_STRING)); </a>
+<a class="sourceLine" id="cb3-92" title="92">    sleep(<span class="dv">5</span>);</a>
+<a class="sourceLine" id="cb3-93" title="93">    free(cmptr);</a>
+<a class="sourceLine" id="cb3-94" title="94">    <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb3-95" title="95">Err:</a>
+<a class="sourceLine" id="cb3-96" title="96">    printf(<span class="st">&quot;error = </span><span class="sc">%d\n</span><span class="st">&quot;</span>, err);</a>
+<a class="sourceLine" id="cb3-97" title="97">    close(sockfd);</a>
+<a class="sourceLine" id="cb3-98" title="98">    <span class="cf">return</span> err;</a>
+<a class="sourceLine" id="cb3-99" title="99">}</a></code></pre></div>
+<h3 id="ashmemclient.cpp"><span class="header-section-number">1.2.3</span> 2.3 AshmemClient.cpp</h3>
+<div class="sourceCode" id="cb4" data-startfrom="1"><pre class="sourceCode numberSource cpp numberLines"><code class="sourceCode cpp"><a class="sourceLine" id="cb4-1" title="1"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="pp">#include </span><span class="im">&lt;stddef.h&gt;</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="pp">#include </span><span class="im">&lt;fcntl.h&gt;</span></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="pp">#include </span><span class="im">&lt;unistd.h&gt;</span></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="pp">#include </span><span class="im">&lt;sys/socket.h&gt;</span></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="pp">#include </span><span class="im">&lt;sys/stat.h&gt;</span></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="pp">#include </span><span class="im">&lt;sys/mman.h&gt;</span></a>
+<a class="sourceLine" id="cb4-8" title="8"><span class="pp">#include </span><span class="im">&lt;sys/types.h&gt;</span></a>
+<a class="sourceLine" id="cb4-9" title="9"><span class="pp">#include </span><span class="im">&lt;sys/un.h&gt;</span></a>
+<a class="sourceLine" id="cb4-10" title="10"><span class="pp">#include </span><span class="im">&lt;sys/uio.h&gt;</span></a>
+<a class="sourceLine" id="cb4-11" title="11"><span class="pp">#include </span><span class="im">&lt;linux/ashmem.h&gt;</span></a>
+<a class="sourceLine" id="cb4-12" title="12"><span class="pp">#include </span><span class="im">&quot;Common.h&quot;</span></a>
+<a class="sourceLine" id="cb4-13" title="13"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> <span class="at">const</span>* argv[])</a>
+<a class="sourceLine" id="cb4-14" title="14">{</a>
+<a class="sourceLine" id="cb4-15" title="15">    <span class="dt">int</span> sockfd = -<span class="dv">1</span>, memfd = -<span class="dv">1</span>, testfd = -<span class="dv">1</span>, err = -<span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb4-16" title="16">    <span class="dt">int</span> len =<span class="dv">0</span>, ret = <span class="dv">0</span>, writen = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb4-17" title="17">    <span class="dt">char</span> buf1[<span class="dv">5</span>] = {<span class="st">&quot;file&quot;</span>};</a>
+<a class="sourceLine" id="cb4-18" title="18">    <span class="dt">char</span> buf2[<span class="dv">4</span>] = {<span class="st">&quot;map&quot;</span>};</a>
+<a class="sourceLine" id="cb4-19" title="19">    <span class="dt">char</span>* mapaddr = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb4-20" title="20">    <span class="dt">char</span> content[<span class="dv">32</span>] = { <span class="dv">0</span> };</a>
+<a class="sourceLine" id="cb4-21" title="21">    <span class="kw">struct</span> sockaddr_un un;</a>
+<a class="sourceLine" id="cb4-22" title="22">    <span class="kw">struct</span> cmsghdr* cmptr = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb4-23" title="23">    <span class="kw">struct</span> cmsghdr* pcmsg = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb4-24" title="24">    <span class="kw">struct</span> iovec iov[<span class="dv">2</span>];</a>
+<a class="sourceLine" id="cb4-25" title="25">    <span class="kw">struct</span> msghdr msg;</a>
+<a class="sourceLine" id="cb4-26" title="26">    </a>
+<a class="sourceLine" id="cb4-27" title="27">    sockfd = socket(PF_UNIX, SOCK_STREAM, <span class="dv">0</span>);</a>
+<a class="sourceLine" id="cb4-28" title="28">    <span class="cf">if</span> (sockfd &lt; <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb4-29" title="29">        <span class="cf">return</span> err;</a>
+<a class="sourceLine" id="cb4-30" title="30">    unlink(CLIENT_SOCK_PATH);</a>
+<a class="sourceLine" id="cb4-31" title="31">    memset(&amp;un, <span class="dv">0</span>, <span class="kw">sizeof</span>(un));</a>
+<a class="sourceLine" id="cb4-32" title="32">    un.sun_family = AF_UNIX;</a>
+<a class="sourceLine" id="cb4-33" title="33">    strcpy(un.sun_path, CLIENT_SOCK_PATH);</a>
+<a class="sourceLine" id="cb4-34" title="34">    len = offsetof(<span class="kw">struct</span> sockaddr_un, sun_path) + strlen(CLIENT_SOCK_PATH);</a>
+<a class="sourceLine" id="cb4-35" title="35">    ret = bind(sockfd, (<span class="kw">struct</span> sockaddr*)&amp;un, len);</a>
+<a class="sourceLine" id="cb4-36" title="36">    <span class="cf">if</span> (ret &lt; <span class="dv">0</span>) {</a>
+<a class="sourceLine" id="cb4-37" title="37">        err = -<span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb4-38" title="38">        <span class="cf">goto</span> Err;</a>
+<a class="sourceLine" id="cb4-39" title="39">    }</a>
+<a class="sourceLine" id="cb4-40" title="40">    memset(&amp;un, <span class="dv">0</span>, <span class="kw">sizeof</span>(un));</a>
+<a class="sourceLine" id="cb4-41" title="41">    un.sun_family = AF_UNIX;</a>
+<a class="sourceLine" id="cb4-42" title="42">    strcpy(un.sun_path, SERVER_SOCK_PATH);</a>
+<a class="sourceLine" id="cb4-43" title="43">    len = offsetof(<span class="kw">struct</span> sockaddr_un, sun_path) + strlen(SERVER_SOCK_PATH);</a>
+<a class="sourceLine" id="cb4-44" title="44">    ret = <span class="fu">connect</span>(sockfd, (<span class="kw">struct</span> sockaddr*)&amp;un, len);</a>
+<a class="sourceLine" id="cb4-45" title="45">    <span class="cf">if</span> (ret &lt; <span class="dv">0</span>) {</a>
+<a class="sourceLine" id="cb4-46" title="46">        err = -<span class="dv">3</span>;</a>
+<a class="sourceLine" id="cb4-47" title="47">        <span class="cf">goto</span> Err;</a>
+<a class="sourceLine" id="cb4-48" title="48">    }</a>
+<a class="sourceLine" id="cb4-49" title="49">    testfd = open(OPEN_FILE, O_CREAT|O_RDWR, <span class="bn">0777</span>);</a>
+<a class="sourceLine" id="cb4-50" title="50">    memfd = open(ASHEME_DEV, O_RDWR);</a>
+<a class="sourceLine" id="cb4-51" title="51">    printf(<span class="st">&quot;open </span><span class="sc">%s</span><span class="st"> fd = </span><span class="sc">%d\n</span><span class="st">&quot;</span>, ASHEME_DEV, memfd);</a>
+<a class="sourceLine" id="cb4-52" title="52">    <span class="cf">if</span> (testfd &lt; <span class="dv">0</span> || memfd &lt; <span class="dv">0</span>) {</a>
+<a class="sourceLine" id="cb4-53" title="53">        err = -<span class="dv">4</span>;</a>
+<a class="sourceLine" id="cb4-54" title="54">        <span class="cf">goto</span> Err;</a>
+<a class="sourceLine" id="cb4-55" title="55">    }</a>
+<a class="sourceLine" id="cb4-56" title="56">    ret = ioctl(memfd, ASHMEM_SET_SIZE, ASHMEM_SIZE);</a>
+<a class="sourceLine" id="cb4-57" title="57">    <span class="cf">if</span> (ret &lt; <span class="dv">0</span>) {</a>
+<a class="sourceLine" id="cb4-58" title="58">        err = -<span class="dv">5</span>;</a>
+<a class="sourceLine" id="cb4-59" title="59">        <span class="cf">goto</span> Err;</a>
+<a class="sourceLine" id="cb4-60" title="60">    }</a>
+<a class="sourceLine" id="cb4-61" title="61">    mapaddr = (<span class="dt">char</span>*)mmap(<span class="dv">0</span>, ASHMEM_SIZE, PROT_READ|PROT_WRITE, MAP_SHARED, memfd, <span class="dv">0</span>);</a>
+<a class="sourceLine" id="cb4-62" title="62">    printf(<span class="st">&quot;mmap addr = </span><span class="sc">%p\n</span><span class="st">&quot;</span>, mapaddr);</a>
+<a class="sourceLine" id="cb4-63" title="63">    printf(<span class="st">&quot;sizeof(short) = </span><span class="sc">%d\n</span><span class="st">&quot;</span>, <span class="kw">sizeof</span>(<span class="dt">short</span>));</a>
+<a class="sourceLine" id="cb4-64" title="64">    printf(<span class="st">&quot;CMSG_ALIGN(sizeof(short)) = </span><span class="sc">%d\n</span><span class="st">&quot;</span>, CMSG_ALIGN(<span class="kw">sizeof</span>(<span class="dt">short</span>)));</a>
+<a class="sourceLine" id="cb4-65" title="65">    printf(<span class="st">&quot;CMSG_LEN(sizeof(short)) = </span><span class="sc">%d\n</span><span class="st">&quot;</span>, CMSG_LEN(<span class="kw">sizeof</span>(<span class="dt">short</span>)));</a>
+<a class="sourceLine" id="cb4-66" title="66">    printf(<span class="st">&quot;CMSG_SPACE(sizeof(short)) = </span><span class="sc">%d\n</span><span class="st">&quot;</span>, CMSG_SPACE(<span class="kw">sizeof</span>(<span class="dt">short</span>)));</a>
+<a class="sourceLine" id="cb4-67" title="67">    cmptr = (<span class="kw">struct</span> cmsghdr*)malloc(<span class="dv">2</span>*CMSG_SPACE(<span class="kw">sizeof</span>(<span class="dt">int</span>)));</a>
+<a class="sourceLine" id="cb4-68" title="68">    <span class="cf">if</span> (!cmptr) {</a>
+<a class="sourceLine" id="cb4-69" title="69">        err = -<span class="dv">6</span>;</a>
+<a class="sourceLine" id="cb4-70" title="70">        <span class="cf">goto</span> Err;</a>
+<a class="sourceLine" id="cb4-71" title="71">    }</a>
+<a class="sourceLine" id="cb4-72" title="72">    printf(<span class="st">&quot;cmptr = </span><span class="sc">%p\n</span><span class="st">&quot;</span>, cmptr);</a>
+<a class="sourceLine" id="cb4-73" title="73">    iov[<span class="dv">0</span>].iov_base = buf1; </a>
+<a class="sourceLine" id="cb4-74" title="74">    iov[<span class="dv">0</span>].iov_len = <span class="kw">sizeof</span>(buf1);</a>
+<a class="sourceLine" id="cb4-75" title="75">    iov[<span class="dv">1</span>].iov_base = buf2; </a>
+<a class="sourceLine" id="cb4-76" title="76">    iov[<span class="dv">1</span>].iov_len = <span class="kw">sizeof</span>(buf2);</a>
+<a class="sourceLine" id="cb4-77" title="77">    msg.msg_iov = iov;</a>
+<a class="sourceLine" id="cb4-78" title="78">    msg.msg_iovlen = <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb4-79" title="79">    msg.msg_name = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb4-80" title="80">    msg.msg_namelen = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb4-81" title="81">    msg.msg_control = cmptr;</a>
+<a class="sourceLine" id="cb4-82" title="82">    msg.msg_controllen = <span class="dv">2</span>*CMSG_SPACE(<span class="kw">sizeof</span>(<span class="dt">int</span>));</a>
+<a class="sourceLine" id="cb4-83" title="83">    pcmsg = CMSG_FIRSTHDR(&amp;msg);</a>
+<a class="sourceLine" id="cb4-84" title="84">    printf(<span class="st">&quot;first pcmsg = </span><span class="sc">%p\n</span><span class="st">&quot;</span>, pcmsg);</a>
+<a class="sourceLine" id="cb4-85" title="85">    pcmsg-&gt;cmsg_level = SOL_SOCKET;</a>
+<a class="sourceLine" id="cb4-86" title="86">    pcmsg-&gt;<span class="dt">cmsg_type</span> = SCM_RIGHTS;</a>
+<a class="sourceLine" id="cb4-87" title="87">    pcmsg-&gt;cmsg_len = CMSG_LEN(<span class="kw">sizeof</span>(<span class="dt">int</span>));</a>
+<a class="sourceLine" id="cb4-88" title="88">    *(<span class="dt">int</span>*)CMSG_DATA(pcmsg) = memfd;</a>
+<a class="sourceLine" id="cb4-89" title="89">    <span class="co">//</span><span class="al">TODO</span><span class="co"> something is wrong!</span></a>
+<a class="sourceLine" id="cb4-90" title="90">    pcmsg = CMSG_NXTHDR(&amp;msg, pcmsg);</a>
+<a class="sourceLine" id="cb4-91" title="91">    printf(<span class="st">&quot;next pcmsg = </span><span class="sc">%p\n</span><span class="st">&quot;</span>, pcmsg);</a>
+<a class="sourceLine" id="cb4-92" title="92">    pcmsg-&gt;cmsg_level = SOL_SOCKET;</a>
+<a class="sourceLine" id="cb4-93" title="93">    pcmsg-&gt;<span class="dt">cmsg_type</span> = SCM_RIGHTS;</a>
+<a class="sourceLine" id="cb4-94" title="94">    pcmsg-&gt;cmsg_len = CMSG_LEN(<span class="kw">sizeof</span>(<span class="dt">int</span>));</a>
+<a class="sourceLine" id="cb4-95" title="95">    *(<span class="dt">int</span>*)CMSG_DATA(pcmsg) = testfd;</a>
+<a class="sourceLine" id="cb4-96" title="96">    writen = sendmsg(sockfd, &amp;msg, <span class="dv">0</span>);</a>
+<a class="sourceLine" id="cb4-97" title="97">    printf(<span class="st">&quot;sendmsg write n = </span><span class="sc">%d</span><span class="st"> (sizeof(buf1) + sizeof(buf2) = </span><span class="sc">%d</span><span class="st">)</span><span class="sc">\n</span><span class="st">&quot;</span>, writen, <span class="kw">sizeof</span>(buf1) + <span class="kw">sizeof</span>(buf2));</a>
+<a class="sourceLine" id="cb4-98" title="98">    sleep(<span class="dv">2</span>);</a>
+<a class="sourceLine" id="cb4-99" title="99">    memcpy(content, mapaddr, strlen(TEST_STRING));</a>
+<a class="sourceLine" id="cb4-100" title="100">    printf(<span class="st">&quot;content = </span><span class="sc">%s\n</span><span class="st">&quot;</span>, content);</a>
+<a class="sourceLine" id="cb4-101" title="101">    close(sockfd);</a>
+<a class="sourceLine" id="cb4-102" title="102">    free(cmptr);</a>
+<a class="sourceLine" id="cb4-103" title="103">    <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb4-104" title="104">Err:</a>
+<a class="sourceLine" id="cb4-105" title="105">    printf(<span class="st">&quot;error : </span><span class="sc">%d\n</span><span class="st">&quot;</span>, err);</a>
+<a class="sourceLine" id="cb4-106" title="106">    close(sockfd);</a>
+<a class="sourceLine" id="cb4-107" title="107">    <span class="cf">return</span> -<span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb4-108" title="108">}</a></code></pre></div>
+<h3 id="android.mk"><span class="header-section-number">1.2.4</span> 2.4 Android.mk</h3>
+<div class="sourceCode" id="cb5" data-startfrom="1"><pre class="sourceCode numberSource mk numberLines"><code class="sourceCode makefile"><a class="sourceLine" id="cb5-1" title="1"><span class="dt">LOCAL_PATH </span><span class="ch">:=</span><span class="st"> </span><span class="ch">$(</span><span class="kw">call</span><span class="st"> my-dir</span><span class="ch">)</span></a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="dt">JNI_RES_PATH </span><span class="ch">:=</span><span class="st"> /opt/android/jni</span></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="kw">include</span> <span class="ch">$(</span><span class="dt">CLEAR_VARS</span><span class="ch">)</span></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="dt">LOCAL_MODULE_TAGS </span><span class="ch">:=</span><span class="st"> eng</span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="dt">LOCAL_MODULE </span><span class="ch">:=</span><span class="st"> AshmemServer</span></a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="ch">$(</span><span class="kw">info</span><span class="st"> &quot;Build </span><span class="ch">${</span><span class="dt">LOCAL_MODULE</span><span class="ch">})</span></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="dt">LOCAL_SRC_FILES     </span><span class="ch">+=</span><span class="st"> AshmemServer.cpp</span></a>
+<a class="sourceLine" id="cb5-8" title="8"><span class="dt">LOCAL_C_INCLUDES </span><span class="ch">+=</span><span class="st"> </span><span class="ch">${</span><span class="dt">JNI_RES_PATH</span><span class="ch">}</span><span class="st">/include </span><span class="ch">${</span><span class="dt">JNI_RES_PATH</span><span class="ch">}</span><span class="st">/include/bionic/libc/kernel/common/</span></a>
+<a class="sourceLine" id="cb5-9" title="9"><span class="dt">LOCAL_C_INCLUDES </span><span class="ch">+=</span><span class="st"> </span><span class="ch">${</span><span class="dt">JNI_RES_PATH</span><span class="ch">}</span><span class="st">/include/bionic/libc/include/</span></a>
+<a class="sourceLine" id="cb5-10" title="10"><span class="dt">LOCAL_CPPFLAGS   </span><span class="ch">+=</span><span class="st"> -DDEBUG -DHAVE_ANDROID_OS  -DHAVE_SYS_UIO_H</span></a>
+<a class="sourceLine" id="cb5-11" title="11"><span class="co"># 编译条件以及第三方库: -lxml2</span></a>
+<a class="sourceLine" id="cb5-12" title="12"><span class="dt">LOCAL_LDFLAGS </span><span class="ch">+=</span><span class="st"> -L</span><span class="ch">${</span><span class="dt">JNI_RES_PATH</span><span class="ch">}</span><span class="st">/libs -O2</span></a>
+<a class="sourceLine" id="cb5-13" title="13"><span class="co"># 系统库</span></a>
+<a class="sourceLine" id="cb5-14" title="14"><span class="dt">LOCAL_LDLIBS </span><span class="ch">+=</span><span class="st"> -lcutils -lutils</span></a>
+<a class="sourceLine" id="cb5-15" title="15"><span class="co"># 动态库模块, 如果列出的库不存在会去编译 eg. libxxx</span></a>
+<a class="sourceLine" id="cb5-16" title="16"><span class="dt">LOCAL_SHARED_LIBRARIES </span><span class="ch">+=</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-17" title="17"><span class="co"># ALL_DEFAULT_INSTALLED_MODULES += $(LOCAL_MODULE)</span></a>
+<a class="sourceLine" id="cb5-18" title="18"><span class="co"># 目标输出类型</span></a>
+<a class="sourceLine" id="cb5-19" title="19"><span class="kw">include</span> <span class="ch">$(</span><span class="dt">BUILD_EXECUTABLE</span><span class="ch">)</span></a>
+<a class="sourceLine" id="cb5-20" title="20"><span class="kw">include</span> <span class="ch">$(</span><span class="dt">CLEAR_VARS</span><span class="ch">)</span></a>
+<a class="sourceLine" id="cb5-21" title="21"><span class="dt">LOCAL_MODULE_TAGS </span><span class="ch">:=</span><span class="st"> eng</span></a>
+<a class="sourceLine" id="cb5-22" title="22"><span class="dt">LOCAL_MODULE </span><span class="ch">:=</span><span class="st"> AshmemClient</span></a>
+<a class="sourceLine" id="cb5-23" title="23"><span class="ch">$(</span><span class="kw">info</span><span class="st"> &quot;Build </span><span class="ch">${</span><span class="dt">LOCAL_MODULE</span><span class="ch">})</span></a>
+<a class="sourceLine" id="cb5-24" title="24"><span class="dt">LOCAL_SRC_FILES  </span><span class="ch">+=</span><span class="st"> AshmemClient.cpp</span></a>
+<a class="sourceLine" id="cb5-25" title="25"><span class="dt">LOCAL_C_INCLUDES </span><span class="ch">+=</span><span class="st"> </span><span class="ch">${</span><span class="dt">JNI_RES_PATH</span><span class="ch">}</span><span class="st">/include  </span><span class="ch">${</span><span class="dt">JNI_RES_PATH</span><span class="ch">}</span><span class="st">/include/bionic/libc/kernel/common/</span></a>
+<a class="sourceLine" id="cb5-26" title="26"><span class="dt">LOCAL_C_INCLUDES </span><span class="ch">+=</span><span class="st"> </span><span class="ch">${</span><span class="dt">JNI_RES_PATH</span><span class="ch">}</span><span class="st">/include/bionic/libc/include/</span></a>
+<a class="sourceLine" id="cb5-27" title="27"><span class="dt">LOCAL_CPPFLAGS   </span><span class="ch">+=</span><span class="st"> -DDEBUG -DHAVE_ANDROID_OS  -DHAVE_SYS_UIO_H</span></a>
+<a class="sourceLine" id="cb5-28" title="28"><span class="co"># 编译条件以及第三方库: -lxml2</span></a>
+<a class="sourceLine" id="cb5-29" title="29"><span class="dt">LOCAL_LDFLAGS </span><span class="ch">+=</span><span class="st"> -L</span><span class="ch">${</span><span class="dt">JNI_RES_PATH</span><span class="ch">}</span><span class="st">/libs -O2</span></a>
+<a class="sourceLine" id="cb5-30" title="30"><span class="co"># 系统库</span></a>
+<a class="sourceLine" id="cb5-31" title="31"><span class="dt">LOCAL_LDLIBS </span><span class="ch">+=</span><span class="st"> -lcutils -lutils</span></a>
+<a class="sourceLine" id="cb5-32" title="32"><span class="co"># 动态库模块, 如果列出的库不存在会去编译 eg. libxxx</span></a>
+<a class="sourceLine" id="cb5-33" title="33"><span class="dt">LOCAL_SHARED_LIBRARIES </span><span class="ch">+=</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-34" title="34"><span class="co"># ALL_DEFAULT_INSTALLED_MODULES += $(LOCAL_MODULE)</span></a>
+<a class="sourceLine" id="cb5-35" title="35"><span class="kw">include</span> <span class="ch">$(</span><span class="dt">BUILD_EXECUTABLE</span><span class="ch">)</span></a></code></pre></div>
+<h2 id="输出结果"><span class="header-section-number">1.3</span> 3. 输出结果</h2>
+<h3 id="dataashmemserver"><span class="header-section-number">1.3.1</span> 3.1 /data/AshmemServer</h3>
+<pre><code>accept client fd = 4
+buf1 = file
+buf2 = map
+get memfd = 5 mapaddr = 0x76eb6000</code></pre>
+<h3 id="dataashmemclient"><span class="header-section-number">1.3.2</span> 3.2 /data/AshmemClient</h3>
+<pre><code>open /dev/ashmem fd = 5                                                                                                                                                                        
+mmap addr = 0x76e7a000                                                                                                                                                                         
+sizeof(short) = 2                                                                                                                                                                              
+CMSG_ALIGN(sizeof(short)) = 4                                                                                                                                                                  
+CMSG_LEN(sizeof(short)) = 14                                                                                                                                                                   
+CMSG_SPACE(sizeof(short)) = 16                                                                                                                                                                 
+cmptr = 0xc9e0a8                                                                                                                                                                               
+first pcmsg = 0xc9e0a8                                                                                                                                                                         
+next pcmsg = 0xc9e0b8                                                                                                                                                                          
+sendmsg write n = 9 (sizeof(buf1) + sizeof(buf2) = 9)                                                                                                                                          
+content = HelloWorld  </code></pre>
+<h2 id="总结"><span class="header-section-number">1.4</span> 4. 总结</h2>
+<ul>
+<li>Android匿名共享内存多个进程实现共享, 那么每个进程都要拿到这个/dev/ashmem打开的文件描述符</li>
+<li>通过msghdr这个结构体加上sendmsg和recvmsg实现文件描述符的进程间传递</li>
+<li>之所以要进程间传递文件描述符,是因为"匿名"二字, 如果通讯的每个进程都打开/dev/ashmem文件是实现不了的.</li>
+<li>sendmsg是怎样把文件描述符传递的, 是不是有点像dup或dup2, 复制现存的文件描述符, 使他们指向同一个file结构体(本进程内)</li>
+</ul>
+</body>
+</html>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-06-24T15:12:29.178Z" itemprop="dateUpdated">2019-06-24 23:12:29</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://qrsforever.github.io">
+            <img src="/img/avatar.jpg" alt="qrsforever">
+            qrsforever
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2016/06/24/Note/Android/Ashmem/&title=《(原创)匿名共享内存之文件描述符传递》 — 奥卡姆剃刀&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2016/06/24/Note/Android/Ashmem/&title=《(原创)匿名共享内存之文件描述符传递》 — 奥卡姆剃刀&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2016/06/24/Note/Android/Ashmem/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《(原创)匿名共享内存之文件描述符传递》 — 奥卡姆剃刀&url=https://qrsforever.github.io/2016/06/24/Note/Android/Ashmem/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2016/06/24/Note/Android/Ashmem/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/08/30/Tutorial/Markdown/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">(原创)Tutorial for Markdown</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/03/24/Note/Android/BinderDriver/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">(原创)Binder简图-草稿</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "bpShGWdW8DpODhnDko5O2IBB-gzGzoHsz",
+            appKey: "rwmasTllBbHE69ADuLjFyFWf",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢打赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>qrsforever &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2016/06/24/Note/Android/Ashmem/&title=《(原创)匿名共享内存之文件描述符传递》 — 奥卡姆剃刀&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2016/06/24/Note/Android/Ashmem/&title=《(原创)匿名共享内存之文件描述符传递》 — 奥卡姆剃刀&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2016/06/24/Note/Android/Ashmem/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《(原创)匿名共享内存之文件描述符传递》 — 奥卡姆剃刀&url=https://qrsforever.github.io/2016/06/24/Note/Android/Ashmem/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2016/06/24/Note/Android/Ashmem/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://qrsforever.github.io/2016/06/24/Note/Android/Ashmem/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- lidong cha. -->
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- lidong end. -->
+
+</body>
+</html>

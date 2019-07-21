@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?cb4be66237379541488b8502a6eca006"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>(原创)Tutorial for Latex | 奥卡姆剃刀 | 你们都是大傻瓜, 我是天下大赢家</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Markdown">
+    <meta name="description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta name="keywords" content="Markdown">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(原创)Tutorial for Latex">
+<meta property="og:url" content="https://qrsforever.github.io/2018/10/31/Tutorial/Latex/index.html">
+<meta property="og:site_name" content="奥卡姆剃刀">
+<meta property="og:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://latex.codecogs.com/gif.latex?F%28x%29%20%3D%20%5Cint_%7Ba%7D%5E%7Bb%7Df%28x%29dx">
+<meta property="og:updated_time" content="2019-07-16T15:50:14.743Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="(原创)Tutorial for Latex">
+<meta name="twitter:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta name="twitter:image" content="http://latex.codecogs.com/gif.latex?F%28x%29%20%3D%20%5Cint_%7Ba%7D%5E%7Bb%7Df%28x%29dx">
+    
+        <link rel="alternate" type="application/atom+xml" title="奥卡姆剃刀" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">qrsforever</h5>
+          <a href="mailto:985612771@qq.com" title="985612771@qq.com" class="mail">985612771@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/705723886/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://zytforever.github.io" target="_blank" >
+                <i class="icon icon-lg icon-eye"></i>
+                Stocktech
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">(原创)Tutorial for Latex</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">(原创)Tutorial for Latex</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-10-31T09:16:20.000Z" itemprop="datePublished" class="page-time">
+  2018-10-31
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Tutorial/">Tutorial</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#行内行间应用方式"><span class="post-toc-number">1.</span> <span class="post-toc-text">1.1 行内行间应用方式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常用希腊字母"><span class="post-toc-number">2.</span> <span class="post-toc-text">1.2 常用希腊字母</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常用求和符号和积分号"><span class="post-toc-number">3.</span> <span class="post-toc-text">1.3 常用求和符号和积分号</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#其他常用符号"><span class="post-toc-number">4.</span> <span class="post-toc-text">1.4 其他常用符号</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#运算符"><span class="post-toc-number">5.</span> <span class="post-toc-text">1.5 运算符</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#声调"><span class="post-toc-number">6.</span> <span class="post-toc-text">1.6 声调</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#根号"><span class="post-toc-number">7.</span> <span class="post-toc-text">1.7 根号</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#上标下标"><span class="post-toc-number">8.</span> <span class="post-toc-text">1.8 上标下标</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#空白类型列举"><span class="post-toc-number">9.</span> <span class="post-toc-text">1.9 空白类型列举</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#公式锚点"><span class="post-toc-number">10.</span> <span class="post-toc-text">1.10 公式锚点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#矩阵"><span class="post-toc-number">11.</span> <span class="post-toc-text">1.11 矩阵</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简单的矩阵"><span class="post-toc-number">11.1.</span> <span class="post-toc-text">1.11.1 简单的矩阵</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#带括号的矩阵"><span class="post-toc-number">11.2.</span> <span class="post-toc-text">1.11.2 带括号的矩阵</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#排版"><span class="post-toc-number">12.</span> <span class="post-toc-text">1.12 排版</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#多行方程组对齐"><span class="post-toc-number">12.1.</span> <span class="post-toc-text">1.12.1 多行方程组对齐</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#多行公式等号对齐"><span class="post-toc-number">12.2.</span> <span class="post-toc-text">1.12.2 多行公式等号对齐</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#大括号右多行赋值"><span class="post-toc-number">12.3.</span> <span class="post-toc-text">1.12.3 大括号右多行赋值</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#字体"><span class="post-toc-number">13.</span> <span class="post-toc-text">1.13 字体</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#括号"><span class="post-toc-number">14.</span> <span class="post-toc-text">1.14 括号</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#颜色"><span class="post-toc-number">15.</span> <span class="post-toc-text">1.15 颜色</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#特殊例子"><span class="post-toc-number">16.</span> <span class="post-toc-text">1.16 特殊例子</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分子分母"><span class="post-toc-number">16.1.</span> <span class="post-toc-text">1.16.1 分子分母</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分布"><span class="post-toc-number">16.2.</span> <span class="post-toc-text">1.16.2 分布</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#在线使用"><span class="post-toc-number">16.3.</span> <span class="post-toc-text">1.16.3 在线使用</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Tutorial/Latex"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">(原创)Tutorial for Latex</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-10-31 17:16:20" datetime="2018-10-31T09:16:20.000Z"  itemprop="datePublished">2018-10-31</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Tutorial/">Tutorial</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#行内行间应用方式">行内行间应用方式</a></li>
+<li><a href="#常用希腊字母">常用希腊字母</a></li>
+<li><a href="#常用求和符号和积分号">常用求和符号和积分号</a></li>
+<li><a href="#其他常用符号">其他常用符号</a></li>
+<li><a href="#运算符">运算符</a></li>
+<li><a href="#声调">声调</a></li>
+<li><a href="#根号">根号</a></li>
+<li><a href="#上标下标">上标下标</a></li>
+<li><a href="#空白类型列举">空白类型列举</a></li>
+<li><a href="#公式锚点">公式锚点</a></li>
+<li><a href="#矩阵">矩阵</a>
+<ul>
+<li><a href="#简单的矩阵">简单的矩阵</a></li>
+<li><a href="#带括号的矩阵">带括号的矩阵</a></li>
+</ul></li>
+<li><a href="#排版">排版</a>
+<ul>
+<li><a href="#多行方程组对齐">多行方程组对齐</a></li>
+<li><a href="#多行公式等号对齐">多行公式等号对齐</a></li>
+<li><a href="#大括号右多行赋值">大括号右多行赋值</a></li>
+</ul></li>
+<li><a href="#字体">字体</a></li>
+<li><a href="#括号">括号</a></li>
+<li><a href="#颜色">颜色</a></li>
+<li><a href="#特殊例子">特殊例子</a>
+<ul>
+<li><a href="#分子分母">分子分母</a></li>
+<li><a href="#分布">分布</a></li>
+<li><a href="#在线使用">在线使用</a></li>
+</ul></li>
+</ul>
+<!-- vim-markdown-toc -->
+<p><a href="https://blog.csdn.net/qq_17528659/article/details/82152530" target="_blank" rel="noopener">参考1</a></p>
+<p><a href="https://blog.csdn.net/kevinelstri/article/details/62419242" target="_blank" rel="noopener">参考2</a></p>
+<p><a href="http://latex.codecogs.com/eqneditor/editor.php" target="_blank" rel="noopener">在线编辑</a></p>
+<a id="more"></a>
+<h2 id="行内行间应用方式"><span class="header-section-number">1.1</span> 行内行间应用方式</h2>
+<pre><code>$ equation $  (正文)
+$$ eqauation $$ (单独)</code></pre>
+<h2 id="常用希腊字母"><span class="header-section-number">1.2</span> 常用希腊字母</h2>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">\alpha</td>
+<td style="text-align: center;"><span class="math inline">\(\alpha\)</span></td>
+<td style="text-align: center;">\varTheta</td>
+<td style="text-align: center;"><span class="math inline">\(\varTheta\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">\beta</td>
+<td style="text-align: center;"><span class="math inline">\(\beta\)</span></td>
+<td style="text-align: center;">\varGamma</td>
+<td style="text-align: center;"><span class="math inline">\(\varGamma\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">\gamma</td>
+<td style="text-align: center;"><span class="math inline">\(\gamma\)</span></td>
+<td style="text-align: center;">\Gamma</td>
+<td style="text-align: center;"><span class="math inline">\(\Gamma\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">\theta</td>
+<td style="text-align: center;"><span class="math inline">\(\theta\)</span></td>
+<td style="text-align: center;">\Theta</td>
+<td style="text-align: center;"><span class="math inline">\(\Theta\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">\delta</td>
+<td style="text-align: center;"><span class="math inline">\(\delta\)</span></td>
+<td style="text-align: center;">\Delta</td>
+<td style="text-align: center;"><span class="math inline">\(\Delta\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">\epsilon</td>
+<td style="text-align: center;"><span class="math inline">\(\epsilon\)</span></td>
+<td style="text-align: center;">\varDelta</td>
+<td style="text-align: center;"><span class="math inline">\(\varDelta\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">\zeta</td>
+<td style="text-align: center;"><span class="math inline">\(\zeta\)</span></td>
+<td style="text-align: center;">\varLambda</td>
+<td style="text-align: center;"><span class="math inline">\(\varLambda\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">\eta</td>
+<td style="text-align: center;"><span class="math inline">\(\eta\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">\iota</td>
+<td style="text-align: center;"><span class="math inline">\(\iota\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">\kappa</td>
+<td style="text-align: center;"><span class="math inline">\(\kappa\)</span></td>
+<td style="text-align: center;">\varLambda</td>
+<td style="text-align: center;"><span class="math inline">\(\varLambda\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">\lambda</td>
+<td style="text-align: center;"><span class="math inline">\(\lambda\)</span></td>
+<td style="text-align: center;">\Lambda</td>
+<td style="text-align: center;"><span class="math inline">\(\Lambda\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">\mu</td>
+<td style="text-align: center;"><span class="math inline">\(\mu\)</span></td>
+<td style="text-align: center;">\varOmega</td>
+<td style="text-align: center;"><span class="math inline">\(\varOmega\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">\nu</td>
+<td style="text-align: center;"><span class="math inline">\(\nu\)</span></td>
+<td style="text-align: center;">\varPi</td>
+<td style="text-align: center;"><span class="math inline">\(\varPi\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">\pi</td>
+<td style="text-align: center;"><span class="math inline">\(\pi\)</span></td>
+<td style="text-align: center;">\Pi</td>
+<td style="text-align: center;"><span class="math inline">\(\Pi\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">\rho</td>
+<td style="text-align: center;"><span class="math inline">\(\rho\)</span></td>
+<td style="text-align: center;">\varSigma</td>
+<td style="text-align: center;"><span class="math inline">\(\varSigma\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">\sigma</td>
+<td style="text-align: center;"><span class="math inline">\(\sigma\)</span></td>
+<td style="text-align: center;">\Sigma</td>
+<td style="text-align: center;"><span class="math inline">\(\Sigma\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">\tau</td>
+<td style="text-align: center;"><span class="math inline">\(\tau\)</span></td>
+<td style="text-align: center;">\varPhi</td>
+<td style="text-align: center;"><span class="math inline">\(\varPhi\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">\phi</td>
+<td style="text-align: center;"><span class="math inline">\(\phi\)</span></td>
+<td style="text-align: center;">\Phi</td>
+<td style="text-align: center;"><span class="math inline">\(\Phi\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">\omega</td>
+<td style="text-align: center;"><span class="math inline">\(\omega\)</span></td>
+<td style="text-align: center;">\Omega</td>
+<td style="text-align: center;"><span class="math inline">\(\Omega\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">\tau</td>
+<td style="text-align: center;"><span class="math inline">\(\tau\)</span></td>
+<td style="text-align: center;">\Tau</td>
+<td style="text-align: center;"><span class="math inline">\(\Tau\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">\chi</td>
+<td style="text-align: center;"><span class="math inline">\(\chi\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">\upsilon</td>
+<td style="text-align: center;"><span class="math inline">\(\upsilon\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">\iota</td>
+<td style="text-align: center;"><span class="math inline">\(\iota\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="常用求和符号和积分号"><span class="header-section-number">1.3</span> 常用求和符号和积分号</h2>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">\sum</td>
+<td style="text-align: center;"><span class="math inline">\(\sum\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">\int</td>
+<td style="text-align: center;"><span class="math inline">\(\int\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">\sum_{i=1}^{N}</td>
+<td style="text-align: center;"><span class="math inline">\(\sum_{i=1}^{N}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">\int_{a}^{b}</td>
+<td style="text-align: center;"><span class="math inline">\(\int_{a}^{b}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">\prod</td>
+<td style="text-align: center;"><span class="math inline">\(\prod\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">\iint</td>
+<td style="text-align: center;"><span class="math inline">\(\iint\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">\prod_{i=1}^{N}</td>
+<td style="text-align: center;"><span class="math inline">\(\prod_{i=1}^{N}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">\iint_{a}^{b}</td>
+<td style="text-align: center;"><span class="math inline">\(\iint_{a}^{b}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">\bigcup</td>
+<td style="text-align: center;"><span class="math inline">\(\bigcup\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">\bigcap</td>
+<td style="text-align: center;"><span class="math inline">\(\bigcap\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">\bigcup_{i=1}^{N}</td>
+<td style="text-align: center;"><span class="math inline">\(\bigcup_{i=1}^{N}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">\bigcap_{i=1}^{N}</td>
+<td style="text-align: center;"><span class="math inline">\(\bigcap_{i=1}^{N}\)</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="其他常用符号"><span class="header-section-number">1.4</span> 其他常用符号</h2>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">\sqrt[3]{2}</td>
+<td style="text-align: center;"><span class="math inline">\(\sqrt[3]{2}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">\sqrt{2}</td>
+<td style="text-align: center;"><span class="math inline">\(\sqrt{2}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">\sqrt{a}</td>
+<td style="text-align: center;"><span class="math inline">\(\sqrt{a}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">\vec{a}</td>
+<td style="text-align: center;"><span class="math inline">\(\vec{a}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">\tilde{a}</td>
+<td style="text-align: center;"><span class="math inline">\(\tilde{a}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">\sqrt[3]{2}</td>
+<td style="text-align: center;"><span class="math inline">\(\sqrt[3]{2}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">x_{3}</td>
+<td style="text-align: center;"><span class="math inline">\(x_{3}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">\lim_{x \to 0}</td>
+<td style="text-align: center;"><span class="math inline">\(\lim_{x \to 0}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">\frac{1}{2}</td>
+<td style="text-align: center;"><span class="math inline">\(\frac{1}{2}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">\infty</td>
+<td style="text-align: center;"><span class="math inline">\(\infty\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">\cdotp</td>
+<td style="text-align: center;"><span class="math inline">\(\cdotp\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">\cdots</td>
+<td style="text-align: center;"><span class="math inline">\(\cdots\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">\vdots</td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">\ddots</td>
+<td style="text-align: center;"><span class="math inline">\(\ddots\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">\bot</td>
+<td style="text-align: center;"><span class="math inline">\(\bot\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">\partial</td>
+<td style="text-align: center;"><span class="math inline">\(\partial\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">\hat{a}</td>
+<td style="text-align: center;"><span class="math inline">\(\hat{a}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">\dot{a}</td>
+<td style="text-align: center;"><span class="math inline">\(\dot{a}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">\bar{a}</td>
+<td style="text-align: center;"><span class="math inline">\(\bar{a}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">a^{3}</td>
+<td style="text-align: center;"><span class="math inline">\(a^{3}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">\frac{1}{a}</td>
+<td style="text-align: center;"><span class="math inline">\(\frac{1}{a}\)</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="运算符"><span class="header-section-number">1.5</span> 运算符</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">语法</th>
+<th style="text-align: center;">效果</th>
+<th style="text-align: center;">语法</th>
+<th style="text-align: center;">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">\pm</td>
+<td style="text-align: center;"><span class="math inline">\(\pm\)</span></td>
+<td style="text-align: center;">\propto</td>
+<td style="text-align: center;"><span class="math inline">\(\propto\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">\times</td>
+<td style="text-align: center;"><span class="math inline">\(\times\)</span></td>
+<td style="text-align: center;">\leq</td>
+<td style="text-align: center;"><span class="math inline">\(\leq\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">\circ</td>
+<td style="text-align: center;"><span class="math inline">\(\circ\)</span></td>
+<td style="text-align: center;">\subseteq</td>
+<td style="text-align: center;"><span class="math inline">\(\subseteq\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">\cdot</td>
+<td style="text-align: center;"><span class="math inline">\(\cdot\)</span></td>
+<td style="text-align: center;">\subset</td>
+<td style="text-align: center;"><span class="math inline">\(\subset\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">\cap</td>
+<td style="text-align: center;"><span class="math inline">\(\cap\)</span></td>
+<td style="text-align: center;">\cup</td>
+<td style="text-align: center;"><span class="math inline">\(\cup\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">\supset</td>
+<td style="text-align: center;"><span class="math inline">\(\supset\)</span></td>
+<td style="text-align: center;">\bullet</td>
+<td style="text-align: center;"><span class="math inline">\(\bullet\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">\supseteq</td>
+<td style="text-align: center;"><span class="math inline">\(\supseteq\)</span></td>
+<td style="text-align: center;">\div</td>
+<td style="text-align: center;"><span class="math inline">\(\div\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">\geq</td>
+<td style="text-align: center;"><span class="math inline">\(\geq\)</span></td>
+<td style="text-align: center;">\mp</td>
+<td style="text-align: center;"><span class="math inline">\(\mp\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">\in</td>
+<td style="text-align: center;"><span class="math inline">\(\in\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="声调"><span class="header-section-number">1.6</span> 声调</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">语法</th>
+<th style="text-align: center;">效果</th>
+<th style="text-align: center;">语法</th>
+<th style="text-align: center;">效果</th>
+<th style="text-align: center;">语法</th>
+<th style="text-align: center;">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">\bar{x}</td>
+<td style="text-align: center;"><span class="math inline">\(\bar{x}\)</span></td>
+<td style="text-align: center;">\acute{\eta}</td>
+<td style="text-align: center;"><span class="math inline">\(\acute{\eta}\)</span></td>
+<td style="text-align: center;">\check{\alpha}</td>
+<td style="text-align: center;"><span class="math inline">\(\check{\alpha}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">\grave{\eta}</td>
+<td style="text-align: center;"><span class="math inline">\(\grave{\eta}\)</span></td>
+<td style="text-align: center;">\breve{a}</td>
+<td style="text-align: center;"><span class="math inline">\(\breve{a}\)</span></td>
+<td style="text-align: center;">\ddot{y}</td>
+<td style="text-align: center;"><span class="math inline">\(\ddot{y}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">\dot{x}</td>
+<td style="text-align: center;"><span class="math inline">\(\dot{x}\)</span></td>
+<td style="text-align: center;">\hat{\alpha}</td>
+<td style="text-align: center;"><span class="math inline">\(\hat{\alpha}\)</span></td>
+<td style="text-align: center;">\tilde{\iota}</td>
+<td style="text-align: center;"><span class="math inline">\(\tilde{\iota}\)</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="根号"><span class="header-section-number">1.7</span> 根号</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">语法</th>
+<th style="text-align: center;">效果</th>
+<th style="text-align: center;">语法</th>
+<th style="text-align: center;">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">\sqrt{3}</td>
+<td style="text-align: center;"><span class="math inline">\(\sqrt{3}\)</span></td>
+<td style="text-align: center;">\sqrt[n]{3}</td>
+<td style="text-align: center;"><span class="math inline">\(\sqrt[n]{3}\)</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="上标下标"><span class="header-section-number">1.8</span> 上标下标</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">功能</th>
+<th style="text-align: center;">语法</th>
+<th style="text-align: center;">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">上标</td>
+<td style="text-align: center;">a^2</td>
+<td style="text-align: center;"><span class="math inline">\(a^2\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">下标</td>
+<td style="text-align: center;">a_2</td>
+<td style="text-align: center;"><span class="math inline">\(a_2\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">组合</td>
+<td style="text-align: center;">a^{2+2}</td>
+<td style="text-align: center;"><span class="math inline">\(a^{2+2}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">组合</td>
+<td style="text-align: center;">a_{i,j}</td>
+<td style="text-align: center;"><span class="math inline">\(a_{i,j}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">结合</td>
+<td style="text-align: center;">x_2^3</td>
+<td style="text-align: center;"><span class="math inline">\(x_2^3\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">前置</td>
+<td style="text-align: center;">{}_1^2!X_3^4</td>
+<td style="text-align: center;"><span class="math inline">\({}_1^2\!X_3^4\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">向量</td>
+<td style="text-align: center;">\vec{c}</td>
+<td style="text-align: center;"><span class="math inline">\(\vec{c}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">向量</td>
+<td style="text-align: center;">\overleftarrow{a b}</td>
+<td style="text-align: center;"><span class="math inline">\(\overleftarrow{a b}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">向量</td>
+<td style="text-align: center;">\overrightarrow{c d}</td>
+<td style="text-align: center;"><span class="math inline">\(\overrightarrow{c d}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">导数</td>
+<td style="text-align: center;">x'</td>
+<td style="text-align: center;"><span class="math inline">\(x&#39;\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">导数</td>
+<td style="text-align: center;">x^\prime</td>
+<td style="text-align: center;"><span class="math inline">\(x^\prime\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">导数</td>
+<td style="text-align: center;">\dot{x}</td>
+<td style="text-align: center;"><span class="math inline">\(\dot{x}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">导数</td>
+<td style="text-align: center;">\ddot{y}</td>
+<td style="text-align: center;"><span class="math inline">\(\ddot{y}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">上划线</td>
+<td style="text-align: center;">\overline{h i j}</td>
+<td style="text-align: center;"><span class="math inline">\(\overline{h i j}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">下划线</td>
+<td style="text-align: center;">\underline{k l m}</td>
+<td style="text-align: center;"><span class="math inline">\(\underline{k l m}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">上面</td>
+<td style="text-align: center;">\overset{P}{\longrightarrow}</td>
+<td style="text-align: center;"><span class="math inline">\(\overset{P}{\longrightarrow}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">下面</td>
+<td style="text-align: center;">\underset{P}{\Longrightarrow}</td>
+<td style="text-align: center;"><span class="math inline">\(\underset{P}{\Longrightarrow}\)</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>默认行内公式<code>$\sum_{k=1}^n{x_k}$</code>上下标: <span class="math inline">\(\sum_{k=1}^n{x_k}\)</span></li>
+<li><p>默认行间公式<code>$$\sum_{k=1}^n{x_k}$$</code>上下标: <span class="math display">\[\sum_{k=1}^n{x_k}\]</span></p></li>
+<li>强制行内公式<code>$\sum\limits_{k=1}^n{x_k}$</code>上下标: <span class="math inline">\(\sum\limits_{k=1}^n{x_k}\)</span></li>
+<li><p>强制行间公式<code>$$\sum\nolimits_{k=1}^n{x_k}$$</code>上下标: <span class="math display">\[\sum\nolimits_{k=1}^n{x_k}\]</span></p></li>
+</ul>
+<h2 id="空白类型列举"><span class="header-section-number">1.9</span> 空白类型列举</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">功能</th>
+<th style="text-align: center;">语法</th>
+<th style="text-align: center;">效果</th>
+<th style="text-align: center;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">两个空格</td>
+<td style="text-align: center;">a \qquad b</td>
+<td style="text-align: center;"><span class="math inline">\(a \qquad b\)</span></td>
+<td style="text-align: center;">两个m的宽度</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">一个空格</td>
+<td style="text-align: center;">a \quad b</td>
+<td style="text-align: center;"><span class="math inline">\(a \quad b\)</span></td>
+<td style="text-align: center;">一个m的宽度</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">大空格</td>
+<td style="text-align: center;">a\ b</td>
+<td style="text-align: center;"><span class="math inline">\(a\ b\)</span></td>
+<td style="text-align: center;">1/3m宽度</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">中等空格</td>
+<td style="text-align: center;">a\;b</td>
+<td style="text-align: center;"><span class="math inline">\(a\;b\)</span></td>
+<td style="text-align: center;">2/7m宽度</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">小空格</td>
+<td style="text-align: center;">a,b</td>
+<td style="text-align: center;"><span class="math inline">\(a,b\)</span></td>
+<td style="text-align: center;">1/6m宽度</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">没有空格</td>
+<td style="text-align: center;">ab</td>
+<td style="text-align: center;"><span class="math inline">\(ab\)</span></td>
+<td style="text-align: center;">正常宽度</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">紧贴</td>
+<td style="text-align: center;">a!b</td>
+<td style="text-align: center;"><span class="math inline">\(a!b\)</span></td>
+<td style="text-align: center;">缩进1/6m宽度</td>
+</tr>
+</tbody>
+</table>
+<h2 id="公式锚点"><span class="header-section-number">1.10</span> 公式锚点</h2>
+<pre><code>$\int_{-\infty}^\infty e^{-\pi x^2}\,\mathrm{d}x=1\label{a}\tag{1}$
+
+这里引用$\ref{a}$</code></pre>
+<p><span class="math inline">\(\int_{-\infty}^\infty e^{-\pi x^2}\,\mathrm{d}x=1\label{a}\tag{1}\)</span> 这里引用<span class="math inline">\(\ref{a}\)</span></p>
+<h2 id="矩阵"><span class="header-section-number">1.11</span> 矩阵</h2>
+<h3 id="简单的矩阵"><span class="header-section-number">1.11.1</span> 简单的矩阵</h3>
+<pre><code>$$
+\begin{matrix}
+    1 &amp; 2 &amp; 3 \\
+    4 &amp; 5 &amp; 6 \\
+    7 &amp; 8 &amp; 9
+\end{matrix}  \tag{3}
+$$</code></pre>
+<p><span class="math display">\[
+\begin{matrix}
+    1 &amp; 2 &amp; 3 \\
+    4 &amp; 5 &amp; 6 \\
+    7 &amp; 8 &amp; 9
+\end{matrix}  \tag{3}
+\]</span></p>
+<h3 id="带括号的矩阵"><span class="header-section-number">1.11.2</span> 带括号的矩阵</h3>
+<pre><code>$$
+\left \{
+    \begin{matrix}
+        1 &amp; 2 &amp; 3 \\
+        4 &amp; 5 &amp; 6 \\
+        7 &amp; 8 &amp; 9
+    \end{matrix}
+\right \} \tag{4}
+$$</code></pre>
+<p><span class="math display">\[
+\left \{
+    \begin{matrix}
+        1 &amp; 2 &amp; 3 \\
+        4 &amp; 5 &amp; 6 \\
+        7 &amp; 8 &amp; 9
+    \end{matrix}
+\right \} \tag{4}
+\]</span></p>
+<pre><code>$$
+\left [
+    \begin{matrix}
+        1 &amp; 2 &amp; 3 \\
+        4 &amp; 5 &amp; 6 \\
+        7 &amp; 8 &amp; 9
+    \end{matrix}
+\right ] \tag{5}
+$$</code></pre>
+<p><span class="math display">\[
+\left[
+    \begin{matrix}
+        1 &amp; 2 &amp; 3 \\
+        4 &amp; 5 &amp; 6 \\
+        7 &amp; 8 &amp; 9
+    \end{matrix}
+\right] \tag{5}
+\]</span></p>
+<pre><code>$$
+\begin{bmatrix}
+    1 &amp; 2 &amp; 3 \\
+    4 &amp; 5 &amp; 6 \\
+    7 &amp; 8 &amp; 9
+\end{bmatrix} \tag{6}
+$$</code></pre>
+<p><span class="math display">\[
+\begin{bmatrix}
+    1 &amp; 2 &amp; 3 \\
+    4 &amp; 5 &amp; 6 \\
+    7 &amp; 8 &amp; 9
+\end{bmatrix} \tag{6}
+\]</span></p>
+<pre><code>$$
+\begin{Bmatrix}
+    1 &amp; 2 &amp; 3 \\
+    4 &amp; 5 &amp; 6 \\
+    7 &amp; 8 &amp; 9
+\end{Bmatrix} \tag{7}
+$$</code></pre>
+<p><span class="math display">\[
+\begin{Bmatrix}
+    1 &amp; 2 &amp; 3 \\
+    4 &amp; 5 &amp; 6 \\
+    7 &amp; 8 &amp; 9
+\end{Bmatrix} \tag{7}
+\]</span></p>
+<pre><code>$$
+\begin{vmatrix}
+    1 &amp; 2 &amp; 3 \\
+    4 &amp; 5 &amp; 6 \\
+    7 &amp; 8 &amp; 9
+\end{vmatrix} \tag{8}
+$$</code></pre>
+<p><span class="math display">\[
+\begin{vmatrix}
+    1 &amp; 2 &amp; 3 \\
+    4 &amp; 5 &amp; 6 \\
+    7 &amp; 8 &amp; 9
+\end{vmatrix} \tag{8}
+\]</span></p>
+<pre><code>$$
+\begin{Vmatrix}
+    1 &amp; 2 &amp; 3 \\
+    4 &amp; 5 &amp; 6 \\
+    7 &amp; 8 &amp; 9
+\end{Vmatrix} \tag{9}
+$$</code></pre>
+<p><span class="math display">\[
+\begin{Vmatrix}
+    1 &amp; 2 &amp; 3 \\
+    4 &amp; 5 &amp; 6 \\
+    7 &amp; 8 &amp; 9
+\end{Vmatrix} \tag{9}
+\]</span></p>
+<h2 id="排版"><span class="header-section-number">1.12</span> 排版</h2>
+<h3 id="多行方程组对齐"><span class="header-section-number">1.12.1</span> 多行方程组对齐</h3>
+<pre><code>$$ 
+\begin{cases} 
+    a_{11}x_1&amp;+&amp;a_{12}x_2&amp;+&amp;\cdots&amp;+a_{1n}x_n&amp;=&amp;b_1\\
+    &amp;&amp;&amp;&amp;\vdots\\
+    a_{n1}x_1&amp;+&amp;a_{n2}x_2&amp;+&amp;\cdots&amp;+a_{nn}x_n&amp;=&amp;b_n&amp;
+\end{cases}
+$$</code></pre>
+<p><span class="math display">\[ 
+\begin{cases} 
+    a_{11}x_1&amp;+&amp;a_{12}x_2&amp;+&amp;\cdots&amp;+a_{1n}x_n&amp;=&amp;b_1\\
+    &amp;&amp;&amp;&amp;\vdots\\
+    a_{n1}x_1&amp;+&amp;a_{n2}x_2&amp;+&amp;\cdots&amp;+a_{nn}x_n&amp;=&amp;b_n&amp;
+\end{cases}
+\]</span></p>
+<pre><code>$$ 
+\begin{align*} 
+　　&amp;a_1 x + b_1 y + c_1 z = d_1\tag{$3.11$}  \\ 
+　　&amp;aa_2 x + b_2 y + c_2 z = d_2\tag{$3.12$}  \\
+　　&amp;aaa_3 x + b_3 y + c_3 z = d_3\tag{$3.13$}
+\end{align*}
+$$</code></pre>
+<p><span class="math display">\[ 
+\begin{align*} 
+　　&amp;a_1 x + b_1 y + c_1 z = d_1\tag{$3.11$}  \\ 
+　　&amp;aa_2 x + b_2 y + c_2 z = d_2\tag{$3.12$}  \\
+　　&amp;aaa_3 x + b_3 y + c_3 z = d_3\tag{$3.13$}
+\end{align*}
+\]</span></p>
+<h3 id="多行公式等号对齐"><span class="header-section-number">1.12.2</span> 多行公式等号对齐</h3>
+<p>eqnarray(built-in) is similar to align(amsmath package) below</p>
+<pre><code>$$
+\begin{eqnarray}
+    f(x,y) &amp;=&amp; 2xy+(x-y)^2\\
+           &amp;=&amp; x^2+y^2
+\end{eqnarray}
+$$</code></pre>
+<p><span class="math display">\[
+\begin{eqnarray}
+    f(x,y) &amp;=&amp; 2xy+(x-y)^2\\
+           &amp;=&amp; x^2+y^2
+\end{eqnarray}
+\]</span></p>
+<pre><code>$$
+\begin{align*}
+    f(x,y) &amp;= 2xy+(x-y)^2 \\
+           &amp;= x^2+y^2
+\end{align*}
+$$</code></pre>
+<p><span class="math display">\[
+\begin{align*}
+    f(x,y) &amp;= 2xy+(x-y)^2 \\
+           &amp;= x^2+y^2
+\end{align*}
+\]</span></p>
+<p>指定第几列对齐</p>
+<pre><code>$$
+\begin{alignat}{2} 
+    \sigma_1 &amp;= x + y &amp;\qquad \sigma_2 &amp;= \frac{x}{y} \\
+    \sigma_1&#39; &amp;= \frac{\partial x + y}{\partial x} &amp; \sigma_2&#39; &amp;= \frac{\partial \frac{x}{y}}{\partial x}
+\end{alignat}
+$$</code></pre>
+<p><span class="math display">\[
+\begin{alignat}{2} 
+    \sigma_1 &amp;= x + y &amp;\quad \sigma_2 &amp;= \frac{x}{y} \\
+    \sigma_1&#39; &amp;= \frac{\partial x + y}{\partial x} &amp; \sigma_2&#39; &amp;= \frac{\partial \frac{x}{y}}{\partial x}
+\end{alignat}
+\]</span></p>
+<h3 id="大括号右多行赋值"><span class="header-section-number">1.12.3</span> 大括号右多行赋值</h3>
+<pre><code>$$
+\left\{\begin{array}{cc} 
+        1, &amp; x=f(Pa_{x})\\ 
+        0, &amp; other\ values 
+\end{array}\right.
+$$</code></pre>
+<p><span class="math display">\[
+\left\{\begin{array}{cc} 
+        1, &amp; x=f(Pa_{x})\\ 
+        0, &amp; other\ values 
+\end{array}\right.
+\]</span></p>
+<pre><code>$$
+P(x|Pa_x)=\begin{cases} 
+        1, &amp; x=f(Pa_{x})\\ 
+        0, &amp; other\ values 
+\end{cases}
+$$</code></pre>
+<p><span class="math display">\[
+P(x|Pa_x)=\begin{cases} 
+        1, &amp; x=f(Pa_{x})\\ 
+        0, &amp; other\ values 
+\end{cases}
+\]</span></p>
+<pre><code>$$
+\begin{equation}
+    \left.\begin{aligned}
+            B&#39;&amp;=-\partial \times E,\\
+            E&#39;&amp;=\partial \times B - 4\pi j,
+           \end{aligned}
+    \right\}
+    \qquad \text{Maxwell&#39;s equations}
+\end{equation}
+$$</code></pre>
+<p><span class="math display">\[
+\begin{equation}
+    \left.\begin{aligned}
+            B&#39;&amp;=-\partial \times E,\\
+            E&#39;&amp;=\partial \times B - 4\pi j,
+           \end{aligned}
+    \right\}
+    \qquad \text{Maxwell&#39;s equations}
+\end{equation}
+\]</span></p>
+<h2 id="字体"><span class="header-section-number">1.13</span> 字体</h2>
+<ul>
+<li>黑板粗体<code>$\mathbb{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$</code>: <span class="math inline">\(\mathbb{ABCDEFGHIJKLMNOPQRSTUVWXYZ}\)</span></li>
+<li>正粗体<code>$\mathbf{012abcABC}$</code>: <span class="math inline">\(\mathbf{012abcABC}\)</span></li>
+<li>罗马体<code>$\mathrm{012abcABC}$</code>: <span class="math inline">\(\mathrm{012abcABC}\)</span></li>
+<li>斜体数字<code>$\mathit{0123456789}$</code>: <span class="math inline">\(\mathit{0123456789}\)</span></li>
+<li>手写体 <code>$\mathcal{012abcABC}$</code>: <span class="math inline">\(\mathcal{012abcABC}\)</span></li>
+</ul>
+<h2 id="括号"><span class="header-section-number">1.14</span> 括号</h2>
+<p><code>\Bigg ( \bigg [ \Big \{ \big \langle \left | \| \frac{a}{b} \| \right | \big\rangle \Big \} \bigg ] \Bigg )</code>:</p>
+<p><span class="math display">\[
+\Bigg ( \bigg [ \Big \{ \big \langle \left | \| \frac{a}{b} \| \right | \big\rangle \Big \} \bigg ] \Bigg )
+\]</span></p>
+<h2 id="颜色"><span class="header-section-number">1.15</span> 颜色</h2>
+<ul>
+<li>字体颜色︰<code>$\color{色调}表达式$</code></li>
+<li>背景颜色︰<code>$\pagecolor{色调}表达式$</code></li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\color{Apricot}Apricot\)</span></td>
+<td><span class="math inline">\(\color{Aquamarine}Aquamarine\)</span></td>
+<td><span class="math inline">\(\color{Bittersweet}Bittersweet\)</span></td>
+<td><span class="math inline">\(\color{Black}Black\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\color{Blue}Blue\)</span></td>
+<td><span class="math inline">\(\color{BlueGreen}BlueGreen\)</span></td>
+<td><span class="math inline">\(\color{BlueViolet}BlueViolet\)</span></td>
+<td><span class="math inline">\(\color{BrickRed}BrickRed\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\color{Brown}Brown\)</span></td>
+<td><span class="math inline">\(\color{BurntOrange}BurntOrange\)</span></td>
+<td><span class="math inline">\(\color{CadetBlue}CadetBlue\)</span></td>
+<td><span class="math inline">\(\color{CarnationPink}CarnationPink\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\color{Cerulean}Cerulean\)</span></td>
+<td><span class="math inline">\(\color{CornflowerBlue}CornflowerBlue\)</span></td>
+<td><span class="math inline">\(\color{Cyan}Cyan\)</span></td>
+<td><span class="math inline">\(\color{Dandelion}Dandelion\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\color{DarkOrchid}DarkOrchid\)</span></td>
+<td><span class="math inline">\(\color{Emerald}Emerald\)</span></td>
+<td><span class="math inline">\(\color{ForestGreen}ForestGreen\)</span></td>
+<td><span class="math inline">\(\color{Fuchsia}Fuchsia\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\color{Goldenrod}Goldenrod\)</span></td>
+<td><span class="math inline">\(\color{Gray}Gray\)</span></td>
+<td><span class="math inline">\(\color{Green}Green\)</span></td>
+<td><span class="math inline">\(\color{GreenYellow}GreenYellow\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\color{JungleGreen}JungleGreen\)</span></td>
+<td><span class="math inline">\(\color{Lavender}Lavender\)</span></td>
+<td><span class="math inline">\(\color{LimeGreen}LimeGreen\)</span></td>
+<td><span class="math inline">\(\color{Magenta}Magenta\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\color{Mahogany}Mahogany\)</span></td>
+<td><span class="math inline">\(\color{Maroon}Maroon\)</span></td>
+<td><span class="math inline">\(\color{Melon}Melon\)</span></td>
+<td><span class="math inline">\(\color{MidnightBlue}MidnightBlue\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\color{Mulberry}Mulberry\)</span></td>
+<td><span class="math inline">\(\color{NavyBlue}NavyBlue\)</span></td>
+<td><span class="math inline">\(\color{OliveGreen}OliveGreen\)</span></td>
+<td><span class="math inline">\(\color{Orange}Orange\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\color{OrangeRed}OrangeRed\)</span></td>
+<td><span class="math inline">\(\color{Orchid}Orchid\)</span></td>
+<td><span class="math inline">\(\color{Peach}Peach\)</span></td>
+<td><span class="math inline">\(\color{Periwinkle}Periwinkle\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\color{PineGreen}PineGreen\)</span></td>
+<td><span class="math inline">\(\color{Plum}Plum\)</span></td>
+<td><span class="math inline">\(\color{ProcessBlue}ProcessBlue\)</span></td>
+<td><span class="math inline">\(\color{Purple}Purple\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\color{RawSienna}RawSienna\)</span></td>
+<td><span class="math inline">\(\color{Red}Red\)</span></td>
+<td><span class="math inline">\(\color{RedOrange}RedOrange\)</span></td>
+<td><span class="math inline">\(\color{RedViolet}RedViolet\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\color{Rhodamine}Rhodamine\)</span></td>
+<td><span class="math inline">\(\color{RoyalBlue}RoyalBlue\)</span></td>
+<td><span class="math inline">\(\color{RoyalPurple}RoyalPurple\)</span></td>
+<td><span class="math inline">\(\color{RubineRed}RubineRed\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\color{Salmon}Salmon\)</span></td>
+<td><span class="math inline">\(\color{SeaGreen}SeaGreen\)</span></td>
+<td><span class="math inline">\(\color{Sepia}Sepia\)</span></td>
+<td><span class="math inline">\(\color{SkyBlue}SkyBlue\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\color{SpringGreen}SpringGreen\)</span></td>
+<td><span class="math inline">\(\color{Tan}Tan\)</span></td>
+<td><span class="math inline">\(\color{TealBlue}TealBlue\)</span></td>
+<td><span class="math inline">\(\color{Thistle}Thistle\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\color{Turquoise}Turquoise\)</span></td>
+<td><span class="math inline">\(\color{Violet}Violet\)</span></td>
+<td><span class="math inline">\(\color{VioletRed}VioletRed\)</span></td>
+<td><span class="math inline">\(\color{White}White\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\color{WildStrawberry}WildStrawberry\)</span></td>
+<td><span class="math inline">\(\color{Yellow}Yellow\)</span></td>
+<td><span class="math inline">\(\color{YellowGreen}YellowGreen\)</span></td>
+<td><span class="math inline">\(\color{YellowOrange}YellowOrange\)</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="特殊例子"><span class="header-section-number">1.16</span> 特殊例子</h2>
+<h3 id="分子分母"><span class="header-section-number">1.16.1</span> 分子分母</h3>
+<pre><code>$$
+x_1^*=\dfrac{a_{22}r_1-a_{12}r_2}{a_{11}a_{22}-a_{12}a_{21}}
+$$</code></pre>
+<p><span class="math display">\[
+x_1^*=\dfrac{a_{22}r_1-a_{12}r_2}{a_{11}a_{22}-a_{12}a_{21}}
+\]</span></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">语法</th>
+<th style="text-align: center;">效果</th>
+<th style="text-align: center;">语法</th>
+<th style="text-align: center;">效果</th>
+<th style="text-align: center;">语法</th>
+<th style="text-align: center;">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">\frac{a}{b}</td>
+<td style="text-align: center;"><span class="math inline">\(\frac{a}{b}\)</span></td>
+<td style="text-align: center;">\dfrac{c}{d}</td>
+<td style="text-align: center;"><span class="math inline">\(\dfrac{c}{d}\)</span></td>
+<td style="text-align: center;">e/f</td>
+<td style="text-align: center;"><span class="math inline">\(e/f\)</span></td>
+</tr>
+</tbody>
+</table>
+<h3 id="分布"><span class="header-section-number">1.16.2</span> 分布</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">分布名</th>
+<th style="text-align: center;">语法</th>
+<th style="text-align: center;">效果</th>
+<th style="text-align: left;">例子</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">二项分布</td>
+<td style="text-align: center;"><code>\binom{n}{k}</code></td>
+<td style="text-align: center;"><span class="math inline">\(\binom{n}{k}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(f(k) = \binom{n}{k} p^k (1-p)^{n-k}\)</span></td>
+</tr>
+</tbody>
+</table>
+<h3 id="在线使用"><span class="header-section-number">1.16.3</span> 在线使用</h3>
+<p>只能行间</p>
+<p><code>![](http://latex.codecogs.com/gif.latex?F%28x%29%20%3D%20%5Cint_%7Ba%7D%5E%7Bb%7Df%28x%29dx "latextest")</code></p>
+<p>输出:</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://latex.codecogs.com/gif.latex?F%28x%29%20%3D%20%5Cint_%7Ba%7D%5E%7Bb%7Df%28x%29dx" alt="latextest" title>
+                </div>
+                <div class="image-caption">latextest</div>
+            </figure>
+</body>
+</html>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-07-16T15:50:14.743Z" itemprop="dateUpdated">2019-07-16 23:50:14</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://qrsforever.github.io">
+            <img src="/img/avatar.jpg" alt="qrsforever">
+            qrsforever
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2018/10/31/Tutorial/Latex/&title=《(原创)Tutorial for Latex》 — 奥卡姆剃刀&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2018/10/31/Tutorial/Latex/&title=《(原创)Tutorial for Latex》 — 奥卡姆剃刀&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2018/10/31/Tutorial/Latex/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《(原创)Tutorial for Latex》 — 奥卡姆剃刀&url=https://qrsforever.github.io/2018/10/31/Tutorial/Latex/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2018/10/31/Tutorial/Latex/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/11/05/Books/Statistics/statistics_elements/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">统计学基础</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/10/30/Story/Math/Frequentist_Bayesian/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Frequentist和Bayesian之前的故事</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "bpShGWdW8DpODhnDko5O2IBB-gzGzoHsz",
+            appKey: "rwmasTllBbHE69ADuLjFyFWf",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢打赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>qrsforever &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2018/10/31/Tutorial/Latex/&title=《(原创)Tutorial for Latex》 — 奥卡姆剃刀&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2018/10/31/Tutorial/Latex/&title=《(原创)Tutorial for Latex》 — 奥卡姆剃刀&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2018/10/31/Tutorial/Latex/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《(原创)Tutorial for Latex》 — 奥卡姆剃刀&url=https://qrsforever.github.io/2018/10/31/Tutorial/Latex/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2018/10/31/Tutorial/Latex/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://qrsforever.github.io/2018/10/31/Tutorial/Latex/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- lidong cha. -->
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- lidong end. -->
+
+</body>
+</html>

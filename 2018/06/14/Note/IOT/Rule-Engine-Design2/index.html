@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?cb4be66237379541488b8502a6eca006"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>(原创)本地规则引擎介绍 | 奥卡姆剃刀 | 你们都是大傻瓜, 我是天下大赢家</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="IOT,DrawIt">
+    <meta name="description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta name="keywords" content="IOT,DrawIt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(原创)本地规则引擎介绍">
+<meta property="og:url" content="https://qrsforever.github.io/2018/06/14/Note/IOT/Rule-Engine-Design2/index.html">
+<meta property="og:site_name" content="奥卡姆剃刀">
+<meta property="og:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-24T15:12:29.178Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="(原创)本地规则引擎介绍">
+<meta name="twitter:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+    
+        <link rel="alternate" type="application/atom+xml" title="奥卡姆剃刀" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">qrsforever</h5>
+          <a href="mailto:985612771@qq.com" title="985612771@qq.com" class="mail">985612771@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/705723886/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://zytforever.github.io" target="_blank" >
+                <i class="icon icon-lg icon-eye"></i>
+                Stocktech
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">(原创)本地规则引擎介绍</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">(原创)本地规则引擎介绍</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-06-14T07:48:14.000Z" itemprop="datePublished" class="page-time">
+  2018-06-14
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#elink"><span class="post-toc-number">1.</span> <span class="post-toc-text">2 Elink</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#rule-schema"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">2.1 Rule Schema</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#device-schema"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2.2 Device Schema</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#rule-model-design"><span class="post-toc-number">2.</span> <span class="post-toc-text">3 Rule Model Design</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#lhs-tree"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">3.1 LHS Tree</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#clp-struct"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">3.2 Clp Struct</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#rule-class-uml"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">3.3 Rule Class UML</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#clp-script-design"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">3.4 Clp Script Design</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#act-auto-gen-rule"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">3.5 Act Auto Gen Rule</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#others"><span class="post-toc-number">3.</span> <span class="post-toc-text">4 Others</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#local-build"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">4.1 Local Build</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#sync-elink-script"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">4.2 Sync Elink Script</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#rule-categories"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">4.3 Rule Categories</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#todo"><span class="post-toc-number">4.</span> <span class="post-toc-text">5 TODO</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Note/IOT/Rule-Engine-Design2"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">(原创)本地规则引擎介绍</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-06-14 15:48:14" datetime="2018-06-14T07:48:14.000Z"  itemprop="datePublished">2018-06-14</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#elink">Elink</a>
+<ul>
+<li><a href="#rule-schema">Rule Schema</a></li>
+<li><a href="#device-schema">Device Schema</a></li>
+</ul></li>
+<li><a href="#rule-model-design">Rule Model Design</a>
+<ul>
+<li><a href="#lhs-tree">LHS Tree</a></li>
+<li><a href="#clp-struct">Clp Struct</a></li>
+<li><a href="#rule-class-uml">Rule Class UML</a></li>
+<li><a href="#clp-script-design">Clp Script Design</a></li>
+<li><a href="#act-auto-gen-rule">Act Auto Gen Rule</a></li>
+</ul></li>
+<li><a href="#others">Others</a>
+<ul>
+<li><a href="#local-build">Local Build</a></li>
+<li><a href="#sync-elink-script">Sync Elink Script</a></li>
+<li><a href="#rule-categories">Rule Categories</a></li>
+</ul></li>
+<li><a href="#todo">TODO</a></li>
+</ul>
+<!-- vim-markdown-toc -->
+<a id="more"></a>
+<h1 id="elink"><span class="header-section-number">2</span> Elink</h1>
+<h2 id="rule-schema"><span class="header-section-number">2.1</span> Rule Schema</h2>
+<pre class=":json"><code>        {
+            &quot;ruleName&quot;:&quot;example&quot;,
+            &quot;ruleId&quot;:&quot;123456&quot;,
+            &quot;description&quot;:&quot;this is a example for rule definition&quot;,
+            &quot;trigger&quot;:{
+                &quot;triggerType&quot;:&quot;auto|manual&quot;,
+                &quot;switch&quot;:{
+                    &quot;enabled&quot;:&quot;on&quot;,
+                    &quot;timeCondition&quot;:&quot;on&quot;,
+                    &quot;deviceCondition &quot;:&quot;on&quot;,
+                    &quot;notify&quot;:&quot;on&quot;,
+                    &quot;manual&quot;:&quot;on&quot;
+                }
+            },
+            &quot;conditions&quot;:{
+                &quot;conditionLogic&quot;:&quot;and&quot;,
+                &quot;timeCondition&quot;:[
+                {
+                    &quot;year&quot;:&quot;2018&quot;,
+                    &quot;month&quot;:&quot;10&quot;,
+                    &quot;day&quot;:&quot;10|13|17&quot;,
+                    &quot;hour&quot;:&quot;every&quot;,
+                    &quot;minute&quot;:&quot;every&quot;,
+                    &quot;second&quot;:&quot;1&quot;
+                }
+                ],
+                &quot;deviceCondition&quot;:{
+                    &quot;deviceLogic&quot;:&quot;or&quot;,
+                    &quot;deviceStatus&quot;:[
+                    {
+                        &quot;deviceId&quot;:&quot;0007A895C8A7&quot;,
+                        &quot;propName&quot;:&quot;CurrentTemperature&quot;,
+                        &quot;propValue&quot;:&quot;v&gt;50&quot;
+                    },
+                    {
+                        &quot;deviceId&quot;:&quot;DC330D799327&quot;,
+                        &quot;propName&quot;:&quot;onOffLight&quot;,
+                        &quot;propValue&quot;:&quot;v==true&quot;
+                    }
+                    ]
+                }
+            },
+            &quot;actions&quot;:{
+                &quot;notify&quot;:{
+                    &quot;title&quot;: &quot;xxx&quot;,
+                    &quot;message&quot;:&quot;Girlfriend Birthday!&quot;
+                },
+                &quot;deviceControl&quot;:[
+                {
+                    &quot;deviceId&quot;:&quot;0007A895C7C7&quot;,
+                    &quot;propName&quot;:&quot;CurrentTemperature&quot;,
+                    &quot;propValue&quot;:&quot;50&quot;
+                },
+                {
+                    &quot;deviceId&quot;:&quot;DC330D79932A&quot;,
+                    &quot;propName&quot;:&quot;onOffLight&quot;,
+                    &quot;propValue&quot;:&quot;true&quot;
+                }
+                ],
+                &quot;manualRuleId&quot;:[
+                    &quot;1528374365.417.48775&quot;,
+                    &quot;1528424679.929.67961&quot;
+                ]
+            }
+        }</code></pre>
+<h2 id="device-schema"><span class="header-section-number">2.2</span> Device Schema</h2>
+<pre><code>         {
+            &quot;result&quot;: {
+                &quot;description&quot;: &quot;烟雾报警器&quot;,
+                &quot;id&quot;: 12,
+                &quot;profile&quot;: {
+                    &quot;OnlineState&quot;: {
+                        &quot;tag&quot;: &quot;在线状态&quot;,
+                        &quot;write&quot;: &quot;F&quot;,
+                        &quot;type&quot;: &quot;enum&quot;,
+                        &quot;read&quot;: &quot;T&quot;,
+                        &quot;range&quot;: {
+                            &quot;2&quot;: &quot;离线&quot;,
+                            &quot;1&quot;: &quot;在线&quot;
+                        }
+                    },
+                    &quot;PowerOnOff&quot;: {
+                        &quot;tag&quot;: &quot;开关状态&quot;,
+                        &quot;write&quot;: &quot;F&quot;,
+                        &quot;type&quot;: &quot;enum&quot;,
+                        &quot;read&quot;: &quot;T&quot;,
+                        &quot;range&quot;: {
+                            &quot;2&quot;: &quot;关闭&quot;,
+                            &quot;1&quot;: &quot;开启&quot;
+                        }
+                    },
+                    &quot;SecurityControl&quot;: {
+                        &quot;tag&quot;: &quot;布防开关&quot;,
+                        &quot;write&quot;: &quot;T&quot;,
+                        &quot;type&quot;: &quot;enum&quot;,
+                        &quot;read&quot;: &quot;T&quot;,
+                        &quot;range&quot;: {
+                            &quot;2&quot;: &quot;关闭&quot;,
+                            &quot;1&quot;: &quot;开启&quot;
+                        }
+                    },
+                    &quot;Battery&quot;: {
+                        &quot;tag&quot;: &quot;剩余电量&quot;,
+                        &quot;write&quot;: &quot;F&quot;,
+                        &quot;type&quot;: &quot;enum&quot;,
+                        &quot;read&quot;: &quot;T&quot;,
+                        &quot;range&quot;: {
+                            &quot;2&quot;: &quot;正常&quot;,
+                            &quot;1&quot;: &quot;低电量&quot;
+                        }
+                    }
+                }
+            },
+            &quot;status&quot;: 1,
+            &quot;request&quot;: &quot;/api/device/profile&quot;
+        }</code></pre>
+<p><em>规则引擎的设计参考了Elink的json schema, 但设计上并不会受限该schema, 如果不加新的特殊需求, 设计模型不会大改.</em></p>
+<h1 id="rule-model-design"><span class="header-section-number">3</span> Rule Model Design</h1>
+<h2 id="lhs-tree"><span class="header-section-number">3.1</span> LHS Tree</h2>
+<pre><code>LHSNode Tree
+
+                                              *********          &quot;and&quot;: condition logic
+                                           *** LHSNode  **
+                                           *             *
+                                           ***  &quot;and&quot;  ***
+                                         /    *********    \
+                                        /         |         \
+                             child     /          |          \   child
+                                      /      cond |           \
+                                     /            |            \
+                                    /             |             \
+                                   /              |              \
+                                  /               |               \
+                                 /                |                \
+                      *********            +-------------+            *********
+                   *** LHSNode ***         |  Condition  |         *** LHSNode ***
+                   *             *         |             |         *             *
+                   ***  &quot;or&quot;   ***         |    &quot;and&quot;    |         ***   &quot;or&quot;  ***
+                   /  *********  \         +-------------+            *********
+                  /               \
+                 /                 \            &quot;and&quot;: slot logic, only support &quot;and&quot;
+                / cond         cond \
+               /                     \                                                +---------------------------+
+              /                       \                                               |          +------+         |
+      +-------------+           +-------------+                                       |          |      |         |
+      |  Condition  |           |  Condition  |                                     Fact    Instance    |         |
+      |             |           |             |                                       \        /        |         |
+      |   &quot;and&quot;     |           |    &quot;and&quot;    |                                        \ type /         |         |
+      +-------------+           +-------------+                                         \    /          v         v
+                                       |                                               Condition &lt;---&gt; Device | TimeEvent
+                                       |                                               SlotPoint &lt;---&gt; Property
+                                       |
+                -----------+-----------+-----------+---------------
+                           |                       |
+                           |                       |
+                           v                       v
+                    +-------------+         +-------------+     &quot;&amp;&quot;: cell logic
+                    |  SlotPoint  |         |  SlotPoint  |     &quot;|&quot;: cell logic
+                    |             |         |             |     &quot;~&quot;
+                    |    &quot;&amp;&quot;      |         |     &quot;|&quot;     |
+                    +-------------+         +-------------+
+                           |                       |
+                           |                       |
+                           v                       v
+                 +-------------------+    +-------------------+
+                 |       Cell        |    |       Cell        |    Compare Symbol: &quot;=, &gt;, &lt;, &gt;=, &lt;=, &lt;&gt;&quot;
+                 |                   |    |                   |    Connective Symbol: &quot;&amp;, |, ~&quot;
+                 |(v &gt; 10) &amp; (v &lt; 20)|    |(v = 10) | (v &gt; 20)|
+                 +-------------------+    +-------------------+
+</code></pre>
+<h2 id="clp-struct"><span class="header-section-number">3.2</span> Clp Struct</h2>
+<pre><code>                                ruleID
+                                  ^                   -----&gt; comment, here we want is rule name.
+                                  |                  /
+                                  |                 /                    -----&gt; MultiSlot
+                    (defrule rul-0001 &quot;this is an example&quot;              /
+          +--------   (and                                             /
+          |             (and                   -------------------------------------------------------
+          |               ?fct_t1 &lt;- (datetime ?clock ?year ?month ?day ?hour ?minute ?second $?others) ---+
+          |      1        (test (= ?year 2018))                                                            |  Condition: Fact
+          |    layer      (test (= ?month 06))                                                             | (not use Template)
+          |               (test (or (= ?day 20) (= ?day 21) (= ?day 22) ))                              ---+
+          |             )                                    -----------\
+          |             (or                                              \------&gt; Cell
+  LHSNode |               (object (is-a TempSensor)                                                     ---+
+          |                 (ID ?id &amp;:(eq ?id ins-0007A895C8A7))                                           |
+          |      2          (CurrentTemperature ?CurrentTemperature &amp;:(&gt; ?CurrentTemperature 50))          |
+          |    layer      )                                                                                |
+          |               (object (is-a Light)                                                             | Condition: Instance
+          |                 (ID ?id &amp;:(eq ?id ins-DC330D799327))          /-----&gt; Cell                     |
+          |                 (onOffLight ?onOffLight &amp;:(= ?onOffLight 1)) /                                 |
+          |               )       \                   -------------------                               ---+
+          |             )          \                           +--&gt; timeout-ms
+          +--------   )             --------&gt; SlotPoint        |  +--&gt; retry-count
+                     =&gt;                                        |  |
+          +--------   (bind ?c (create-rule-context rul-0001 5000 5))   ------&gt; create the rule context
+          |           (if (eq ?c FALSE) then (return))
+          |           (send ?c act-control ins-0007A895C7C7 CurrentTemperature 50)   ---&gt; action: device control
+  RHSNode |           (send ?c act-control ins-DC330D79932A onOffLight 1)
+          |           (send ?c act-notify 10000001 &quot;tellYou&quot; &quot;Girlfriend Birthday&quot;)  ---&gt; action: message notify
+          +---------  (send ?c act-scene rul-1000)                                   ---&gt; action: active scene
+                    )
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+                                                     /---&gt; DEVICE is superclass
+          + --------------  (defclass SmogAlarm     /
+          |                   (is-a DEVICE) -------/
+          |             /---- (role concrete) (pattern-match reactive) ----&gt; can triggered by rule
+  Class   |            v      (slot OnlineState (type NUMBER) (allowed-numbers 2 1))
+          | (not abstract)    (slot PowerOnOff (type INTEGER) (allowed-numbers 2 1))
+          |                   (slot SecurityLevel (type SYMBOL) (allowed-symbols low normal high))
+          |                   (slot Battery (type NUMBER) (allowed-numbers 2 1))
+          +---------------- )                        /
+                                                    /
+                                                   v
+                                          (INTEGER or FLOAT)
+</code></pre>
+<ol type="1">
+<li>定义Rule; (defrule rule-name ${LHSNode} =&gt; ${RHSNode})</li>
+<li>LHSNode := [Condition+], Condition可以由Fact和Object(instance)组成</li>
+<li>一个Fact或者Object由一个或多个单槽(SlotPoint)/多槽组成: Fact := [SingleSlot+], Object := [(SingleSlot|MultiSlot)+]</li>
+<li>一个槽点比如Fact中的"年|月|日|时|分|秒", Object中的属性, 槽点(属性)值可进行逻辑比较, 构成触发点, 取名为Cell</li>
+<li>时间Fact不采用Template原因在程序实现更方便</li>
+<li>一旦RHSNode被执行, 首先为该Rule创建Context, Context销毁之时就是Rule的执行得到结束之日(异步).</li>
+</ol>
+<p><strong>TODO</strong> 1. 一个Rule在Context没有销毁之前多次触发, 并无响应, 只有等到Context得到success结果或者超时结束,下次触发Rule方有效.</p>
+<h2 id="rule-class-uml"><span class="header-section-number">3.3</span> Rule Class UML</h2>
+<pre><code>                                          +---------------+
+ +--------------+                         |   Condition   |                 +------------+               +----------+
+ |    Action    |                         |---------------|                 | SlotPoint  |               |  _Cell_  |
+ |--------------|                         |   mSlotLogic  |          -----&gt; |------------|        ------&gt;|----------|
+ |  mType       |                         |    mType      |         /       | mCellLogic |       /       | nSymbol  |
+ |  mCall       | ^                       |    mCls       |        /        | mSlotName  |      /        | nValue   |
+ |  mID         |  \                      |    mID        |       /         | mCells     |◆ ---/mCells   +----------+
+ |  mSlotName   |   \                     |   mSlots      |◆ ----/mSlots    +------------+
+ |  mSlotValue  |    -------+             +---------------+
+ +--------------+    1:n    | mActions       ^                  +-----------+     mCondLogic: and/or/not                       
+                            |                |                  |           |     mSlotLogic: and             +------------+    
+                          +------------+     |          +--------------+    |     mCellLogic: &amp;,|,~           |  SlotInfo  |    
+                          |  RHSNode   |     |          |   LHSNode    |    |     nSymbol: =,&gt;,&lt;,&gt;=,&lt;=,&lt;&gt;     |------------|    
+                          | -----------|     |          |--------------|    |                                 |   nName    |    
+                          |  mActions  |     |          |  mCondLogic  |   /mChildren                         |   nValue   |    
+                          +------------+     +--------◇ |  mConditions |  /                                   +------------+    
+                                   ^         mConditions|  mChildren   |-/  +---------------+                         ^         
+                                   |                    +--------------+    |  RulePayload  |                  mSlots |  1:n    
+                                   +----------\                ^            |---------------|                         |         
+                                               \               |            |  mRuleName    |                         ◆         
+                              +-------------+   \              |            |  mRuleID      |            +-------------------+  
+                              | DataChannel |    \             |     mLHS   |  mVersion     |            |  InstancePayload  |  
+                              |-------------|     \            +----------◇ |  mLHS         |            |-------------------|  
+                              |             |      -----------------------◇ |  mRHS         |         /--|      mInsName     |  
+                              |send(payload)|                        mLHS   |---------------|        /   |      mClsName     |  
+                              +-------------+                               |  toString()   |       /    |      mSlots       |  
+                                  △ ^ ^ △                                   +---------------+      /     +-------------------+  
+                                  | | | |                                             |           /                            
+                                  | | | |                                             |          |                             
+                  +---------------+ | | +----------------+                            |          |                                 
+                  |                 | |                  |                            |          |                                   
+                  |                 | |                  |                            ▽          |                                   
+         +------------------+       | |     +--------------------------+        +----------+ ◁ --+          +-----------------+      
+         | RuleDataChannel  |       | |     |    DeviceDataChannel     |        | Payload  |                |  ClassPayload   |      
+mCloudMgr|------------------|       | |     | ------------------------ |        |----------| ◁ -------------|-----------------|      
+  +----◆ |    mCloudMgr     |       | |     |       mDeviceMgr         |        |  type()  |                |   classname     |      
+  |      |    mHandler      |       | |     |       mHandler           |        +----------+                |   superclass    |      
+  |      +------------------+       | |     |--------------------------|             |             mSlots   |   version       |      
+  |               △                 | |     |    onStateChanged()      |             |                +---◇ |    mSlots       |      
+  |               |                 | |     |    onPropertyChanged()   |-------------+            1:n |     |-----------------|      
+  |               |                 | |     |         send()           |                              |     |   toString()    |      
+  |    +------------------------+   | |     +--------------------------+◆ ---------------------+      |     +-----------------+      
+  |    |  ElinkRuleDataChannel  |   | |                △          ◆        mHandler            |      |                              
+  |    |------------------------|   | |                |          |                            |      |                              
+  |    |                        |   | |                |          +----------+                 |      |                              
+  |    |      onRuleSync()      |   | |   +-------------------------+        |                 |      |     +---------------+        
+  |    |        send()          |   | |   | ElinkDeviceDataChannel  |        |                 |      |     |     Slot      |        
+  |    +------------------------+   | |   |-------------------------|        |                 |      +---&gt; |---------------|        
+  |                                 | |   |      onProfileSync()    |        |                 |            |    mType      |        
+  |                                 | |   +-------------------------+        |                 |            |    mName      |        
+  |                                 | |                                      |                 |            |   mMin/mMax   |        
+  |    +-------------------------+  | |                           mDeviceMgr |                 |            |   mAllowList  |        
+  |    |     CloudManager        |  | |                                      v                 |            |---------------|        
+  |    |-------------------------|  | |   +----------------------------------------+           |            |   toString()  |        
+  +---&gt;|                         |  | |   |             DeviceManger               |           |            +---------------+        
+       | registRuleSyncCallback  |  | |   | -------------------------------------- |           |                                   
+       |                         |  | |   |                                        |           |                                   
+       +-------------------------+  | |   |   registDeviceStateChangedCallback     |           |                                   
+                                    | |   |   registDevicePropertyChangedCallback  |           |                                   
+                                    | |   |   registDeviceProfileSyncCallback      |           |                                   
++-----------------------------------+ |   |        setProperty                     |           |                                   
+| +-----------------------------------+   +----------------------------------------+           |                                   
+| |                                                                                            |                                   
+| |                    +----------------------------+        +----------------+                |                                   
+| |             +----▷ |  MessageHandler::Callback  | &lt;----◇ | MessageHandler | ◁ ---------+   |                             
+| |             |      +----------------------------+        |----------------|            |   |                                   
+| |             |                                            |   mCallback    |            |   |                                   
+| |             |                                            +----------------+            |   |                                   
+| |  +----------------------+                                                              |   |                                   
+| |  |  RuleEngineService   |                                                              |   v                                   
+| |  |----------------------|   mUrgentHandler                                    +--------------------+                           
+| |  |     mUrgentHandler   |◇ --------------------------------------------------&gt;|  RuleEventHandler  |                         
+| |  |                      |    mCore         +----------------------+    ------&gt;|--------------------|                           
+| |  |  mCore/mCoreUrgent   | ◆ -------------&gt; |    RuleEngineCore    |   /       |    handleMessage   |                         
+| |  |     mServerRoot      |                  |----------------------|  /        +--------------------+                           
+| +--|     mDeviceChannel   |          mEnv    |    mHandler          | /mHandler     ^     |                                      
++----|     mRuleChannel     |        +-------◆ |    mEnv              |◆              |     |                                  
+     | mOfflineInsesCalled  |        |         |----------------------|         ------+     |                                      
+     |----------------------|        |         |    driver()          |        /            |                                      
+     |    callInstancePush  |        |         |                      |       /    +------------------+                            
+     |    callMessagePush   |        |         |   handleTimer        |      /     | RuleEventThread  |
+     |    setDeviceChannel  |        |         |   handleClassSync    |      |     |------------------|
+     |    setRuleChannel    |        |         |   handleRuleSync     |      |     |   mMessageQueue  |
+     |     handleMessage    |        |         |   handleInstanceAdd  |      |     +------------------+
+     +----------------------+        |         |   handleInstanceDel  |      |              △
+             ◇                       v         |   handleInstancePut  |      |              |
+      mStore |             +---------------+   +----------------------+      |              |
+             |             |  Environment  |                                 |              |
+             |             |               |--\                              |    +---------------------+
+             |             +---------------+   \  CLP                        |    |   RuleUrgentThread  |
+             |              Clipscpp            ------&gt; clips6.30            |    |---------------------|
+             \                                                               |    |     mService        |
+              \                                                              |    +---------------------+
+               \            +----------------------+                         |
+                \           |   RuleEngineStore    |                         |
+                 ---------&gt; |----------------------|                         |
+           /--------------◆ |     mDB              |                         |
+          /        mDB      |     mHandler         |◆ -----------------------+
+         /                  |     mDefTable        |    mHandler
+        |                   |----------------------|\
+        |                   |    open/close        | \           +---------------------+
+        v                   |   updateClassTable   |  \ mTables  |      DefTable       |
++--------------+            |   updateRuleTable    |   --------&gt; |---------------------|
+|SQLiteDatabase|            |  queryClassFilePaths |             |     mDB             |
+|              |            |  queryRuleFilePaths  |             | mUpdateHistoryList  |
+|              |            |                      |             |---------------------|
++--------------+            +----------------------+             |   updateOrInsert    |
+                                                                 |   getFilePaths      |
+                                                                 |   getDefInfos       |
+                                                                 |     _Update         |
+                                                                 +---------------------+
+                                                                     △            △
+                                                                    /              \
+                                                                   /                \
+                                                                  |                  |
+                                                                  |                  |
+                                                       +------------------+    +-----------------+
+                                                       |   DefClassTable  |    |   DefRuleTable  |
+                                                       |                  |    |                 |
+                                                       +------------------+    +-----------------+
+</code></pre>
+<ol type="1">
+<li>核心驱动: RuleEngineService RuleEngineCore RuleEngineStore</li>
+<li>数据通道: RuleDataChannel DeviceDataChannel</li>
+<li>载体转换: ClassPayload InstancePayload RulePayload</li>
+<li>辅助工具: MessageHandler SQLiteDatabase Log</li>
+</ol>
+<h2 id="clp-script-design"><span class="header-section-number">3.4</span> Clp Script Design</h2>
+<pre><code>                                                                  (auto)     (manual)
+                                          device                 property
+                      profile  rule   online offline             changed      scene
+               TestCase ---------------------------------------------------------------------------------------------------&gt;
+                         |       |       |      |        ║          |           |
+                         |       |       |      |    mainHandler    |           |
+            mainHander() |       |       |      |        ║          |           |
+                v        v       v       v      v        ▼          v           v
+   MainThread -------------------------------------------------------------------------------------------------------------&gt;
+                 \    profile  rule      \      \          ║        \           \
+                  \      json    json     \      \     ruleHandler   \           \
+                   \        \      \       |      |        ║          |           |
+                    \        \      \      |      |        ▼          |           |
+                     \        \      \     v  T   v     T         T   v     T     v   T         T         T         T
+      RuleThread     --------------+----------+---------+---------+---+-----+---------+---------+---------+---------+-----&gt;
+                      ^            T      add |  del    |         |   \     |     /   |         |         |         |
+                  ruleHander()     |          |         |         |    \    |    /    |         |         |         |
+                                   |          |         |         |     |   |   |     |         |         |         |
+                                   +--\       +--\      +--\      +--\  v   v   v  /--+      /--+      /--+      /--+
+                                       \          \         \         \+---------+/         /         /         /
+ T: timer (default 1s)                  \          \         \         | refresh |         /         /         /
+                                         -----------------------------&gt;|         |&lt;----------------------------
+                                                                       |   run   |
+                                                                       +---------+
+                                                                            |               +--------+
+             (LHS)                                                          |         ----▷ |  USER  |
+             +--------------------------------------------------------------+        /      +--------+
+   salience  |                                                                      /            △
+             |                        +-------------------+                        /             |
+             v                        |   RuleContext     |                       /              |
+        +--------+                    |-------------------|                      /              /
+    +---| Rule-1 |                    |   rule-id         |                     /              /
+    |   +--------+                    |   timeout-ms      |           +---------+       +-----------+        +----------------+
+    |                                 |   retry-count     |---------▷ | Context |       |  DEVICE   |        |  SmogAlarm     |
+    +-&gt; +--------+                    |   current-try     |           |         |       |-----------|        |----------------|
+    +---| Rule-2 |                    |   start-time      |           +---------+       |   ID      |◁ ------|   OnlineState  |
+    |   +--------+                    |   act-error       |                             |   UUID    |        |   PowerOnOff   |
+    |                                 |   unanswer-list   |                             |   Class   |        |   Battery      |
+    +-&gt; +--------+                    |   response-rules  |                             +-----------+        +----------------+
+    +---| Rule-3 |                    |-------------------|
+    |   +--------+                    |   try-again       |
+    |                                 |   unanswer-count  |
+    +-&gt; +--------+                    |   act-control     |
+        | Rule-4 |                    |   act-notify      |
+        +--------+                    |   act-scene       |
+            |                         +-------------------+
+            |                                      +-------------------------+----------------------+------------+
+            |                                      |                         |                      |            |
+            |          Action                      |                         |                      |            v
+            +------------------------- &gt;  act-control ------------&gt; act-notify -----------&gt; act-scene   |   send-message
+            (RHS)                             |  ^                      |   ^                   /       |        |
+                            act-step-control  |  | true                 |   | true             /        |        | success
+                                              |  |                      |   |                 v                  |   or
+                                              |  +------&gt;  make-rule    |   +------&gt;  make-rule                  |  fail
+                                              |  | false  (response)    |   | false  (response)                  |
+                                              v  |                      v   |                                    v
+          RuleEngineService ----------------------------------------------------------------------------------------------&gt;
+                                              ins-push                  txt-push                              msg-push
+
+
+</code></pre>
+<ol type="1">
+<li>规则分为联动(Auto)和手动(Manual)两种, 联动: 设备属性变化触发相关规则 手动: 触发场景,比如回家模式</li>
+<li>RuleThread是专门的规则线程, 作用: 延时Timer以及RefreshAgenda/Run(触发Rule,执行Action), 这样设计相对简单, 避免Rule多线程问题</li>
+<li>脚本Actions中的方法act-control/act-notify会调用RuleEngineService中的ins-push/txt-push(返回false:异步, 返回true:同步)</li>
+<li>如果ins-push/txt-push是异步(return:false)方式, 则act-xxx会自动创建等待结果的规则, 当父规则Context销毁, 该auto规则删除</li>
+<li>如果联动规则触发了场景规则被调用, act-scene也会自动创建等待(子规则)结果规则, 且它触发的规则也会创建Context.</li>
+<li>act-xxx方法是RHS中Action, 每个action的执行可以是同步异步(3,4). 如果异步则会自动创建规则(autorule)用以等待结果, 并将之存入 response-rules中, 除此之外, 把自身funcall注入unanswer-list中,如果autorule检查到action执行成功, 会将funcall从unanswer-list移除, Rule是判断unanswer-list的size决定自身是否执行成功的(size=0: success). RuleEngineService根据T(default:1是)定时给脚本喂时间, 这 样Rule就可以实现超时机制, (单次)超时后, 首先检查current-try次数, 如果小于retry-count, 则从unanswer-list中取出没有完成的 funcall,并且执行.</li>
+<li>如果规则被触发, 但是RHS中的Action控制的设备Poweroff, RuleEngineService会得知该事件, 并在设备上线后刷新与之相关的Rules</li>
+</ol>
+<h2 id="act-auto-gen-rule"><span class="header-section-number">3.5</span> Act Auto Gen Rule</h2>
+<p>act-control(ins-04FA8309822A, CleaningMode, 2):</p>
+<pre><code>
+         +---&gt; &#39;_&#39; represent inner auto generate
+         |
+         |          +---&gt; parent rule name that call act-control in RHS
+         |          |
+         |          |                  +--&gt; sign this rule is for reponse
+         |------------------------     |
+(defrule _rul-1529578016.389.86822-response-ins-04FA8309822A |---&gt; action id (here is instance name)
+    (declare (salience 1000))               -----------------+
+    (object (is-a SweepingRobot) (ID ?id &amp;:(eq ?id ins-04FA8309822A)) (CleaningMode ?v &amp;:(eq ?v 2)))
+  =&gt;
+    (send [rul-1529578016.389.86822] action-success &quot;act-control ins-04FA8309822A CleaningMode 2&quot;)
+)         -------------------------- -------------- ---------------------------------------------
+          |                            |                                         |
+          +--&gt; parent rule context     +--&gt; rule context method                  |
+                                            modify unanswer-list                 v
+                                                                        arguments of action-success</code></pre>
+<p><em>将设置instance(设备)的属性值作为条件,被控制的设备属性值如果上报值符合条件,证明控制成功</em></p>
+<p>act-notify(n-350490027, "tellYou" "Girlfriend Birthday"):</p>
+<pre><code>
+                                             notify id        (assert (rule-response notifyid success))
+                                            -----------       |
+(defrule _rul-1529583875.818.80441-response-n-350490027       |
+    (declare (salience 1000))                                 |
+    (rule-response n-350490027 success)  &lt;--------------------+
+  =&gt;
+    (send [rul-1529583875.818.80441] action-success &quot;act-notify n-350490027 \&quot;tellYou\&quot; \&quot;Girlfriend Birthday\&quot;&quot;)
+)
+</code></pre>
+<p><em>通过响应Fact(rule-response notifyid success)判断消息通知是否执行成功.</em></p>
+<p>act-scene(rul-1529578676.958.69587):</p>
+<pre><code>                                                                       (assert (rule-response ruleid success))
+                                            rule name: nest call       |
+                                            ------------------------   |
+(defrule _rul-1529578775.206.24324-response-rul-1529578676.958.69587   |
+    (declare (salience 1000))                                          |
+    (rule-response rul-1529578676.958.69587 success)  &lt;----------------+
+  =&gt;
+    (send [rul-1529578775.206.24324] action-success &quot;act-scene rul-1529578676.958.69587&quot;)
+)</code></pre>
+<p><em>通过响应Fact(rule-response ruleid success)判断消息通知是否执行成功.</em></p>
+<h1 id="others"><span class="header-section-number">4</span> Others</h1>
+<h2 id="local-build"><span class="header-section-number">4.1</span> Local Build</h2>
+<ol type="1">
+<li>make</li>
+</ol>
+<blockquote>
+<p>除了clips代码(编译后在Makefile中指定), 其他依赖模块会依次编译: <span class="citation" data-cites="cd">@cd</span> $(MISC_DIR); make; <span class="citation" data-cites="cd">@cd</span> $(MESSAGE_DIR);make; <span class="citation" data-cites="cd">@cd</span> $(LOG_DIR);make; <span class="citation" data-cites="cd">@cd</span> $(CLIPSCPP_DIR);make; <span class="citation" data-cites="cd">@cd</span> $(PAYLOAD_DIR);make; <span class="citation" data-cites="cd">@cd</span> $(DRIVER_DIR);make;</p>
+</blockquote>
+<ol start="2" type="1">
+<li>make clean</li>
+</ol>
+<blockquote>
+<p>依赖模块会依次清除: <span class="citation" data-cites="cd">@cd</span> $(MISC_DIR); make clean; <span class="citation" data-cites="cd">@cd</span> $(MESSAGE_DIR);make clean; <span class="citation" data-cites="cd">@cd</span> $(LOG_DIR);make clean; <span class="citation" data-cites="cd">@cd</span> $(CLIPSCPP_DIR);make clean; <span class="citation" data-cites="cd">@cd</span> $(PAYLOAD_DIR);make clean; <span class="citation" data-cites="cd">@cd</span> $(DRIVER_DIR);make clean;</p>
+</blockquote>
+<h2 id="sync-elink-script"><span class="header-section-number">4.2</span> Sync Elink Script</h2>
+<ol type="1">
+<li><p>自动同步云端的profile和rules: <code>cd test; ./sync_from_cloud.py</code></p></li>
+<li><p>脚本通过请求获取信息, 其中Token可能改变, 需要定时修改</p></li>
+</ol>
+<pre><code>class ElinkRequest(object):
+
+   &quot;&quot;&quot;Docstring for RequestHeader. &quot;&quot;&quot;
+
+   def __init__(self, uri):
+       self._ip = &quot;10.185.30.96&quot;
+       self._host = &quot;smarthome.lecloud.com&quot;
+       self._token = &quot;238XXXvKm3oZNGEm1Sm2T6Udm2Wnr4nikdxi6fm1kfU4Pj17RxSDAv5B2n3m5RMitfRw0b6VGLjoVsJejE4z3B9Z0Bt1cm3ewDuBBuOwLkRrUxinrb3zGkwUm4&quot;
+       self._uri = uri</code></pre>
+<ol start="3" type="1">
+<li>脚本只供开发调试使用</li>
+</ol>
+<h2 id="rule-categories"><span class="header-section-number">4.3</span> Rule Categories</h2>
+<p>classified into three major categories:</p>
+<ul>
+<li><p>global rules which cannot be disable, such as: retract the fact of datetime which asserted per second</p>
+<pre><code>(defrule retract-datetime
+    (declare (salience ?*SALIENCE-LOWEST*))
+    ?f &lt;- (datetime $?)
+  =&gt;
+    (retract ?f)
+)</code></pre></li>
+</ul>
+<p><em>一个fact被声明, 将不会消失, 但可以通过modify修改, 也可以retract将其收回.</em></p>
+<ul>
+<li><p>custom rules configured through UI which can enable or disable. the naming conventions of the rule is: <code>; "rul-" is the prefix of the custom rule name   (defrule rul-1529578775.206.24324 "autotest3"     (object (is-a AirClean1)       (ID ?id &amp;:(eq ?id ins-0007A895C8A7))       (WorkMode ?WorkMode &amp;:(= ?WorkMode 5))     )    =&gt;     (bind ?c (create-rule-context rul-1529578775.206.24324))     (if (eq ?c FALSE) then (return))     (send ?c act-scene rul-1529578676.958.69587)   )</code> <em>用户有权开启/关闭自己配置的规则, 设计上一个custom rule对应一个clp文件, 方便删除更新.</em></p></li>
+<li><p>auto-gen rules which have short life cycle, disappeared when got the response of the action or rule context destroied.</p>
+<pre><code>; &quot;_rul-&quot; is the prefix of the auto-gen rule name
+(defrule _rul-1529578775.206.24324-response-rul-1529578676.958.69587
+    (declare (salience 1000))
+    (rule-response rul-1529578676.958.69587 success)
+  =&gt;
+    (send [rul-1529578775.206.24324] action-success &quot;act-scene rul-1529578676.958.69587&quot;)
+)</code></pre>
+<p><em>用户不可见, Action方法中内部生成, 当Action有response(或者Rule超时/失败)则自动删除</em></p></li>
+</ul>
+<h1 id="todo"><span class="header-section-number">5</span> TODO</h1>
+<ol type="1">
+<li><p>不使用模板的MultiSlot的Fact作为条件, Slot是有顺序的, 判断Fact时, 可以省略后面的, 不可以从中间省略, 例如:</p>
+<pre class=":-"><code>正确:
+  ?fct_t1 &lt;- (time ?year ?month ?day ?hour ?minute ?second $?others)
+  ?fct_t2 &lt;- (time ?year ?month ?day ?hour ?minute $?others)
+  ?fct_t3 &lt;- (time ?year ?month ?day ?hour $?others)
+错误(语法正确, 意义错误, second其实是hour):
+  ?fct_t4 &lt;- (time ?year ?month ?day ?second $?others)</code></pre></li>
+<li><p>使用带模板的Fact作为条件, 模板Slot没有顺序限制, 但需要谨记在使用完之后retract掉, 否则不会消失, 例如:</p>
+<pre class=":-1"><code>(defrule test
+    ?fct_t1 &lt;- (datetime (year ?y &amp;:(= ?y 2018) (second ?s))
+  =&gt;
+    (retract fct_t1)
+)
+
+触发rule:test
+(assert (datetime (year 2018) (second 10)))
+不触发rule, 所以这个fact没有被retract, 该fact一直存在, 浪费MEM, 可以使用Object(Instance)取代
+(assert (datetime (year 2019) (second 10)))</code></pre></li>
+<li><p>云端下发的规则ID及为某个设备创建实例ID时, 为了避免规则ID和实例ID可能是纯数字, 比如设备实例其实就是DeviceID, 使用下面API转:</p>
+<pre class=":-"><code>加ins-前缀
+std::string innerOfInsname(std::string name);
+std::string outerOfInsname(std::string name);
+
+加rul-前缀
+std::string innerOfRulename(std::string name);
+std::string outerOfRulename(std::string name);</code></pre></li>
+<li><p>暂时不支持运行时更新设备类, 比如Light, 原因是如果该类在Rule的条件LHS中引用, 该类将无法直接删除更新.</p></li>
+<li><p>运行时动态使能的设计(未设计)</p></li>
+<li><p>对中文的支持(支持)</p></li>
+<li><p>简单规则测试 (see TempSimulateSuite.cpp) (finished)</p></li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th>RULE</th>
+<th>LHS</th>
+<th>ACTION</th>
+<th style="text-align: center;">PASS ?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>autotest1</td>
+<td>instance</td>
+<td>act-control</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr class="even">
+<td>autotest3</td>
+<td>instance</td>
+<td>act-scene</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr class="odd">
+<td>autotest4</td>
+<td>instance</td>
+<td>act-notify</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr class="even">
+<td>manualtest1</td>
+<td>fact</td>
+<td>act-control</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr class="odd">
+<td>manualtest3</td>
+<td>fact</td>
+<td>act-control</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+</tbody>
+</table>
+<ol start="8" type="1">
+<li>LHS带有<code>and</code>和<code>or</code>的规则测试</li>
+</ol>
+<pre class="clp"><code>    (defrule rul-0000000000.000.00001 &quot;tv-light-rule&quot;
+      (and
+        (object (is-a Light)
+          (ID ?ins-38D269B0EA1801010311 &amp;:(eq ?ins-38D269B0EA1801010311 ins-38D269B0EA1801010311))
+          (PowerOnOff ?PowerOnOff &amp;:(= ?PowerOnOff 1))
+        )
+        (object (is-a Letv)
+          (ID ?ins-00000000000000000002 &amp;:(eq ?ins-00000000000000000002 ins-00000000000000000002))
+          (PowerOnOff ?PowerOnOff &amp;:(= ?PowerOnOff 1))
+        )
+        (object (is-a LightSensor)
+          (ID ?ins-00000000000000000001 &amp;:(eq ?ins-00000000000000000001 ins-00000000000000000001))
+          (Quantity ?Quantity &amp;:(&gt;= ?Quantity 10 )&amp;:(&lt;= ?Quantity 20))
+        )
+      )
+     =&gt;
+      (bind ?c (create-rule-context rul-0000000000.000.00001))
+      (if (eq ?c FALSE) then (return))
+      (send ?c act-control ins-38D269B0EA1801010311 Brightness 2)
+    )</code></pre>
+<p><em>TestCase: <code>TEST_RULE_AND</code> Pass</em> <em>在and逻辑下, object slot (ID ?id) id变量名必须不能一样(这里使用did), 否则and条件永远不成立</em></p>
+<pre class="clp"><code>    (defrule rul-0000000000.000.00002 &quot;emergency-alarm-rule&quot;
+      (or
+        (object (is-a EmergencyButton)
+          (ID ?ins-38D269B0EA1886D3E200 &amp;:(eq ?ins-38D269B0EA1886D3E200 ins-38D269B0EA1886D3E200))
+          (PowerOnOff ?PowerOnOff &amp;:(= ?PowerOnOff 1))
+        )
+        (object (is-a SmogAlarm)
+          (ID ?ins-00124B00146D743D00 &amp;:(eq ?ins-00124B00146D743D00 ins-00124B00146D743D00))
+          (PowerOnOff ?PowerOnOff &amp;:(= ?PowerOnOff 1))
+        )
+      )
+     =&gt;
+      (bind ?c (create-rule-context rul-0000000000.000.00002))
+      (if (eq ?c FALSE) then (return))
+      (send ?c act-notify n-714636915 &quot;Your house is dangerous!&quot; &quot;Warning&quot;)
+    )</code></pre>
+<p><em>TestCase: <code>TEST_RULE_OR</code> Pass</em></p>
+<ol start="9" type="1">
+<li><p>LHS.Condition.SlotPoint带有的<code>&amp;</code>和<code>|</code>"规则测试</p></li>
+<li><p>RHS触发的Action中设备如果不在线(poweroff), 那么需要在设备上线后重新刷新相关规则(条件重新判断)</p></li>
+</ol>
+<p><em>TestCase: <code>TEST_RULE_INS_ONLINE_LATER</code> Pass</em></p>
+<ol start="11" type="1">
+<li>RHS触发的Action中设备的最终状态,需要按一定step,逐步达到该效果.</li>
+</ol>
+<p><em>TestCase: <code>TEST_RULE_STEP_CONTROL</code> Pass</em> <em>用户只是要最终状态, 至于如何达到这个状态(begin, step)用户其实不需要关注, 所以这个功能暂时没有实际意义</em></p>
+</body>
+</html>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-06-24T15:12:29.178Z" itemprop="dateUpdated">2019-06-24 23:12:29</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://qrsforever.github.io">
+            <img src="/img/avatar.jpg" alt="qrsforever">
+            qrsforever
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DrawIt/">DrawIt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOT/">IOT</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2018/06/14/Note/IOT/Rule-Engine-Design2/&title=《(原创)本地规则引擎介绍》 — 奥卡姆剃刀&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2018/06/14/Note/IOT/Rule-Engine-Design2/&title=《(原创)本地规则引擎介绍》 — 奥卡姆剃刀&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2018/06/14/Note/IOT/Rule-Engine-Design2/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《(原创)本地规则引擎介绍》 — 奥卡姆剃刀&url=https://qrsforever.github.io/2018/06/14/Note/IOT/Rule-Engine-Design2/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2018/06/14/Note/IOT/Rule-Engine-Design2/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/06/24/Books/Math/derivative_rules/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">求导法则</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/05/31/Design/C++/Log-Pool/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Log-Pool</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "bpShGWdW8DpODhnDko5O2IBB-gzGzoHsz",
+            appKey: "rwmasTllBbHE69ADuLjFyFWf",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢打赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>qrsforever &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2018/06/14/Note/IOT/Rule-Engine-Design2/&title=《(原创)本地规则引擎介绍》 — 奥卡姆剃刀&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2018/06/14/Note/IOT/Rule-Engine-Design2/&title=《(原创)本地规则引擎介绍》 — 奥卡姆剃刀&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2018/06/14/Note/IOT/Rule-Engine-Design2/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《(原创)本地规则引擎介绍》 — 奥卡姆剃刀&url=https://qrsforever.github.io/2018/06/14/Note/IOT/Rule-Engine-Design2/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2018/06/14/Note/IOT/Rule-Engine-Design2/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://qrsforever.github.io/2018/06/14/Note/IOT/Rule-Engine-Design2/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- lidong cha. -->
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- lidong end. -->
+
+</body>
+</html>

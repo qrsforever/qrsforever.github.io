@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?cb4be66237379541488b8502a6eca006"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>(原创)笔记-Twisted的Deffered机制 | 奥卡姆剃刀 | 你们都是大傻瓜, 我是天下大赢家</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Python">
+    <meta name="description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(原创)笔记-Twisted的Deffered机制">
+<meta property="og:url" content="https://qrsforever.github.io/2017/09/01/Note/Python/Note-Twisted-Deffered-Machanism/index.html">
+<meta property="og:site_name" content="奥卡姆剃刀">
+<meta property="og:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-04T13:49:29.597Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="(原创)笔记-Twisted的Deffered机制">
+<meta name="twitter:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+    
+        <link rel="alternate" type="application/atom+xml" title="奥卡姆剃刀" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">qrsforever</h5>
+          <a href="mailto:985612771@qq.com" title="985612771@qq.com" class="mail">985612771@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/705723886/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://zytforever.github.io" target="_blank" >
+                <i class="icon icon-lg icon-eye"></i>
+                Stocktech
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">(原创)笔记-Twisted的Deffered机制</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">(原创)笔记-Twisted的Deffered机制</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-09-01T08:41:00.000Z" itemprop="datePublished" class="page-time">
+  2017-09-01
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#twisted介绍"><span class="post-toc-number">1.</span> <span class="post-toc-text">2 Twisted介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#deffereds"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">2.1 Deffereds</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#callback"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2.2 Callback</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#timeouts"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">2.3 Timeouts</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#源码实例"><span class="post-toc-number">2.</span> <span class="post-toc-text">3 源码实例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码-1-单回调"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">3.1 代码-1 (单回调)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码-2-多回调"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">3.2 代码-2 (多回调)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码-3-线程"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">3.3 代码-3 (线程)</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#源码剖析"><span class="post-toc-number">3.</span> <span class="post-toc-text">4 源码剖析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#deffered类"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">4.1 Deffered类</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reactor方法"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">4.2 reactor方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#reactor.calllater"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">4.2.1 1. reactor.callLater()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#reactor.run"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">4.2.2 2. reactor.run()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#reactor.callinthread"><span class="post-toc-number">3.2.3.</span> <span class="post-toc-text">4.2.3 3. reactor.callInThread()</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Note/Python/Note-Twisted-Deffered-Machanism"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">(原创)笔记-Twisted的Deffered机制</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-09-01 16:41:00" datetime="2017-09-01T08:41:00.000Z"  itemprop="datePublished">2017-09-01</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#twisted介绍">Twisted介绍</a>
+<ul>
+<li><a href="#deffereds">Deffereds</a></li>
+<li><a href="#callback">Callback</a></li>
+<li><a href="#timeouts">Timeouts</a></li>
+</ul></li>
+<li><a href="#源码实例">源码实例</a>
+<ul>
+<li><a href="#代码-1-单回调">代码-1 (单回调)</a></li>
+<li><a href="#代码-2-多回调">代码-2 (多回调)</a></li>
+<li><a href="#代码-3-线程">代码-3 (线程)</a></li>
+</ul></li>
+<li><a href="#源码剖析">源码剖析</a>
+<ul>
+<li><a href="#deffered类">Deffered类</a></li>
+<li><a href="#reactor方法">reactor方法</a>
+<ul>
+<li><a href="#1-reactorcalllater">1. reactor.callLater()</a></li>
+<li><a href="#2-reactorrun">2. reactor.run()</a></li>
+<li><a href="#3-reactorcallinthread">3. reactor.callInThread()</a></li>
+</ul></li>
+</ul></li>
+</ul>
+<!-- vim-markdown-toc -->
+<a id="more"></a>
+<pre><code>
+reactor --&gt; Linux
+              |
+              |
+              v
+class EPollReactor(posixbase.PosixReactorBase, posixbase._PollLikeMixin):
+                                    △
+                                    |
+           +------------------------+                                                          _newTimedCalls
+           |                                                                                       /  ^
+class PosixReactorBase(_SignalReactorMixin, _DisconnectSelectableMixin, ReactorBase):             /   |
+                                ^                                           △                    /    |
+                                |                                           |                   /     | 存放
+              +-----------------+                         +-----------------+                  /      |
+              |                                           |                    /---------------       |
+class _SignalReactorMixin(object):              class ReactorBase(object):    /                       |
+           |                                            |                pack a callable obj          |
+           |                                            |--&gt; callLater()  -----------------&gt; class DelayedCall:
+           |                                            |                                       /     |
+         1 +--&gt; run()                                   |                                      /      |
+           |                                            |--&gt; fireSystemEvent(&quot;startup&quot;)       /       |
+           |                                            |       start threadpool             /        |
+         2 +--&gt; startRunning()  ---&gt;  startRunning() &lt;--+                                   /         +--&gt; getTime()
+           |                                            |                          --------/          |
+           |                                            |                         /                   +--&gt; active*()
+         3 +--&gt; mainLoop()                              |                        /                    |
+           |       |          +--- runUntilCurrent() &lt;--+  run times call ------/                     +--&gt; delay()
+           |       |          |                         |                                             |
+           |       | mix call |                         |                                             +--&gt; __le__(), __lt__()
+           |       +---------&gt;|----------- timeout() &lt;--+  determine the sleep time                   |  (when push order by time)
+                              |                         |                                             |
+                              |                         |
+                              +---     doIteration() &lt;--+
+                                            |           |
+                                            | impl
+                                            v
+                                   EPollReactor.doPoll()
+                                    poll(timeout, fds)
+
+</code></pre>
+<p>mainLoop()是由几层while嵌套实现以poll机制驱动整个程序运作.</p>
+<hr>
+<h1 id="twisted介绍"><span class="header-section-number">2</span> Twisted介绍</h1>
+<h2 id="deffereds"><span class="header-section-number">2.1</span> Deffereds</h2>
+<p>Twisted uses the Deferred object to manage the callback sequence. The client application attaches a series of functions to the deferred to be called in order when the results of the asynchronous request are available (this series of functions is known as a series of callbacks, or a callback chain), together with a series of functions to be called if there is an error in the asynchronous request (known as a series of errbacks or an errback chain). The asynchronous library code calls the first callback when the result is available, or the first errback when an error occurs, and the Deferred object then hands the results of each callback or errback function to the next function in the chain.</p>
+<p><a href="https://twistedmatrix.com/documents/current/core/howto/defer.html" target="_blank" rel="noopener">引用</a></p>
+<h2 id="callback"><span class="header-section-number">2.2</span> Callback</h2>
+<p>A twisted.internet.defer.Deferred is a promise that a function will at some point have a result. We can attach callback functions to a Deferred, and once it gets a result these callbacks will be called. In addition Deferreds allow the developer to register a callback for an error, with the default behavior of logging the error. The deferred mechanism standardizes the application programmer’s interface with all sorts of blocking or delayed operations.</p>
+<h2 id="timeouts"><span class="header-section-number">2.3</span> Timeouts</h2>
+<p>Timeouts are a special case of Cancellation. Let’s say we have a Deferred representing a task that may take a long time. We want to put an upper bound on that task, so we want the Deferred to time out X seconds in the future. A convenient API to do so is Deferred.addTimeout. By default, it will fail with a TimeoutError if the Deferred hasn’t fired (with either an errback or a callback) within timeout seconds.</p>
+<h1 id="源码实例"><span class="header-section-number">3</span> 源码实例</h1>
+<h2 id="代码-1-单回调"><span class="header-section-number">3.1</span> 代码-1 (单回调)</h2>
+<pre><code>
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
+from twisted.internet import reactor, defer
+
+def getDummyData(inputData):
+    print(&#39;getDummyData called&#39;)
+    deferred = defer.Deferred()
+    reactor.callLater(2, deferred.callback, inputData * 3)
+    return deferred
+
+def cbPrintData(result):
+    print(&#39;Result received: {}&#39;.format(result))
+
+deferred = getDummyData(3)
+deferred.addCallback(cbPrintData)
+
+# manually set up the end of the process by asking the reactor to
+# stop itself in 4 seconds time
+reactor.callLater(4, reactor.stop)
+# start up the Twisted reactor (event loop handler) manually
+print(&#39;Starting the reactor&#39;)
+reactor.run()
+</code></pre>
+<p>如果reactor.callLater(2, deferred.callback, inputData * 3)参数deferred.callback换成普通函数, 那么deferred.addCallback添加的 callback将不会执行, 要理解DelayCall对象和Deffered中callbacks之间的联系. <a href="#deff_c" title="Deffered简易图">Deffered类</a> 如果有多个deferred.addCallback, 前一个回调的返回作为后一个callback的参数.</p>
+<h2 id="代码-2-多回调"><span class="header-section-number">3.2</span> 代码-2 (多回调)</h2>
+<pre><code>
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
+from twisted.internet import reactor, defer
+
+class Getter:
+    def gotResults(self, x):
+        if self.d is None:
+            print(&quot;Nowhere to put results&quot;)
+            return
+
+        d = self.d
+        self.d = None
+        if x % 2 == 0:
+            d.callback(x*3)
+        else:
+            d.errback(ValueError(&quot;You used an odd number!&quot;))
+
+    def _toHTML(self, r):
+        return &quot;Result: %s&quot; % r
+
+    def getDummyData(self, x):
+        self.d = defer.Deferred()
+        reactor.callLater(2, self.gotResults, x)
+        self.d.addCallback(self._toHTML)
+        return self.d
+
+def cbPrintData(result):
+    print(result)
+
+def ebPrintError(failure):
+    import sys
+    sys.stderr.write(str(failure))
+
+# this series of callbacks and errbacks will print an error message
+g = Getter()
+d = g.getDummyData(3)
+d.addCallback(cbPrintData)
+d.addErrback(ebPrintError)
+
+# this series of callbacks and errbacks will print &quot;Result: 12&quot;
+g = Getter()
+d = g.getDummyData(4)
+d.addCallback(cbPrintData)
+d.addErrback(ebPrintError)
+
+reactor.callLater(4, reactor.stop)
+reactor.run()
+</code></pre>
+<h2 id="代码-3-线程"><span class="header-section-number">3.3</span> 代码-3 (线程)</h2>
+<pre><code>
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
+from twisted.internet.defer import Deferred
+from twisted.internet import reactor
+
+import threading
+
+def loadRemoteData(callback, errback, url):
+    print(&quot;thread[%s] url = %s&quot; % (threading.current_thread().name, url))
+    # callback 和 errback 只能调用其中一个,  否则:AlreadyCalledError
+    callback(&#39;callback data&#39;)
+    #  errback(ValueError(&quot;errback dat&quot;))
+
+def getResult(v):
+    print(&quot;thread[%s] result = %s&quot; % (threading.current_thread().name, v))
+
+def getError(e):
+    print(&quot;thread[%s] error = %s&quot; % (threading.current_thread().name, str(e)))
+
+if __name__ == &#39;__main__&#39;:
+    d = Deferred()
+    d.addCallback(getResult)
+    d.addErrback(getError)
+
+    print(&quot;main():thread[%s]&quot; % threading.current_thread().name)
+    reactor.callInThread(loadRemoteData, d.callback, d.errback, &quot;http://www.baidu.com&quot;)
+    reactor.callLater(4, reactor.stop);
+    reactor.run()
+</code></pre>
+<h1 id="源码剖析"><span class="header-section-number">4</span> 源码剖析</h1>
+<p>主要文件: 1. defer.py 2. base.py</p>
+<h2 id="deffered类"><span class="header-section-number">4.1</span> Deffered类</h2>
+<p><span id="deff_c"></span></p>
+<pre><code>
+class Deferred
+        |          callbacks: 存callback, _chainedTo: 将多个Deffered串成链                     reactor.callLater
+        |                                                                                              |
+        +---&gt; addCallbacks() &lt;---+----+----+                                                           |
+        |                        |    |    |                                                           |
+        +---&gt; addCallback() -----+    |    | call                                                      v
+        |                             |    |                                                       DelayedCall
+        +---&gt; addErrback() -----------+    |                                                           |
+        |                                  |                                                           |
+        +---&gt; addBoth() -----------+-------+                                                           |
+        |                          |                                                                   v
+        +---&gt; addTimeout() --------+                                                              reactor.run
+        |                                                                                              |
+        +---&gt; pause()/cancel()                                                                         |
+        |                                                                                              |
+        |                             Understand the relation between callback and DelayCall           v
+        +---&gt; callback() ---------    &lt;----------------------------------------------------+        timeout
+        |                call   /                                                          |           |
+        +---&gt; errback()-----   /                                                           |           |
+        |                 /   /                                                            |           |
+        |                /   /                                                             |           v
+        |               v   v                                                 DelayedCall.fun()--&gt;Deferred.callback()
+        +---&gt;  _runCallbacks                                                                           |
+        |              |                                                                               |
+        |              o----&gt; item = callbacks.pop(0)                                                  |
+        |              |                                                                               |
+        |              | Normal:                                                                       |
+        |              o----&gt; item.callbak()    &lt;------------------------------------------------------+
+        |              |
+        |              | Exception:
+        |              o----&gt; failure.Failure()
+        |              |
+</code></pre>
+<h2 id="reactor方法"><span class="header-section-number">4.2</span> reactor方法</h2>
+<h3 id="reactor.calllater"><span class="header-section-number">4.2.1</span> 1. reactor.callLater()</h3>
+<pre><code>
+// reactor.callLater(2, deferred.callback, inputData * 3)
+
+@implementer(IReactorCore, IReactorTime, IReactorPluggableResolver,
+             IReactorPluggableNameResolver)
+class ReactorBase(object):
+    ...
+    def callLater(self, _seconds, _f, *args, **kw):
+       tple = DelayedCall(self.seconds() + _seconds, _f, args, kw,
+                          self._cancelCallLater,
+                          self._moveCallLaterSooner,
+                          seconds=self.seconds)
+       self._newTimedCalls.append(tple)
+       return tple
+</code></pre>
+<p>将参数封装到DelayedCall对象中并存储在_newTimeCalls变量中, 需要注意的是callLater处理及回调函数还是在主线程中调用的.</p>
+<h3 id="reactor.run"><span class="header-section-number">4.2.2</span> 2. reactor.run()</h3>
+<pre><code>
+// reactor.run()
+class _SignalReactorMixin(object):
+    ...
+    def run(self, installSignalHandlers=True):
+        self.startRunning(installSignalHandlers=installSignalHandlers)
+        self.mainLoop()
+
+
+    def startRunning(self, installSignalHandlers=True):
+        self._installSignalHandlers = installSignalHandlers
+        ReactorBase.startRunning(self)
+
+
+    def mainLoop(self):
+        while self._started:
+            try:
+                while self._started:
+                    self.runUntilCurrent()
+                    t2 = self.timeout()
+                    t = self.running and t2
+                    self.doIteration(t)
+            except:
+                log.msg(&quot;Unexpected error in main loop.&quot;)
+                log.err()
+            else:
+                log.msg(&#39;Main loop terminated.&#39;)
+
+</code></pre>
+<p>_SignalReactorMixi 混合类, 调用了与它自身没有任何血缘关ReactorBase的方法<em>runUntilCurrent</em>, <em>timeout</em>, <em>doIteration</em>及<em>startRunning</em>.</p>
+<pre><code>
+class ReactorBase(object):
+           |
+           |
+           +---&gt; startRunning()
+           |      |
+           |      |
+           |      |
+           +------o---&gt; fireSystemEvent()
+           |                 |              &quot;startup&quot;
+           |                 |
+           |                 o---&gt; _eventTriggers.get()
+           |                 |
+           |                 |
+           |                 o---&gt; event.fireEvent()
+           |                 |            | running = True
+           |                              |
+           |                              o---&gt; DeferredList.addCallback()
+           +---&gt; mainLoop()               |                      |
+           |        |                                            |
+           |        |                                            o---&gt; Deferred._runCallbacks()
+           |        o---&gt; runUntilCurrent()                      |
+           |        |
+           |                 _pendingTimedCalls
+           |                   队列中以时间排序
+           |
+
+</code></pre>
+<p>reactor在install初始化时完成了两个重要操作: 1. self._initThreads() 线程池 2. self.installWaker() 唤醒线程, impl: PosixReactorBase.installWaker</p>
+<pre><code>
+class ReactorBase(object):
+    ...
+    def runUntilCurrent(self):
+        &quot;&quot;&quot;
+        Run all pending timed calls.
+        &quot;&quot;&quot;
+        if self.threadCallQueue:
+            count = 0
+            total = len(self.threadCallQueue)
+            for (f, a, kw) in self.threadCallQueue:
+                try:
+                    f(*a, **kw)
+                except:
+                    log.err()
+                count += 1
+                if count == total:
+                    break
+            del self.threadCallQueue[:count]
+            if self.threadCallQueue:
+                self.wakeUp()
+
+        # insert new delayed calls now
+        self._insertNewDelayedCalls()
+
+        now = self.seconds()
+        while self._pendingTimedCalls and (self._pendingTimedCalls[0].time &lt;= now):
+            call = heappop(self._pendingTimedCalls)
+            if call.cancelled:
+                self._cancellations-=1
+                continue
+
+            if call.delayed_time &gt; 0:
+                call.activate_delay()
+                heappush(self._pendingTimedCalls, call)
+                continue
+
+            try:
+                call.called = 1
+                call.func(*call.args, **call.kw)
+            except:
+                ...
+
+
+        if (self._cancellations &gt; 50 and
+             self._cancellations &gt; len(self._pendingTimedCalls) &gt;&gt; 1):
+            self._cancellations = 0
+            self._pendingTimedCalls = [x for x in self._pendingTimedCalls
+                                       if not x.cancelled]
+            heapify(self._pendingTimedCalls)
+
+        if self._justStopped:
+            self._justStopped = False
+            self.fireSystemEvent(&quot;shutdown&quot;)
+</code></pre>
+<h3 id="reactor.callinthread"><span class="header-section-number">4.2.3</span> 3. reactor.callInThread()</h3>
+<p>涉及文件:</p>
+<table>
+<thead>
+<tr class="header">
+<th>文件</th>
+<th style="text-align: left;">路径</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>base.py</td>
+<td style="text-align: left;">/usr/local/lib/python3.4/dist-packages/twisted/internet</td>
+</tr>
+<tr class="even">
+<td>defer.py</td>
+<td style="text-align: left;">/usr/local/lib/python3.4/dist-packages/twisted/internet</td>
+</tr>
+<tr class="odd">
+<td>threadpool.py</td>
+<td style="text-align: left;">/usr/local/lib/python3.4/dist-packages/twisted/python</td>
+</tr>
+<tr class="even">
+<td>context.py</td>
+<td style="text-align: left;">/usr/local/lib/python3.4/dist-packages/twisted/python</td>
+</tr>
+<tr class="odd">
+<td>_pool.py</td>
+<td style="text-align: left;">/usr/local/lib/python3.4/dist-packages/twisted/_threads</td>
+</tr>
+<tr class="even">
+<td>_team.py</td>
+<td style="text-align: left;">/usr/local/lib/python3.4/dist-packages/twisted/_threads</td>
+</tr>
+<tr class="odd">
+<td>_threadworker.py</td>
+<td style="text-align: left;">/usr/local/lib/python3.4/dist-packages/twisted/_threads</td>
+</tr>
+</tbody>
+</table>
+<p><strong>context.py模块中call/get方法代理:</strong></p>
+<pre><code>
+def installContextTracker(ctr):
+    global theContextTracker
+    global call
+    global get
+
+    theContextTracker = ctr
+    call = theContextTracker.callWithContext
+    get = theContextTracker.getContext
+
+installContextTracker(ThreadedContextTracker())
+
+</code></pre>
+<p><strong>func函数线程调用图:</strong></p>
+<pre><code>
+ReactorBase    Deferred      ThreadPool    ContextTracker      Team        LockWorker      ThreadWorker      LocalStorage
+  |                             |                 |              |             |               |                   |
+  | callInThread                |                 |              |             |               |                   |
+  +----------------------------&gt;|callInThread     |              |             |               |                   |
+  |                      func   |    |            |              |             |               |                   |
+  |                                  |            |     inContext|             |               |                   |
+  |                      callInThreadWithCallback---------------&gt;|do           |               |                   |
+  |                                  |            |              |             |               |                   |
+  |                                  |            |              |             |               |                   |
+  |                                  |            |              +------------&gt;|do             |                   |
+                                     |            |              |        work |               |                   |
+                                     |            |              |             |               |            append |
+                                     |            |              |             |----------------------------------&gt;|working
+                                     |            |              |             |               |                   |
+                                     |            |              |                             |             pop   |
+                                     |            |              |&lt;------------------------------------------------|
+    +----------------------+         |            |      _coordinateThisTask                   |
+    |  _coordinateThisTask |         |            |                 |        _pool.py          |
+    |                      |         |            |                 |            |             |
+    |   +--------------+   |         |            |          worker |-------------------------&gt;| __init__
+    |   |    doWork    |   |         |            |                 |    limitedWorkerCreator  |     |
+    |   | +----------+ |   |         |            |                 |            |             |     |
+    |   | | inContext| |   |         |            |                 |            |             |     |
+    |   | |  +----+  | |   |         |            |                 |       startThread &lt;------------|
+    |   | |  |func|  | |   |         |            |                 |            |             |     |
+    |   | |  +----+  | |   |         |            |                 |            |             |     |
+    |   | +----------+ |   |         |            |                 |     Thread.start()------------&gt;| work()
+    |   +--------------+   |         |            |                 |                          |          |
+    +----------------------+         |            |                 |                          |    while | get task
+                                     |            |       @worker.do|                          |          |&lt;------&lt;
+                                     |            |                 |-------------------------&gt;|do        |       |
+                                     |            |                 |                          |          |       |
+                                     |            |                 |                          | put task |       |
+                                     |            |                 |                          |--------&gt; |       |
+                                     |            |                 |                          |          |       |
+                                     |            |                 |                                     |       |
+                                     |            |          doWork |&lt;------------------------------ task()-------^
+                                     |            |            |    |                                     |
+                                     |            |            |    |                                     |
+                                  inContext&lt;--------task() &lt;---+    |                                   &lt;===&gt; thread end!
+                                      |           |                 |
+                                      | theWork() |                 | _recycleWorker
+                                      |----------&gt;| context.call    |
+                                                         |
+                                                         |
+                                                         |
+                                                   callWithContext
+                                                         |
+                                                         |
+              func() &lt;-----------------------------------+
+</code></pre>
+<p><strong>过程</strong>: 初始化线程池ThreadPool --&gt; 线程协调LockWorker --&gt; 创建工作线程ThreadWorker --&gt; 传递任务(team.do) --&gt; 线程中处理任务 --&gt; 回收 线程</p>
+<p><strong>原理</strong>: ThreadWorker维护Queue将传递过来的task加入队列, ThreadWorker在初始化时调用startThread()启动Thread.start, 到此一个新的 线程被创建, 该新线程会执行ThreadWorker中work方法, work方法从Queue队列中取新的task去执行.</p>
+</body>
+</html>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-06-04T13:49:29.597Z" itemprop="dateUpdated">2019-06-04 21:49:29</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://qrsforever.github.io">
+            <img src="/img/avatar.jpg" alt="qrsforever">
+            qrsforever
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2017/09/01/Note/Python/Note-Twisted-Deffered-Machanism/&title=《(原创)笔记-Twisted的Deffered机制》 — 奥卡姆剃刀&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2017/09/01/Note/Python/Note-Twisted-Deffered-Machanism/&title=《(原创)笔记-Twisted的Deffered机制》 — 奥卡姆剃刀&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2017/09/01/Note/Python/Note-Twisted-Deffered-Machanism/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《(原创)笔记-Twisted的Deffered机制》 — 奥卡姆剃刀&url=https://qrsforever.github.io/2017/09/01/Note/Python/Note-Twisted-Deffered-Machanism/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2017/09/01/Note/Python/Note-Twisted-Deffered-Machanism/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/09/05/Note/Android/Dalvik-Art-Snippet/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">(原创)Dalvik与Art虚拟机-笔记片段</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/08/31/Note/Python/Note-Scrapy-Start-Flow/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">(原创)Scrapy之命令行启动流程</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "bpShGWdW8DpODhnDko5O2IBB-gzGzoHsz",
+            appKey: "rwmasTllBbHE69ADuLjFyFWf",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢打赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>qrsforever &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2017/09/01/Note/Python/Note-Twisted-Deffered-Machanism/&title=《(原创)笔记-Twisted的Deffered机制》 — 奥卡姆剃刀&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2017/09/01/Note/Python/Note-Twisted-Deffered-Machanism/&title=《(原创)笔记-Twisted的Deffered机制》 — 奥卡姆剃刀&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2017/09/01/Note/Python/Note-Twisted-Deffered-Machanism/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《(原创)笔记-Twisted的Deffered机制》 — 奥卡姆剃刀&url=https://qrsforever.github.io/2017/09/01/Note/Python/Note-Twisted-Deffered-Machanism/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2017/09/01/Note/Python/Note-Twisted-Deffered-Machanism/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://qrsforever.github.io/2017/09/01/Note/Python/Note-Twisted-Deffered-Machanism/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- lidong cha. -->
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- lidong end. -->
+
+</body>
+</html>

@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?cb4be66237379541488b8502a6eca006"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>设备操作API | 奥卡姆剃刀 | 你们都是大傻瓜, 我是天下大赢家</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Work">
+    <meta name="description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta name="keywords" content="Work">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设备操作API">
+<meta property="og:url" content="https://qrsforever.github.io/2018/12/29/Company/Leshi/Device_Operate_API/index.html">
+<meta property="og:site_name" content="奥卡姆剃刀">
+<meta property="og:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-16T12:09:11.926Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="设备操作API">
+<meta name="twitter:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+    
+        <link rel="alternate" type="application/atom+xml" title="奥卡姆剃刀" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">qrsforever</h5>
+          <a href="mailto:985612771@qq.com" title="985612771@qq.com" class="mail">985612771@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/705723886/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://zytforever.github.io" target="_blank" >
+                <i class="icon icon-lg icon-eye"></i>
+                Stocktech
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">设备操作API</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">设备操作API</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-12-29T09:51:48.000Z" itemprop="datePublished" class="page-time">
+  2018-12-29
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Company/">Company</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#设备操作"><span class="post-toc-number">1.</span> <span class="post-toc-text">2 设备操作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#环境变量"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">2.1 环境变量</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#api测试"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2.2 API测试</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#搜索新设备"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">2.2.1 搜索新设备</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查询主机设备列表"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">2.2.2 查询主机设备列表</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#添加新设备"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">2.2.3 添加新设备</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查询设备在线状态"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">2.2.4 查询设备在线状态</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查询设备属性profile"><span class="post-toc-number">1.2.5.</span> <span class="post-toc-text">2.2.5 查询设备属性Profile</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设备状态信息获取"><span class="post-toc-number">1.2.6.</span> <span class="post-toc-text">2.2.6 设备状态信息获取</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#操作设备属性"><span class="post-toc-number">1.2.7.</span> <span class="post-toc-text">2.2.7 操作设备属性</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Company/Leshi/Device_Operate_API"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">设备操作API</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-12-29 17:51:48" datetime="2018-12-29T09:51:48.000Z"  itemprop="datePublished">2018-12-29</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Company/">Company</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#设备操作">设备操作</a>
+<ul>
+<li><a href="#环境变量">环境变量</a></li>
+<li><a href="#api测试">API测试</a>
+<ul>
+<li><a href="#搜索新设备">搜索新设备</a></li>
+<li><a href="#查询主机设备列表">查询主机设备列表</a></li>
+<li><a href="#添加新设备">添加新设备</a></li>
+<li><a href="#查询设备在线状态">查询设备在线状态</a></li>
+<li><a href="#查询设备属性profile">查询设备属性Profile</a></li>
+<li><a href="#设备状态信息获取">设备状态信息获取</a></li>
+<li><a href="#操作设备属性">操作设备属性</a></li>
+</ul></li>
+</ul></li>
+</ul>
+<!-- vim-markdown-toc -->
+<a id="more"></a>
+<h1 id="设备操作"><span class="header-section-number">2</span> 设备操作</h1>
+<h2 id="环境变量"><span class="header-section-number">2.1</span> 环境变量</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="bu">export</span> <span class="va">ip=</span>192.168.124.16</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="bu">export</span> <span class="va">port=</span>8899</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="bu">export</span> <span class="va">token=</span><span class="st">&quot;token:1234567&quot;</span></a>
+<a class="sourceLine" id="cb1-4" title="4"></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="bu">export</span> <span class="va">devId=</span><span class="st">&quot;00124b00-19a8-9215-d0d0&quot;</span></a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="bu">export</span> <span class="va">typeId=</span><span class="st">&quot;oic.d.kk_lightctrl&quot;</span></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="bu">export</span> <span class="va">prop1=</span><span class="st">&quot;{</span><span class="dt">\&quot;</span><span class="st">name</span><span class="dt">\&quot;</span><span class="st">:</span><span class="dt">\&quot;</span><span class="st">value1</span><span class="dt">\&quot;</span><span class="st">, </span><span class="dt">\&quot;</span><span class="st">value</span><span class="dt">\&quot;</span><span class="st">:</span><span class="dt">\&quot;</span><span class="st">0</span><span class="dt">\&quot;</span><span class="st">}&quot;</span></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="bu">export</span> <span class="va">prop2=</span><span class="st">&quot;{</span><span class="dt">\&quot;</span><span class="st">name</span><span class="dt">\&quot;</span><span class="st">:</span><span class="dt">\&quot;</span><span class="st">value2</span><span class="dt">\&quot;</span><span class="st">, </span><span class="dt">\&quot;</span><span class="st">value</span><span class="dt">\&quot;</span><span class="st">:</span><span class="dt">\&quot;</span><span class="st">1</span><span class="dt">\&quot;</span><span class="st">}&quot;</span></a></code></pre></div>
+<h2 id="api测试"><span class="header-section-number">2.2</span> API测试</h2>
+<h3 id="搜索新设备"><span class="header-section-number">2.2.1</span> 搜索新设备</h3>
+<p>命令: <code>curl -v -X POST http://$ip:$port/api/familydevice/discovery  -H $token</code></p>
+<p>输出:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">{</span></a>
+<a class="sourceLine" id="cb2-2" title="2">    <span class="dt">&quot;requestId&quot;</span><span class="fu">:</span> <span class="st">&quot;abcddcba&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb2-3" title="3">    <span class="dt">&quot;request&quot;</span><span class="fu">:</span> <span class="st">&quot;/api/familydevice/discovery&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb2-4" title="4">    <span class="dt">&quot;status&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb2-5" title="5">    <span class="dt">&quot;result&quot;</span><span class="fu">:</span> <span class="fu">{</span></a>
+<a class="sourceLine" id="cb2-6" title="6">        <span class="dt">&quot;ret&quot;</span><span class="fu">:</span> <span class="st">&quot;success&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb2-7" title="7">        <span class="dt">&quot;maxDuration&quot;</span><span class="fu">:</span> <span class="st">&quot;5&quot;</span></a>
+<a class="sourceLine" id="cb2-8" title="8">    <span class="fu">}</span></a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="fu">}</span></a></code></pre></div>
+<h3 id="查询主机设备列表"><span class="header-section-number">2.2.2</span> 查询主机设备列表</h3>
+<p>命令:　<code>curl -v -X POST http://$ip:$port/api/familydevice/listall -H $token</code></p>
+<p>输出:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">{</span></a>
+<a class="sourceLine" id="cb3-2" title="2">    <span class="dt">&quot;requestId&quot;</span><span class="fu">:</span> <span class="st">&quot;abcddcba&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb3-3" title="3">    <span class="dt">&quot;request&quot;</span><span class="fu">:</span> <span class="st">&quot;/api/familydevice/list&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb3-4" title="4">    <span class="dt">&quot;status&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb3-5" title="5">    <span class="dt">&quot;result&quot;</span><span class="fu">:</span> <span class="ot">[</span></a>
+<a class="sourceLine" id="cb3-6" title="6">        <span class="fu">{</span></a>
+<a class="sourceLine" id="cb3-7" title="7">            <span class="dt">&quot;deviceId&quot;</span><span class="fu">:</span> <span class="st">&quot;00124b00-12cc-8000-d0d0&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb3-8" title="8">            <span class="dt">&quot;typeId&quot;</span><span class="fu">:</span> <span class="st">&quot;oic.d.kk_envsensor&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb3-9" title="9">            <span class="dt">&quot;ownedStatus&quot;</span><span class="fu">:</span> <span class="st">&quot;false&quot;</span></a>
+<a class="sourceLine" id="cb3-10" title="10">        <span class="fu">}</span><span class="ot">,</span></a>
+<a class="sourceLine" id="cb3-11" title="11">        <span class="fu">{</span></a>
+<a class="sourceLine" id="cb3-12" title="12">            <span class="dt">&quot;deviceId&quot;</span><span class="fu">:</span> <span class="st">&quot;00124b00-12d2-676f-d0d0&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb3-13" title="13">            <span class="dt">&quot;typeId&quot;</span><span class="fu">:</span> <span class="st">&quot;oic.d.kk_envsensor&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb3-14" title="14">            <span class="dt">&quot;ownedStatus&quot;</span><span class="fu">:</span> <span class="st">&quot;false&quot;</span></a>
+<a class="sourceLine" id="cb3-15" title="15">        <span class="fu">}</span><span class="ot">,</span></a>
+<a class="sourceLine" id="cb3-16" title="16">        <span class="fu">{</span></a>
+<a class="sourceLine" id="cb3-17" title="17">            <span class="dt">&quot;deviceId&quot;</span><span class="fu">:</span> <span class="st">&quot;00124b00-1646-0823-d0d0&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb3-18" title="18">            <span class="dt">&quot;typeId&quot;</span><span class="fu">:</span> <span class="st">&quot;oic.d.kk_scenectrl&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb3-19" title="19">            <span class="dt">&quot;ownedStatus&quot;</span><span class="fu">:</span> <span class="st">&quot;false&quot;</span></a>
+<a class="sourceLine" id="cb3-20" title="20">        <span class="fu">}</span><span class="ot">,</span></a>
+<a class="sourceLine" id="cb3-21" title="21">        <span class="fu">{</span></a>
+<a class="sourceLine" id="cb3-22" title="22">            <span class="dt">&quot;deviceId&quot;</span><span class="fu">:</span> <span class="st">&quot;00124b00-16bd-69a5-d0d0&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb3-23" title="23">            <span class="dt">&quot;typeId&quot;</span><span class="fu">:</span> <span class="st">&quot;oic.d.kk_doorcontact&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb3-24" title="24">            <span class="dt">&quot;ownedStatus&quot;</span><span class="fu">:</span> <span class="st">&quot;true&quot;</span></a>
+<a class="sourceLine" id="cb3-25" title="25">        <span class="fu">}</span><span class="ot">,</span></a>
+<a class="sourceLine" id="cb3-26" title="26">        <span class="fu">{</span></a>
+<a class="sourceLine" id="cb3-27" title="27">            <span class="dt">&quot;deviceId&quot;</span><span class="fu">:</span> <span class="st">&quot;00124b00-16bd-9578-d0d0&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb3-28" title="28">            <span class="dt">&quot;typeId&quot;</span><span class="fu">:</span> <span class="st">&quot;oic.d.kk_sosalarm&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb3-29" title="29">            <span class="dt">&quot;ownedStatus&quot;</span><span class="fu">:</span> <span class="st">&quot;true&quot;</span></a>
+<a class="sourceLine" id="cb3-30" title="30">        <span class="fu">}</span><span class="ot">,</span></a>
+<a class="sourceLine" id="cb3-31" title="31">        <span class="fu">{</span></a>
+<a class="sourceLine" id="cb3-32" title="32">            <span class="dt">&quot;deviceId&quot;</span><span class="fu">:</span> <span class="st">&quot;00124b00-16bd-a7a8-d0d0&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb3-33" title="33">            <span class="dt">&quot;typeId&quot;</span><span class="fu">:</span> <span class="st">&quot;oic.d.kk_doorcontact&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb3-34" title="34">            <span class="dt">&quot;ownedStatus&quot;</span><span class="fu">:</span> <span class="st">&quot;true&quot;</span></a>
+<a class="sourceLine" id="cb3-35" title="35">        <span class="fu">}</span><span class="ot">,</span></a>
+<a class="sourceLine" id="cb3-36" title="36">        <span class="fu">{</span></a>
+<a class="sourceLine" id="cb3-37" title="37">            <span class="dt">&quot;deviceId&quot;</span><span class="fu">:</span> <span class="st">&quot;00124b00-1769-1549-d0d0&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb3-38" title="38">            <span class="dt">&quot;typeId&quot;</span><span class="fu">:</span> <span class="st">&quot;oic.d.kk_doorcontact&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb3-39" title="39">            <span class="dt">&quot;ownedStatus&quot;</span><span class="fu">:</span> <span class="st">&quot;false&quot;</span></a>
+<a class="sourceLine" id="cb3-40" title="40">        <span class="fu">}</span><span class="ot">,</span></a>
+<a class="sourceLine" id="cb3-41" title="41">        <span class="fu">{</span></a>
+<a class="sourceLine" id="cb3-42" title="42">            <span class="dt">&quot;deviceId&quot;</span><span class="fu">:</span> <span class="st">&quot;00124b00-1769-2c9b-d0d0&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb3-43" title="43">            <span class="dt">&quot;typeId&quot;</span><span class="fu">:</span> <span class="st">&quot;oic.d.kk_sosalarm&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb3-44" title="44">            <span class="dt">&quot;ownedStatus&quot;</span><span class="fu">:</span> <span class="st">&quot;true&quot;</span></a>
+<a class="sourceLine" id="cb3-45" title="45">        <span class="fu">}</span><span class="ot">,</span></a>
+<a class="sourceLine" id="cb3-46" title="46">        <span class="fu">{</span></a>
+<a class="sourceLine" id="cb3-47" title="47">            <span class="dt">&quot;deviceId&quot;</span><span class="fu">:</span> <span class="st">&quot;00124b00-176c-76cd-d0d0&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb3-48" title="48">            <span class="dt">&quot;typeId&quot;</span><span class="fu">:</span> <span class="st">&quot;oic.d.kk_sosalarm&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb3-49" title="49">            <span class="dt">&quot;ownedStatus&quot;</span><span class="fu">:</span> <span class="st">&quot;true&quot;</span></a>
+<a class="sourceLine" id="cb3-50" title="50">        <span class="fu">}</span><span class="ot">,</span></a>
+<a class="sourceLine" id="cb3-51" title="51">        <span class="fu">{</span></a>
+<a class="sourceLine" id="cb3-52" title="52">            <span class="dt">&quot;deviceId&quot;</span><span class="fu">:</span> <span class="st">&quot;00124b00-18dc-e960-d0d0&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb3-53" title="53">            <span class="dt">&quot;typeId&quot;</span><span class="fu">:</span> <span class="st">&quot;oic.d.kk_smartplug&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb3-54" title="54">            <span class="dt">&quot;ownedStatus&quot;</span><span class="fu">:</span> <span class="st">&quot;true&quot;</span></a>
+<a class="sourceLine" id="cb3-55" title="55">        <span class="fu">}</span><span class="ot">,</span></a>
+<a class="sourceLine" id="cb3-56" title="56">        <span class="fu">{</span></a>
+<a class="sourceLine" id="cb3-57" title="57">            <span class="dt">&quot;deviceId&quot;</span><span class="fu">:</span> <span class="st">&quot;00124b00-18dc-eaa1-d0d0&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb3-58" title="58">            <span class="dt">&quot;typeId&quot;</span><span class="fu">:</span> <span class="st">&quot;oic.d.kk_smartplug&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb3-59" title="59">            <span class="dt">&quot;ownedStatus&quot;</span><span class="fu">:</span> <span class="st">&quot;true&quot;</span></a>
+<a class="sourceLine" id="cb3-60" title="60">        <span class="fu">}</span><span class="ot">,</span></a>
+<a class="sourceLine" id="cb3-61" title="61">        <span class="fu">{</span></a>
+<a class="sourceLine" id="cb3-62" title="62">            <span class="dt">&quot;deviceId&quot;</span><span class="fu">:</span> <span class="st">&quot;00124b00-199f-5c97-d0d0&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb3-63" title="63">            <span class="dt">&quot;typeId&quot;</span><span class="fu">:</span> <span class="st">&quot;oic.d.kk_lightctrl&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb3-64" title="64">            <span class="dt">&quot;ownedStatus&quot;</span><span class="fu">:</span> <span class="st">&quot;true&quot;</span></a>
+<a class="sourceLine" id="cb3-65" title="65">        <span class="fu">}</span><span class="ot">,</span></a>
+<a class="sourceLine" id="cb3-66" title="66">        <span class="fu">{</span></a>
+<a class="sourceLine" id="cb3-67" title="67">            <span class="dt">&quot;deviceId&quot;</span><span class="fu">:</span> <span class="st">&quot;00124b00-19a8-9215-d0d0&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb3-68" title="68">            <span class="dt">&quot;typeId&quot;</span><span class="fu">:</span> <span class="st">&quot;oic.d.kk_lightctrl&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb3-69" title="69">            <span class="dt">&quot;ownedStatus&quot;</span><span class="fu">:</span> <span class="st">&quot;false&quot;</span></a>
+<a class="sourceLine" id="cb3-70" title="70">        <span class="fu">}</span></a>
+<a class="sourceLine" id="cb3-71" title="71">    <span class="ot">]</span></a>
+<a class="sourceLine" id="cb3-72" title="72"><span class="fu">}</span></a></code></pre></div>
+<h3 id="添加新设备"><span class="header-section-number">2.2.3</span> 添加新设备</h3>
+<p>命令: <code>curl -v -X POST http://$ip:$port/api/familydevice/bind -H $token -d "{\"deviceId\":\"$devId\", \"typeId\":\"$typeId\"}"</code></p>
+<p>输出：</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb4-1" title="1"><span class="fu">{</span></a>
+<a class="sourceLine" id="cb4-2" title="2">    <span class="dt">&quot;requestId&quot;</span><span class="fu">:</span> <span class="st">&quot;abcddcba&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb4-3" title="3">    <span class="dt">&quot;request&quot;</span><span class="fu">:</span> <span class="st">&quot;/api/familydevice/bind&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb4-4" title="4">    <span class="dt">&quot;status&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb4-5" title="5">    <span class="dt">&quot;result&quot;</span><span class="fu">:</span> <span class="fu">{</span></a>
+<a class="sourceLine" id="cb4-6" title="6">        <span class="dt">&quot;typeId&quot;</span><span class="fu">:</span> <span class="st">&quot;oic.d.kk_lightctrl&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb4-7" title="7">        <span class="dt">&quot;deviceId&quot;</span><span class="fu">:</span> <span class="st">&quot;00124b00-19a8-9215-d0d0&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb4-8" title="8">        <span class="dt">&quot;ownedStatus&quot;</span><span class="fu">:</span> <span class="st">&quot;true&quot;</span></a>
+<a class="sourceLine" id="cb4-9" title="9">    <span class="fu">}</span></a>
+<a class="sourceLine" id="cb4-10" title="10"><span class="fu">}</span></a></code></pre></div>
+<h3 id="查询设备在线状态"><span class="header-section-number">2.2.4</span> 查询设备在线状态</h3>
+<p>命令: <code>curl -v -X POST http://$ip:$port/api/familydevice/isonline -H $token -d "{\"deviceId\":\"$devId\"}"</code></p>
+<p>输出:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb5-1" title="1"><span class="fu">{</span></a>
+<a class="sourceLine" id="cb5-2" title="2">    <span class="dt">&quot;requestId&quot;</span><span class="fu">:</span> <span class="st">&quot;abcddcba&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb5-3" title="3">    <span class="dt">&quot;request&quot;</span><span class="fu">:</span> <span class="st">&quot;/api/familydevice/isonline&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb5-4" title="4">    <span class="dt">&quot;status&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb5-5" title="5">    <span class="dt">&quot;result&quot;</span><span class="fu">:</span> <span class="fu">{</span></a>
+<a class="sourceLine" id="cb5-6" title="6">        <span class="dt">&quot;isonline&quot;</span><span class="fu">:</span> <span class="st">&quot;true&quot;</span></a>
+<a class="sourceLine" id="cb5-7" title="7">    <span class="fu">}</span></a>
+<a class="sourceLine" id="cb5-8" title="8"><span class="fu">}</span></a></code></pre></div>
+<h3 id="查询设备属性profile"><span class="header-section-number">2.2.5</span> 查询设备属性Profile</h3>
+<p>命令: <code>curl -v -X POST http://$ip:$port/api/familydevice/profile -H $token -d "{\"deviceId\":\"$devId\"}"</code></p>
+<p>输出:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb6-1" title="1"><span class="fu">{</span></a>
+<a class="sourceLine" id="cb6-2" title="2">    <span class="dt">&quot;requestId&quot;</span><span class="fu">:</span> <span class="st">&quot;abcddcba&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb6-3" title="3">    <span class="dt">&quot;request&quot;</span><span class="fu">:</span> <span class="st">&quot;/api/familydevice/profile&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb6-4" title="4">    <span class="dt">&quot;status&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb6-5" title="5">    <span class="dt">&quot;result&quot;</span><span class="fu">:</span> <span class="fu">{</span></a>
+<a class="sourceLine" id="cb6-6" title="6">        <span class="dt">&quot;profile&quot;</span><span class="fu">:</span> <span class="fu">{</span></a>
+<a class="sourceLine" id="cb6-7" title="7">            <span class="dt">&quot;OnlineState&quot;</span><span class="fu">:</span> <span class="fu">{</span></a>
+<a class="sourceLine" id="cb6-8" title="8">                <span class="dt">&quot;tag&quot;</span><span class="fu">:</span> <span class="st">&quot;在线状态&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb6-9" title="9">                <span class="dt">&quot;write&quot;</span><span class="fu">:</span> <span class="st">&quot;F&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb6-10" title="10">                <span class="dt">&quot;read&quot;</span><span class="fu">:</span> <span class="st">&quot;T&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb6-11" title="11">                <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;enum&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb6-12" title="12">                <span class="dt">&quot;range&quot;</span><span class="fu">:</span> <span class="fu">{</span></a>
+<a class="sourceLine" id="cb6-13" title="13">                    <span class="dt">&quot;0&quot;</span><span class="fu">:</span> <span class="st">&quot;离线&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb6-14" title="14">                    <span class="dt">&quot;1&quot;</span><span class="fu">:</span> <span class="st">&quot;在线&quot;</span></a>
+<a class="sourceLine" id="cb6-15" title="15">                <span class="fu">}</span></a>
+<a class="sourceLine" id="cb6-16" title="16">            <span class="fu">},</span></a>
+<a class="sourceLine" id="cb6-17" title="17">            <span class="dt">&quot;value1&quot;</span><span class="fu">:</span> <span class="fu">{</span></a>
+<a class="sourceLine" id="cb6-18" title="18">                <span class="dt">&quot;tag&quot;</span><span class="fu">:</span> <span class="st">&quot;开关状态1&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb6-19" title="19">                <span class="dt">&quot;read&quot;</span><span class="fu">:</span> <span class="st">&quot;T&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb6-20" title="20">                <span class="dt">&quot;write&quot;</span><span class="fu">:</span> <span class="st">&quot;T&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb6-21" title="21">                <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;enum&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb6-22" title="22">                <span class="dt">&quot;range&quot;</span><span class="fu">:</span> <span class="fu">{</span></a>
+<a class="sourceLine" id="cb6-23" title="23">                    <span class="dt">&quot;0&quot;</span><span class="fu">:</span> <span class="st">&quot;离线&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb6-24" title="24">                    <span class="dt">&quot;1&quot;</span><span class="fu">:</span> <span class="st">&quot;在线&quot;</span></a>
+<a class="sourceLine" id="cb6-25" title="25">                <span class="fu">}</span></a>
+<a class="sourceLine" id="cb6-26" title="26">            <span class="fu">},</span></a>
+<a class="sourceLine" id="cb6-27" title="27">            <span class="dt">&quot;value2&quot;</span><span class="fu">:</span> <span class="fu">{</span></a>
+<a class="sourceLine" id="cb6-28" title="28">                <span class="dt">&quot;tag&quot;</span><span class="fu">:</span> <span class="st">&quot;开关状态2&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb6-29" title="29">                <span class="dt">&quot;read&quot;</span><span class="fu">:</span> <span class="st">&quot;T&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb6-30" title="30">                <span class="dt">&quot;write&quot;</span><span class="fu">:</span> <span class="st">&quot;T&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb6-31" title="31">                <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;enum&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb6-32" title="32">                <span class="dt">&quot;range&quot;</span><span class="fu">:</span> <span class="fu">{</span></a>
+<a class="sourceLine" id="cb6-33" title="33">                    <span class="dt">&quot;0&quot;</span><span class="fu">:</span> <span class="st">&quot;离线&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb6-34" title="34">                    <span class="dt">&quot;1&quot;</span><span class="fu">:</span> <span class="st">&quot;在线&quot;</span></a>
+<a class="sourceLine" id="cb6-35" title="35">                <span class="fu">}</span></a>
+<a class="sourceLine" id="cb6-36" title="36">            <span class="fu">},</span></a>
+<a class="sourceLine" id="cb6-37" title="37">            <span class="dt">&quot;value3&quot;</span><span class="fu">:</span> <span class="fu">{</span></a>
+<a class="sourceLine" id="cb6-38" title="38">                <span class="dt">&quot;tag&quot;</span><span class="fu">:</span> <span class="st">&quot;开关状态3&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb6-39" title="39">                <span class="dt">&quot;read&quot;</span><span class="fu">:</span> <span class="st">&quot;T&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb6-40" title="40">                <span class="dt">&quot;write&quot;</span><span class="fu">:</span> <span class="st">&quot;T&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb6-41" title="41">                <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;enum&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb6-42" title="42">                <span class="dt">&quot;range&quot;</span><span class="fu">:</span> <span class="fu">{</span></a>
+<a class="sourceLine" id="cb6-43" title="43">                    <span class="dt">&quot;0&quot;</span><span class="fu">:</span> <span class="st">&quot;离线&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb6-44" title="44">                    <span class="dt">&quot;1&quot;</span><span class="fu">:</span> <span class="st">&quot;在线&quot;</span></a>
+<a class="sourceLine" id="cb6-45" title="45">                <span class="fu">}</span></a>
+<a class="sourceLine" id="cb6-46" title="46">            <span class="fu">}</span></a>
+<a class="sourceLine" id="cb6-47" title="47">        <span class="fu">},</span></a>
+<a class="sourceLine" id="cb6-48" title="48">        <span class="dt">&quot;description&quot;</span><span class="fu">:</span> <span class="st">&quot;控客3T灯控&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb6-49" title="49">        <span class="dt">&quot;manufacture&quot;</span><span class="fu">:</span> <span class="st">&quot;Konke&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb6-50" title="50">        <span class="dt">&quot;version&quot;</span><span class="fu">:</span> <span class="st">&quot;0.9.2&quot;</span></a>
+<a class="sourceLine" id="cb6-51" title="51">    <span class="fu">}</span></a>
+<a class="sourceLine" id="cb6-52" title="52"><span class="fu">}</span></a></code></pre></div>
+<h3 id="设备状态信息获取"><span class="header-section-number">2.2.6</span> 设备状态信息获取</h3>
+<p>命令: <code>curl -v -X POST http://$ip:$port/api/familydevice/status -H $token -d "{\"deviceId\":\"$devId\"}"</code></p>
+<p>输出:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb7-1" title="1"><span class="fu">{</span></a>
+<a class="sourceLine" id="cb7-2" title="2">    <span class="dt">&quot;requestId&quot;</span><span class="fu">:</span> <span class="st">&quot;abcddcba&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb7-3" title="3">    <span class="dt">&quot;request&quot;</span><span class="fu">:</span> <span class="st">&quot;/api/familydevice/status&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb7-4" title="4">    <span class="dt">&quot;status&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb7-5" title="5">    <span class="dt">&quot;result&quot;</span><span class="fu">:</span> <span class="fu">{</span></a>
+<a class="sourceLine" id="cb7-6" title="6">        <span class="dt">&quot;value1&quot;</span><span class="fu">:</span> <span class="st">&quot;0&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb7-7" title="7">        <span class="dt">&quot;value2&quot;</span><span class="fu">:</span> <span class="st">&quot;0&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb7-8" title="8">        <span class="dt">&quot;value3&quot;</span><span class="fu">:</span> <span class="st">&quot;0&quot;</span></a>
+<a class="sourceLine" id="cb7-9" title="9">    <span class="fu">}</span></a>
+<a class="sourceLine" id="cb7-10" title="10"><span class="fu">}</span></a></code></pre></div>
+<h3 id="操作设备属性"><span class="header-section-number">2.2.7</span> 操作设备属性</h3>
+<p>命令: <code>curl -v -X POST http://$ip:$port/api/familydevice/operate -H $token -d "{\"deviceId\":\"$devId\", \"propSet\":\"$propset\"}"</code></p>
+<p>输出:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb8-1" title="1"><span class="fu">{</span></a>
+<a class="sourceLine" id="cb8-2" title="2">    <span class="dt">&quot;requestId&quot;</span><span class="fu">:</span> <span class="st">&quot;abcddcba&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb8-3" title="3">    <span class="dt">&quot;request&quot;</span><span class="fu">:</span> <span class="st">&quot;/api/familydevice/operate&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb8-4" title="4">    <span class="dt">&quot;status&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb8-5" title="5">    <span class="dt">&quot;result&quot;</span><span class="fu">:</span> <span class="fu">{</span></a>
+<a class="sourceLine" id="cb8-6" title="6">        <span class="dt">&quot;ret&quot;</span><span class="fu">:</span> <span class="st">&quot;SUCCESS&quot;</span></a>
+<a class="sourceLine" id="cb8-7" title="7">    <span class="fu">}</span></a>
+<a class="sourceLine" id="cb8-8" title="8"><span class="fu">}</span></a></code></pre></div>
+</body>
+</html>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-03-16T12:09:11.926Z" itemprop="dateUpdated">2019-03-16 20:09:11</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://qrsforever.github.io">
+            <img src="/img/avatar.jpg" alt="qrsforever">
+            qrsforever
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Work/">Work</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2018/12/29/Company/Leshi/Device_Operate_API/&title=《设备操作API》 — 奥卡姆剃刀&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2018/12/29/Company/Leshi/Device_Operate_API/&title=《设备操作API》 — 奥卡姆剃刀&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2018/12/29/Company/Leshi/Device_Operate_API/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《设备操作API》 — 奥卡姆剃刀&url=https://qrsforever.github.io/2018/12/29/Company/Leshi/Device_Operate_API/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2018/12/29/Company/Leshi/Device_Operate_API/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/02/21/Books/Statistics/statistics_index/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">统计学之指数</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/12/29/Company/Leshi/Scene_Operate_API/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">场景操作API</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "bpShGWdW8DpODhnDko5O2IBB-gzGzoHsz",
+            appKey: "rwmasTllBbHE69ADuLjFyFWf",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢打赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>qrsforever &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2018/12/29/Company/Leshi/Device_Operate_API/&title=《设备操作API》 — 奥卡姆剃刀&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2018/12/29/Company/Leshi/Device_Operate_API/&title=《设备操作API》 — 奥卡姆剃刀&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2018/12/29/Company/Leshi/Device_Operate_API/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《设备操作API》 — 奥卡姆剃刀&url=https://qrsforever.github.io/2018/12/29/Company/Leshi/Device_Operate_API/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2018/12/29/Company/Leshi/Device_Operate_API/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://qrsforever.github.io/2018/12/29/Company/Leshi/Device_Operate_API/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- lidong cha. -->
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- lidong end. -->
+
+</body>
+</html>
