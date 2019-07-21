@@ -182,7 +182,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#环境配置"><span class="post-toc-number">1.</span> <span class="post-toc-text">2 环境配置</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#工程配置"><span class="post-toc-number">2.</span> <span class="post-toc-text">3 工程配置</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#建立或更新"><span class="post-toc-number">3.</span> <span class="post-toc-text">4 建立或更新</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#环境配置"><span class="post-toc-number">1.</span> <span class="post-toc-text">1 环境配置</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#工程配置"><span class="post-toc-number">2.</span> <span class="post-toc-text">2 工程配置</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#建立或更新"><span class="post-toc-number">3.</span> <span class="post-toc-text">3 建立或更新</span></a></li></ol>
         </nav>
     </aside>
 
@@ -293,7 +293,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 </ul>
 <!-- vim-markdown-toc -->
 <a id="more"></a>
-<h1 id="环境配置"><span class="header-section-number">2</span> 环境配置</h1>
+<h1 id="环境配置"><span class="header-section-number">1</span> 环境配置</h1>
 <p><strong>1. 下载Opengrok和Tomcat</strong></p>
 <p>建立软链接</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">lidong@node0</span>:/$ ls -l /opt/ <span class="kw">|</span> <span class="fu">egrep</span> <span class="st">&quot;tomcat|opengrok&quot;</span></a>
@@ -311,7 +311,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <a class="sourceLine" id="cb3-3" title="3"><span class="bu">export</span> <span class="va">OPENGROK</span>\_<span class="va">HOME=</span>/data/opt/opengrok/opengrok-<span class="va">${OPENGROK</span><span class="er">\_VERSION</span><span class="va">}</span></a>
 <a class="sourceLine" id="cb3-4" title="4"><span class="bu">export</span> <span class="va">OPENGROK</span>\_<span class="va">INSTANCE</span>\_<span class="va">BASE=$OPENGROK</span>\_<span class="va">HOME</span></a>
 <a class="sourceLine" id="cb3-5" title="5"><span class="bu">export</span> <span class="va">PATH=$OPENGROK</span>\_HOME/bin:<span class="va">$PATH</span></a></code></pre></div>
-<h1 id="工程配置"><span class="header-section-number">3</span> 工程配置</h1>
+<h1 id="工程配置"><span class="header-section-number">2</span> 工程配置</h1>
 <p><strong>1. 建工程目录</strong></p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="co"># 创建总工程目录</span></a>
 <a class="sourceLine" id="cb4-2" title="2"><span class="bu">cd</span> /project/opengrok/</a>
@@ -358,7 +358,7 @@ hadoop/src/
 hbase/src/
 `-- hbase -&gt; /data/opt/hbase/hbase-1.2.6-src
 </code></pre>
-<h1 id="建立或更新"><span class="header-section-number">4</span> 建立或更新</h1>
+<h1 id="建立或更新"><span class="header-section-number">3</span> 建立或更新</h1>
 <p><strong>1. opengrok.sh脚本</strong></p>
 <p>将opengrok.sh 加入到PATH环境变量中,或者拷贝到/usr/bin cat /usr/bin/opengrok.sh</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb11-1" title="1"><span class="co">#!/bin/bash</span></a>

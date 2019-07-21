@@ -179,7 +179,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#twisted介绍"><span class="post-toc-number">1.</span> <span class="post-toc-text">2 Twisted介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#deffereds"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">2.1 Deffereds</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#callback"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2.2 Callback</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#timeouts"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">2.3 Timeouts</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#源码实例"><span class="post-toc-number">2.</span> <span class="post-toc-text">3 源码实例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码-1-单回调"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">3.1 代码-1 (单回调)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码-2-多回调"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">3.2 代码-2 (多回调)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码-3-线程"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">3.3 代码-3 (线程)</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#源码剖析"><span class="post-toc-number">3.</span> <span class="post-toc-text">4 源码剖析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#deffered类"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">4.1 Deffered类</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reactor方法"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">4.2 reactor方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#reactor.calllater"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">4.2.1 1. reactor.callLater()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#reactor.run"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">4.2.2 2. reactor.run()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#reactor.callinthread"><span class="post-toc-number">3.2.3.</span> <span class="post-toc-text">4.2.3 3. reactor.callInThread()</span></a></li></ol></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#twisted介绍"><span class="post-toc-number">1.</span> <span class="post-toc-text">1 Twisted介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#deffereds"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1.1 Deffereds</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#callback"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">1.2 Callback</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#timeouts"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">1.3 Timeouts</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#源码实例"><span class="post-toc-number">2.</span> <span class="post-toc-text">2 源码实例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码-1-单回调"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">2.1 代码-1 (单回调)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码-2-多回调"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2.2 代码-2 (多回调)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码-3-线程"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">2.3 代码-3 (线程)</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#源码剖析"><span class="post-toc-number">3.</span> <span class="post-toc-text">3 源码剖析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#deffered类"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">3.1 Deffered类</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reactor方法"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">3.2 reactor方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#reactor.calllater"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">3.2.1 1. reactor.callLater()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#reactor.run"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">3.2.2 2. reactor.run()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#reactor.callinthread"><span class="post-toc-number">3.2.3.</span> <span class="post-toc-text">3.2.3 3. reactor.callInThread()</span></a></li></ol></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -293,16 +293,16 @@ class _SignalReactorMixin(object):              class ReactorBase(object):    / 
 </code></pre>
 <p>mainLoop()是由几层while嵌套实现以poll机制驱动整个程序运作.</p>
 <hr>
-<h1 id="twisted介绍"><span class="header-section-number">2</span> Twisted介绍</h1>
-<h2 id="deffereds"><span class="header-section-number">2.1</span> Deffereds</h2>
+<h1 id="twisted介绍"><span class="header-section-number">1</span> Twisted介绍</h1>
+<h2 id="deffereds"><span class="header-section-number">1.1</span> Deffereds</h2>
 <p>Twisted uses the Deferred object to manage the callback sequence. The client application attaches a series of functions to the deferred to be called in order when the results of the asynchronous request are available (this series of functions is known as a series of callbacks, or a callback chain), together with a series of functions to be called if there is an error in the asynchronous request (known as a series of errbacks or an errback chain). The asynchronous library code calls the first callback when the result is available, or the first errback when an error occurs, and the Deferred object then hands the results of each callback or errback function to the next function in the chain.</p>
 <p><a href="https://twistedmatrix.com/documents/current/core/howto/defer.html" target="_blank" rel="noopener">引用</a></p>
-<h2 id="callback"><span class="header-section-number">2.2</span> Callback</h2>
+<h2 id="callback"><span class="header-section-number">1.2</span> Callback</h2>
 <p>A twisted.internet.defer.Deferred is a promise that a function will at some point have a result. We can attach callback functions to a Deferred, and once it gets a result these callbacks will be called. In addition Deferreds allow the developer to register a callback for an error, with the default behavior of logging the error. The deferred mechanism standardizes the application programmer’s interface with all sorts of blocking or delayed operations.</p>
-<h2 id="timeouts"><span class="header-section-number">2.3</span> Timeouts</h2>
+<h2 id="timeouts"><span class="header-section-number">1.3</span> Timeouts</h2>
 <p>Timeouts are a special case of Cancellation. Let’s say we have a Deferred representing a task that may take a long time. We want to put an upper bound on that task, so we want the Deferred to time out X seconds in the future. A convenient API to do so is Deferred.addTimeout. By default, it will fail with a TimeoutError if the Deferred hasn’t fired (with either an errback or a callback) within timeout seconds.</p>
-<h1 id="源码实例"><span class="header-section-number">3</span> 源码实例</h1>
-<h2 id="代码-1-单回调"><span class="header-section-number">3.1</span> 代码-1 (单回调)</h2>
+<h1 id="源码实例"><span class="header-section-number">2</span> 源码实例</h1>
+<h2 id="代码-1-单回调"><span class="header-section-number">2.1</span> 代码-1 (单回调)</h2>
 <pre><code>
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
@@ -329,7 +329,7 @@ print(&#39;Starting the reactor&#39;)
 reactor.run()
 </code></pre>
 <p>如果reactor.callLater(2, deferred.callback, inputData * 3)参数deferred.callback换成普通函数, 那么deferred.addCallback添加的 callback将不会执行, 要理解DelayCall对象和Deffered中callbacks之间的联系. <a href="#deff_c" title="Deffered简易图">Deffered类</a> 如果有多个deferred.addCallback, 前一个回调的返回作为后一个callback的参数.</p>
-<h2 id="代码-2-多回调"><span class="header-section-number">3.2</span> 代码-2 (多回调)</h2>
+<h2 id="代码-2-多回调"><span class="header-section-number">2.2</span> 代码-2 (多回调)</h2>
 <pre><code>
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
@@ -380,7 +380,7 @@ d.addErrback(ebPrintError)
 reactor.callLater(4, reactor.stop)
 reactor.run()
 </code></pre>
-<h2 id="代码-3-线程"><span class="header-section-number">3.3</span> 代码-3 (线程)</h2>
+<h2 id="代码-3-线程"><span class="header-section-number">2.3</span> 代码-3 (线程)</h2>
 <pre><code>
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
@@ -412,9 +412,9 @@ if __name__ == &#39;__main__&#39;:
     reactor.callLater(4, reactor.stop);
     reactor.run()
 </code></pre>
-<h1 id="源码剖析"><span class="header-section-number">4</span> 源码剖析</h1>
+<h1 id="源码剖析"><span class="header-section-number">3</span> 源码剖析</h1>
 <p>主要文件: 1. defer.py 2. base.py</p>
-<h2 id="deffered类"><span class="header-section-number">4.1</span> Deffered类</h2>
+<h2 id="deffered类"><span class="header-section-number">3.1</span> Deffered类</h2>
 <p><span id="deff_c"></span></p>
 <pre><code>
 class Deferred
@@ -450,8 +450,8 @@ class Deferred
         |              o----&gt; failure.Failure()
         |              |
 </code></pre>
-<h2 id="reactor方法"><span class="header-section-number">4.2</span> reactor方法</h2>
-<h3 id="reactor.calllater"><span class="header-section-number">4.2.1</span> 1. reactor.callLater()</h3>
+<h2 id="reactor方法"><span class="header-section-number">3.2</span> reactor方法</h2>
+<h3 id="reactor.calllater"><span class="header-section-number">3.2.1</span> 1. reactor.callLater()</h3>
 <pre><code>
 // reactor.callLater(2, deferred.callback, inputData * 3)
 
@@ -468,7 +468,7 @@ class ReactorBase(object):
        return tple
 </code></pre>
 <p>将参数封装到DelayedCall对象中并存储在_newTimeCalls变量中, 需要注意的是callLater处理及回调函数还是在主线程中调用的.</p>
-<h3 id="reactor.run"><span class="header-section-number">4.2.2</span> 2. reactor.run()</h3>
+<h3 id="reactor.run"><span class="header-section-number">3.2.2</span> 2. reactor.run()</h3>
 <pre><code>
 // reactor.run()
 class _SignalReactorMixin(object):
@@ -583,7 +583,7 @@ class ReactorBase(object):
             self._justStopped = False
             self.fireSystemEvent(&quot;shutdown&quot;)
 </code></pre>
-<h3 id="reactor.callinthread"><span class="header-section-number">4.2.3</span> 3. reactor.callInThread()</h3>
+<h3 id="reactor.callinthread"><span class="header-section-number">3.2.3</span> 3. reactor.callInThread()</h3>
 <p>涉及文件:</p>
 <table>
 <thead>

@@ -179,7 +179,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#资源"><span class="post-toc-number">1.</span> <span class="post-toc-text">2 资源</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#概念"><span class="post-toc-number">2.</span> <span class="post-toc-text">3 概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#离群点outlier"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">3.1 1. 离群点(Outlier)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#杠杆率leverage"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">3.2 2. 杠杆率(Leverage)</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#实践"><span class="post-toc-number">3.</span> <span class="post-toc-text">4 实践</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#资源"><span class="post-toc-number">1.</span> <span class="post-toc-text">1 资源</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#概念"><span class="post-toc-number">2.</span> <span class="post-toc-text">2 概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#离群点outlier"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">2.1 1. 离群点(Outlier)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#杠杆率leverage"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2.2 2. 杠杆率(Leverage)</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#实践"><span class="post-toc-number">3.</span> <span class="post-toc-text">3 实践</span></a></li></ol>
         </nav>
     </aside>
 
@@ -237,11 +237,11 @@
 </ul>
 <!-- vim-markdown-toc -->
 <a id="more"></a>
-<h1 id="资源"><span class="header-section-number">2</span> 资源</h1>
+<h1 id="资源"><span class="header-section-number">1</span> 资源</h1>
 <ul>
 <li><a href="https://newonlinecourses.science.psu.edu/stat501/node/336/" target="_blank" rel="noopener">Influential Points</a></li>
 </ul>
-<h1 id="概念"><span class="header-section-number">3</span> 概念</h1>
+<h1 id="概念"><span class="header-section-number">2</span> 概念</h1>
 <p>观察点是Outlier Point, 不一定就是Influence Point</p>
 <p>观察点是High Leverage Point, 也不一定是Influence Point</p>
 <blockquote><!DOCTYPE html>
@@ -268,10 +268,10 @@
 </html>
 <footer><strong>newonlinecourses</strong><cite><a href="https://newonlinecourses.science.psu.edu/stat501/node/337/" target="_blank" rel="noopener">Distinction Between Outliers & High Leverage Observations</a></cite></footer></blockquote>
 <p>是不是Influence Point, 要看包含及排除这个观测点是否对预测Y值和回归模型系数以及统计检验结果有影响.</p>
-<h2 id="离群点outlier"><span class="header-section-number">3.1</span> 1. 离群点(Outlier)</h2>
+<h2 id="离群点outlier"><span class="header-section-number">2.1</span> 1. 离群点(Outlier)</h2>
 <p>An outlier is a data point whose response y does not follow the general trend of the rest of the data.</p>
 <p>该观测值偏离预测的Y值</p>
-<h2 id="杠杆率leverage"><span class="header-section-number">3.2</span> 2. 杠杆率(Leverage)</h2>
+<h2 id="杠杆率leverage"><span class="header-section-number">2.2</span> 2. 杠杆率(Leverage)</h2>
 <p>A data point has high leverage if it has "extreme" predictor x values.</p>
 <p>该观测值的X非常偏离其他X数据</p>
 <p>推导公式:</p>
@@ -320,10 +320,10 @@ The sum of the hii equals p, the number of parameters (regression coefficients i
 <footer><strong>newonlinecourses</strong><cite><a href="https://newonlinecourses.science.psu.edu/stat501/node/338/" target="_blank" rel="noopener">Definition and properties of leverages</a></cite></footer></blockquote>
 <p>如何通过<span class="math inline">\(h_ii\)</span>判断观察点的x值是异常的?</p>
 <p>答: 杠杆点均值 <span class="math inline">\(\bar{h} = \dfrac{\sum_{i = 1}^{n}h_{ii}}{n} = \dfrac{p}{n}\)</span>, 如果<span class="math inline">\(h_{ii} \gt 3\dfrac{p}{n}\)</span>, 则<span class="math inline">\(h_{ii}\)</span>是高杠杆率点.</p>
-<h1 id="实践"><span class="header-section-number">4</span> 实践</h1>
+<h1 id="实践"><span class="header-section-number">3</span> 实践</h1>
 
 <script src="//code.jquery.com/jquery-2.0.0.js"></script>
-<iframe id="ipynb-9531" marginheight="0" marginwidth="0" frameborder="0" height="100%" width="100%" srcdoc="<!DOCTYPE html>
+<iframe id="ipynb-3912" marginheight="0" marginwidth="0" frameborder="0" height="100%" width="100%" srcdoc="<!DOCTYPE html>
 <html>
 <head><meta charset='utf-8' />
 <title>Outlier_and_Leverage</title><script src='https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js'></script>
@@ -12035,6 +12035,24 @@ ul.typeahead-list > li > a {
 .ansi-bold { font-weight: bold; }
 
     </style>
+<style type='text/css'>
+    /* config_dir: custom/custom.css, see nbconvert/preprocessors/csshtmlheader.py */
+
+/* css by did id */
+
+div#notebook-container {
+    width: 100%;
+}
+
+/* css by did class*/
+
+div.border-box-sizing {
+    min-width:600px;
+    max-width:1200px;
+    white-space:nowrap;
+}
+
+    </style>
 
 
 <style type='text/css'>
@@ -12857,15 +12875,12 @@ Warnings:
 
 
 </html>
-" scrolling="no">
+" scrolling="auto">
 </iframe>
 <script>
-$("#ipynb-9531").load( function() {
-var h = $("#ipynb-9531").contents().find("#notebook").height();
-if (h < 100) {
-    h = 800;
-}
-document.getElementById('ipynb-9531').height=h + 200;
+$("#ipynb-3912").load( function() {
+var h = $("#ipynb-3912").contents().find("#notebook").height();
+document.getElementById('ipynb-3912').height= h + 60;
 })
 </script> 
     

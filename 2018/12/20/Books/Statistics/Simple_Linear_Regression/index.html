@@ -179,7 +179,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#资源"><span class="post-toc-number">1.</span> <span class="post-toc-text">2 资源</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#模型"><span class="post-toc-number">2.</span> <span class="post-toc-text">3 模型</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#问题"><span class="post-toc-number">3.</span> <span class="post-toc-text">4 问题</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#实践"><span class="post-toc-number">4.</span> <span class="post-toc-text">5 实践</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#资源"><span class="post-toc-number">1.</span> <span class="post-toc-text">1 资源</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#模型"><span class="post-toc-number">2.</span> <span class="post-toc-text">2 模型</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#问题"><span class="post-toc-number">3.</span> <span class="post-toc-text">3 问题</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#实践"><span class="post-toc-number">4.</span> <span class="post-toc-text">4 实践</span></a></li></ol>
         </nav>
     </aside>
 
@@ -232,13 +232,13 @@
 </ul>
 <!-- vim-markdown-toc -->
 <a id="more"></a>
-<h1 id="资源"><span class="header-section-number">2</span> 资源</h1>
+<h1 id="资源"><span class="header-section-number">1</span> 资源</h1>
 <ul>
 <li><p><a href="http://markthegraph.blogspot.com/2015/05/using-python-statsmodels-for-ols-linear.html" target="_blank" rel="noopener">Using python statsmodels for OLS linear regression</a></p></li>
 <li><p><a href="https://pan.baidu.com/s/16FU_ZwFqw7wxH85Ry59chw" title="提取码: u4w4" target="_blank" rel="noopener">Introduction to Linear Regression Analysis(5th)-Douglas</a></p></li>
 <li><p><a href="https://pan.baidu.com/s/1zrsRVALr5icPWbxMRWFhSA" target="_blank" rel="noopener">数据集-百度云</a></p></li>
 </ul>
-<h1 id="模型"><span class="header-section-number">3</span> 模型</h1>
+<h1 id="模型"><span class="header-section-number">2</span> 模型</h1>
 <p>Population Regression Model: <span class="math inline">\(y = \beta_0 + \beta_1 x + \epsilon\)</span></p>
 <p>Sample Regression Model: <span class="math inline">\(y_i = \beta_0 + \beta_1 x_i + \epsilon_i, \quad i = 1,2,\cdots,n\)</span></p>
 <p>Simple Linear Regression Model: <span class="math inline">\(\hat{y} = \hat{\beta_0} + \hat{\beta_1} x\)</span></p>
@@ -246,17 +246,17 @@
 S(\beta_0, \beta_1) = \sum_{i = 0}^{n} (y_i - \beta_0 - \beta_1 x_i)^2
 \]</span></p>
 <p>Residual: <span class="math inline">\(e_i = y_i - \hat{y_i} = y_i - (\hat{\beta_0} + \hat{\beta_1} x), \quad i = 1,2,\cdots,n\)</span></p>
-<h1 id="问题"><span class="header-section-number">4</span> 问题</h1>
+<h1 id="问题"><span class="header-section-number">3</span> 问题</h1>
 <p>after fit:</p>
 <ol type="1">
 <li>How well does this equation fi t the data?</li>
 <li>Is the model likely to be useful as a predictor?</li>
 <li>Are any of the basic assumptions (such as constant variance and uncorrelated errors) violated, and if so, how serious is this?</li>
 </ol>
-<h1 id="实践"><span class="header-section-number">5</span> 实践</h1>
+<h1 id="实践"><span class="header-section-number">4</span> 实践</h1>
 
 <script src="//code.jquery.com/jquery-2.0.0.js"></script>
-<iframe id="ipynb-8329" marginheight="0" marginwidth="0" frameborder="0" height="100%" width="100%" srcdoc="<!DOCTYPE html>
+<iframe id="ipynb-5109" marginheight="0" marginwidth="0" frameborder="0" height="100%" width="100%" srcdoc="<!DOCTYPE html>
 <html>
 <head><meta charset='utf-8' />
 <title>Simple_Linear_Regression</title><script src='https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js'></script>
@@ -11968,6 +11968,24 @@ ul.typeahead-list > li > a {
 .ansi-bold { font-weight: bold; }
 
     </style>
+<style type='text/css'>
+    /* config_dir: custom/custom.css, see nbconvert/preprocessors/csshtmlheader.py */
+
+/* css by did id */
+
+div#notebook-container {
+    width: 100%;
+}
+
+/* css by did class*/
+
+div.border-box-sizing {
+    min-width:600px;
+    max-width:1200px;
+    white-space:nowrap;
+}
+
+    </style>
 
 
 <style type='text/css'>
@@ -12686,15 +12704,12 @@ $$</p>
 
 
 </html>
-" scrolling="no">
+" scrolling="auto">
 </iframe>
 <script>
-$("#ipynb-8329").load( function() {
-var h = $("#ipynb-8329").contents().find("#notebook").height();
-if (h < 100) {
-    h = 800;
-}
-document.getElementById('ipynb-8329').height=h + 200;
+$("#ipynb-5109").load( function() {
+var h = $("#ipynb-5109").contents().find("#notebook").height();
+document.getElementById('ipynb-5109').height= h + 60;
 })
 </script> 
     

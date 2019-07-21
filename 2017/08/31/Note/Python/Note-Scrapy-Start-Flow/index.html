@@ -179,7 +179,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#scrapy-命令启动"><span class="post-toc-number">1.</span> <span class="post-toc-text">1.1 Scrapy 命令启动</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#scrapy-crawl-执行流程"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1.1.1 scrapy crawl 执行流程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#crawler-spider和engine"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">1.1.2 Crawler, Spider和Engine</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#scrapy-命令启动"><span class="post-toc-number">1.</span> <span class="post-toc-text">0.1 Scrapy 命令启动</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#scrapy-crawl-执行流程"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">0.1.1 scrapy crawl 执行流程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#crawler-spider和engine"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">0.1.2 Crawler, Spider和Engine</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -367,8 +367,8 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
          =      | task.LoopingCall() |              |
                 +--------------------+              =
 </code></pre>
-<h2 id="scrapy-命令启动"><span class="header-section-number">1.1</span> Scrapy 命令启动</h2>
-<h3 id="scrapy-crawl-执行流程"><span class="header-section-number">1.1.1</span> scrapy crawl 执行流程</h3>
+<h2 id="scrapy-命令启动"><span class="header-section-number">0.1</span> Scrapy 命令启动</h2>
+<h3 id="scrapy-crawl-执行流程"><span class="header-section-number">0.1.1</span> scrapy crawl 执行流程</h3>
 <p><strong>bin/scrapy</strong>:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" title="1"> <span class="dv">7</span> <span class="im">from</span> scrapy.cmdline <span class="im">import</span> execute</a>
 <a class="sourceLine" id="cb2-2" title="2"> <span class="dv">8</span></a>
@@ -524,7 +524,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 53         return spider
 </code></pre>
 <p>到此应该知道自己的spider 如何创建的了</p>
-<h3 id="crawler-spider和engine"><span class="header-section-number">1.1.2</span> Crawler, Spider和Engine</h3>
+<h3 id="crawler-spider和engine"><span class="header-section-number">0.1.2</span> Crawler, Spider和Engine</h3>
 <p><strong>scrapy/crawler.py</strong>:</p>
 <pre><code> 27 class Crawler(object):
      ...

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qrsforever.github.io/"/>
-  <updated>2019-07-21T06:55:33.927Z</updated>
+  <updated>2019-07-21T07:01:52.847Z</updated>
   <id>https://qrsforever.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://qrsforever.github.io/2019/07/19/ML/Scratch/backpropagation_algorithm/"/>
     <id>https://qrsforever.github.io/2019/07/19/ML/Scratch/backpropagation_algorithm/</id>
     <published>2019-07-19T13:41:28.000Z</published>
-    <updated>2019-07-21T06:55:33.927Z</updated>
+    <updated>2019-07-21T07:01:52.847Z</updated>
     
     <summary type="html">
     
@@ -393,7 +393,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
   &lt;![endif]--&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;h1 id=&quot;统计学&quot;&gt;&lt;span class=&quot;header-section-number&quot;&gt;2&lt;/span&gt; 统计学&lt;/h1&gt;
+&lt;h1 id=&quot;统计学&quot;&gt;&lt;span class=&quot;header-section-number&quot;&gt;1&lt;/span&gt; 统计学&lt;/h1&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr class=&quot;header&quot;&gt;
@@ -814,7 +814,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
   &lt;![endif]--&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;h1 id=&quot;参考&quot;&gt;&lt;span class=&quot;header-section-number&quot;&gt;2&lt;/span&gt; 参考&lt;/h1&gt;
+&lt;h1 id=&quot;参考&quot;&gt;&lt;span class=&quot;header-section-number&quot;&gt;1&lt;/span&gt; 参考&lt;/h1&gt;
 &lt;p&gt;http://louistiao.me/posts/notebooks/embedding-matplotlib-animations-in-jupyter-notebooks/&lt;/p&gt;
 &lt;p&gt;http://louistiao.me/posts/notebooks/embedding-matplotlib-animations-in-jupyter-as-interactive-javascript-widgets/&lt;/p&gt;
     
@@ -946,7 +946,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
   &lt;![endif]--&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;h2 id=&quot;网络资源&quot;&gt;&lt;span class=&quot;header-section-number&quot;&gt;1.1&lt;/span&gt; 网络资源&lt;/h2&gt;
+&lt;h2 id=&quot;网络资源&quot;&gt;&lt;span class=&quot;header-section-number&quot;&gt;0.1&lt;/span&gt; 网络资源&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&quot;https://towardsdatascience.com/intuitively-understanding-convolutions-for-deep-learning-1f6f42faee1&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Intuitively Understanding Convolutions for Deep Learning&lt;/a&gt;&lt;br&gt;
 &lt;a href=&quot;https://www.cnblogs.com/skyfsm/p/6790245.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;卷积神经网络CNN总结&lt;/a&gt;&lt;br&gt;
 &lt;a href=&quot;https://blog.csdn.net/leadai/article/details/83353470&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;卷积要旋转180度&lt;/a&gt;&lt;br&gt;

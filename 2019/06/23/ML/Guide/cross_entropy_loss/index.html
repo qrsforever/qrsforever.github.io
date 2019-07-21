@@ -179,7 +179,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#百科"><span class="post-toc-number">1.</span> <span class="post-toc-text">2 百科</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#相关概念"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">2.1 相关概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#交叉熵"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2.2 交叉熵</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#与似然的关系"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">2.3 与似然的关系</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#交叉熵损失函数"><span class="post-toc-number">2.</span> <span class="post-toc-text">3 交叉熵损失函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#定义符号"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">3.1 定义符号</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#logistic回归的交叉熵"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">3.2 Logistic回归的交叉熵</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#softmax回归的交叉熵"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">3.3 Softmax回归的交叉熵</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">3.</span> <span class="post-toc-text">4 参考</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#百科"><span class="post-toc-number">1.</span> <span class="post-toc-text">1 百科</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#相关概念"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1.1 相关概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#交叉熵"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">1.2 交叉熵</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#与似然的关系"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">1.3 与似然的关系</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#交叉熵损失函数"><span class="post-toc-number">2.</span> <span class="post-toc-text">2 交叉熵损失函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#定义符号"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">2.1 定义符号</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#logistic回归的交叉熵"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2.2 Logistic回归的交叉熵</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#softmax回归的交叉熵"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">2.3 Softmax回归的交叉熵</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">3.</span> <span class="post-toc-text">3 参考</span></a></li></ol>
         </nav>
     </aside>
 
@@ -243,10 +243,10 @@
 </ul>
 <!-- vim-markdown-toc -->
 <a id="more"></a>
-<h1 id="百科"><span class="header-section-number">2</span> 百科</h1>
+<h1 id="百科"><span class="header-section-number">1</span> 百科</h1>
 <p>交叉熵(cross entropy)是信息论中的一个重要概念, 度量两个概率分布的差异性信息.</p>
 <p>cross entropy (CE) error is also called "log loss"</p>
-<h2 id="相关概念"><span class="header-section-number">2.1</span> 相关概念</h2>
+<h2 id="相关概念"><span class="header-section-number">1.1</span> 相关概念</h2>
 <p>熵是描述系统的不确定性, 越出乎意料, 越不可能发生的事的信息量越大, 确定的事信息量为0. "妖是妖他妈生的"信息量为0, "10万在北京买了一套房"的信息量很大(不可能吧)</p>
 <p>信息量(self-information) <span class="math inline">\(I(x) = log_2\dfrac{1}{P(x)} = -logP(x)\)</span>, 一个不可能的事情的发生比及有可能的事件 发生提供的信息要更多,只能衡量单个事件的信息量. 而整个系统(所有x)呈现出一个分布, 信息熵就是对概率分布进行量 化, 即所有x的自信息的期望. (期望编码长度最小)</p>
 <p>两个独立的事件的信息量是可以叠加的.</p>
@@ -260,7 +260,7 @@ D_{KL}(A||B) &amp;= \sum\limits_{i}P_A(x_i)log_2\bigg(\dfrac{P_A(x_i)}{P_B(x_i)}
 \end{align*}
 \]</span> 如果H(A)是个常数, KL散度<span class="math inline">\(\cong\)</span>交叉熵(不严谨), 这也许是<strong>交叉熵</strong>用来作为损失函数的原因. 如果两个分布相同<span class="math inline">\(D_KL(A||B)=0\)</span>, 但是<span class="math inline">\(H(A,B)\)</span>是不等于0的. 注意: <span class="math inline">\(D_KL(A||B) \neq D_KL(B||A)\)</span></p>
 <p><strong>实际上对数不一定都是以2为底, 10, e都可以, 重要的是确定后, 所有计算都要相同</strong></p>
-<h2 id="交叉熵"><span class="header-section-number">2.2</span> 交叉熵</h2>
+<h2 id="交叉熵"><span class="header-section-number">1.2</span> 交叉熵</h2>
 <p>交叉熵<span class="math inline">\(H(P, Q) = -\sum\limits_{i=0}^{N}p_ilog_2q_i\)</span>, 其中<span class="math inline">\(p_i为真实分布, q_i为非真实(预测)分布\)</span>, 表示预测分布 与真实分布的错误程度, 如果Q分布越接近P分布, 交叉熵值越小.</p>
 <p>连续型: <span class="math inline">\(-\int p(x)logq(x)dx\)</span>, 训练的目的就是使q(x)逼近p(x).</p>
 <p>实例:</p>
@@ -291,7 +291,7 @@ H(P, Q2) &amp;= -\sum\limits_{i=0}^{n}p_ilog_2q_i \\
          &amp;= \dfrac{10 -log_23}{4} &lt; 9/4
 \end{align*}
 \]</span></p>
-<h2 id="与似然的关系"><span class="header-section-number">2.3</span> 与似然的关系</h2>
+<h2 id="与似然的关系"><span class="header-section-number">1.3</span> 与似然的关系</h2>
 <p>例(不考虑0下标):</p>
 <p>真实分类(one-hot encoded labels):</p>
 <p><span class="math display">\[
@@ -337,9 +337,9 @@ logL(\{y^{(n)}\}, \{\hat{y}^{(n)}\}) = \sum_n^N logL(y^{(n)}, \hat{y}^{(n)}) = \
      &amp;= H(\{y^{(n)}\}, \{\hat{y}^{(n)}\})
 \end{align*}
 \]</span></p>
-<h1 id="交叉熵损失函数"><span class="header-section-number">3</span> 交叉熵损失函数</h1>
+<h1 id="交叉熵损失函数"><span class="header-section-number">2</span> 交叉熵损失函数</h1>
 <p>希望理想模型和真实模型分布一致: <span class="math inline">\(P(model) \cong P(trainning) \cong P(real)\)</span>, 根据模型概率分布差异计算预测 模型的可靠性, 真实的模型是无法得知的, 而预测模型也是通过训练数据训练出. KL散度是计算两个事件的概率分布的差 异, 且如果事件A的信息熵<span class="math inline">\(H(A)\)</span>固定, 则简化为<span class="math inline">\(H(A, B)\)</span>即交叉熵的计算, 当交叉熵最低时(训练数据分布的熵), 得到 最好的模型.</p>
-<h2 id="定义符号"><span class="header-section-number">3.1</span> 定义符号</h2>
+<h2 id="定义符号"><span class="header-section-number">2.1</span> 定义符号</h2>
 <p>n: 样本组数</p>
 <p>p: 特征个数</p>
 <p>m: 分类个数 (多分类: 神经元的个数)</p>
@@ -348,7 +348,7 @@ logL(\{y^{(n)}\}, \{\hat{y}^{(n)}\}) = \sum_n^N logL(y^{(n)}, \hat{y}^{(n)}) = \
 <p><span class="math inline">\(y^{(i)}\)</span>: 第i组数据对应的类标记, <span class="math inline">\((x^{(i)}, y^{(i)})\)</span>代表一组测试/训练样本数据</p>
 <p><span class="math inline">\(\hat{y}^{(i)}\)</span>: 模型预测第i组数据的输出的标记</p>
 <p><span class="math inline">\(z^{(i)}\)</span>: 第i组数据输入后计算的输出(未sigmoid或softmax) <span class="math inline">\(z^{(i)} = \theta^T x^{(i)} = \sum\limits_j^p\theta_{ij}x_{ij} + b\)</span></p>
-<h2 id="logistic回归的交叉熵"><span class="header-section-number">3.2</span> Logistic回归的交叉熵</h2>
+<h2 id="logistic回归的交叉熵"><span class="header-section-number">2.2</span> Logistic回归的交叉熵</h2>
 <p>是非问题, <span class="math inline">\(y^{(i)}\)</span>取0或1</p>
 <p>0-1问题, 构造假设函数(hypothesis function): <span class="math display">\[
 h_\theta(x^{(i)}) = \dfrac{1}{1 + e^{-\theta^T x^{(i)}} }
@@ -398,7 +398,7 @@ J(\theta) &amp;=-\frac{1}{n}\sum_{i=1}^n \left[-y^{(i)}(\log ( 1+e^{-\theta^T x^
 <p><span class="math display">\[
 H(p,q)=-\sum _x (p(x)logq(x)+(1-p(x))log(1-q(x)))
 \]</span></p>
-<h2 id="softmax回归的交叉熵"><span class="header-section-number">3.3</span> Softmax回归的交叉熵</h2>
+<h2 id="softmax回归的交叉熵"><span class="header-section-number">2.3</span> Softmax回归的交叉熵</h2>
 <p>多分类问题. 柔性最大值. 接收N维向量输出一个(0,1)之间的实数</p>
 <p><strong>交叉熵就是用来判定实际的输出与期望的输出的接近程度</strong></p>
 <p>(神经网络)如果最后的输出节点数为M, 对于每一个输入样本X, 最后得到的输出为M数组, 且数组中的每一个维度(元素 )对应一个类别(标记), 如果一个样本属于k, 则对应输出数组的元素为1, 其他为0, 例如<span class="math inline">\(y = (0, 0, 1, ..., 0)\)</span>(真实/期望输出), 这个是理想情况下, 真实得到是<span class="math inline">\(\hat{y} = (0.01, 0.12, 0.7, ...., 0.11)\)</span>(实际/模型输出), 原始输出<span class="math inline">\((y_1, y_2, ..., y_n)\)</span>加上 softmax之后的结果.</p>
@@ -477,7 +477,7 @@ j \neq i: \label{partial_aizj} \tag{2} \\
 \sum_j^m \frac{\partial L_j}{\partial a_j} \frac{\partial a_j}{\partial z_i} \frac{\partial z_i}{\partial \theta_{ik}} =
 (a_i - y_i) \frac{\partial z_i}{\partial \theta_{ik}} = (a_i - y_i)a_k^{L-1}
 \]</span> <span class="math inline">\(a_k^{L-1}\)</span>为上一层的第k个激活函数</p>
-<h1 id="参考"><span class="header-section-number">4</span> 参考</h1>
+<h1 id="参考"><span class="header-section-number">3</span> 参考</h1>
 <p><a href="https://www.jianshu.com/p/b07f4cd32ba6" title="jianshu" target="_blank" rel="noopener">交叉熵损失函数</a></p>
 <p><a href="https://visualstudiomagazine.com/Articles/2017/07/01/Cross-Entropy.aspx" title="good codes" target="_blank" rel="noopener">Neural Network Cross Entropy</a></p>
 <p><a href="https://www.cnblogs.com/yjmyzz/p/7822990.html" title="cnblogs" target="_blank" rel="noopener">归一化 信息熵 交叉熵</a></p>

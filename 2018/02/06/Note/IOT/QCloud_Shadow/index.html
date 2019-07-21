@@ -179,7 +179,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#shadow学习"><span class="post-toc-number">1.</span> <span class="post-toc-text">2 Shadow学习</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#框架api接口"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">2.1 1.框架API接口</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#静态类图"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2.2 2.静态类图</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#时序图"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">2.3 3.时序图</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设备影子接口"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">2.4 4.设备影子接口</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#sample回调函数"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">2.5 5.Sample回调函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#调试运行sample"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">2.6 6.调试运行Sample</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#shadow学习"><span class="post-toc-number">1.</span> <span class="post-toc-text">1 Shadow学习</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#框架api接口"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1.1 1.框架API接口</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#静态类图"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">1.2 2.静态类图</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#时序图"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">1.3 3.时序图</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设备影子接口"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">1.4 4.设备影子接口</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#sample回调函数"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">1.5 5.Sample回调函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#调试运行sample"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">1.6 6.调试运行Sample</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -238,8 +238,8 @@
 </ul>
 <!-- vim-markdown-toc -->
 <a id="more"></a>
-<h1 id="shadow学习"><span class="header-section-number">2</span> Shadow学习</h1>
-<h2 id="框架api接口"><span class="header-section-number">2.1</span> 1.框架API接口</h2>
+<h1 id="shadow学习"><span class="header-section-number">1</span> Shadow学习</h1>
+<h2 id="框架api接口"><span class="header-section-number">1.1</span> 1.框架API接口</h2>
 <pre><code>----------------------------------------------------------------------------------------------------------------
 Sample
 
@@ -271,7 +271,7 @@ MQTT
 ----------------------------------------------------------------------------------------------------------------
 </code></pre>
 <!-- more -->
-<h2 id="静态类图"><span class="header-section-number">2.2</span> 2.静态类图</h2>
+<h2 id="静态类图"><span class="header-section-number">1.2</span> 2.静态类图</h2>
 <pre><code>                                      +------------------+                                                  +-----------------+
       +------------------+            |     Request      |                   +------------------+           | SubTopicHandle  |
       | RequestParams    |            +------------------+                   |  PropertyHandler |           +-----------------+
@@ -343,7 +343,7 @@ MQTT
                                           | keep_alive_interval  |
                                           +----------------------+
 </code></pre>
-<h2 id="时序图"><span class="header-section-number">2.3</span> 3.时序图</h2>
+<h2 id="时序图"><span class="header-section-number">1.3</span> 3.时序图</h2>
 <pre><code>
                             Shadow               MQTT
 
@@ -417,7 +417,7 @@ MQTT
            |  +---------&gt; Shadow_Destroy                                               |                                      |
            |                                                                           |                                      |
           END                                                                          |                                      |</code></pre>
-<h2 id="设备影子接口"><span class="header-section-number">2.4</span> 4.设备影子接口</h2>
+<h2 id="设备影子接口"><span class="header-section-number">1.4</span> 4.设备影子接口</h2>
 <pre><code>1. IOT_Shadow_Construct
     原型: void* IOT_Shadow_Construct(ShadowInitParams *pParams);
     功能: 构造ShadowClient
@@ -543,7 +543,7 @@ MQTT
           sizeOfBuffer :  缓冲区大小
     返回:
           0 : 成功</code></pre>
-<h2 id="sample回调函数"><span class="header-section-number">2.5</span> 5.Sample回调函数</h2>
+<h2 id="sample回调函数"><span class="header-section-number">1.5</span> 5.Sample回调函数</h2>
 <pre><code>1. on_request_handler
     原型: typedef void (*OnRequestCallback)(void *handle, Method method, RequestAck requestAck, const char *jsonDoc, void *userContext);
     功能: 每次对设备影子操作请求响应的回调函数
@@ -584,7 +584,7 @@ MQTT
           msg      : MQTT事件消息
     TODO:
           后续修改, 需要隐藏MQTT相关结构体</code></pre>
-<h2 id="调试运行sample"><span class="header-section-number">2.6</span> 6.调试运行Sample</h2>
+<h2 id="调试运行sample"><span class="header-section-number">1.6</span> 6.调试运行Sample</h2>
 <pre><code>    1. 设置Ares的Top目录, eg: export ARES_TOP_DIR=xxx
     2.  cd $ARES_TOP_DIR; make
     3. 打开两个终端启动本地模拟的引擎脚本

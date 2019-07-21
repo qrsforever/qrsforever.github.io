@@ -179,7 +179,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ca连接抽象层"><span class="post-toc-number">1.</span> <span class="post-toc-text">2 CA连接抽象层</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#handle层"><span class="post-toc-number">2.</span> <span class="post-toc-text">3 Handle层</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ca连接抽象层"><span class="post-toc-number">1.</span> <span class="post-toc-text">1 CA连接抽象层</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#handle层"><span class="post-toc-number">2.</span> <span class="post-toc-text">2 Handle层</span></a></li></ol>
         </nav>
     </aside>
 
@@ -231,7 +231,7 @@
 </ul>
 <!-- vim-markdown-toc -->
 <a id="more"></a>
-<h1 id="ca连接抽象层"><span class="header-section-number">2</span> CA连接抽象层</h1>
+<h1 id="ca连接抽象层"><span class="header-section-number">1</span> CA连接抽象层</h1>
 <pre><code>                                                                                                    (thread3/4/5)
                                                                                                CAQueueingThreadBaseRoutine
                                                                                                                   |
@@ -314,7 +314,7 @@
 Request  Response  Error  &lt;--- g_requestHandler   g_responseHandler   g_errorHandler
  cb-a     cb-b     cb-c             cb-a                cb-b               cb-c
 </code></pre>
-<h1 id="handle层"><span class="header-section-number">3</span> Handle层</h1>
+<h1 id="handle层"><span class="header-section-number">2</span> Handle层</h1>
 <p><code></code> | |--&gt; g_receiveThread h-11 | r-6 +--------------------------------------------&gt; CAHandleRequestResponseCallbacks (queue_get_element) | thread2 | +---------------------------------+ g_serverRequestTree | | HandleVirtualResource | call cb-1 | | | HandleResourceWithEntityHandler | -----&gt; resource-&gt;entityHandler() |GetServerRequestUsingToken | | HandleDefaultDeviceEntityHandler| | | +---------------------------------+ /----&gt; resouce = FindResourceByUri(request-&gt;resourceUrl) v | ^ / +---------------------------------------------------------------+ | h-12 | / +--&gt;| OCServerRequest |&lt;-----------------+ | ProcessRequest +-------------/ | |---------------------------------------------------------------| | | ^ | | | method, resourceUrl, acceptFormat, payloadFormat, devAddr | | | | (by uri) | | | numResponses, qos, options, observeResult, delayedResNeeded | | |DetermineResourceHandling | | ehResponseHandler, requestId, requestToken, coapID, query | | | ^ | +---------------------------------------------------------------+ | | | AddServerRequest----+ | ehResponseHandler | | | +3 +2 ^ [[2]] v cb-3 | | | | HandleSingleResponse | | HandleStackRequests | | | ^ | +1 v | | | | OCSendResponse ---&gt; CASendResponse ---&gt; CAQueueingThreadAddData | | | | | | | +--&gt; GetServerRequestUsingToken +----&gt; GetClientCBUsingToken &lt;-----------+ | | | | | | | | | | | | | | OCHandleRequests OCHandleResponse | cb-2 | | | ^ ^ client-&gt;callback() | | | cb-a | thread2 cb-b | cb-c | | | HandleCARequests [get|put|post|delete] HandleCAResponses HandleCAErrorResponse | | ^ ^ ^ | | | r-7 | r-7 | r-7 | | +------------------------------------------.------------------------------------------+ | | receive | handle | | | |</p>
 <pre><code>
 启动架构

@@ -179,7 +179,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#源码crawl"><span class="post-toc-number">1.</span> <span class="post-toc-text">2 源码crawl()</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#源码open_spider"><span class="post-toc-number">2.</span> <span class="post-toc-text">3 源码open_spider()</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#源码calllateronce"><span class="post-toc-number">3.</span> <span class="post-toc-text">4 源码CallLaterOnce()</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#源码loopingcall"><span class="post-toc-number">4.</span> <span class="post-toc-text">5 源码LoopingCall()</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#源码maybedeferred"><span class="post-toc-number">5.</span> <span class="post-toc-text">6 源码maybeDeferred()</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#疑问"><span class="post-toc-number">6.</span> <span class="post-toc-text">7 疑问:</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#源码crawl"><span class="post-toc-number">1.</span> <span class="post-toc-text">1 源码crawl()</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#源码open_spider"><span class="post-toc-number">2.</span> <span class="post-toc-text">2 源码open_spider()</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#源码calllateronce"><span class="post-toc-number">3.</span> <span class="post-toc-text">3 源码CallLaterOnce()</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#源码loopingcall"><span class="post-toc-number">4.</span> <span class="post-toc-text">4 源码LoopingCall()</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#源码maybedeferred"><span class="post-toc-number">5.</span> <span class="post-toc-text">5 源码maybeDeferred()</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#疑问"><span class="post-toc-number">6.</span> <span class="post-toc-text">6 疑问:</span></a></li></ol>
         </nav>
     </aside>
 
@@ -299,7 +299,7 @@ Crawl51JobSpiderMiddleware.process_start_requests()                      +------
 <blockquote>
 <p>命令启动crawl scrapy crawl --nolog s51job -o /tmp/file.csv</p>
 </blockquote>
-<h1 id="源码crawl"><span class="header-section-number">2</span> 源码crawl()</h1>
+<h1 id="源码crawl"><span class="header-section-number">1</span> 源码crawl()</h1>
 <p>crawler.Crawler.crawl():</p>
 <pre><code>
     @defer.inlineCallbacks
@@ -322,7 +322,7 @@ Crawl51JobSpiderMiddleware.process_start_requests()                      +------
                                                 |                           +---------------------------------------------------+
                                                 |
 </code></pre>
-<h1 id="源码open_spider"><span class="header-section-number">3</span> 源码open_spider()</h1>
+<h1 id="源码open_spider"><span class="header-section-number">2</span> 源码open_spider()</h1>
 <p>core.engine.ExecutionEngine.open_spider():</p>
 <pre><code>
     @defer.inlineCallbacks
@@ -343,7 +343,7 @@ Crawl51JobSpiderMiddleware.process_start_requests()                      +------
 </code></pre>
 <p>start_requests: 作为参数时是Spider.start_requests()生成器方法, yield返回变为process_start_requests()生成器方法 self.crawler: 初始化时传过来的scrapy.crawler.Crawler, 启动爬虫对象 scheduler: scrapy.core.scheduler.Scheduler, 对优先级, Memory, Disk队列push/pop调度管理 scrape.spidermw: Core.Scraper.SpiderMiddlewareManager slot.nextcall: 实现__call__()方法的<a href="#src_calllater">CallLaterOnce</a>类, 该类()调用的是_next_request() slot.heartbeat: twisted.internet.task.<a href="#src_loopcall">LoopingCall</a>(nextcall.schedule)</p>
 <p><a href="#global-uml">start_requests流程图</a></p>
-<h1 id="源码calllateronce"><span class="header-section-number">4</span> 源码CallLaterOnce()</h1>
+<h1 id="源码calllateronce"><span class="header-section-number">3</span> 源码CallLaterOnce()</h1>
 <p><span id="src_calllater"></span></p>
 <pre><code>
 class CallLaterOnce(object):
@@ -366,7 +366,7 @@ class CallLaterOnce(object):
         return self._func(*self._a, **self._kw)
 </code></pre>
 <p>self._func(): _next_request() callLater(): 将self(可执行的类)封装到DelayedCall()并加入到以delay时间排序的队列中, 等待执行. <a href="https://qrsforever.github.io/2017/09/01/Note/Python/Note-Twisted-Deffered-Machanism/">了解更多</a> call: nextcall.schedule() --&gt; reactor.callLater() --&gt; _next_request()</p>
-<h1 id="源码loopingcall"><span class="header-section-number">5</span> 源码LoopingCall()</h1>
+<h1 id="源码loopingcall"><span class="header-section-number">4</span> 源码LoopingCall()</h1>
 <pre><code>class LoopingCall:
     call = None
     running = False
@@ -435,7 +435,7 @@ class CallLaterOnce(object):
         self.call = self.clock.callLater(howLong(), self)
 </code></pre>
 <p>self.f: nextcall.schedule(): seconds(): 返回当前系统时间秒数(根据平台不同, 实现不同) start(): 启动loop任务, 以interval为循环周期, 执行__call__() __call__(): 调用maybeDeferred()执行self.f 即nextcall.schedule()该函数返回值为None.</p>
-<h1 id="源码maybedeferred"><span class="header-section-number">6</span> 源码maybeDeferred()</h1>
+<h1 id="源码maybedeferred"><span class="header-section-number">5</span> 源码maybeDeferred()</h1>
 <pre><code>
 def succeed(result):
     d = Deferred()
@@ -536,7 +536,7 @@ def maybeDeferred(f, *args, **kw):
                             |                         ★7
                             |
 </code></pre>
-<h1 id="疑问"><span class="header-section-number">7</span> 疑问:</h1>
+<h1 id="疑问"><span class="header-section-number">6</span> 疑问:</h1>
 <p>在open_spider函数的最后两行代码: &gt; slot.nextcall.schedule() &gt; slot.heartbeat.start(5)</p>
 <p>分析源码之后发现这两行的动作有些重复, nextcall.schedule()自身也能实现loop, 如上图(Loop-1), heartbeat.start(5)(Loop-2)是不是多余的? 这个疑问留到以后解决</p>
 </body>
