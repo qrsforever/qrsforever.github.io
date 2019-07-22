@@ -34,7 +34,7 @@
 <meta property="og:site_name" content="大地小神">
 <meta property="og:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-21T07:01:52.847Z">
+<meta property="og:updated_time" content="2019-07-22T17:14:08.198Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(原创)神经网络之反向传播实例">
 <meta name="twitter:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
@@ -179,7 +179,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#codes"><span class="post-toc-number">1.</span> <span class="post-toc-text">1 Codes</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#references"><span class="post-toc-number">2.</span> <span class="post-toc-text">2 References</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#description"><span class="post-toc-number">1.</span> <span class="post-toc-text">1 Description</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#drawit"><span class="post-toc-number">2.</span> <span class="post-toc-text">2 Drawit</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#codes"><span class="post-toc-number">3.</span> <span class="post-toc-text">3 Codes</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#references"><span class="post-toc-number">4.</span> <span class="post-toc-text">4 References</span></a></li></ol>
         </nav>
     </aside>
 
@@ -226,14 +226,38 @@
 <body>
 <!-- vim-markdown-toc GFM -->
 <ul>
+<li><a href="#description">Description</a></li>
+<li><a href="#drawit">Drawit</a></li>
+<li><a href="#codes">Codes</a></li>
 <li><a href="#references">References</a></li>
 </ul>
 <!-- vim-markdown-toc -->
 <a id="more"></a>
-<h1 id="codes"><span class="header-section-number">1</span> Codes</h1>
+<h1 id="description"><span class="header-section-number">1</span> Description</h1>
+<p>Implement the backpropagation algorithm in python, but not use third libs(numpy, pandas...)</p>
+<p>Demo is a standard neural network structure: one input layer, one hiden layer and one output layer.</p>
+<p>The activite function of the hiden and ouput nodes is sigmoid.</p>
+<p>The evaluation of the backpropagation algorithm use cross validation K-folds which make good use for limited dataset.</p>
+<h1 id="drawit"><span class="header-section-number">2</span> Drawit</h1>
+<pre><code>
+
+                             neuron
+                           ***********
+                        ***           ***
+                      **       output    **
+                     *                     *
+                     *   sigmoid(WX + b)   *
+                     *                     *
+                      **      weights    **
+                        ***           ***
+                           ***********   delta: the middle signal. the derivative of the final activite function
+
+</code></pre>
+<h1 id="codes"><span class="header-section-number">3</span> Codes</h1>
+<p><a href="https://pan.baidu.com/s/1gAFZ9gSf4pHJBt5W6_PgPQ" title="提取码: gxk4" target="_blank" rel="noopener">百度云盘Dataset</a></p>
 
 <script src="//code.jquery.com/jquery-2.0.0.js"></script>
-<iframe id="ipynb-3717" marginheight="0" marginwidth="0" frameborder="0" height="100%" width="100%" srcdoc="<!DOCTYPE html>
+<iframe id="ipynb-3175" marginheight="0" marginwidth="0" frameborder="0" height="100%" width="100%" srcdoc="<!DOCTYPE html>
 <html>
 <head><meta charset='utf-8' />
 <title>backpropagation_algorithm</title><script src='https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js'></script>
@@ -12020,6 +12044,339 @@ div#notebook {
   <div tabindex='-1' id='notebook' class='border-box-sizing'>
     <div class='container' id='notebook-container'>
 
+<div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
+</div>
+<div class='inner_cell'>
+<div class='text_cell_render border-box-sizing rendered_html'>
+<h1 id='-Apply-backpropagation-algorithm-to-wheet-seeds-datasets'><center> Apply backpropagation algorithm to wheet seeds datasets</center></h1>
+</div>
+</div>
+</div>
+<div class='cell border-box-sizing code_cell rendered'>
+<div class='input'>
+<div class='prompt input_prompt'>In&nbsp;[1]:</div>
+<div class='inner_cell'>
+    <div class='input_area'>
+<div class=' highlight hl-ipython3'><pre><span class='kn'>import</span> <span class='nn'>random</span>
+<span class='kn'>import</span> <span class='nn'>math</span>
+<span class='kn'>import</span> <span class='nn'>os</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class='cell border-box-sizing code_cell rendered'>
+<div class='input'>
+<div class='prompt input_prompt'>In&nbsp;[2]:</div>
+<div class='inner_cell'>
+    <div class='input_area'>
+<div class=' highlight hl-ipython3'><pre><span class='n'>dataset_dir</span> <span class='o'>=</span> <span class='s1'>&#39;/home/lidong/Datasets/ML&#39;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class='cell border-box-sizing code_cell rendered'>
+<div class='input'>
+<div class='prompt input_prompt'>In&nbsp;[3]:</div>
+<div class='inner_cell'>
+    <div class='input_area'>
+<div class=' highlight hl-ipython3'><pre><span class='k'>def</span> <span class='nf'>load_dataset_from_file</span><span class='p'>(</span><span class='n'>path</span><span class='p'>):</span>
+    <span class='n'>dataset</span> <span class='o'>=</span> <span class='p'>[]</span>
+    <span class='k'>with</span> <span class='nb'>open</span><span class='p'>(</span><span class='n'>path</span><span class='p'>)</span> <span class='k'>as</span> <span class='n'>f</span><span class='p'>:</span>
+        <span class='k'>for</span> <span class='n'>line</span> <span class='ow'>in</span> <span class='n'>f</span><span class='p'>:</span>
+            <span class='n'>row</span> <span class='o'>=</span> <span class='n'>line</span><span class='o'>.</span><span class='n'>rstrip</span><span class='p'>(</span><span class='s1'>&#39;</span><span class='se'>\n</span><span class='s1'>&#39;</span><span class='p'>)</span><span class='o'>.</span><span class='n'>split</span><span class='p'>()</span>
+            <span class='n'>dataset</span><span class='o'>.</span><span class='n'>append</span><span class='p'>(</span><span class='nb'>list</span><span class='p'>(</span><span class='nb'>map</span><span class='p'>(</span><span class='k'>lambda</span> <span class='n'>x</span><span class='p'>:</span> <span class='nb'>float</span><span class='p'>(</span><span class='n'>x</span><span class='o'>.</span><span class='n'>strip</span><span class='p'>()),</span> <span class='n'>row</span><span class='p'>[:</span><span class='o'>-</span><span class='mi'>1</span><span class='p'>])))</span>
+            <span class='n'>dataset</span><span class='p'>[</span><span class='o'>-</span><span class='mi'>1</span><span class='p'>]</span><span class='o'>.</span><span class='n'>append</span><span class='p'>(</span><span class='nb'>int</span><span class='p'>(</span><span class='n'>row</span><span class='p'>[</span><span class='o'>-</span><span class='mi'>1</span><span class='p'>]</span><span class='o'>.</span><span class='n'>strip</span><span class='p'>()))</span>
+    <span class='c1'># classify by raw values</span>
+    <span class='n'>class_values</span> <span class='o'>=</span> <span class='nb'>set</span><span class='p'>([</span><span class='n'>row</span><span class='p'>[</span><span class='o'>-</span><span class='mi'>1</span><span class='p'>]</span> <span class='k'>for</span> <span class='n'>row</span> <span class='ow'>in</span> <span class='n'>dataset</span><span class='p'>])</span>
+    <span class='n'>class_indexs</span> <span class='o'>=</span> <span class='nb'>dict</span><span class='p'>()</span>
+    <span class='k'>for</span> <span class='n'>i</span><span class='p'>,</span> <span class='n'>value</span> <span class='ow'>in</span> <span class='nb'>enumerate</span><span class='p'>(</span><span class='n'>class_values</span><span class='p'>):</span>
+        <span class='n'>class_indexs</span><span class='p'>[</span><span class='n'>value</span><span class='p'>]</span> <span class='o'>=</span> <span class='n'>i</span>
+    <span class='k'>for</span> <span class='n'>row</span> <span class='ow'>in</span> <span class='n'>dataset</span><span class='p'>:</span>
+        <span class='n'>row</span><span class='p'>[</span><span class='o'>-</span><span class='mi'>1</span><span class='p'>]</span> <span class='o'>=</span> <span class='n'>class_indexs</span><span class='p'>[</span><span class='n'>row</span><span class='p'>[</span><span class='o'>-</span><span class='mi'>1</span><span class='p'>]]</span>
+    <span class='k'>return</span> <span class='n'>dataset</span><span class='p'>,</span> <span class='n'>class_indexs</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class='cell border-box-sizing code_cell rendered'>
+<div class='input'>
+<div class='prompt input_prompt'>In&nbsp;[4]:</div>
+<div class='inner_cell'>
+    <div class='input_area'>
+<div class=' highlight hl-ipython3'><pre><span class='c1'># test</span>
+<span class='n'>dataset</span><span class='p'>,</span> <span class='n'>_</span> <span class='o'>=</span> <span class='n'>load_dataset_from_file</span><span class='p'>(</span><span class='n'>os</span><span class='o'>.</span><span class='n'>path</span><span class='o'>.</span><span class='n'>join</span><span class='p'>(</span><span class='n'>dataset_dir</span><span class='p'>,</span> <span class='s1'>&#39;seeds_dataset.txt&#39;</span><span class='p'>))</span>
+<span class='n'>dataset</span><span class='p'>[</span><span class='o'>-</span><span class='mi'>3</span><span class='p'>:]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class='output_wrapper'>
+<div class='output'>
+
+
+<div class='output_area'>
+
+<div class='prompt output_prompt'>Out[4]:</div>
+
+
+
+
+<div class='output_text output_subarea output_execute_result'>
+<pre>[[13.2, 13.66, 0.8883, 5.236, 3.232, 8.315, 5.056, 2],
+ [11.84, 13.21, 0.8521, 5.175, 2.836, 3.598, 5.044, 2],
+ [12.3, 13.34, 0.8684, 5.243, 2.974, 5.637, 5.063, 2]]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class='cell border-box-sizing code_cell rendered'>
+<div class='input'>
+<div class='prompt input_prompt'>In&nbsp;[5]:</div>
+<div class='inner_cell'>
+    <div class='input_area'>
+<div class=' highlight hl-ipython3'><pre><span class='k'>def</span> <span class='nf'>normalize_dataset</span><span class='p'>(</span><span class='n'>dataset</span><span class='p'>):</span>
+    <span class='n'>minmax</span> <span class='o'>=</span> <span class='p'>[[</span><span class='nb'>min</span><span class='p'>(</span><span class='n'>column</span><span class='p'>),</span> <span class='nb'>max</span><span class='p'>(</span><span class='n'>column</span><span class='p'>)]</span> <span class='k'>for</span> <span class='n'>column</span> <span class='ow'>in</span> <span class='nb'>zip</span><span class='p'>(</span><span class='o'>*</span><span class='n'>dataset</span><span class='p'>)]</span>
+    <span class='k'>for</span> <span class='n'>row</span> <span class='ow'>in</span> <span class='n'>dataset</span><span class='p'>:</span>
+        <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>row</span><span class='p'>)</span> <span class='o'>-</span> <span class='mi'>1</span><span class='p'>):</span>
+            <span class='n'>row</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span> <span class='o'>=</span> <span class='nb'>round</span><span class='p'>((</span><span class='n'>row</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span> <span class='o'>-</span> <span class='n'>minmax</span><span class='p'>[</span><span class='n'>i</span><span class='p'>][</span><span class='mi'>0</span><span class='p'>])</span> <span class='o'>/</span> <span class='p'>(</span><span class='n'>minmax</span><span class='p'>[</span><span class='n'>i</span><span class='p'>][</span><span class='mi'>1</span><span class='p'>]</span> <span class='o'>-</span> <span class='n'>minmax</span><span class='p'>[</span><span class='n'>i</span><span class='p'>][</span><span class='mi'>0</span><span class='p'>]),</span> <span class='mi'>4</span><span class='p'>)</span>
+    <span class='k'>return</span> <span class='n'>dataset</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class='cell border-box-sizing code_cell rendered'>
+<div class='input'>
+<div class='prompt input_prompt'>In&nbsp;[6]:</div>
+<div class='inner_cell'>
+    <div class='input_area'>
+<div class=' highlight hl-ipython3'><pre><span class='c1'># test</span>
+<span class='c1'># dataset = normalize_dataset(dataset)</span>
+<span class='c1'># print(dataset[:3])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class='cell border-box-sizing code_cell rendered'>
+<div class='input'>
+<div class='prompt input_prompt'>In&nbsp;[7]:</div>
+<div class='inner_cell'>
+    <div class='input_area'>
+<div class=' highlight hl-ipython3'><pre><span class='c1'># targets = set([row[-1] for row in dataset])</span>
+<span class='c1'># targets</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class='cell border-box-sizing code_cell rendered'>
+<div class='input'>
+<div class='prompt input_prompt'>In&nbsp;[8]:</div>
+<div class='inner_cell'>
+    <div class='input_area'>
+<div class=' highlight hl-ipython3'><pre><span class='k'>class</span> <span class='nc'>NeuralNetwork</span><span class='p'>(</span><span class='nb'>object</span><span class='p'>):</span>
+    <span class='k'>def</span> <span class='nf'>__init__</span><span class='p'>(</span><span class='bp'>self</span><span class='p'>,</span> <span class='n'>ninput</span><span class='p'>,</span> <span class='n'>nhiden</span><span class='p'>,</span> <span class='n'>noutput</span><span class='p'>):</span>
+        <span class='bp'>self</span><span class='o'>.</span><span class='n'>ni</span> <span class='o'>=</span> <span class='n'>ninput</span>
+        <span class='bp'>self</span><span class='o'>.</span><span class='n'>nh</span> <span class='o'>=</span> <span class='n'>nhiden</span>
+        <span class='bp'>self</span><span class='o'>.</span><span class='n'>no</span> <span class='o'>=</span> <span class='n'>noutput</span>
+        <span class='bp'>self</span><span class='o'>.</span><span class='n'>network</span> <span class='o'>=</span> <span class='bp'>self</span><span class='o'>.</span><span class='n'>initialize_network</span><span class='p'>(</span><span class='bp'>self</span><span class='o'>.</span><span class='n'>ni</span><span class='p'>,</span> <span class='bp'>self</span><span class='o'>.</span><span class='n'>nh</span><span class='p'>,</span> <span class='bp'>self</span><span class='o'>.</span><span class='n'>no</span><span class='p'>)</span>
+        
+    <span class='k'>def</span> <span class='nf'>train</span><span class='p'>(</span><span class='bp'>self</span><span class='p'>,</span> <span class='n'>dataset</span><span class='p'>,</span> <span class='n'>lr</span><span class='p'>,</span> <span class='n'>epochs</span><span class='p'>):</span>
+        <span class='k'>for</span> <span class='n'>epoch</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='n'>epochs</span><span class='p'>):</span>
+            <span class='k'>for</span> <span class='n'>row</span> <span class='ow'>in</span> <span class='n'>dataset</span><span class='p'>:</span>
+                <span class='n'>expected</span> <span class='o'>=</span> <span class='p'>[</span><span class='mi'>0</span> <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='bp'>self</span><span class='o'>.</span><span class='n'>no</span><span class='p'>)]</span>
+                <span class='n'>expected</span><span class='p'>[</span><span class='n'>row</span><span class='p'>[</span><span class='o'>-</span><span class='mi'>1</span><span class='p'>]]</span> <span class='o'>=</span> <span class='mi'>1</span>
+                <span class='n'>inputs</span> <span class='o'>=</span> <span class='n'>row</span><span class='p'>[:</span><span class='o'>-</span><span class='mi'>1</span><span class='p'>]</span>
+                <span class='bp'>self</span><span class='o'>.</span><span class='n'>forward_propagate</span><span class='p'>(</span><span class='bp'>self</span><span class='o'>.</span><span class='n'>network</span><span class='p'>,</span> <span class='n'>inputs</span><span class='p'>,</span> <span class='bp'>self</span><span class='o'>.</span><span class='n'>activite_transfer</span><span class='p'>)</span>
+                <span class='bp'>self</span><span class='o'>.</span><span class='n'>backward_propagate</span><span class='p'>(</span><span class='bp'>self</span><span class='o'>.</span><span class='n'>network</span><span class='p'>,</span> <span class='n'>expected</span><span class='p'>,</span> <span class='bp'>self</span><span class='o'>.</span><span class='n'>activite_derivative</span><span class='p'>)</span>
+                <span class='bp'>self</span><span class='o'>.</span><span class='n'>update_weights</span><span class='p'>(</span><span class='bp'>self</span><span class='o'>.</span><span class='n'>network</span><span class='p'>,</span> <span class='n'>inputs</span><span class='p'>,</span> <span class='n'>lr</span><span class='p'>)</span>
+        <span class='c1'># print(self.network)</span>
+        
+    <span class='k'>def</span> <span class='nf'>predict</span><span class='p'>(</span><span class='bp'>self</span><span class='p'>,</span> <span class='n'>inputs</span><span class='p'>):</span>
+        <span class='n'>results</span> <span class='o'>=</span> <span class='nb'>list</span><span class='p'>()</span> 
+        <span class='k'>for</span> <span class='n'>row</span> <span class='ow'>in</span> <span class='n'>inputs</span><span class='p'>:</span>
+            <span class='n'>outputs</span> <span class='o'>=</span> <span class='bp'>self</span><span class='o'>.</span><span class='n'>forward_propagate</span><span class='p'>(</span><span class='bp'>self</span><span class='o'>.</span><span class='n'>network</span><span class='p'>,</span> <span class='n'>row</span><span class='p'>,</span> <span class='bp'>self</span><span class='o'>.</span><span class='n'>activite_transfer</span><span class='p'>)</span>
+            <span class='n'>results</span><span class='o'>.</span><span class='n'>append</span><span class='p'>(</span><span class='n'>outputs</span><span class='o'>.</span><span class='n'>index</span><span class='p'>(</span><span class='nb'>max</span><span class='p'>(</span><span class='n'>outputs</span><span class='p'>)))</span>
+        <span class='c1'># print(results)</span>
+        <span class='k'>return</span> <span class='n'>results</span>
+    
+    <span class='nd'>@staticmethod</span>
+    <span class='k'>def</span> <span class='nf'>initialize_network</span><span class='p'>(</span><span class='n'>ni</span><span class='p'>,</span> <span class='n'>nh</span><span class='p'>,</span> <span class='n'>no</span><span class='p'>):</span>
+        <span class='c1'># print(ni, nh, no)</span>
+        <span class='n'>network</span> <span class='o'>=</span> <span class='nb'>list</span><span class='p'>()</span>
+        <span class='c1'># hiden layer</span>
+        <span class='n'>network</span><span class='o'>.</span><span class='n'>append</span><span class='p'>([{</span><span class='s1'>&#39;weights&#39;</span><span class='p'>:</span> <span class='p'>[</span><span class='n'>random</span><span class='o'>.</span><span class='n'>random</span><span class='p'>()</span> <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='n'>ni</span> <span class='o'>+</span> <span class='mi'>1</span><span class='p'>)]}</span> <span class='k'>for</span> <span class='n'>j</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='n'>nh</span><span class='p'>)])</span>
+        <span class='c1'># output layer</span>
+        <span class='n'>network</span><span class='o'>.</span><span class='n'>append</span><span class='p'>([{</span><span class='s1'>&#39;weights&#39;</span><span class='p'>:</span> <span class='p'>[</span><span class='n'>random</span><span class='o'>.</span><span class='n'>random</span><span class='p'>()</span> <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='n'>nh</span> <span class='o'>+</span> <span class='mi'>1</span><span class='p'>)]}</span> <span class='k'>for</span> <span class='n'>k</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='n'>no</span><span class='p'>)])</span>
+        <span class='c1'># print(network)</span>
+        <span class='k'>return</span> <span class='n'>network</span>
+    
+    <span class='nd'>@staticmethod</span>
+    <span class='k'>def</span> <span class='nf'>activite_transfer</span><span class='p'>(</span><span class='n'>weights</span><span class='p'>,</span> <span class='n'>inputs</span><span class='p'>):</span>
+        <span class='n'>output</span> <span class='o'>=</span> <span class='n'>weights</span><span class='p'>[</span><span class='o'>-</span><span class='mi'>1</span><span class='p'>]</span> <span class='c1'># bias</span>
+        <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>weights</span><span class='p'>)</span> <span class='o'>-</span> <span class='mi'>1</span><span class='p'>):</span>
+            <span class='n'>output</span> <span class='o'>+=</span> <span class='n'>weights</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span> <span class='o'>*</span> <span class='n'>inputs</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span>
+        <span class='k'>return</span> <span class='mf'>1.0</span> <span class='o'>/</span> <span class='p'>(</span><span class='mf'>1.0</span> <span class='o'>+</span> <span class='n'>math</span><span class='o'>.</span><span class='n'>exp</span><span class='p'>(</span><span class='o'>-</span><span class='n'>output</span><span class='p'>))</span> <span class='c1'># activete function sigmiod</span>
+    
+    <span class='nd'>@staticmethod</span>
+    <span class='k'>def</span> <span class='nf'>activite_derivative</span><span class='p'>(</span><span class='n'>output</span><span class='p'>):</span>
+        <span class='k'>return</span> <span class='n'>output</span> <span class='o'>*</span> <span class='p'>(</span><span class='mi'>1</span> <span class='o'>-</span> <span class='n'>output</span><span class='p'>)</span>
+    
+    <span class='nd'>@staticmethod</span>
+    <span class='k'>def</span> <span class='nf'>forward_propagate</span><span class='p'>(</span><span class='n'>network</span><span class='p'>,</span> <span class='n'>inputs</span><span class='p'>,</span> <span class='n'>activite_transfer_cb</span><span class='p'>):</span>
+        <span class='n'>inputs_</span> <span class='o'>=</span> <span class='n'>inputs</span>
+        <span class='k'>for</span> <span class='n'>layer</span> <span class='ow'>in</span> <span class='n'>network</span><span class='p'>:</span>
+            <span class='n'>output</span> <span class='o'>=</span> <span class='p'>[]</span>
+            <span class='k'>for</span> <span class='n'>neuron</span> <span class='ow'>in</span> <span class='n'>layer</span><span class='p'>:</span>
+                <span class='n'>neuron</span><span class='p'>[</span><span class='s1'>&#39;output&#39;</span><span class='p'>]</span> <span class='o'>=</span> <span class='n'>activite_transfer_cb</span><span class='p'>(</span><span class='n'>neuron</span><span class='p'>[</span><span class='s1'>&#39;weights&#39;</span><span class='p'>],</span> <span class='n'>inputs_</span><span class='p'>)</span>
+                <span class='n'>output</span><span class='o'>.</span><span class='n'>append</span><span class='p'>(</span><span class='n'>neuron</span><span class='p'>[</span><span class='s1'>&#39;output&#39;</span><span class='p'>])</span>
+            <span class='n'>inputs_</span> <span class='o'>=</span> <span class='n'>output</span>
+        <span class='c1'># print(inputs_)</span>
+        <span class='k'>return</span> <span class='n'>inputs_</span>
+    
+    <span class='nd'>@staticmethod</span>
+    <span class='k'>def</span> <span class='nf'>backward_propagate</span><span class='p'>(</span><span class='n'>network</span><span class='p'>,</span> <span class='n'>expected</span><span class='p'>,</span> <span class='n'>activite_derivative_cb</span><span class='p'>):</span>
+        <span class='c1'># last layer: output layer</span>
+        <span class='k'>for</span> <span class='n'>k</span><span class='p'>,</span> <span class='n'>neuron</span> <span class='ow'>in</span> <span class='nb'>enumerate</span><span class='p'>(</span><span class='n'>network</span><span class='p'>[</span><span class='o'>-</span><span class='mi'>1</span><span class='p'>]):</span>
+            <span class='c1'># middle signnal: delta</span>
+            <span class='n'>error</span> <span class='o'>=</span> <span class='o'>-</span><span class='mi'>1</span> <span class='o'>*</span> <span class='p'>(</span><span class='n'>neuron</span><span class='p'>[</span><span class='s1'>&#39;output&#39;</span><span class='p'>]</span> <span class='o'>-</span> <span class='n'>expected</span><span class='p'>[</span><span class='n'>k</span><span class='p'>])</span>
+            <span class='n'>neuron</span><span class='p'>[</span><span class='s1'>&#39;delta&#39;</span><span class='p'>]</span> <span class='o'>=</span> <span class='n'>error</span> <span class='o'>*</span> <span class='n'>activite_derivative_cb</span><span class='p'>(</span><span class='n'>neuron</span><span class='p'>[</span><span class='s1'>&#39;output&#39;</span><span class='p'>])</span>
+            
+        <span class='c1'># other layers, full connect layers  </span>
+        <span class='k'>for</span> <span class='n'>l</span> <span class='ow'>in</span> <span class='nb'>reversed</span><span class='p'>(</span><span class='nb'>range</span><span class='p'>(</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>network</span><span class='p'>)</span><span class='o'>-</span><span class='mi'>1</span><span class='p'>)):</span>
+            <span class='k'>for</span> <span class='n'>j</span><span class='p'>,</span> <span class='n'>neuron</span> <span class='ow'>in</span> <span class='nb'>enumerate</span><span class='p'>(</span><span class='n'>network</span><span class='p'>[</span><span class='n'>l</span><span class='p'>]):</span>
+                <span class='n'>error</span> <span class='o'>=</span> <span class='mf'>0.0</span>
+                <span class='k'>for</span> <span class='n'>nr</span> <span class='ow'>in</span> <span class='n'>network</span><span class='p'>[</span><span class='n'>l</span><span class='o'>+</span><span class='mi'>1</span><span class='p'>]:</span>
+                    <span class='n'>error</span> <span class='o'>+=</span> <span class='n'>nr</span><span class='p'>[</span><span class='s1'>&#39;delta&#39;</span><span class='p'>]</span> <span class='o'>*</span> <span class='n'>nr</span><span class='p'>[</span><span class='s1'>&#39;weights&#39;</span><span class='p'>][</span><span class='n'>j</span><span class='p'>]</span>
+                <span class='n'>neuron</span><span class='p'>[</span><span class='s1'>&#39;delta&#39;</span><span class='p'>]</span> <span class='o'>=</span> <span class='n'>error</span> <span class='o'>*</span> <span class='n'>activite_derivative_cb</span><span class='p'>(</span><span class='n'>neuron</span><span class='p'>[</span><span class='s1'>&#39;output&#39;</span><span class='p'>])</span>    
+                
+    <span class='nd'>@staticmethod</span>
+    <span class='k'>def</span> <span class='nf'>update_weights</span><span class='p'>(</span><span class='n'>network</span><span class='p'>,</span> <span class='n'>inputs</span><span class='p'>,</span> <span class='n'>l_rate</span><span class='p'>):</span>
+        <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>network</span><span class='p'>)):</span>
+            <span class='k'>if</span> <span class='n'>i</span> <span class='o'>==</span> <span class='mi'>0</span><span class='p'>:</span>
+                <span class='c1'># remove the last column: target classification value</span>
+                <span class='n'>inputs_</span> <span class='o'>=</span> <span class='n'>inputs</span>
+            <span class='k'>else</span><span class='p'>:</span>
+                <span class='c1'># pre layer output as inputs</span>
+                <span class='n'>inputs_</span> <span class='o'>=</span> <span class='p'>[</span><span class='n'>neuron</span><span class='p'>[</span><span class='s1'>&#39;output&#39;</span><span class='p'>]</span> <span class='k'>for</span> <span class='n'>neuron</span> <span class='ow'>in</span> <span class='n'>network</span><span class='p'>[</span><span class='n'>i</span> <span class='o'>-</span> <span class='mi'>1</span><span class='p'>]]</span>
+                
+            <span class='k'>for</span> <span class='n'>neuron</span> <span class='ow'>in</span> <span class='n'>network</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]:</span>
+                <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>inputs_</span><span class='p'>)):</span>
+                    <span class='c1'># weights</span>
+                    <span class='n'>neuron</span><span class='p'>[</span><span class='s1'>&#39;weights&#39;</span><span class='p'>][</span><span class='n'>i</span><span class='p'>]</span> <span class='o'>+=</span> <span class='n'>l_rate</span> <span class='o'>*</span> <span class='n'>neuron</span><span class='p'>[</span><span class='s1'>&#39;delta&#39;</span><span class='p'>]</span> <span class='o'>*</span> <span class='n'>inputs_</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span>
+                <span class='c1'># biases</span>
+                <span class='n'>neuron</span><span class='p'>[</span><span class='s1'>&#39;weights&#39;</span><span class='p'>][</span><span class='o'>-</span><span class='mi'>1</span><span class='p'>]</span> <span class='o'>+=</span> <span class='n'>l_rate</span> <span class='o'>*</span> <span class='n'>neuron</span><span class='p'>[</span><span class='s1'>&#39;delta&#39;</span><span class='p'>]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class='cell border-box-sizing code_cell rendered'>
+<div class='input'>
+<div class='prompt input_prompt'>In&nbsp;[9]:</div>
+<div class='inner_cell'>
+    <div class='input_area'>
+<div class=' highlight hl-ipython3'><pre><span class='k'>def</span> <span class='nf'>accuracy_metric</span><span class='p'>(</span><span class='n'>actual</span><span class='p'>,</span> <span class='n'>predicted</span><span class='p'>):</span>          
+    <span class='n'>correct</span> <span class='o'>=</span> <span class='mi'>0</span>                                  
+    <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>actual</span><span class='p'>)):</span>
+        <span class='k'>if</span> <span class='n'>actual</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span> <span class='o'>==</span> <span class='n'>predicted</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]:</span>
+            <span class='n'>correct</span> <span class='o'>+=</span> <span class='mi'>1</span>
+    <span class='k'>return</span> <span class='n'>correct</span> <span class='o'>/</span> <span class='nb'>float</span><span class='p'>(</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>actual</span><span class='p'>))</span> <span class='o'>*</span> <span class='mf'>100.0</span>
+    
+<span class='c1'># Evaluate an algorithm using a cross validation split</span>
+<span class='k'>def</span> <span class='nf'>evaluate_algorithm</span><span class='p'>(</span><span class='n'>dataset</span><span class='p'>,</span> <span class='n'>nfolds</span><span class='p'>,</span> <span class='n'>ninput</span><span class='p'>,</span> <span class='n'>nhiden</span><span class='p'>,</span> <span class='n'>noutput</span><span class='p'>,</span> <span class='n'>lr</span><span class='p'>,</span> <span class='n'>epochs</span><span class='p'>):</span>
+    <span class='n'>random</span><span class='o'>.</span><span class='n'>seed</span><span class='p'>(</span><span class='mi'>0</span><span class='p'>)</span>
+    <span class='n'>fold_list</span> <span class='o'>=</span> <span class='nb'>list</span><span class='p'>()</span>
+    <span class='n'>fold_size</span> <span class='o'>=</span> <span class='nb'>int</span><span class='p'>(</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>dataset</span><span class='p'>)</span> <span class='o'>/</span> <span class='n'>nfolds</span><span class='p'>)</span>
+    <span class='n'>indices</span> <span class='o'>=</span> <span class='p'>[</span><span class='n'>i</span> <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>dataset</span><span class='p'>))]</span>
+    <span class='c1'># random.shuffle(indices)</span>
+    <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='n'>nfolds</span><span class='p'>):</span>
+        <span class='n'>fold_list</span><span class='o'>.</span><span class='n'>append</span><span class='p'>([</span><span class='n'>dataset</span><span class='p'>[</span><span class='n'>indices</span><span class='o'>.</span><span class='n'>pop</span><span class='p'>()]</span> <span class='k'>for</span> <span class='n'>j</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='n'>fold_size</span><span class='p'>)])</span>
+        
+    <span class='n'>scores</span> <span class='o'>=</span> <span class='nb'>list</span><span class='p'>()</span>
+    <span class='c1'># each fold can use as test data</span>
+    <span class='k'>for</span> <span class='n'>test_data</span> <span class='ow'>in</span> <span class='n'>fold_list</span><span class='p'>:</span>
+        <span class='n'>train_data</span> <span class='o'>=</span> <span class='nb'>list</span><span class='p'>(</span><span class='n'>fold_list</span><span class='p'>)</span>
+        <span class='n'>train_data</span><span class='o'>.</span><span class='n'>remove</span><span class='p'>(</span><span class='n'>test_data</span><span class='p'>)</span>
+        <span class='n'>train_data</span> <span class='o'>=</span> <span class='nb'>sum</span><span class='p'>(</span><span class='n'>train_data</span><span class='p'>,</span> <span class='p'>[])</span>
+        <span class='n'>nn</span> <span class='o'>=</span> <span class='n'>NeuralNetwork</span><span class='p'>(</span><span class='n'>ninput</span><span class='p'>,</span> <span class='n'>nhiden</span><span class='p'>,</span> <span class='n'>noutput</span><span class='p'>)</span>
+        <span class='n'>nn</span><span class='o'>.</span><span class='n'>train</span><span class='p'>(</span><span class='n'>train_data</span><span class='p'>,</span> <span class='n'>lr</span><span class='p'>,</span> <span class='n'>epochs</span><span class='p'>)</span>
+        <span class='n'>predicted</span> <span class='o'>=</span> <span class='n'>nn</span><span class='o'>.</span><span class='n'>predict</span><span class='p'>(</span><span class='n'>test_data</span><span class='p'>)</span>
+        <span class='n'>actual</span> <span class='o'>=</span> <span class='p'>[</span><span class='n'>row</span><span class='p'>[</span><span class='o'>-</span><span class='mi'>1</span><span class='p'>]</span> <span class='k'>for</span> <span class='n'>row</span> <span class='ow'>in</span> <span class='n'>test_data</span><span class='p'>]</span>
+        <span class='n'>scores</span><span class='o'>.</span><span class='n'>append</span><span class='p'>(</span><span class='n'>accuracy_metric</span><span class='p'>(</span><span class='n'>actual</span><span class='p'>,</span> <span class='n'>predicted</span><span class='p'>))</span>
+    <span class='k'>return</span> <span class='n'>scores</span>
+ 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class='cell border-box-sizing code_cell rendered'>
+<div class='input'>
+<div class='prompt input_prompt'>In&nbsp;[10]:</div>
+<div class='inner_cell'>
+    <div class='input_area'>
+<div class=' highlight hl-ipython3'><pre><span class='n'>dataset</span><span class='p'>,</span> <span class='n'>class_indices</span> <span class='o'>=</span> <span class='n'>load_dataset_from_file</span><span class='p'>(</span><span class='n'>os</span><span class='o'>.</span><span class='n'>path</span><span class='o'>.</span><span class='n'>join</span><span class='p'>(</span><span class='n'>dataset_dir</span><span class='p'>,</span> <span class='s1'>&#39;seeds_dataset.txt&#39;</span><span class='p'>))</span>
+<span class='n'>dataset</span> <span class='o'>=</span> <span class='n'>normalize_dataset</span><span class='p'>(</span><span class='n'>dataset</span><span class='p'>)</span>
+<span class='n'>nfolds</span> <span class='o'>=</span> <span class='mi'>5</span>
+<span class='n'>ninput</span> <span class='o'>=</span> <span class='nb'>len</span><span class='p'>(</span><span class='n'>dataset</span><span class='p'>[</span><span class='mi'>0</span><span class='p'>])</span><span class='o'>-</span><span class='mi'>1</span>
+<span class='n'>nhiden</span> <span class='o'>=</span> <span class='mi'>5</span>
+<span class='n'>noutput</span> <span class='o'>=</span> <span class='nb'>len</span><span class='p'>(</span><span class='n'>class_indices</span><span class='p'>)</span>
+<span class='n'>scores</span> <span class='o'>=</span> <span class='n'>evaluate_algorithm</span><span class='p'>(</span><span class='n'>dataset</span><span class='p'>,</span> <span class='n'>nfolds</span><span class='p'>,</span> <span class='n'>ninput</span><span class='p'>,</span> <span class='n'>nhiden</span><span class='p'>,</span> <span class='n'>noutput</span><span class='p'>,</span> <span class='n'>lr</span><span class='o'>=</span><span class='mf'>0.1</span><span class='p'>,</span> <span class='n'>epochs</span><span class='o'>=</span><span class='mi'>500</span><span class='p'>)</span>
+<span class='nb'>print</span><span class='p'>(</span><span class='s1'>&#39;Score: </span><span class='si'>%s</span><span class='s1'>&#39;</span> <span class='o'>%</span> <span class='n'>scores</span><span class='p'>)</span>
+<span class='nb'>print</span><span class='p'>(</span><span class='s1'>&#39;Mean Score: </span><span class='si'>%.3f%%</span><span class='s1'>&#39;</span> <span class='o'>%</span> <span class='p'>(</span><span class='nb'>sum</span><span class='p'>(</span><span class='n'>scores</span><span class='p'>)</span><span class='o'>/</span><span class='nb'>float</span><span class='p'>(</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>scores</span><span class='p'>))))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class='output_wrapper'>
+<div class='output'>
+
+
+<div class='output_area'>
+
+<div class='prompt'></div>
+
+
+<div class='output_subarea output_stream output_stdout output_text'>
+<pre>Score: [83.33333333333334, 88.09523809523809, 92.85714285714286, 90.47619047619048, 85.71428571428571]
+Mean Score: 88.095%
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
     </div>
   </div>
 </body>
@@ -12031,17 +12388,18 @@ div#notebook {
 " scrolling="auto">
 </iframe>
 <script>
-$("#ipynb-3717").load( function() {
-var h = $("#ipynb-3717").contents().find("#notebook").height();
-document.getElementById('ipynb-3717').height= h + 60;
+$("#ipynb-3175").load( function() {
+var h = $("#ipynb-3175").contents().find("#notebook").height();
+document.getElementById('ipynb-3175').height= h + 60;
 })
 </script> 
     
 
-<h1 id="references"><span class="header-section-number">2</span> References</h1>
+<h1 id="references"><span class="header-section-number">4</span> References</h1>
 <ol type="1">
 <li><p><code>https://qrsforever.github.io/2019/05/30/ML/Guide/activation_functions/</code></p></li>
 <li><p><code>https://machinelearningmastery.com/implement-backpropagation-algorithm-scratch-python/</code></p></li>
+<li><p><code>https://www.jianshu.com/p/284581d9b189</code></p></li>
 </ol>
 </body>
 </html>
@@ -12053,7 +12411,7 @@ document.getElementById('ipynb-3717').height= h + 60;
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-07-21T07:01:52.847Z" itemprop="dateUpdated">2019-07-21 15:01:52</time>
+    最后更新时间：<time datetime="2019-07-22T17:14:08.198Z" itemprop="dateUpdated">2019-07-23 01:14:08</time>
 </span><br>
 
 
@@ -12170,8 +12528,10 @@ document.getElementById('ipynb-3717').height= h + 60;
 
     <!-- Valine Comments -->
     <div class="comments vcomment" id="comments"></div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script> -->
+    <script src="/js/av-min.js"></script>
+    <script src="/js/Valine.min.js"></script>
     <!-- Valine Comments script -->
     <script>
         var GUEST_INFO = ['nick','mail','link'];

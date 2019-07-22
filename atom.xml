@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qrsforever.github.io/"/>
-  <updated>2019-07-21T07:01:52.847Z</updated>
+  <updated>2019-07-22T17:14:08.198Z</updated>
   <id>https://qrsforever.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://qrsforever.github.io/2019/07/19/ML/Scratch/backpropagation_algorithm/"/>
     <id>https://qrsforever.github.io/2019/07/19/ML/Scratch/backpropagation_algorithm/</id>
     <published>2019-07-19T13:41:28.000Z</published>
-    <updated>2019-07-21T07:01:52.847Z</updated>
+    <updated>2019-07-22T17:14:08.198Z</updated>
     
     <summary type="html">
     
@@ -46,6 +46,9 @@
 &lt;body&gt;
 &lt;!-- vim-markdown-toc GFM --&gt;
 &lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#description&quot;&gt;Description&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#drawit&quot;&gt;Drawit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#codes&quot;&gt;Codes&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;#references&quot;&gt;References&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;!-- vim-markdown-toc --&gt;
@@ -66,7 +69,7 @@
     <link href="https://qrsforever.github.io/2019/07/19/Story/Website/dataset/"/>
     <id>https://qrsforever.github.io/2019/07/19/Story/Website/dataset/</id>
     <published>2019-07-19T12:59:12.000Z</published>
-    <updated>2019-07-21T05:31:48.413Z</updated>
+    <updated>2019-07-22T17:13:32.868Z</updated>
     
     <summary type="html">
     
