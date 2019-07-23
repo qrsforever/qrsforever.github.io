@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://qrsforever.github.io/2019/07/23/ML/Guide/conv_mode/</loc>
+    
+    <lastmod>2019-07-23T17:03:04.497Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2017/08/30/Tutorial/Markdown/</loc>
+    
+    <lastmod>2019-07-23T16:18:43.384Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://qrsforever.github.io/2019/07/19/ML/Scratch/backpropagation_algorithm/</loc>
     
-    <lastmod>2019-07-22T17:14:08.198Z</lastmod>
+    <lastmod>2019-07-23T14:44:00.407Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/07/19/ML/Scratch/nn_convolution/</loc>
+    
+    <lastmod>2019-07-23T14:44:00.407Z</lastmod>
     
   </url>
   
@@ -58,13 +79,6 @@
   </url>
   
   <url>
-    <loc>https://qrsforever.github.io/2019/07/19/ML/Scratch/nn_convolution/</loc>
-    
-    <lastmod>2019-07-21T05:31:48.409Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://qrsforever.github.io/2019/07/01/ML/Scratch/nn_crossent/</loc>
     
     <lastmod>2019-07-21T05:31:48.409Z</lastmod>
@@ -73,13 +87,6 @@
   
   <url>
     <loc>https://qrsforever.github.io/2018/10/31/Tutorial/Latex/</loc>
-    
-    <lastmod>2019-07-16T15:50:14.743Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://qrsforever.github.io/2017/08/30/Tutorial/Markdown/</loc>
     
     <lastmod>2019-07-16T15:50:14.743Z</lastmod>
     
@@ -513,14 +520,14 @@
   </url>
   
   <url>
-    <loc>https://qrsforever.github.io/2018/11/27/Books/Statistics/Normality_Test/</loc>
+    <loc>https://qrsforever.github.io/2018/12/18/Books/Statistics/OLS_WLS_GLS/</loc>
     
     <lastmod>2019-03-16T12:09:11.882Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://qrsforever.github.io/2018/12/18/Books/Statistics/OLS_WLS_GLS/</loc>
+    <loc>https://qrsforever.github.io/2018/11/27/Books/Statistics/Normality_Test/</loc>
     
     <lastmod>2019-03-16T12:09:11.882Z</lastmod>
     

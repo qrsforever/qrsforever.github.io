@@ -36,7 +36,8 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://qrsforever.github.io/img/avatar.jpg">
 <meta property="og:image" content="https://qrsforever.github.io/img/avatar.jpg">
-<meta property="og:updated_time" content="2019-07-16T15:50:14.743Z">
+<meta property="og:image" content="https://qrsforever.github.io/img/avatar.jpg">
+<meta property="og:updated_time" content="2019-07-23T16:18:43.384Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(原创)Tutorial for Markdown">
 <meta name="twitter:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
@@ -454,20 +455,22 @@ anchor2</p>
 <p><a href="#mytext">锚点3</a></p>
 <h3 id="图片"><span class="header-section-number">0.1.8</span> 图片</h3>
 <pre><code>&lt;div align=&#39;center&#39;&gt;
-内联方式：{% image /img/avatar.jpg 'alt text' 'Title' %}
+内联方式：![alt text](/img/avatar.jpg &quot;Title&quot;)
 引用方式：![alt text][id] 
 &lt;/div&gt;
 [id]: /img/avatar.jpg    &quot;Title&quot;
+
+pandoc:
+
+![link text](/img/avatar.jpg){ width=50% height=40px }
 </code></pre>
 <div data-align="center">
-<p>内联方式：<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/img/avatar.jpg" alt="alt text" title="Title">
-                </div>
-                <div class="image-caption">Title</div>
-            </figure> 引用方式：<img src="/img/avatar.jpg" title="Title" alt="alt text"></p>
+<p>内联方式：<img src="/img/avatar.jpg" title="Title" alt="alt text"> 引用方式：<img src="/img/avatar.jpg" title="Title" alt="alt text"></p>
 </div>
+<p>pandoc:</p>
+<figure>
+<img src="/img/avatar.jpg" alt="link text" style="width:50.0%" height="40"><figcaption>link text</figcaption>
+</figure>
 <h3 id="代码"><span class="header-section-number">0.1.9</span> 代码</h3>
 <pre><code>\`one line\`
 
@@ -652,7 +655,7 @@ Erin   | lamb madras | HOT      | $5
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-07-16T15:50:14.743Z" itemprop="dateUpdated">2019-07-16 23:50:14</time>
+    最后更新时间：<time datetime="2019-07-23T16:18:43.384Z" itemprop="dateUpdated">2019-07-24 00:18:43</time>
 </span><br>
 
 
