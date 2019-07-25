@@ -34,14 +34,15 @@
 <meta property="og:site_name" content="大地小神">
 <meta property="og:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://raw.githubusercontent.com/qrsforever/assets/master/ML/Guide/conv-full.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/qrsforever/assets/master/ML/Guide/conv-same.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/qrsforever/assets/master/ML/Guide/conv-valid.png">
-<meta property="og:updated_time" content="2019-07-23T17:03:04.497Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/qrsforever/assets/master/ML/Guide/conv-mode.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/ML/Guide/conv-full.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/ML/Guide/conv-same.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/ML/Guide/conv-valid.png">
+<meta property="og:updated_time" content="2019-07-25T13:33:14.576Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(原创)卷积三种模式使用numpy实现">
 <meta name="twitter:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/qrsforever/assets/master/ML/Guide/conv-full.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/qrsforever/assets/master/ML/Guide/conv-mode.png">
     
         <link rel="alternate" type="application/atom+xml" title="大地小神" href="/atom.xml">
     
@@ -183,7 +184,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#mode"><span class="post-toc-number">1.</span> <span class="post-toc-text">1 Mode</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#full"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1.1 full</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#same"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">1.2 same</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#valid"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">1.3 valid</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#codes"><span class="post-toc-number">2.</span> <span class="post-toc-text">2 Codes</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#references"><span class="post-toc-number">3.</span> <span class="post-toc-text">3 References</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#mode"><span class="post-toc-text">1 Mode</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#full"><span class="post-toc-text">1.1 full</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#same"><span class="post-toc-text">1.2 same</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#valid"><span class="post-toc-text">1.3 valid</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#codes"><span class="post-toc-text">2 Codes</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#references"><span class="post-toc-text">3 References</span></a></li></ol>
         </nav>
     </aside>
 
@@ -202,10 +203,6 @@
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
-</span>
-
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
@@ -230,23 +227,108 @@
 <body>
 <!-- vim-markdown-toc GFM -->
 <ul>
-<li><a href="#mode">Mode</a></li>
+<li><a href="#mode">Mode</a>
+<ul>
+<li><a href="#full">full</a></li>
+<li><a href="#same">same</a></li>
+<li><a href="#valid">valid</a></li>
+</ul></li>
 <li><a href="#codes">Codes</a></li>
 <li><a href="#references">References</a></li>
 </ul>
 <!-- vim-markdown-toc -->
 <a id="more"></a>
 <h1 id="mode"><span class="header-section-number">1</span> Mode</h1>
+<p>Below the output of three modes:</p>
+<p>Filter size must be odd number, eg: 3x3, 5x5. here we consider the situation which the size of image is not less than the size of filter.</p>
+<p><img src="https://raw.githubusercontent.com/qrsforever/assets/master/ML/Guide/conv-mode.png" style="width:70.0%"></p>
+<p>let image: m x m and filter: n x n</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">mode</th>
+<th style="text-align: center;">size of ouptut</th>
+<th style="text-align: center;">extend matrix size</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">full</td>
+<td style="text-align: center;">m + n - 1</td>
+<td style="text-align: center;">m + 2(n - 1)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">same</td>
+<td style="text-align: center;">m</td>
+<td style="text-align: center;">m + n - 1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">valid</td>
+<td style="text-align: center;">m - n + 1</td>
+<td style="text-align: center;">m</td>
+</tr>
+</tbody>
+</table>
+<p>if: A is 6x6, m = 6 V is 3x3, n = 3</p>
 <h2 id="full"><span class="header-section-number">1.1</span> full</h2>
-<p><img src="https://raw.githubusercontent.com/qrsforever/assets/master/ML/Guide/conv-full.png" title="full mode" width="300"></p>
+<p><img src="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/ML/Guide/conv-full.png" title="full mode" width="300"></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">mode</th>
+<th style="text-align: center;">size of ouptut</th>
+<th style="text-align: center;">extend matrix size</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">full</td>
+<td style="text-align: center;">6+3-1 = 8</td>
+<td style="text-align: center;">6+2*(3-1) = 10</td>
+</tr>
+</tbody>
+</table>
 <h2 id="same"><span class="header-section-number">1.2</span> same</h2>
-<p><img src="https://raw.githubusercontent.com/qrsforever/assets/master/ML/Guide/conv-same.png" title="samemode" width="300"></p>
+<p><img src="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/ML/Guide/conv-same.png" title="same mode" width="300"></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">mode</th>
+<th style="text-align: center;">size of ouptut</th>
+<th style="text-align: center;">extend matrix size</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">same</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">6+3-1 = 8</td>
+</tr>
+</tbody>
+</table>
 <h2 id="valid"><span class="header-section-number">1.3</span> valid</h2>
-<p><img src="https://raw.githubusercontent.com/qrsforever/assets/master/ML/Guide/conv-valid.png" title="valid mode" width="300"></p>
+<p><img src="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/ML/Guide/conv-valid.png" title="valid mode" width="300"></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">mode</th>
+<th style="text-align: center;">size of ouptut</th>
+<th style="text-align: center;">extend matrix size</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">valid</td>
+<td style="text-align: center;">6-3+1 = 4</td>
+<td style="text-align: center;">6</td>
+</tr>
+</tbody>
+</table>
 <h1 id="codes"><span class="header-section-number">2</span> Codes</h1>
+<p>Only using numpy implement the conv2d, and compare the ouput with scipy.signal.convolve2d.</p>
 
 <script src="//code.jquery.com/jquery-2.0.0.js"></script>
-<iframe id="ipynb-4529" marginheight="0" marginwidth="0" frameborder="0" height="100%" width="100%" srcdoc="<!DOCTYPE html>
+<iframe id="ipynb-2017" marginheight="0" marginwidth="0" frameborder="0" height="100%" width="100%" srcdoc="<!DOCTYPE html>
 <html>
 <head><meta charset='utf-8' />
 <title>conv_mode</title><script src='https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js'></script>
@@ -12050,6 +12132,14 @@ div#notebook {
 </div>
 
 </div>
+<div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
+</div>
+<div class='inner_cell'>
+<div class='text_cell_render border-box-sizing rendered_html'>
+<h1 id='image-3x3-and-filter-3x3'>image 3x3 and filter 3x3</h1>
+</div>
+</div>
+</div>
 <div class='cell border-box-sizing code_cell rendered'>
 <div class='input'>
 <div class='prompt input_prompt'>In&nbsp;[2]:</div>
@@ -12425,26 +12515,13 @@ div#notebook {
 </div>
 <div class='inner_cell'>
 <div class='text_cell_render border-box-sizing rendered_html'>
-<h1 id='Conv-full'>Conv full</h1>
+<h1 id='A-5x5-and-V-3x3'>A 5x5 and V 3x3</h1>
 </div>
 </div>
 </div>
 <div class='cell border-box-sizing code_cell rendered'>
 <div class='input'>
 <div class='prompt input_prompt'>In&nbsp;[11]:</div>
-<div class='inner_cell'>
-    <div class='input_area'>
-<div class=' highlight hl-ipython3'><pre><span class='c1'># np.convolve(a=image, v=filtr, mode=&#39;full&#39;)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[12]:</div>
 <div class='inner_cell'>
     <div class='input_area'>
 <div class=' highlight hl-ipython3'><pre><span class='n'>A</span> <span class='o'>=</span> <span class='n'>np</span><span class='o'>.</span><span class='n'>array</span><span class='p'>([[</span><span class='mi'>17</span><span class='p'>,</span> <span class='mi'>24</span><span class='p'>,</span> <span class='mi'>1</span><span class='p'>,</span> <span class='mi'>8</span><span class='p'>,</span> <span class='mi'>15</span><span class='p'>],</span>
@@ -12461,9 +12538,17 @@ div#notebook {
 </div>
 
 </div>
+<div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
+</div>
+<div class='inner_cell'>
+<div class='text_cell_render border-box-sizing rendered_html'>
+<h2 id='conv-full-mode'>conv full mode</h2>
+</div>
+</div>
+</div>
 <div class='cell border-box-sizing code_cell rendered'>
 <div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[13]:</div>
+<div class='prompt input_prompt'>In&nbsp;[12]:</div>
 <div class='inner_cell'>
     <div class='input_area'>
 <div class=' highlight hl-ipython3'><pre><span class='n'>convolve2d</span><span class='p'>(</span><span class='n'>A</span><span class='p'>,</span> <span class='n'>V</span><span class='p'>,</span> <span class='n'>mode</span><span class='o'>=</span><span class='s1'>&#39;full&#39;</span><span class='p'>,</span> <span class='n'>boundary</span><span class='o'>=</span><span class='s1'>&#39;fill&#39;</span><span class='p'>,</span> <span class='n'>fillvalue</span><span class='o'>=</span><span class='mi'>0</span><span class='p'>)</span>
@@ -12479,7 +12564,7 @@ div#notebook {
 
 <div class='output_area'>
 
-<div class='prompt output_prompt'>Out[13]:</div>
+<div class='prompt output_prompt'>Out[12]:</div>
 
 
 
@@ -12499,6 +12584,72 @@ div#notebook {
 </div>
 </div>
 
+</div>
+<div class='cell border-box-sizing code_cell rendered'>
+<div class='input'>
+<div class='prompt input_prompt'>In&nbsp;[13]:</div>
+<div class='inner_cell'>
+    <div class='input_area'>
+<div class=' highlight hl-ipython3'><pre><span class='n'>conv2d</span><span class='p'>(</span><span class='n'>A</span><span class='p'>,</span> <span class='n'>V</span><span class='p'>,</span> <span class='n'>mode</span><span class='o'>=</span><span class='s1'>&#39;full&#39;</span><span class='p'>)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class='output_wrapper'>
+<div class='output'>
+
+
+<div class='output_area'>
+
+<div class='prompt'></div>
+
+
+<div class='output_subarea output_stream output_stdout output_text'>
+<pre>[[ 0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [ 0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [ 0.  0. 17. 24.  1.  8. 15.  0.  0.]
+ [ 0.  0. 23.  5.  7. 14. 16.  0.  0.]
+ [ 0.  0.  4.  6. 13. 20. 22.  0.  0.]
+ [ 0.  0. 10. 12. 19. 21.  3.  0.  0.]
+ [ 0.  0. 11. 18. 25.  2.  9.  0.  0.]
+ [ 0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [ 0.  0.  0.  0.  0.  0.  0.  0.  0.]]
+</pre>
+</div>
+</div>
+
+<div class='output_area'>
+
+<div class='prompt output_prompt'>Out[13]:</div>
+
+
+
+
+<div class='output_text output_subarea output_execute_result'>
+<pre>array([[ 17.,  75.,  90.,  35.,  40.,  53.,  15.],
+       [ 23., 159., 165.,  45., 105., 137.,  16.],
+       [ 38., 198., 120., 165., 205., 197.,  52.],
+       [ 56.,  95., 160., 200., 245., 184.,  35.],
+       [ 19., 117., 190., 255., 235., 106.,  53.],
+       [ 20.,  89., 160., 210.,  75.,  90.,   6.],
+       [ 22.,  47.,  90.,  65.,  70.,  13.,  18.]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
+</div>
+<div class='inner_cell'>
+<div class='text_cell_render border-box-sizing rendered_html'>
+<h2 id='conv-same-mode'>conv same mode</h2>
+</div>
+</div>
 </div>
 <div class='cell border-box-sizing code_cell rendered'>
 <div class='input'>
@@ -12542,99 +12693,6 @@ div#notebook {
 <div class='prompt input_prompt'>In&nbsp;[15]:</div>
 <div class='inner_cell'>
     <div class='input_area'>
-<div class=' highlight hl-ipython3'><pre><span class='n'>convolve2d</span><span class='p'>(</span><span class='n'>A</span><span class='p'>,</span> <span class='n'>V</span><span class='p'>,</span> <span class='n'>mode</span><span class='o'>=</span><span class='s1'>&#39;valid&#39;</span><span class='p'>,</span> <span class='n'>boundary</span><span class='o'>=</span><span class='s1'>&#39;fill&#39;</span><span class='p'>,</span> <span class='n'>fillvalue</span><span class='o'>=</span><span class='mi'>0</span><span class='p'>)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class='output_wrapper'>
-<div class='output'>
-
-
-<div class='output_area'>
-
-<div class='prompt output_prompt'>Out[15]:</div>
-
-
-
-
-<div class='output_text output_subarea output_execute_result'>
-<pre>array([[120, 165, 205],
-       [160, 200, 245],
-       [190, 255, 235]])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[16]:</div>
-<div class='inner_cell'>
-    <div class='input_area'>
-<div class=' highlight hl-ipython3'><pre><span class='n'>conv2d</span><span class='p'>(</span><span class='n'>A</span><span class='p'>,</span> <span class='n'>V</span><span class='p'>,</span> <span class='n'>mode</span><span class='o'>=</span><span class='s1'>&#39;full&#39;</span><span class='p'>)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class='output_wrapper'>
-<div class='output'>
-
-
-<div class='output_area'>
-
-<div class='prompt'></div>
-
-
-<div class='output_subarea output_stream output_stdout output_text'>
-<pre>[[ 0.  0.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  0. 17. 24.  1.  8. 15.  0.  0.]
- [ 0.  0. 23.  5.  7. 14. 16.  0.  0.]
- [ 0.  0.  4.  6. 13. 20. 22.  0.  0.]
- [ 0.  0. 10. 12. 19. 21.  3.  0.  0.]
- [ 0.  0. 11. 18. 25.  2.  9.  0.  0.]
- [ 0.  0.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  0.  0.  0.  0.  0.  0.]]
-</pre>
-</div>
-</div>
-
-<div class='output_area'>
-
-<div class='prompt output_prompt'>Out[16]:</div>
-
-
-
-
-<div class='output_text output_subarea output_execute_result'>
-<pre>array([[ 17.,  75.,  90.,  35.,  40.,  53.,  15.],
-       [ 23., 159., 165.,  45., 105., 137.,  16.],
-       [ 38., 198., 120., 165., 205., 197.,  52.],
-       [ 56.,  95., 160., 200., 245., 184.,  35.],
-       [ 19., 117., 190., 255., 235., 106.,  53.],
-       [ 20.,  89., 160., 210.,  75.,  90.,   6.],
-       [ 22.,  47.,  90.,  65.,  70.,  13.,  18.]])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[17]:</div>
-<div class='inner_cell'>
-    <div class='input_area'>
 <div class=' highlight hl-ipython3'><pre><span class='n'>conv2d</span><span class='p'>(</span><span class='n'>A</span><span class='p'>,</span> <span class='n'>V</span><span class='p'>,</span> <span class='n'>mode</span><span class='o'>=</span><span class='s1'>&#39;same&#39;</span><span class='p'>)</span>
 </pre></div>
 
@@ -12665,7 +12723,7 @@ div#notebook {
 
 <div class='output_area'>
 
-<div class='prompt output_prompt'>Out[17]:</div>
+<div class='prompt output_prompt'>Out[15]:</div>
 
 
 
@@ -12684,9 +12742,52 @@ div#notebook {
 </div>
 
 </div>
+<div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
+</div>
+<div class='inner_cell'>
+<div class='text_cell_render border-box-sizing rendered_html'>
+<h2 id='conv-mode-valid'>conv mode valid</h2>
+</div>
+</div>
+</div>
 <div class='cell border-box-sizing code_cell rendered'>
 <div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[18]:</div>
+<div class='prompt input_prompt'>In&nbsp;[16]:</div>
+<div class='inner_cell'>
+    <div class='input_area'>
+<div class=' highlight hl-ipython3'><pre><span class='n'>convolve2d</span><span class='p'>(</span><span class='n'>A</span><span class='p'>,</span> <span class='n'>V</span><span class='p'>,</span> <span class='n'>mode</span><span class='o'>=</span><span class='s1'>&#39;valid&#39;</span><span class='p'>,</span> <span class='n'>boundary</span><span class='o'>=</span><span class='s1'>&#39;fill&#39;</span><span class='p'>,</span> <span class='n'>fillvalue</span><span class='o'>=</span><span class='mi'>0</span><span class='p'>)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class='output_wrapper'>
+<div class='output'>
+
+
+<div class='output_area'>
+
+<div class='prompt output_prompt'>Out[16]:</div>
+
+
+
+
+<div class='output_text output_subarea output_execute_result'>
+<pre>array([[120, 165, 205],
+       [160, 200, 245],
+       [190, 255, 235]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class='cell border-box-sizing code_cell rendered'>
+<div class='input'>
+<div class='prompt input_prompt'>In&nbsp;[17]:</div>
 <div class='inner_cell'>
     <div class='input_area'>
 <div class=' highlight hl-ipython3'><pre><span class='n'>conv2d</span><span class='p'>(</span><span class='n'>A</span><span class='p'>,</span> <span class='n'>V</span><span class='p'>,</span> <span class='n'>mode</span><span class='o'>=</span><span class='s1'>&#39;valid&#39;</span><span class='p'>)</span>
@@ -12717,7 +12818,7 @@ div#notebook {
 
 <div class='output_area'>
 
-<div class='prompt output_prompt'>Out[18]:</div>
+<div class='prompt output_prompt'>Out[17]:</div>
 
 
 
@@ -12745,9 +12846,9 @@ div#notebook {
 " scrolling="auto">
 </iframe>
 <script>
-$("#ipynb-4529").load( function() {
-var h = $("#ipynb-4529").contents().find("#notebook").height();
-document.getElementById('ipynb-4529').height= h + 60;
+$("#ipynb-2017").load( function() {
+var h = $("#ipynb-2017").contents().find("#notebook").height();
+document.getElementById('ipynb-2017').height= h + 60;
 })
 </script> 
     
@@ -12769,7 +12870,7 @@ document.getElementById('ipynb-4529').height= h + 60;
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-07-23T17:03:04.497Z" itemprop="dateUpdated">2019-07-24 01:03:04</time>
+    最后更新时间：<time datetime="2019-07-25T13:33:14.576Z" itemprop="dateUpdated">2019-07-25 21:33:14</time>
 </span><br>
 
 
@@ -12857,7 +12958,14 @@ document.getElementById('ipynb-4529').height= h + 60;
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/07/24/Story/Website/papers/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">论文在线</h4>
+      </a>
+    </div>
   
 
   
@@ -12954,15 +13062,6 @@ document.getElementById('ipynb-4529').height= h + 60;
         <footer class="footer">
     <div class="top">
         
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
 
         <p>
             
@@ -13074,8 +13173,6 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
 
 
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 

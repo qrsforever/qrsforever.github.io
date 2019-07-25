@@ -34,7 +34,7 @@
 <meta property="og:site_name" content="大地小神">
 <meta property="og:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-23T14:44:00.407Z">
+<meta property="og:updated_time" content="2019-07-25T15:09:03.759Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(原创)神经网络之卷积过程实例">
 <meta name="twitter:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
@@ -179,7 +179,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#section"><span class="post-toc-number">1.</span> <span class="post-toc-text">1 </span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#references"><span class="post-toc-number">2.</span> <span class="post-toc-text">2 References</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#standard-neural-network-and-convolution-nerual-network"><span class="post-toc-text">1 Standard Neural Network and Convolution Nerual Network</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#references"><span class="post-toc-text">2 References</span></a></li></ol>
         </nav>
     </aside>
 
@@ -198,10 +198,6 @@
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
-</span>
-
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
@@ -226,20 +222,74 @@
 <body>
 <!-- vim-markdown-toc GFM -->
 <ul>
+<li><a href="#standard-neural-network-and-convolution-nerual-network">Standard Neural Network and Convolution Nerual Network</a></li>
 <li><a href="#references">References</a></li>
 </ul>
 <!-- vim-markdown-toc -->
 <a id="more"></a>
-<h1 id="section"><span class="header-section-number">1</span> </h1>
+<h1 id="standard-neural-network-and-convolution-nerual-network"><span class="header-section-number">1</span> Standard Neural Network and Convolution Nerual Network</h1>
+<p>The difference between them is the calculate, one is matrix multiplication and another is convolution, apart from this, they are nearly the same.</p>
+<p><strong>weights sharing</strong></p>
+<p>below we display the convert:</p>
+<pre><code>
+matrix:
+
+  +----------------------+             weights
+  |                      |
+  |  1       2       3   |          +-------------+           +--------------+
+  |  =       =           |          |  1       2  |           |  23      33  |
+  |                      |          |             |           |              |
+  |  4       5       6   |     *    |             |     =     |              |
+  |  =       =           |          |  3       4  |           |  53      63  |
+  |                      |          +-------------+           +--------------+
+  |  7       8       9   |
+  |                      |          first rotate 180     mode = &quot;valid&quot;
+  +----------------------+
+          Image               Kernel or Convolution matrices or Mask
+          3 X 3                           2 X 2
+
+
+ ----------------------------------------------------------------------------------
+
+vector:
+
+
+                    1 --------------\           WX + b
+                           * 4       \
+                    2 --------------\ \
+                           * 3       \ \   4 + 6
+                    3              +  -------------&gt;  23
+                           * 2       / /   8 + 5
+                    4 --------------/ /
+                           * 1       /                33
+weight sharing  &lt;-- 5 --------------/
+                           * 4      \                 53
+                    6 -------------\ \
+                           * 3      \ \   20 + 18
+                    7              + --------------&gt;  63
+                           * 2      / /   16 + 9
+                    8 -------------/ /
+                           * 1      /
+                    9 -------------/
+
+                 inputs                              hiden
+                  9 X 1                              4 X 1
+
+ ----------------------------------------------------------------------------------
+
+the forward feed and back propagation.
+</code></pre>
 <h1 id="references"><span class="header-section-number">2</span> References</h1>
-<ol type="1">
-<li><p><code>http://www.songho.ca/dsp/convolution/convolution2d_example.html?source=post_page</code></p></li>
-<li><p><code>https://www.analyticsvidhya.com/blog/2018/12/guide-convolutional-neural-network-cnn/</code></p></li>
-<li><p><code>https://becominghuman.ai/only-numpy-implementing-convolutional-neural-network-using-numpy-deriving-forward-feed-and-back-458a5250d6e4</code></p></li>
-<li><p><code>https://www.kdnuggets.com/2018/04/building-convolutional-neural-network-numpy-scratch.html</code></p></li>
-<li><p><code>https://codereview.stackexchange.com/questions/133251/a-cnn-in-python-without-frameworks</code></p></li>
-<li><p><code>https://qrsforever.github.io/2019/05/30/ML/Guide/activation_functions</code></p></li>
-<li><p><code>https://datascience-enthusiast.com/DL/Convolution_model_Step_by_Stepv2.html</code></p></li>
+<ol>
+<li><p>http://www.songho.ca/dsp/convolution/convolution2d_example.html?source=post_page</p></li>
+<li><p>https://grzegorzgwardys.wordpress.com/2016/04/22/8/</p></li>
+<li><p>https://www.analyticsvidhya.com/blog/2018/12/guide-convolutional-neural-network-cnn/</p></li>
+<li><p>https://becominghuman.ai/only-numpy-implementing-convolutional-neural-network-using-numpy-deriving-forward-feed-and-back-458a5250d6e4</p></li>
+<li><p>https://www.kdnuggets.com/2018/04/building-convolutional-neural-network-numpy-scratch.html</p></li>
+<li><p>https://codereview.stackexchange.com/questions/133251/a-cnn-in-python-without-frameworks</p></li>
+<li><p>https://datascience-enthusiast.com/DL/Convolution_model_Step_by_Stepv2.html</p></li>
+<li><p>https://qrsforever.github.io/2019/05/30/ML/Guide/activation_functions</p></li>
+<li><p>https://qrsforever.github.io/2019/07/23/ML/Guide/conv_mode</p></li>
 </ol>
 </body>
 </html>
@@ -251,7 +301,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-07-23T14:44:00.407Z" itemprop="dateUpdated">2019-07-23 22:44:00</time>
+    最后更新时间：<time datetime="2019-07-25T15:09:03.759Z" itemprop="dateUpdated">2019-07-25 23:09:03</time>
 </span><br>
 
 
@@ -443,15 +493,6 @@
         <footer class="footer">
     <div class="top">
         
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
 
         <p>
             
@@ -563,8 +604,6 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
 
 
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 

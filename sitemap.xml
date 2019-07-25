@@ -2,9 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://qrsforever.github.io/2019/07/19/ML/Scratch/nn_convolution/</loc>
+    
+    <lastmod>2019-07-25T15:09:03.759Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/06/03/Story/Website/fav/</loc>
+    
+    <lastmod>2019-07-25T15:08:13.867Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/07/24/Tutorial/graphviz/</loc>
+    
+    <lastmod>2019-07-25T14:01:22.669Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/07/18/Tools/How/china_images/</loc>
+    
+    <lastmod>2019-07-25T14:00:54.830Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2018/12/18/Tutorial/Hexo/</loc>
+    
+    <lastmod>2019-07-25T13:33:14.576Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://qrsforever.github.io/2019/07/23/ML/Guide/conv_mode/</loc>
     
-    <lastmod>2019-07-23T17:03:04.497Z</lastmod>
+    <lastmod>2019-07-25T13:33:14.576Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qrsforever.github.io/2019/07/24/Story/Website/papers/</loc>
+    
+    <lastmod>2019-07-25T13:33:14.576Z</lastmod>
     
   </url>
   
@@ -17,13 +59,6 @@
   
   <url>
     <loc>https://qrsforever.github.io/2019/07/19/ML/Scratch/backpropagation_algorithm/</loc>
-    
-    <lastmod>2019-07-23T14:44:00.407Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://qrsforever.github.io/2019/07/19/ML/Scratch/nn_convolution/</loc>
     
     <lastmod>2019-07-23T14:44:00.407Z</lastmod>
     
@@ -45,13 +80,6 @@
   
   <url>
     <loc>https://qrsforever.github.io/2019/06/02/ML/Scratch/snowflake_neural_logic/</loc>
-    
-    <lastmod>2019-07-21T05:31:48.413Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://qrsforever.github.io/2019/07/18/Tools/How/china_images/</loc>
     
     <lastmod>2019-07-21T05:31:48.413Z</lastmod>
     
@@ -198,13 +226,6 @@
   </url>
   
   <url>
-    <loc>https://qrsforever.github.io/2018/12/18/Tutorial/Hexo/</loc>
-    
-    <lastmod>2019-06-04T13:49:29.597Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://qrsforever.github.io/2017/09/20/Note/Python/Note-Scrapy-Request-URLs/</loc>
     
     <lastmod>2019-06-04T13:49:29.597Z</lastmod>
@@ -341,13 +362,6 @@
     <loc>https://qrsforever.github.io/2017/11/13/Note/Hadoop/Hadoop-Proxy-Delete/</loc>
     
     <lastmod>2019-06-04T13:49:29.589Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://qrsforever.github.io/2019/06/03/Story/Website/fav/</loc>
-    
-    <lastmod>2019-06-03T15:28:03.050Z</lastmod>
     
   </url>
   
@@ -520,14 +534,14 @@
   </url>
   
   <url>
-    <loc>https://qrsforever.github.io/2018/12/18/Books/Statistics/OLS_WLS_GLS/</loc>
+    <loc>https://qrsforever.github.io/2018/11/27/Books/Statistics/Normality_Test/</loc>
     
     <lastmod>2019-03-16T12:09:11.882Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://qrsforever.github.io/2018/11/27/Books/Statistics/Normality_Test/</loc>
+    <loc>https://qrsforever.github.io/2018/12/18/Books/Statistics/OLS_WLS_GLS/</loc>
     
     <lastmod>2019-03-16T12:09:11.882Z</lastmod>
     

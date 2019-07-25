@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?cb4be66237379541488b8502a6eca006"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Graphviz绘图 | 大地小神 | 你们都是大傻瓜, 我是天下大赢家</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="How">
+    <meta name="description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta name="keywords" content="How">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Graphviz绘图">
+<meta property="og:url" content="https://qrsforever.github.io/2019/07/24/Tutorial/graphviz/index.html">
+<meta property="og:site_name" content="大地小神">
+<meta property="og:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/test.svg?sanitize=true">
+<meta property="og:image" content="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_simplest.svg?sanitize=true">
+<meta property="og:image" content="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_complicated.svg?sanitize=true">
+<meta property="og:image" content="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_matrix.svg?sanitize=true">
+<meta property="og:updated_time" content="2019-07-25T14:01:22.669Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Graphviz绘图">
+<meta name="twitter:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/test.svg?sanitize=true">
+    
+        <link rel="alternate" type="application/atom+xml" title="大地小神" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">qrsforever</h5>
+          <a href="mailto:985612771@qq.com" title="985612771@qq.com" class="mail">985612771@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/705723886/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://zytforever.github.io" target="_blank" >
+                <i class="icon icon-lg icon-eye"></i>
+                Stocktech
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Graphviz绘图</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Graphviz绘图</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-07-24T06:00:24.000Z" itemprop="datePublished" class="page-time">
+  2019-07-24
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Tutorial/">Tutorial</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#requirements"><span class="post-toc-text">1 Requirements</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#blog"><span class="post-toc-text">2 Blog</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pandoc-config"><span class="post-toc-text">2.1 pandoc config</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#filter-graphviz.py"><span class="post-toc-text">2.2 filter graphviz.py</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#demo"><span class="post-toc-text">3 Demo</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#docs"><span class="post-toc-text">3.1 docs</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#office-example"><span class="post-toc-text">3.2 office example</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#neural-network"><span class="post-toc-text">3.3 neural network</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#simplest"><span class="post-toc-text">3.3.1 simplest</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#complicated-case"><span class="post-toc-text">3.3.2 complicated case</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#others"><span class="post-toc-text">3.4 others</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#matrix"><span class="post-toc-text">3.4.1 matrix</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#references"><span class="post-toc-text">4 References</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Tutorial/graphviz"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Graphviz绘图</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-07-24 14:00:24" datetime="2019-07-24T06:00:24.000Z"  itemprop="datePublished">2019-07-24</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Tutorial/">Tutorial</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#blog">Blog</a>
+<ul>
+<li><a href="#pandoc-config">pandoc config</a></li>
+<li><a href="#filter-graphvizpy">filter graphviz.py</a></li>
+</ul></li>
+<li><a href="#demo">Demo</a>
+<ul>
+<li><a href="#office-example">office example</a></li>
+<li><a href="#neural-network">neural network</a>
+<ul>
+<li><a href="#simplest">simplest</a></li>
+<li><a href="#complicated-case">complicated case</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#references">References</a></li>
+</ul>
+<!-- vim-markdown-toc -->
+<a id="more"></a>
+<p><a href="https://graphviz.gitlab.io/" title="高效而简洁的绘图工具graphviz" target="_blank" rel="noopener">Graph Visualization Software</a></p>
+<h1 id="requirements"><span class="header-section-number">1</span> Requirements</h1>
+<pre class="shell"><code>sudo apt install pandoc
+sudo apt install graphviz graphviz-dev
+sudo apt install dot2tex
+sudo pip3 install pygraphviz pandocfilters</code></pre>
+<h1 id="blog"><span class="header-section-number">2</span> Blog</h1>
+<h2 id="pandoc-config"><span class="header-section-number">2.1</span> pandoc config</h2>
+<p><a href="https://github.com/qrsforever/git-blog-setting/blob/master/_config.yml" target="_blank" rel="noopener">My Blog Config</a></p>
+<div class="sourceCode" id="cb2" data-startfrom="&quot;1"><pre class="sourceCode numberSource yaml numberLines"><code class="sourceCode yaml"><a class="sourceLine" id="cb2-1" title="1"></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="fu">pandoc:</span></a>
+<a class="sourceLine" id="cb2-3" title="3">    <span class="fu">extra:</span></a>
+<a class="sourceLine" id="cb2-4" title="4">        <span class="kw">-</span> <span class="fu">standalone:</span></a>
+<a class="sourceLine" id="cb2-5" title="5">        <span class="kw">-</span> <span class="fu">highlight-style:</span><span class="at"> haddock</span></a>
+<a class="sourceLine" id="cb2-6" title="6">        <span class="kw">-</span> <span class="fu">number-offset:</span><span class="at"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb2-7" title="7">        <span class="kw">-</span> <span class="fu">columns:</span><span class="at"> </span><span class="dv">200</span></a>
+<a class="sourceLine" id="cb2-8" title="8">        <span class="kw">-</span> <span class="fu">css:</span><span class="at"> /css/pandoc.css</span></a>
+<a class="sourceLine" id="cb2-9" title="9">        <span class="kw">-</span> <span class="fu">filter:</span><span class="at"> graphviz.py</span></a>
+<a class="sourceLine" id="cb2-10" title="10">    <span class="fu">mathEngine:</span><span class="at"> mathjax</span></a></code></pre></div>
+<h2 id="filter-graphviz.py"><span class="header-section-number">2.2</span> filter graphviz.py</h2>
+<div class="sourceCode" id="cb3" data-startfrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" title="1"><span class="co">#!/usr/bin/python3</span></a>
+<a class="sourceLine" id="cb3-2" title="2"></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="co">&quot;&quot;&quot;</span></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="co">Pandoc filter to process code blocks with class &quot;graph&quot; into</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="co">graphviz-generated images.</span></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="co">Requires pygraphviz, pandocfilters</span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="co">&quot;&quot;&quot;</span></a>
+<a class="sourceLine" id="cb3-8" title="8"></a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="im">import</span> os</a>
+<a class="sourceLine" id="cb3-10" title="10"><span class="im">import</span> sys</a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="im">import</span> hashlib</a>
+<a class="sourceLine" id="cb3-12" title="12"></a>
+<a class="sourceLine" id="cb3-13" title="13"><span class="im">import</span> pygraphviz</a>
+<a class="sourceLine" id="cb3-14" title="14"></a>
+<a class="sourceLine" id="cb3-15" title="15"><span class="im">from</span> pandocfilters <span class="im">import</span> toJSONFilter, Para, Image, get_filename4code</a>
+<a class="sourceLine" id="cb3-16" title="16"><span class="im">from</span> pandocfilters <span class="im">import</span> get_caption, get_extension, get_value</a>
+<a class="sourceLine" id="cb3-17" title="17"></a>
+<a class="sourceLine" id="cb3-18" title="18">top_path <span class="op">=</span> os.path.abspath(os.path.dirname(<span class="va">__file__</span>))</a>
+<a class="sourceLine" id="cb3-19" title="19">dir_name <span class="op">=</span> <span class="st">&#39;graph-image&#39;</span></a>
+<a class="sourceLine" id="cb3-20" title="20">git_path <span class="op">=</span> <span class="st">&#39;https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/&#39;</span></a>
+<a class="sourceLine" id="cb3-21" title="21">git_post <span class="op">=</span> <span class="st">&#39;?sanitize=true&#39;</span></a>
+<a class="sourceLine" id="cb3-22" title="22"></a>
+<a class="sourceLine" id="cb3-23" title="23"><span class="kw">def</span> graphviz(key, value, <span class="bu">format</span>, meta):</a>
+<a class="sourceLine" id="cb3-24" title="24">    <span class="cf">if</span> key <span class="op">==</span> <span class="st">&#39;CodeBlock&#39;</span>:</a>
+<a class="sourceLine" id="cb3-25" title="25">        [[ident, classes, keyvals], code] <span class="op">=</span> value</a>
+<a class="sourceLine" id="cb3-26" title="26">        <span class="cf">if</span> <span class="st">&quot;graph&quot;</span> <span class="kw">in</span> classes:</a>
+<a class="sourceLine" id="cb3-27" title="27">            caption, typef, keyvals <span class="op">=</span> get_caption(keyvals)</a>
+<a class="sourceLine" id="cb3-28" title="28">            prog, keyvals <span class="op">=</span> get_value(keyvals, <span class="st">u&quot;prog&quot;</span>, <span class="st">u&quot;dot&quot;</span>)</a>
+<a class="sourceLine" id="cb3-29" title="29">            filetype <span class="op">=</span> get_extension(<span class="bu">format</span>, <span class="st">&quot;svg&quot;</span>, html<span class="op">=</span><span class="st">&quot;svg&quot;</span>, latex<span class="op">=</span><span class="st">&quot;pdf&quot;</span>)</a>
+<a class="sourceLine" id="cb3-30" title="30">            <span class="co"># dest = get_filename4code(graph, code, filetype)</span></a>
+<a class="sourceLine" id="cb3-31" title="31">            md5 <span class="op">=</span> hashlib.sha1(code.encode(sys.getfilesystemencoding())).hexdigest()</a>
+<a class="sourceLine" id="cb3-32" title="32">            filename, _ <span class="op">=</span> get_value(keyvals, <span class="st">u&quot;fileName&quot;</span>)</a>
+<a class="sourceLine" id="cb3-33" title="33">            <span class="cf">if</span> filename <span class="kw">is</span> <span class="va">None</span>:</a>
+<a class="sourceLine" id="cb3-34" title="34">                sys.stderr.write(<span class="st">&#39;not set filename in </span><span class="sc">{}</span><span class="ch">\n</span><span class="st">&#39;</span>)</a>
+<a class="sourceLine" id="cb3-35" title="35">                exit(<span class="op">-</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb3-36" title="36">            filename <span class="op">+=</span> <span class="st">&#39;.&#39;</span> <span class="op">+</span> filetype</a>
+<a class="sourceLine" id="cb3-37" title="37">            <span class="cf">while</span> <span class="va">True</span>:</a>
+<a class="sourceLine" id="cb3-38" title="38">                <span class="cf">try</span>:</a>
+<a class="sourceLine" id="cb3-39" title="39">                    datapath <span class="op">=</span> meta[<span class="st">&#39;datapath&#39;</span>][<span class="st">&#39;c&#39;</span>]</a>
+<a class="sourceLine" id="cb3-40" title="40">                    drafts_idx <span class="op">=</span> datapath.find(<span class="st">&#39;_drafts&#39;</span>)</a>
+<a class="sourceLine" id="cb3-41" title="41">                    <span class="cf">if</span> drafts_idx <span class="op">&gt;</span> <span class="dv">0</span>:</a>
+<a class="sourceLine" id="cb3-42" title="42">                        prefix <span class="op">=</span> datapath[drafts_idx<span class="op">+</span><span class="dv">8</span>:<span class="op">-</span><span class="dv">3</span>]</a>
+<a class="sourceLine" id="cb3-43" title="43">                    <span class="cf">else</span>:</a>
+<a class="sourceLine" id="cb3-44" title="44">                        prefix <span class="op">=</span> datapath[datapath.find(<span class="st">&#39;_posts&#39;</span>)<span class="op">+</span><span class="dv">7</span>:<span class="op">-</span><span class="dv">3</span>]</a>
+<a class="sourceLine" id="cb3-45" title="45">                    filepath <span class="op">=</span> os.path.join(prefix, dir_name, filename)</a>
+<a class="sourceLine" id="cb3-46" title="46">                    <span class="cf">if</span> drafts_idx <span class="op">&gt;</span> <span class="dv">0</span>:</a>
+<a class="sourceLine" id="cb3-47" title="47">                        localpath <span class="op">=</span> os.path.join(top_path, <span class="st">&quot;source/assets&quot;</span>, filepath)</a>
+<a class="sourceLine" id="cb3-48" title="48">                        remotepath <span class="op">=</span> os.path.join(<span class="st">&quot;/assets&quot;</span>, filepath)</a>
+<a class="sourceLine" id="cb3-49" title="49">                    <span class="cf">else</span>:</a>
+<a class="sourceLine" id="cb3-50" title="50">                        localpath <span class="op">=</span> os.path.join(top_path, <span class="st">&quot;source/_assets&quot;</span>, filepath)</a>
+<a class="sourceLine" id="cb3-51" title="51">                        remotepath <span class="op">=</span> os.path.join(git_path, filepath) <span class="op">+</span> git_post</a>
+<a class="sourceLine" id="cb3-52" title="52">                    <span class="cf">if</span> os.path.exists(localpath):</a>
+<a class="sourceLine" id="cb3-53" title="53">                        <span class="cf">if</span> os.path.exists(localpath <span class="op">+</span> <span class="st">&#39;.&#39;</span> <span class="op">+</span> md5):</a>
+<a class="sourceLine" id="cb3-54" title="54">                            <span class="cf">break</span></a>
+<a class="sourceLine" id="cb3-55" title="55">                        <span class="cf">else</span>:</a>
+<a class="sourceLine" id="cb3-56" title="56">                            os.system(<span class="st">&#39;rm -f </span><span class="sc">%s</span><span class="st">*&#39;</span> <span class="op">%</span> localpath)</a>
+<a class="sourceLine" id="cb3-57" title="57"></a>
+<a class="sourceLine" id="cb3-58" title="58">                    <span class="bu">dir</span> <span class="op">=</span> os.path.dirname(localpath)</a>
+<a class="sourceLine" id="cb3-59" title="59">                    <span class="cf">if</span> <span class="kw">not</span> os.path.isdir(<span class="bu">dir</span>):</a>
+<a class="sourceLine" id="cb3-60" title="60">                        os.makedirs(<span class="bu">dir</span>)</a>
+<a class="sourceLine" id="cb3-61" title="61"></a>
+<a class="sourceLine" id="cb3-62" title="62">                    os.system(<span class="st">&#39;touch </span><span class="sc">%s</span><span class="st">.</span><span class="sc">%s</span><span class="st">&#39;</span> <span class="op">%</span> (localpath, md5))</a>
+<a class="sourceLine" id="cb3-63" title="63"></a>
+<a class="sourceLine" id="cb3-64" title="64">                    g <span class="op">=</span> pygraphviz.AGraph(string<span class="op">=</span>code)</a>
+<a class="sourceLine" id="cb3-65" title="65">                    g.layout()</a>
+<a class="sourceLine" id="cb3-66" title="66">                    g.draw(localpath, prog<span class="op">=</span>prog)</a>
+<a class="sourceLine" id="cb3-67" title="67">                    sys.stderr.write(<span class="st">&#39;Local Path [&#39;</span> <span class="op">+</span> localpath <span class="op">+</span> <span class="st">&#39;]</span><span class="ch">\n</span><span class="st">&#39;</span>)</a>
+<a class="sourceLine" id="cb3-68" title="68">                    sys.stderr.write(<span class="st">&#39;Remote Path [&#39;</span> <span class="op">+</span> remotepath <span class="op">+</span> <span class="st">&#39;]</span><span class="ch">\n</span><span class="st">&#39;</span>)</a>
+<a class="sourceLine" id="cb3-69" title="69">                <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</a>
+<a class="sourceLine" id="cb3-70" title="70">                    sys.stderr.write(<span class="st">&#39;</span><span class="sc">{}</span><span class="st">: not found datapath in meta, please patch/run.sh</span><span class="ch">\n</span><span class="st">&#39;</span>.<span class="bu">format</span>(e))</a>
+<a class="sourceLine" id="cb3-71" title="71">                    exit(<span class="op">-</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb3-72" title="72">                <span class="cf">finally</span>:</a>
+<a class="sourceLine" id="cb3-73" title="73">                    <span class="cf">break</span></a>
+<a class="sourceLine" id="cb3-74" title="74"></a>
+<a class="sourceLine" id="cb3-75" title="75">            image <span class="op">=</span> Image([ident, classes, keyvals],</a>
+<a class="sourceLine" id="cb3-76" title="76">                          caption,</a>
+<a class="sourceLine" id="cb3-77" title="77">                          [remotepath, typef])</a>
+<a class="sourceLine" id="cb3-78" title="78"></a>
+<a class="sourceLine" id="cb3-79" title="79">            <span class="cf">return</span> Para([image])</a>
+<a class="sourceLine" id="cb3-80" title="80"></a>
+<a class="sourceLine" id="cb3-81" title="81"><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</a>
+<a class="sourceLine" id="cb3-82" title="82"></a>
+<a class="sourceLine" id="cb3-83" title="83">    toJSONFilter(graphviz)</a></code></pre></div>
+<h1 id="demo"><span class="header-section-number">3</span> Demo</h1>
+<h2 id="docs"><span class="header-section-number">3.1</span> docs</h2>
+<ul>
+<li><p><a href="https://graphviz.gitlab.io/_pages/doc/info/attrs.html" target="_blank" rel="noopener">attributes</a></p></li>
+<li><p><a href="https://graphviz.gitlab.io/_pages/doc/info/shapes.html" target="_blank" rel="noopener">nodes shape</a></p></li>
+<li><p><a href="https://graphviz.gitlab.io/_pages/pdf/dotguide.pdf" target="_blank" rel="noopener">dot guide</a></p></li>
+</ul>
+<h2 id="office-example"><span class="header-section-number">3.2</span> office example</h2>
+<div class="sourceCode" id="cb4" data-startfrom="1"><pre class="sourceCode numberSource numberLines"><code class="sourceCode"><a class="sourceLine" id="cb4-1" title="1">digraph G {</a>
+<a class="sourceLine" id="cb4-2" title="2"></a>
+<a class="sourceLine" id="cb4-3" title="3">  bgcolor=&quot;#ffffff00&quot;</a>
+<a class="sourceLine" id="cb4-4" title="4"></a>
+<a class="sourceLine" id="cb4-5" title="5">  subgraph cluster_0 {</a>
+<a class="sourceLine" id="cb4-6" title="6">    style=&quot;filled, rounded&quot;;</a>
+<a class="sourceLine" id="cb4-7" title="7">    color=&quot;#E6EAF2&quot;</a>
+<a class="sourceLine" id="cb4-8" title="8">    node [style=filled,color=white];</a>
+<a class="sourceLine" id="cb4-9" title="9">    a0 -&gt; a1 -&gt; a2 -&gt; a3;</a>
+<a class="sourceLine" id="cb4-10" title="10">    a3 -&gt; a1 [label = &quot; -10&quot; color=red fontcolor=red];</a>
+<a class="sourceLine" id="cb4-11" title="11">    label = &quot;System A&quot;;</a>
+<a class="sourceLine" id="cb4-12" title="12">  }</a>
+<a class="sourceLine" id="cb4-13" title="13"></a>
+<a class="sourceLine" id="cb4-14" title="14">  subgraph cluster_1 {</a>
+<a class="sourceLine" id="cb4-15" title="15">    node [style=filled color=&quot;#E6EAF2&quot;];</a>
+<a class="sourceLine" id="cb4-16" title="16">    b0 -&gt; b1 -&gt; b2 -&gt; b3;</a>
+<a class="sourceLine" id="cb4-17" title="17">    b0 -&gt; b2 [label = &quot; +12&quot; color=green fontcolor=green];</a>
+<a class="sourceLine" id="cb4-18" title="18">    label = &quot;System B&quot;;</a>
+<a class="sourceLine" id="cb4-19" title="19">    style=&quot;dashed, rounded&quot;</a>
+<a class="sourceLine" id="cb4-20" title="20">    color=blue</a>
+<a class="sourceLine" id="cb4-21" title="21">  }</a>
+<a class="sourceLine" id="cb4-22" title="22"></a>
+<a class="sourceLine" id="cb4-23" title="23">  start -&gt; a0;</a>
+<a class="sourceLine" id="cb4-24" title="24">  start -&gt; b0;</a>
+<a class="sourceLine" id="cb4-25" title="25">  a1 -&gt; b3;</a>
+<a class="sourceLine" id="cb4-26" title="26">  a3 -&gt; end;</a>
+<a class="sourceLine" id="cb4-27" title="27">  b3 -&gt; end;</a>
+<a class="sourceLine" id="cb4-28" title="28"></a>
+<a class="sourceLine" id="cb4-29" title="29">  start [label=&quot;load&quot; shape=folder];</a>
+<a class="sourceLine" id="cb4-30" title="30">  end [label=&quot;store&quot; shape=box3d];</a>
+<a class="sourceLine" id="cb4-31" title="31">}</a></code></pre></div>
+<p>output:</p>
+<figure>
+<img src="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/test.svg?sanitize=true" alt="Demo" class="graph center" data-filename="test"><figcaption>Demo</figcaption>
+</figure>
+<h2 id="neural-network"><span class="header-section-number">3.3</span> neural network</h2>
+<h3 id="simplest"><span class="header-section-number">3.3.1</span> simplest</h3>
+<div class="sourceCode" id="cb5" data-startfrom="1"><pre class="sourceCode numberSource numberLines"><code class="sourceCode"><a class="sourceLine" id="cb5-1" title="1">digraph G {</a>
+<a class="sourceLine" id="cb5-2" title="2"></a>
+<a class="sourceLine" id="cb5-3" title="3">    rankdir=LR;   /* makes the directed graphs drawn from left to right */</a>
+<a class="sourceLine" id="cb5-4" title="4">    splines=line; /* controls how the edges are represented */</a>
+<a class="sourceLine" id="cb5-5" title="5">    nodesep=.05;  /* forces edges to become invisible */</a>
+<a class="sourceLine" id="cb5-6" title="6">    </a>
+<a class="sourceLine" id="cb5-7" title="7">    node [label=&quot;&quot;];   /* [ ] sets the default node property */</a>
+<a class="sourceLine" id="cb5-8" title="8">        </a>
+<a class="sourceLine" id="cb5-9" title="9">    subgraph cluster_0 {</a>
+<a class="sourceLine" id="cb5-10" title="10">        color=white;</a>
+<a class="sourceLine" id="cb5-11" title="11">        node [style=solid,color=blue4, shape=circle];</a>
+<a class="sourceLine" id="cb5-12" title="12">        x1 x2 x3;</a>
+<a class="sourceLine" id="cb5-13" title="13">        label = &quot;layer 1&quot;;</a>
+<a class="sourceLine" id="cb5-14" title="14">    }</a>
+<a class="sourceLine" id="cb5-15" title="15"></a>
+<a class="sourceLine" id="cb5-16" title="16">    subgraph cluster_1 {</a>
+<a class="sourceLine" id="cb5-17" title="17">        color=white;</a>
+<a class="sourceLine" id="cb5-18" title="18">        node [style=solid,color=red2, shape=circle];</a>
+<a class="sourceLine" id="cb5-19" title="19">        a12 a22 a32 a42 a52;</a>
+<a class="sourceLine" id="cb5-20" title="20">        label = &quot;layer 2&quot;;</a>
+<a class="sourceLine" id="cb5-21" title="21">    }</a>
+<a class="sourceLine" id="cb5-22" title="22"></a>
+<a class="sourceLine" id="cb5-23" title="23">    subgraph cluster_2 {</a>
+<a class="sourceLine" id="cb5-24" title="24">        color=white;</a>
+<a class="sourceLine" id="cb5-25" title="25">        node [style=solid,color=red2, shape=circle];</a>
+<a class="sourceLine" id="cb5-26" title="26">        a13 a23 a33 a43 a53;</a>
+<a class="sourceLine" id="cb5-27" title="27">        label = &quot;layer 3&quot;;</a>
+<a class="sourceLine" id="cb5-28" title="28">    }</a>
+<a class="sourceLine" id="cb5-29" title="29"></a>
+<a class="sourceLine" id="cb5-30" title="30">    subgraph cluster_3 {</a>
+<a class="sourceLine" id="cb5-31" title="31">        color=white;</a>
+<a class="sourceLine" id="cb5-32" title="32">        node [style=solid,color=seagreen2, shape=circle];</a>
+<a class="sourceLine" id="cb5-33" title="33">        O1 O2 O3 O4;</a>
+<a class="sourceLine" id="cb5-34" title="34">        label=&quot;layer 4&quot;;</a>
+<a class="sourceLine" id="cb5-35" title="35">    }</a>
+<a class="sourceLine" id="cb5-36" title="36"></a>
+<a class="sourceLine" id="cb5-37" title="37">    x1 -&gt; a12;</a>
+<a class="sourceLine" id="cb5-38" title="38">    x1 -&gt; a22;</a>
+<a class="sourceLine" id="cb5-39" title="39">    x1 -&gt; a32;</a>
+<a class="sourceLine" id="cb5-40" title="40">    x1 -&gt; a42;</a>
+<a class="sourceLine" id="cb5-41" title="41">    x1 -&gt; a52;</a>
+<a class="sourceLine" id="cb5-42" title="42"></a>
+<a class="sourceLine" id="cb5-43" title="43">    x2 -&gt; a12;</a>
+<a class="sourceLine" id="cb5-44" title="44">    x2 -&gt; a22;</a>
+<a class="sourceLine" id="cb5-45" title="45">    x2 -&gt; a32;</a>
+<a class="sourceLine" id="cb5-46" title="46">    x2 -&gt; a42;</a>
+<a class="sourceLine" id="cb5-47" title="47">    x2 -&gt; a52;</a>
+<a class="sourceLine" id="cb5-48" title="48"></a>
+<a class="sourceLine" id="cb5-49" title="49">    x3 -&gt; a12;</a>
+<a class="sourceLine" id="cb5-50" title="50">    x3 -&gt; a22;</a>
+<a class="sourceLine" id="cb5-51" title="51">    x3 -&gt; a32;</a>
+<a class="sourceLine" id="cb5-52" title="52">    x3 -&gt; a42;</a>
+<a class="sourceLine" id="cb5-53" title="53">    x3 -&gt; a52;</a>
+<a class="sourceLine" id="cb5-54" title="54"></a>
+<a class="sourceLine" id="cb5-55" title="55">    a12 -&gt; a13</a>
+<a class="sourceLine" id="cb5-56" title="56">    a22 -&gt; a13</a>
+<a class="sourceLine" id="cb5-57" title="57">    a32 -&gt; a13</a>
+<a class="sourceLine" id="cb5-58" title="58">    a42 -&gt; a13</a>
+<a class="sourceLine" id="cb5-59" title="59">    a52 -&gt; a13</a>
+<a class="sourceLine" id="cb5-60" title="60"></a>
+<a class="sourceLine" id="cb5-61" title="61">    a12 -&gt; a23</a>
+<a class="sourceLine" id="cb5-62" title="62">    a22 -&gt; a23</a>
+<a class="sourceLine" id="cb5-63" title="63">    a32 -&gt; a23</a>
+<a class="sourceLine" id="cb5-64" title="64">    a42 -&gt; a23</a>
+<a class="sourceLine" id="cb5-65" title="65">    a52 -&gt; a23</a>
+<a class="sourceLine" id="cb5-66" title="66"></a>
+<a class="sourceLine" id="cb5-67" title="67">    a12 -&gt; a33</a>
+<a class="sourceLine" id="cb5-68" title="68">    a22 -&gt; a33</a>
+<a class="sourceLine" id="cb5-69" title="69">    a32 -&gt; a33</a>
+<a class="sourceLine" id="cb5-70" title="70">    a42 -&gt; a33</a>
+<a class="sourceLine" id="cb5-71" title="71">    a52 -&gt; a33</a>
+<a class="sourceLine" id="cb5-72" title="72"></a>
+<a class="sourceLine" id="cb5-73" title="73">    a12 -&gt; a43</a>
+<a class="sourceLine" id="cb5-74" title="74">    a22 -&gt; a43</a>
+<a class="sourceLine" id="cb5-75" title="75">    a32 -&gt; a43</a>
+<a class="sourceLine" id="cb5-76" title="76">    a42 -&gt; a43</a>
+<a class="sourceLine" id="cb5-77" title="77">    a52 -&gt; a43</a>
+<a class="sourceLine" id="cb5-78" title="78"></a>
+<a class="sourceLine" id="cb5-79" title="79">    a12 -&gt; a53</a>
+<a class="sourceLine" id="cb5-80" title="80">    a22 -&gt; a53</a>
+<a class="sourceLine" id="cb5-81" title="81">    a32 -&gt; a53</a>
+<a class="sourceLine" id="cb5-82" title="82">    a42 -&gt; a53</a>
+<a class="sourceLine" id="cb5-83" title="83">    a52 -&gt; a53</a>
+<a class="sourceLine" id="cb5-84" title="84"></a>
+<a class="sourceLine" id="cb5-85" title="85">    a13 -&gt; O1</a>
+<a class="sourceLine" id="cb5-86" title="86">    a23 -&gt; O1</a>
+<a class="sourceLine" id="cb5-87" title="87">    a33 -&gt; O1</a>
+<a class="sourceLine" id="cb5-88" title="88">    a43 -&gt; O1</a>
+<a class="sourceLine" id="cb5-89" title="89">    a53 -&gt; O1</a>
+<a class="sourceLine" id="cb5-90" title="90"></a>
+<a class="sourceLine" id="cb5-91" title="91">    a13 -&gt; O2</a>
+<a class="sourceLine" id="cb5-92" title="92">    a23 -&gt; O2</a>
+<a class="sourceLine" id="cb5-93" title="93">    a33 -&gt; O2</a>
+<a class="sourceLine" id="cb5-94" title="94">    a43 -&gt; O2</a>
+<a class="sourceLine" id="cb5-95" title="95">    a53 -&gt; O2</a>
+<a class="sourceLine" id="cb5-96" title="96"></a>
+<a class="sourceLine" id="cb5-97" title="97">    a13 -&gt; O3</a>
+<a class="sourceLine" id="cb5-98" title="98">    a23 -&gt; O3</a>
+<a class="sourceLine" id="cb5-99" title="99">    a33 -&gt; O3</a>
+<a class="sourceLine" id="cb5-100" title="100">    a43 -&gt; O3</a>
+<a class="sourceLine" id="cb5-101" title="101">    a53 -&gt; O3</a>
+<a class="sourceLine" id="cb5-102" title="102"></a>
+<a class="sourceLine" id="cb5-103" title="103">    a13 -&gt; O4</a>
+<a class="sourceLine" id="cb5-104" title="104">    a23 -&gt; O4</a>
+<a class="sourceLine" id="cb5-105" title="105">    a33 -&gt; O4</a>
+<a class="sourceLine" id="cb5-106" title="106">    a43 -&gt; O4</a>
+<a class="sourceLine" id="cb5-107" title="107">    a53 -&gt; O4</a>
+<a class="sourceLine" id="cb5-108" title="108">}</a></code></pre></div>
+<p>output:</p>
+<figure>
+<img src="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_simplest.svg?sanitize=true" alt="simplest" class="graph center" data-filename="graphviz_simplest"><figcaption>simplest</figcaption>
+</figure>
+<h3 id="complicated-case"><span class="header-section-number">3.3.2</span> complicated case</h3>
+<div class="sourceCode" id="cb6" data-startfrom="1"><pre class="sourceCode numberSource numberLines"><code class="sourceCode"><a class="sourceLine" id="cb6-1" title="1"></a>
+<a class="sourceLine" id="cb6-2" title="2">digraph G {</a>
+<a class="sourceLine" id="cb6-3" title="3">    rankdir = LR;</a>
+<a class="sourceLine" id="cb6-4" title="4">    splines=false;</a>
+<a class="sourceLine" id="cb6-5" title="5">    edge[style=invis];  /* hide the edges */</a>
+<a class="sourceLine" id="cb6-6" title="6">    ranksep= 1.4;</a>
+<a class="sourceLine" id="cb6-7" title="7"></a>
+<a class="sourceLine" id="cb6-8" title="8">    /* {...} specifies the scope of the node property */</a>
+<a class="sourceLine" id="cb6-9" title="9">    {</a>
+<a class="sourceLine" id="cb6-10" title="10">        node [shape=circle, color=yellow, style=filled, fillcolor=yellow];</a>
+<a class="sourceLine" id="cb6-11" title="11">        x0 [label=&lt;x&lt;sub&gt;0&lt;/sub&gt;&gt;]; </a>
+<a class="sourceLine" id="cb6-12" title="12">        a02 [label=&lt;a&lt;sub&gt;0&lt;/sub&gt;&lt;sup&gt;(2)&lt;/sup&gt;&gt;]; </a>
+<a class="sourceLine" id="cb6-13" title="13">        a03 [label=&lt;a&lt;sub&gt;0&lt;/sub&gt;&lt;sup&gt;(3)&lt;/sup&gt;&gt;];</a>
+<a class="sourceLine" id="cb6-14" title="14">    }</a>
+<a class="sourceLine" id="cb6-15" title="15">    {</a>
+<a class="sourceLine" id="cb6-16" title="16">        node [shape=circle, color=chartreuse, style=filled, fillcolor=chartreuse];</a>
+<a class="sourceLine" id="cb6-17" title="17">        x1 [label=&lt;x&lt;sub&gt;1&lt;/sub&gt;&gt;];</a>
+<a class="sourceLine" id="cb6-18" title="18">        x2 [label=&lt;x&lt;sub&gt;2&lt;/sub&gt;&gt;]; </a>
+<a class="sourceLine" id="cb6-19" title="19">        x3 [label=&lt;x&lt;sub&gt;3&lt;/sub&gt;&gt;];</a>
+<a class="sourceLine" id="cb6-20" title="20">    }</a>
+<a class="sourceLine" id="cb6-21" title="21">    {</a>
+<a class="sourceLine" id="cb6-22" title="22">        node [shape=circle, color=dodgerblue, style=filled, fillcolor=dodgerblue];</a>
+<a class="sourceLine" id="cb6-23" title="23">        a12 [label=&lt;a&lt;sub&gt;1&lt;/sub&gt;&lt;sup&gt;(2)&lt;/sup&gt;&gt;];</a>
+<a class="sourceLine" id="cb6-24" title="24">        a22 [label=&lt;a&lt;sub&gt;2&lt;/sub&gt;&lt;sup&gt;(2)&lt;/sup&gt;&gt;];</a>
+<a class="sourceLine" id="cb6-25" title="25">        a32 [label=&lt;a&lt;sub&gt;3&lt;/sub&gt;&lt;sup&gt;(2)&lt;/sup&gt;&gt;];</a>
+<a class="sourceLine" id="cb6-26" title="26">        a42 [label=&lt;a&lt;sub&gt;4&lt;/sub&gt;&lt;sup&gt;(2)&lt;/sup&gt;&gt;];</a>
+<a class="sourceLine" id="cb6-27" title="27">        a52 [label=&lt;a&lt;sub&gt;5&lt;/sub&gt;&lt;sup&gt;(2)&lt;/sup&gt;&gt;];</a>
+<a class="sourceLine" id="cb6-28" title="28">        a13 [label=&lt;a&lt;sub&gt;1&lt;/sub&gt;&lt;sup&gt;(3)&lt;/sup&gt;&gt;];</a>
+<a class="sourceLine" id="cb6-29" title="29">        a23 [label=&lt;a&lt;sub&gt;2&lt;/sub&gt;&lt;sup&gt;(3)&lt;/sup&gt;&gt;];</a>
+<a class="sourceLine" id="cb6-30" title="30">        a33 [label=&lt;a&lt;sub&gt;3&lt;/sub&gt;&lt;sup&gt;(3)&lt;/sup&gt;&gt;];</a>
+<a class="sourceLine" id="cb6-31" title="31">        a43 [label=&lt;a&lt;sub&gt;4&lt;/sub&gt;&lt;sup&gt;(3)&lt;/sup&gt;&gt;];</a>
+<a class="sourceLine" id="cb6-32" title="32">        a53 [label=&lt;a&lt;sub&gt;5&lt;/sub&gt;&lt;sup&gt;(3)&lt;/sup&gt;&gt;];</a>
+<a class="sourceLine" id="cb6-33" title="33">    }</a>
+<a class="sourceLine" id="cb6-34" title="34">    {</a>
+<a class="sourceLine" id="cb6-35" title="35">        node [shape=circle, color=coral1, style=filled, fillcolor=coral1];</a>
+<a class="sourceLine" id="cb6-36" title="36">        O1 [label=&lt;a&lt;sub&gt;1&lt;/sub&gt;&lt;sup&gt;(4)&lt;/sup&gt;&gt;];</a>
+<a class="sourceLine" id="cb6-37" title="37">        O2 [label=&lt;a&lt;sub&gt;2&lt;/sub&gt;&lt;sup&gt;(4)&lt;/sup&gt;&gt;]; </a>
+<a class="sourceLine" id="cb6-38" title="38">        O3 [label=&lt;a&lt;sub&gt;3&lt;/sub&gt;&lt;sup&gt;(4)&lt;/sup&gt;&gt;]; </a>
+<a class="sourceLine" id="cb6-39" title="39">        O4 [label=&lt;a&lt;sub&gt;4&lt;/sub&gt;&lt;sup&gt;(4)&lt;/sup&gt;&gt;];</a>
+<a class="sourceLine" id="cb6-40" title="40">    }</a>
+<a class="sourceLine" id="cb6-41" title="41">    {</a>
+<a class="sourceLine" id="cb6-42" title="42">        rank=same;       /* Rank constraints on the nodes in a subgraph. */</a>
+<a class="sourceLine" id="cb6-43" title="43">        x0-&gt;x1-&gt;x2-&gt;x3;  /* specifies the relative position of the four nodes */</a>
+<a class="sourceLine" id="cb6-44" title="44">    }</a>
+<a class="sourceLine" id="cb6-45" title="45">    {</a>
+<a class="sourceLine" id="cb6-46" title="46">        rank=same;</a>
+<a class="sourceLine" id="cb6-47" title="47">        a02-&gt;a12-&gt;a22-&gt;a32-&gt;a42-&gt;a52;</a>
+<a class="sourceLine" id="cb6-48" title="48">    }</a>
+<a class="sourceLine" id="cb6-49" title="49">    {</a>
+<a class="sourceLine" id="cb6-50" title="50">        rank=same;</a>
+<a class="sourceLine" id="cb6-51" title="51">        a03-&gt;a13-&gt;a23-&gt;a33-&gt;a43-&gt;a53;</a>
+<a class="sourceLine" id="cb6-52" title="52">    }</a>
+<a class="sourceLine" id="cb6-53" title="53">    {</a>
+<a class="sourceLine" id="cb6-54" title="54">        rank=same;</a>
+<a class="sourceLine" id="cb6-55" title="55">        O1-&gt;O2-&gt;O3-&gt;O4;</a>
+<a class="sourceLine" id="cb6-56" title="56">    }</a>
+<a class="sourceLine" id="cb6-57" title="57">    a02-&gt;a03;  // prevent tilting</a>
+<a class="sourceLine" id="cb6-58" title="58">    l0 [shape=plaintext, label=&quot;layer 1 (input layer)&quot;];</a>
+<a class="sourceLine" id="cb6-59" title="59">    l0-&gt;x0;</a>
+<a class="sourceLine" id="cb6-60" title="60">    {rank=same; l0;x0};</a>
+<a class="sourceLine" id="cb6-61" title="61">    l1 [shape=plaintext, label=&quot;layer 2 (hidden layer)&quot;];</a>
+<a class="sourceLine" id="cb6-62" title="62">    l1-&gt;a02;</a>
+<a class="sourceLine" id="cb6-63" title="63">    {rank=same; l1;a02};</a>
+<a class="sourceLine" id="cb6-64" title="64">    l2 [shape=plaintext, label=&quot;layer 3 (hidden layer)&quot;];</a>
+<a class="sourceLine" id="cb6-65" title="65">    l2-&gt;a03;</a>
+<a class="sourceLine" id="cb6-66" title="66">    {rank=same; l2;a03};</a>
+<a class="sourceLine" id="cb6-67" title="67">    l3 [shape=plaintext, label=&quot;layer 4 (output layer)&quot;];</a>
+<a class="sourceLine" id="cb6-68" title="68">    l3-&gt;O1;</a>
+<a class="sourceLine" id="cb6-69" title="69">    {rank=same; l3;O1};</a>
+<a class="sourceLine" id="cb6-70" title="70">    edge[style=solid, tailport=e, headport=w];  /* let all the edges point to the same position. */</a>
+<a class="sourceLine" id="cb6-71" title="71">    {x0; x1; x2; x3} -&gt; {a12;a22;a32;a42;a52};</a>
+<a class="sourceLine" id="cb6-72" title="72">    {a02;a12;a22;a32;a42;a52} -&gt; {a13;a23;a33;a43;a53};</a>
+<a class="sourceLine" id="cb6-73" title="73">    {a03;a13;a23;a33;a43;a53} -&gt; {O1,O2,O3,O4};</a>
+<a class="sourceLine" id="cb6-74" title="74">}</a></code></pre></div>
+<p>output:</p>
+<figure>
+<img src="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_complicated.svg?sanitize=true" alt="complicated" class="graph center" data-filename="graphviz_complicated"><figcaption>complicated</figcaption>
+</figure>
+<h2 id="others"><span class="header-section-number">3.4</span> others</h2>
+<h3 id="matrix"><span class="header-section-number">3.4.1</span> matrix</h3>
+<div class="sourceCode" id="cb7" data-caption="graphviz_matrix_code" data-startfrom="1"><pre class="sourceCode numberSource numberLines"><code class="sourceCode"><a class="sourceLine" id="cb7-1" title="1"></a>
+<a class="sourceLine" id="cb7-2" title="2">digraph matrix {</a>
+<a class="sourceLine" id="cb7-3" title="3">    723-&gt;722</a>
+<a class="sourceLine" id="cb7-4" title="4">    505-&gt;732</a>
+<a class="sourceLine" id="cb7-5" title="5">    729-&gt;732</a>
+<a class="sourceLine" id="cb7-6" title="6">    731-&gt;730-&gt;729</a>
+<a class="sourceLine" id="cb7-7" title="7">    726-&gt;729</a>
+<a class="sourceLine" id="cb7-8" title="8">    730-&gt;726</a>
+<a class="sourceLine" id="cb7-9" title="9">    726-&gt;810-&gt;725</a>
+<a class="sourceLine" id="cb7-10" title="10">    729-&gt;810-&gt;725</a>
+<a class="sourceLine" id="cb7-11" title="11">    729-&gt;733-&gt;792-&gt;793</a>
+<a class="sourceLine" id="cb7-12" title="12">    722-&gt;731</a>
+<a class="sourceLine" id="cb7-13" title="13">    732-&gt;737-&gt;736-&gt;733</a>
+<a class="sourceLine" id="cb7-14" title="14">    733-&gt;810-&gt;725</a>
+<a class="sourceLine" id="cb7-15" title="15">    729-&gt;505</a>
+<a class="sourceLine" id="cb7-16" title="16">    736-&gt;506</a>
+<a class="sourceLine" id="cb7-17" title="17">    505-&gt;506</a>
+<a class="sourceLine" id="cb7-18" title="18">    179-&gt;759</a>
+<a class="sourceLine" id="cb7-19" title="19">    759-&gt;725</a>
+<a class="sourceLine" id="cb7-20" title="20">    759-&gt;737</a>
+<a class="sourceLine" id="cb7-21" title="21">    759-&gt;769-&gt;768-&gt;778</a>
+<a class="sourceLine" id="cb7-22" title="22">    768-&gt;303</a>
+<a class="sourceLine" id="cb7-23" title="23">    737-&gt;739-&gt;736-&gt;778</a>
+<a class="sourceLine" id="cb7-24" title="24">    736-&gt;769</a>
+<a class="sourceLine" id="cb7-25" title="25">    778-&gt;303</a>
+<a class="sourceLine" id="cb7-26" title="26">    506-&gt;303</a>
+<a class="sourceLine" id="cb7-27" title="27">    769-&gt;506</a>
+<a class="sourceLine" id="cb7-28" title="28">    769-&gt;780</a>
+<a class="sourceLine" id="cb7-29" title="29">    778-&gt;779</a>
+<a class="sourceLine" id="cb7-30" title="30">    736-&gt;773-&gt;774-&gt;779-&gt;780</a>
+<a class="sourceLine" id="cb7-31" title="31">    779-&gt;303</a>
+<a class="sourceLine" id="cb7-32" title="32">    780-&gt;303</a>
+<a class="sourceLine" id="cb7-33" title="33">    506-&gt;780</a>
+<a class="sourceLine" id="cb7-34" title="34">    505-&gt;724</a>
+<a class="sourceLine" id="cb7-35" title="35">}</a></code></pre></div>
+<p>output:</p>
+<figure>
+<img src="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_matrix.svg?sanitize=true" alt="graphviz matrix" class="graph center numberLines" data-startfrom="1" data-filename="graphviz_matrix"><figcaption>graphviz matrix</figcaption>
+</figure>
+<h1 id="references"><span class="header-section-number">4</span> References</h1>
+<ol>
+<li><p>http://www.nrstickley.com/pandoc-markdown</p></li>
+<li><p>http://github.com/qrsforever/git-blog-setting</p></li>
+<li><p>https://zhu45.org/posts/2017/May/25/draw-a-neural-network-through-graphviz</p></li>
+</ol>
+</body>
+</html>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-07-25T14:01:22.669Z" itemprop="dateUpdated">2019-07-25 22:01:22</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://qrsforever.github.io">
+            <img src="/img/avatar.jpg" alt="qrsforever">
+            qrsforever
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How/">How</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2019/07/24/Tutorial/graphviz/&title=《Graphviz绘图》 — 大地小神&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2019/07/24/Tutorial/graphviz/&title=《Graphviz绘图》 — 大地小神&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2019/07/24/Tutorial/graphviz/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Graphviz绘图》 — 大地小神&url=https://qrsforever.github.io/2019/07/24/Tutorial/graphviz/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2019/07/24/Tutorial/graphviz/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/07/24/Story/Website/papers/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">论文在线</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <!-- <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script> -->
+    <script src="/js/av-min.js"></script>
+    <script src="/js/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "bpShGWdW8DpODhnDko5O2IBB-gzGzoHsz",
+            appKey: "rwmasTllBbHE69ADuLjFyFWf",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢打赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>qrsforever &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2019/07/24/Tutorial/graphviz/&title=《Graphviz绘图》 — 大地小神&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2019/07/24/Tutorial/graphviz/&title=《Graphviz绘图》 — 大地小神&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2019/07/24/Tutorial/graphviz/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Graphviz绘图》 — 大地小神&url=https://qrsforever.github.io/2019/07/24/Tutorial/graphviz/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2019/07/24/Tutorial/graphviz/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://qrsforever.github.io/2019/07/24/Tutorial/graphviz/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- lidong cha. -->
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- lidong end. -->
+
+</body>
+</html>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qrsforever.github.io/"/>
-  <updated>2019-07-23T17:03:04.497Z</updated>
+  <updated>2019-07-25T14:01:22.669Z</updated>
   <id>https://qrsforever.github.io/</id>
   
   <author>
@@ -17,11 +17,127 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>(原创)卷积三种模式使用numpy实现</title>
-    <link href="https://qrsforever.github.io/2019/07/23/ML/Guide/conv_mode/"/>
-    <id>https://qrsforever.github.io/2019/07/23/ML/Guide/conv_mode/</id>
-    <published>2019-07-23T05:52:26.000Z</published>
-    <updated>2019-07-23T17:03:04.497Z</updated>
+    <title>Graphviz绘图</title>
+    <link href="https://qrsforever.github.io/2019/07/24/Tutorial/graphviz/"/>
+    <id>https://qrsforever.github.io/2019/07/24/Tutorial/graphviz/</id>
+    <published>2019-07-24T06:00:24.000Z</published>
+    <updated>2019-07-25T14:01:22.669Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!DOCTYPE html&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang xml:lang&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;generator&quot; content=&quot;pandoc&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;&gt;
+  &lt;title&gt;dummy&lt;/title&gt;
+  &lt;style type=&quot;text/css&quot;&gt;
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  &lt;/style&gt;
+  &lt;style type=&quot;text/css&quot;&gt;
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+  &lt;/style&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/pandoc.css&quot;&gt;
+  &lt;!--[if lt IE 9]&gt;
+    &lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js&quot;&gt;&lt;/script&gt;
+  &lt;![endif]--&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!-- vim-markdown-toc GFM --&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#requirements&quot;&gt;Requirements&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#blog&quot;&gt;Blog&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#pandoc-config&quot;&gt;pandoc config&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#filter-graphvizpy&quot;&gt;filter graphviz.py&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#demo&quot;&gt;Demo&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#office-example&quot;&gt;office example&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#neural-network&quot;&gt;neural network&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#simplest&quot;&gt;simplest&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#complicated-case&quot;&gt;complicated case&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#references&quot;&gt;References&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- vim-markdown-toc --&gt;
+    
+    </summary>
+    
+      <category term="Tutorial" scheme="https://qrsforever.github.io/categories/Tutorial/"/>
+    
+    
+      <category term="How" scheme="https://qrsforever.github.io/tags/How/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>论文在线</title>
+    <link href="https://qrsforever.github.io/2019/07/24/Story/Website/papers/"/>
+    <id>https://qrsforever.github.io/2019/07/24/Story/Website/papers/</id>
+    <published>2019-07-24T02:00:08.000Z</published>
+    <updated>2019-07-25T13:33:14.576Z</updated>
     
     <summary type="html">
     
@@ -46,7 +162,57 @@
 &lt;body&gt;
 &lt;!-- vim-markdown-toc GFM --&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#mode&quot;&gt;Mode&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#paper&quot;&gt;Paper&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#search&quot;&gt;Search&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#other&quot;&gt;Other&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- vim-markdown-toc --&gt;
+    
+    </summary>
+    
+      <category term="Story" scheme="https://qrsforever.github.io/categories/Story/"/>
+    
+    
+      <category term="Website" scheme="https://qrsforever.github.io/tags/Website/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>(原创)卷积三种模式使用numpy实现</title>
+    <link href="https://qrsforever.github.io/2019/07/23/ML/Guide/conv_mode/"/>
+    <id>https://qrsforever.github.io/2019/07/23/ML/Guide/conv_mode/</id>
+    <published>2019-07-23T05:52:26.000Z</published>
+    <updated>2019-07-25T13:33:14.576Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!DOCTYPE html&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang xml:lang&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;generator&quot; content=&quot;pandoc&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;&gt;
+  &lt;title&gt;dummy&lt;/title&gt;
+  &lt;style type=&quot;text/css&quot;&gt;
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  &lt;/style&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/pandoc.css&quot;&gt;
+  &lt;!--[if lt IE 9]&gt;
+    &lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js&quot;&gt;&lt;/script&gt;
+  &lt;![endif]--&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!-- vim-markdown-toc GFM --&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#mode&quot;&gt;Mode&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#full&quot;&gt;full&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#same&quot;&gt;same&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#valid&quot;&gt;valid&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;#codes&quot;&gt;Codes&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;#references&quot;&gt;References&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -143,7 +309,7 @@
     <link href="https://qrsforever.github.io/2019/07/19/ML/Scratch/nn_convolution/"/>
     <id>https://qrsforever.github.io/2019/07/19/ML/Scratch/nn_convolution/</id>
     <published>2019-07-19T07:33:06.000Z</published>
-    <updated>2019-07-23T14:44:00.407Z</updated>
+    <updated>2019-07-25T15:09:03.759Z</updated>
     
     <summary type="html">
     
@@ -168,6 +334,7 @@
 &lt;body&gt;
 &lt;!-- vim-markdown-toc GFM --&gt;
 &lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#standard-neural-network-and-convolution-nerual-network&quot;&gt;Standard Neural Network and Convolution Nerual Network&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;#references&quot;&gt;References&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;!-- vim-markdown-toc --&gt;
@@ -188,7 +355,7 @@
     <link href="https://qrsforever.github.io/2019/07/18/Tools/How/china_images/"/>
     <id>https://qrsforever.github.io/2019/07/18/Tools/How/china_images/</id>
     <published>2019-07-18T02:31:07.000Z</published>
-    <updated>2019-07-21T05:31:48.413Z</updated>
+    <updated>2019-07-25T14:00:54.830Z</updated>
     
     <summary type="html">
     
@@ -946,18 +1113,38 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
     <link href="https://qrsforever.github.io/2019/06/03/Story/Website/fav/"/>
     <id>https://qrsforever.github.io/2019/06/03/Story/Website/fav/</id>
     <published>2019-06-03T12:30:21.000Z</published>
-    <updated>2019-06-03T15:28:03.050Z</updated>
+    <updated>2019-07-25T15:08:13.867Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;!DOCTYPE html&gt;
+      &lt;!DOCTYPE html&gt;
 &lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang xml:lang&gt;
 &lt;head&gt;
   &lt;meta charset=&quot;utf-8&quot;&gt;
-  &lt;meta name=&quot;generator&quot; content=&quot;
-      
+  &lt;meta name=&quot;generator&quot; content=&quot;pandoc&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;&gt;
+  &lt;title&gt;dummy&lt;/title&gt;
+  &lt;style type=&quot;text/css&quot;&gt;
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  &lt;/style&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/pandoc.css&quot;&gt;
+  &lt;!--[if lt IE 9]&gt;
+    &lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js&quot;&gt;&lt;/script&gt;
+  &lt;![endif]--&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!-- vim-markdown-toc GFM --&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#ai&quot;&gt;AI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#other&quot;&gt;Other&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#印度极客门户&quot;&gt;印度极客门户&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- vim-markdown-toc --&gt;
     
     </summary>
     
@@ -1057,74 +1244,6 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
       <category term="Python" scheme="https://qrsforever.github.io/tags/Python/"/>
     
       <category term="Scracth" scheme="https://qrsforever.github.io/tags/Scracth/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>(原创)embedding向量查询</title>
-    <link href="https://qrsforever.github.io/2019/05/31/ML/API/embedding_lookup/"/>
-    <id>https://qrsforever.github.io/2019/05/31/ML/API/embedding_lookup/</id>
-    <published>2019-05-31T06:48:15.000Z</published>
-    <updated>2019-06-04T13:49:29.589Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!DOCTYPE html&gt;
-&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang xml:lang&gt;
-&lt;head&gt;
-  &lt;meta charset=&quot;utf-8&quot;&gt;
-  &lt;meta name=&quot;generator&quot; content=&quot;pandoc&quot;&gt;
-  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;&gt;
-  &lt;title&gt;dummy&lt;/title&gt;
-  &lt;style type=&quot;text/css&quot;&gt;
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  &lt;/style&gt;
-  &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/pandoc.css&quot;&gt;
-  &lt;!--[if lt IE 9]&gt;
-    &lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js&quot;&gt;&lt;/script&gt;
-  &lt;![endif]--&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;p&gt;用python实例分析&lt;code&gt;embedding_lookup&lt;/code&gt;接口的使用, &lt;code&gt;mod&lt;/code&gt; 和&lt;code&gt;div&lt;/code&gt;的区别&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="ML" scheme="https://qrsforever.github.io/categories/ML/"/>
-    
-    
-      <category term="Python" scheme="https://qrsforever.github.io/tags/Python/"/>
-    
-      <category term="API" scheme="https://qrsforever.github.io/tags/API/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>不翻墙打开受限网站</title>
-    <link href="https://qrsforever.github.io/2019/05/30/Tools/How/googleapis.com/"/>
-    <id>https://qrsforever.github.io/2019/05/30/Tools/How/googleapis.com/</id>
-    <published>2019-05-30T13:41:49.000Z</published>
-    <updated>2019-06-03T15:28:03.050Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;!DOCTYPE html&gt;
-&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang xml:lang&gt;
-&lt;head&gt;
-  &lt;meta charset=&quot;utf-8&quot;&gt;
-  &lt;meta name=&quot;generator&quot; content=&quot;
-      
-    
-    </summary>
-    
-      <category term="Tools" scheme="https://qrsforever.github.io/categories/Tools/"/>
-    
-    
-      <category term="ETC" scheme="https://qrsforever.github.io/tags/ETC/"/>
     
   </entry>
   
