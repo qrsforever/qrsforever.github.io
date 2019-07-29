@@ -34,7 +34,7 @@
 <meta property="og:site_name" content="大地小神">
 <meta property="og:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-25T15:09:03.759Z">
+<meta property="og:updated_time" content="2019-07-29T13:47:59.301Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(原创)神经网络之卷积过程实例">
 <meta name="twitter:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
@@ -179,7 +179,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#standard-neural-network-and-convolution-nerual-network"><span class="post-toc-text">1 Standard Neural Network and Convolution Nerual Network</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#references"><span class="post-toc-text">2 References</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#introduction"><span class="post-toc-text">1 Introduction</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#notation"><span class="post-toc-text">1.1 Notation</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#full-connected-network"><span class="post-toc-text">1.2 Full Connected Network</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#convolutional-neural-network"><span class="post-toc-text">1.3 Convolutional Neural Network</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#standard-neural-network-and-convolution-nerual-network"><span class="post-toc-text">1.4 Standard Neural Network and Convolution Nerual Network</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#references"><span class="post-toc-text">2 References</span></a></li></ol>
         </nav>
     </aside>
 
@@ -215,6 +215,7 @@
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <link rel="stylesheet" href="/css/pandoc.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -227,7 +228,56 @@
 </ul>
 <!-- vim-markdown-toc -->
 <a id="more"></a>
-<h1 id="standard-neural-network-and-convolution-nerual-network"><span class="header-section-number">1</span> Standard Neural Network and Convolution Nerual Network</h1>
+<h1 id="introduction"><span class="header-section-number">1</span> Introduction</h1>
+<h2 id="notation"><span class="header-section-number">1.1</span> Notation</h2>
+<p>symbols definitions used in full text is <a href="https://qrsforever.github.io/2019/06/25/Tools/Math/symbols/#机器学习">here</a></p>
+<h2 id="full-connected-network"><span class="header-section-number">1.2</span> Full Connected Network</h2>
+<p>for all errors(loss) function is:</p>
+<p><span class="math display">\[
+    \{E^{(n)}\} = \dfrac{1}{2} \sum^{N}_{n = 1} \sum^{c}_{k = 1} \big( t^{(n)}_k - y^{(n)}_k \big)^2
+\]</span></p>
+<p>for one item error of them is:</p>
+<p><span class="math display">\[
+    E^{(n)} = E = \dfrac{1}{2} \sum^{c}_{k = 1} \big( t^{(n)}_k - y^{(n)}_k \big)^2
+                = \dfrac{1}{2} \begin{Vmatrix} \mathbf{t}^{(n)} - \mathbf{y}^{(n)} \end{Vmatrix}^2_2
+                \label{error} \tag{1}
+\]</span></p>
+<p>at times, we simplify the equation by emitting the superscript <span class="math inline">\({(n)}\)</span>, just below:</p>
+<p><span class="math display">\[
+    E = \dfrac{1}{2} \begin{Vmatrix} \mathbf{t} - \mathbf{y} \end{Vmatrix}^2_2 \label{error_one} \tag{2}
+\]</span></p>
+<p>the last output layer <span class="math inline">\(\mathbf{y}^{[L]}\)</span> breif as:</p>
+<p><span class="math display">\[
+    \begin{align*}
+        \mathbf{y} &amp;= \mathbf{a}^{[L]} \\
+            &amp;= \mathbf{a}^{[L]}\color{Red}{\bigg(\mathbf{z}^{[L]}\bigg)} \\
+            &amp;= \mathbf{a}^{[L]}\color{Red}{\bigg(\mathbf{W}^{[L]}
+               \mathbf{a}^{[L-1]}\color{Blue}{\big(\mathbf{z}^{[L-1]}\big)} + \mathbf{b}^{[L]}\bigg)} \\
+            &amp;= \mathbf{a}^{[L]}\color{Red}{\bigg(\mathbf{W}^{[L]}
+               \mathbf{a}^{[L-1]}\color{Blue}{\big(\mathbf{W}^{[L-1]}
+               \mathbf{a}^{[L-2]}\color{Green}{(\mathbf{z}^{[L-2]})} + \mathbf{b}^{[L-1]}\big)} + \mathbf{b}^{[L]}\bigg)} \\
+            &amp;= \mathbf{a}^{[L]}\color{Red}{\bigg(\mathbf{W}^{[L]}
+               \mathbf{a}^{[L-1]}\color{Blue}{\big(\mathbf{W}^{[L-1]}
+               \mathbf{a}^{[L-2]}\color{Green}{(\mathbf{W}^{[L-2]}
+               \mathbf{a}^{[L-3]}\color{Black}{(\mathbf{z}^{[L-3]})} + \mathbf{b}^{[L-2]})} + \mathbf{b}^{[L-1]}\big)} + \mathbf{b}^{[L]}\bigg)} \\
+            &amp;= \cdots
+    \end{align*} \label{y_equ} \tag{3}
+\]</span></p>
+<p>let's have a look the derivative <span class="math inline">\(\delta^{[L]}\)</span> of the error with respect to the neurons <span class="math inline">\(z^{[L]}\)</span> of the last output layer:</p>
+<p>from the equation <span class="math inline">\(\ref{error_one}\)</span></p>
+<p><span class="math display">\[
+    \dfrac{\partial E}{\partial {z^{[L]}}}
+        = (\mathbf{y}-\mathbf{t}) \odot \dfrac{\partial \mathbf{a}^{[L]}(z^{[L]})}{\partial {z^{[L]}}}
+\]</span></p>
+<p>pre layer of L, using the chain rule of derivative:</p>
+<p><span class="math display">\[
+    \begin{align*}
+        \dfrac{\partial E}{\partial {z^{[L-1]}}} \\
+            =  \dfrac{\partial \mathbf{a}^{[L-1]}(z^{[L-1]})}{\partial {z^{[L-1]}}}
+    \end{align*}
+\]</span></p>
+<h2 id="convolutional-neural-network"><span class="header-section-number">1.3</span> Convolutional Neural Network</h2>
+<h2 id="standard-neural-network-and-convolution-nerual-network"><span class="header-section-number">1.4</span> Standard Neural Network and Convolution Nerual Network</h2>
 <p>The difference between them is the calculate, one is matrix multiplication and another is convolution, apart from this, they are nearly the same.</p>
 <p><strong>weights sharing</strong></p>
 <p>below we display the convert:</p>
@@ -244,7 +294,7 @@ matrix:
   |                      |          +-------------+           +--------------+
   |  7       8       9   |
   |                      |          first rotate 180     mode = &quot;valid&quot;
-  +----------------------+
+ +----------------------+
           Image               Kernel or Convolution matrices or Mask
           3 X 3                           2 X 2
 
@@ -288,6 +338,8 @@ the forward feed and back propagation.
 <li><p>https://www.kdnuggets.com/2018/04/building-convolutional-neural-network-numpy-scratch.html</p></li>
 <li><p>https://codereview.stackexchange.com/questions/133251/a-cnn-in-python-without-frameworks</p></li>
 <li><p>https://datascience-enthusiast.com/DL/Convolution_model_Step_by_Stepv2.html</p></li>
+<li><p><a href="http://cogprints.org/5869/1/cnn_tutorial.pdf" title="recommended" target="_blank" rel="noopener">Notes on Convolutional Neural Networks</a></p></li>
+<li><p><a href="http://neuralnetworksanddeeplearning.com/chap2.html" title="recommended" target="_blank" rel="noopener">How the backpropagation algorithm works</a></p></li>
 <li><p>https://qrsforever.github.io/2019/05/30/ML/Guide/activation_functions</p></li>
 <li><p>https://qrsforever.github.io/2019/07/23/ML/Guide/conv_mode</p></li>
 </ol>
@@ -301,7 +353,7 @@ the forward feed and back propagation.
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-07-25T15:09:03.759Z" itemprop="dateUpdated">2019-07-25 23:09:03</time>
+    最后更新时间：<time datetime="2019-07-29T13:47:59.301Z" itemprop="dateUpdated">2019-07-29 21:47:59</time>
 </span><br>
 
 

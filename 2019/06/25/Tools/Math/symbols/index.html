@@ -34,7 +34,7 @@
 <meta property="og:site_name" content="大地小神">
 <meta property="og:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-27T13:59:11.975Z">
+<meta property="og:updated_time" content="2019-07-29T13:47:59.301Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数学符号表">
 <meta name="twitter:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
@@ -221,6 +221,13 @@
   <![endif]-->
 </head>
 <body>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#统计学">统计学</a></li>
+<li><a href="#机器学习">机器学习</a></li>
+</ul>
+<!-- vim-markdown-toc -->
+<a id="more"></a>
 <h1 id="统计学"><span class="header-section-number">1</span> 统计学</h1>
 <table>
 <thead>
@@ -335,12 +342,12 @@
 <td>学习率</td>
 </tr>
 <tr class="odd">
-<td><span class="math inline">\(\begin{Vmatrix} \cdot \end{Vmatrix}_1\)</span></td>
-<td><span class="math inline">\(L_1\)</span>范数</td>
+<td><span class="math inline">\(\begin{Vmatrix} x \end{Vmatrix}_1\)</span></td>
+<td><span class="math inline">\(L_1\)</span>范数 = <span class="math inline">\(\sum_{i=1}^{N}|x_i|\)</span></td>
 </tr>
 <tr class="even">
-<td><span class="math inline">\(\begin{Vmatrix} \cdot \end{Vmatrix}_2\)</span></td>
-<td><span class="math inline">\(L_2\)</span>范数</td>
+<td><span class="math inline">\(\begin{Vmatrix} x \end{Vmatrix}_2\)</span></td>
+<td><span class="math inline">\(L_2\)</span>范数 = <span class="math inline">\(\sqrt{\sum_{i=1}^{N}x_i^2}\)</span></td>
 </tr>
 <tr class="odd">
 <td><span class="math inline">\((x \cdot {x}&#39;)\)</span></td>
@@ -384,7 +391,6 @@
 </tr>
 </tbody>
 </table>
-<a id="more"></a>
 <h1 id="机器学习"><span class="header-section-number">2</span> 机器学习</h1>
 <table>
 <thead>
@@ -395,19 +401,112 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td><span class="math inline">\(x^{(n)}\)</span></td>
-<td>第n个训练数据的单个输入</td>
+<td><span class="math inline">\(N, c\)</span></td>
+<td>the total number of training examples, number of classes of output</td>
 </tr>
 <tr class="even">
-<td><span class="math inline">\(y_i^{(n)}\)</span></td>
-<td>第n个训练数据输出的第i个分量</td>
+<td><span class="math inline">\(x^{(n)}, y^{(n)}\)</span></td>
+<td>the superscript <span class="math inline">\({(n)}\)</span> denote the variable for the <span class="math inline">\(n^{th}\)</span> individual training example</td>
 </tr>
 <tr class="odd">
-<td><span class="math inline">\(\{x^{(n)}\}\)</span></td>
-<td>全部训练数据输入集合或向量</td>
+<td><span class="math inline">\(x^{[l]}, w^{[l]}, a^{[l]}\)</span></td>
+<td>the superscript <span class="math inline">\({[l]}\)</span> denote the <span class="math inline">\(l^{th}\)</span> layer, can drop <span class="math inline">\([]\)</span> on single training example</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(z^{x,l}, a^{x,l}\)</span></td>
+<td>the z, activition in the <span class="math inline">\(l^{th}\)</span> on the <span class="math inline">\(x^{th}\)</span> training example</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(n_H^{[l]},n_W^{[l]},n_C^{[l]}\)</span></td>
+<td>the numbers of height, width, channel in the <span class="math inline">\(l^{th}\)</span> layer</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(x_i, y_i, b_i\)</span></td>
+<td>the subscript <span class="math inline">\(i\)</span> denote the <span class="math inline">\(i^{th}\)</span> elem of the vector <span class="math inline">\(\mathbf{x, y, b}\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(w^l_{jk}\)</span></td>
+<td>weights for connections from the <span class="math inline">\(k^{th}\)</span> neuron in the <span class="math inline">\((l-1)^{th}\)</span> layer to the <span class="math inline">\(j^{th}\)</span> neuon in the <span class="math inline">\(l^{th}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(b^l_j\)</span></td>
+<td>the the bias of the <span class="math inline">\(j^{th}\)</span> neuron in the <span class="math inline">\(l^{th}\)</span> layer</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(a^l_j\)</span></td>
+<td>the activation of the <span class="math inline">\(j^{th}\)</span> neuron in the <span class="math inline">\(l^{th}\)</span> layer</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\sigma\left(\right)\)</span></td>
+<td>the activation function(or vectorized activation function)</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\mathbf{z}^l = \mathbf{w}^l a^{l-1}+\mathbf{b}^l\)</span></td>
+<td>the intermediate quantity(vector) called weighted input</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\begin{eqnarray} a^{l}_j = \sigma\left( \sum_k w^{l}_{jk} a^{l-1}_k + b^l_j \right)\end{eqnarray}\)</span></td>
+<td>the the activation <span class="math inline">\(a^{l}_j\)</span> in the in component form</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\begin{eqnarray} a^{l} = \sigma(w^l a^{l-1}+b^l) = \sigma(z^l)\end{eqnarray}\)</span></td>
+<td>the the activation <span class="math inline">\(a^{l}\)</span> in a matrix form</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(Cost(), C, Loss(), L, Error(), E\)</span></td>
+<td>the cost function</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\partial C / \partial w, \partial C / \partial b\)</span></td>
+<td>the partical derivatives that cost function with respect to any weights w and bias b in the network</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(y = y(x), t = t(x)\)</span></td>
+<td>the corresponding desired ouput over the individual input x</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(s \odot t\)</span></td>
+<td>element wise product of the two vectors</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\sigma^l_j = \dfrac{\partial C}{\partial z^l_j}\)</span></td>
+<td>the error of the <span class="math inline">\(j^{th}\)</span> neuron in the <span class="math inline">\(l^{th}\)</span> layer</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\nabla_a C\)</span></td>
+<td>vector of the partial dervatives <span class="math inline">\(\partial C / \partial a^L_j\)</span>, the rate of change of C with respect to the output activations</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\begin{eqnarray} \delta^L = \nabla_a C \odot \sigma&#39;(z^L) \end{eqnarray}\)</span></td>
+<td>the error of the ouput layer in matrix-based form</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\begin{eqnarray} \delta^L = (a^L-y) \odot \sigma&#39;(z^L) \end{eqnarray}\)</span></td>
+<td>error in the case of the quadratic cost</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\begin{eqnarray} \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma&#39;(z^l) \end{eqnarray}\)</span></td>
+<td>the error of nuerons in other layer out of the last layer</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\begin{eqnarray} \dfrac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \end{eqnarray}\)</span></td>
+<td>the rate of change of the cost with respect to any weight</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\begin{eqnarray} \dfrac{\partial C}{\partial w^l} =\delta^l (a^{l-1})^T \end{eqnarray}\)</span></td>
+<td>matrix-based form: the rate of change of the cost with respect to any weight</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\begin{eqnarray} \dfrac{\partial C}{\partial b^l_j} = \delta^l_j \end{eqnarray}\)</span></td>
+<td>the rate of change of the cost with respect to any bias in the network</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\begin{eqnarray} \dfrac{\partial C}{\partial b} = \delta \end{eqnarray}\)</span></td>
+<td>matrix-based form: the rate of change of the cost with respect to any bias in the network</td>
 </tr>
 </tbody>
 </table>
+<p><a href="http://neuralnetworksanddeeplearning.com/chap2.html" title="recommend" target="_blank" rel="noopener">参考</a></p>
 </body>
 </html>
 
@@ -418,7 +517,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-06-27T13:59:11.975Z" itemprop="dateUpdated">2019-06-27 21:59:11</time>
+    最后更新时间：<time datetime="2019-07-29T13:47:59.301Z" itemprop="dateUpdated">2019-07-29 21:47:59</time>
 </span><br>
 
 
