@@ -19,28 +19,41 @@
     
     
     
-    <title>Graphviz绘图 | 大地小神 | 你们都是大傻瓜, 我是天下大赢家</title>
+    <title>(原创)Graphviz绘图 | 大地小神 | 你们都是大傻瓜, 我是天下大赢家</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="How">
+    <meta name="keywords" content="How,DrawIt">
     <meta name="description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
-<meta name="keywords" content="How">
+<meta name="keywords" content="How,DrawIt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Graphviz绘图">
+<meta property="og:title" content="(原创)Graphviz绘图">
 <meta property="og:url" content="https://qrsforever.github.io/2019/07/24/Tutorial/graphviz/index.html">
 <meta property="og:site_name" content="大地小神">
 <meta property="og:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/test.svg?sanitize=true">
+<meta property="og:image" content="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_subgraph_1.svg?sanitize=true">
+<meta property="og:image" content="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_edge_1.svg?sanitize=true">
+<meta property="og:image" content="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_edge_2.svg?sanitize=true">
+<meta property="og:image" content="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_prog.svg?sanitize=true">
+<meta property="og:image" content="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_rank_1.svg?sanitize=true">
+<meta property="og:image" content="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_label_1.svg?sanitize=true">
+<meta property="og:image" content="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_label_2.svg?sanitize=true">
+<meta property="og:image" content="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_distance_1.svg?sanitize=true">
+<meta property="og:image" content="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/ladotdemo.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_simplest.svg?sanitize=true">
 <meta property="og:image" content="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_complicated.svg?sanitize=true">
+<meta property="og:image" content="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_demo_other_1.svg?sanitize=true">
+<meta property="og:image" content="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_demo_other_2.svg?sanitize=true">
+<meta property="og:image" content="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_demo_other_3.svg?sanitize=true">
+<meta property="og:image" content="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_demo_other_4.svg?sanitize=true">
 <meta property="og:image" content="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_matrix.svg?sanitize=true">
-<meta property="og:updated_time" content="2019-07-25T14:01:22.669Z">
+<meta property="og:updated_time" content="2020-05-23T13:02:54.071Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Graphviz绘图">
+<meta name="twitter:title" content="(原创)Graphviz绘图">
 <meta name="twitter:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/test.svg?sanitize=true">
     
@@ -113,6 +126,13 @@
             </li>
         
             <li class="waves-block waves-effect">
+              <a href="https://gitee.com/lidongai" target="_blank" >
+                <i class="icon icon-lg icon-code-fork"></i>
+                Gitee
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
               <a href="http://weibo.com/705723886/" target="_blank" >
                 <i class="icon icon-lg icon-weibo"></i>
                 Weibo
@@ -120,9 +140,16 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://zytforever.github.io" target="_blank" >
-                <i class="icon icon-lg icon-eye"></i>
-                Stocktech
+              <a href="https://twitter.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                Twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2017/08/30/CV"  >
+                <i class="icon icon-lg icon-user-circle"></i>
+                Author
               </a>
             </li>
         
@@ -137,7 +164,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">Graphviz绘图</div>
+        <div class="flex-col header-title ellipsis">(原创)Graphviz绘图</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -159,7 +186,7 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">Graphviz绘图</h1>
+        <h1 class="title">(原创)Graphviz绘图</h1>
         <h5 class="subtitle">
             
                 <time datetime="2019-07-24T06:00:24.000Z" itemprop="datePublished" class="page-time">
@@ -184,7 +211,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#requirements"><span class="post-toc-text">1 Requirements</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#blog"><span class="post-toc-text">2 Blog</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pandoc-config"><span class="post-toc-text">2.1 pandoc config</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#filter-graphviz.py"><span class="post-toc-text">2.2 filter graphviz.py</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#demo"><span class="post-toc-text">3 Demo</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#docs"><span class="post-toc-text">3.1 docs</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#office-example"><span class="post-toc-text">3.2 office example</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#neural-network"><span class="post-toc-text">3.3 neural network</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#simplest"><span class="post-toc-text">3.3.1 simplest</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#complicated-case"><span class="post-toc-text">3.3.2 complicated case</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#others"><span class="post-toc-text">3.4 others</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#matrix"><span class="post-toc-text">3.4.1 matrix</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#references"><span class="post-toc-text">4 References</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#requirements"><span class="post-toc-text">1 Requirements</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#graphviz"><span class="post-toc-text">2 Graphviz</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基本语法"><span class="post-toc-text">2.1 基本语法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#构造边"><span class="post-toc-text">2.2 构造边</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#属性"><span class="post-toc-text">2.3 属性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#通用属性"><span class="post-toc-text">2.3.1 通用属性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#图的属性"><span class="post-toc-text">2.3.2 图的属性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#节点属性"><span class="post-toc-text">2.3.3 节点属性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#边的属性"><span class="post-toc-text">2.3.4 边的属性</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#demo"><span class="post-toc-text">3 Demo</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#docsg"><span class="post-toc-text">3.1 docsG</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#office-example"><span class="post-toc-text">3.2 office example</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#subgraph"><span class="post-toc-text">3.3 subgraph</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#edge-direction"><span class="post-toc-text">3.4 edge direction</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#edge-position"><span class="post-toc-text">3.5 edge position</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#prog"><span class="post-toc-text">3.6 prog</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#rank"><span class="post-toc-text">3.7 rank</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#label"><span class="post-toc-text">3.8 label</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#demo1"><span class="post-toc-text">3.8.1 demo1</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#demo2"><span class="post-toc-text">3.8.2 demo2</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#distance"><span class="post-toc-text">3.9 distance</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#latex-graph"><span class="post-toc-text">3.10 latex graph</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#neural-network"><span class="post-toc-text">3.11 neural network</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#simplest"><span class="post-toc-text">3.11.1 simplest</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#complicated-case"><span class="post-toc-text">3.11.2 complicated case</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#others"><span class="post-toc-text">3.12 others</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#节点形状"><span class="post-toc-text">3.12.1 节点形状</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#标签"><span class="post-toc-text">3.12.2 标签</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二分查找树"><span class="post-toc-text">3.12.3 二分查找树</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#cluster"><span class="post-toc-text">3.12.4 cluster</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#matrix"><span class="post-toc-text">3.12.5 matrix</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#blog"><span class="post-toc-text">4 Blog</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pandoc-config"><span class="post-toc-text">4.1 pandoc config</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#filter-graphviz.py"><span class="post-toc-text">4.2 filter graphviz.py</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ladot"><span class="post-toc-text">4.3 ladot</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#references"><span class="post-toc-text">5 References</span></a></li></ol>
         </nav>
     </aside>
 
@@ -193,7 +220,7 @@
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">Graphviz绘图</h1>
+        <h1 class="post-card-title">(原创)Graphviz绘图</h1>
         <div class="post-meta">
             <time class="post-time" title="2019-07-24 14:00:24" datetime="2019-07-24T06:00:24.000Z"  itemprop="datePublished">2019-07-24</time>
 
@@ -278,27 +305,58 @@ code span.vs { color: #008080; } /* VerbatimString */
 code span.wa { color: #008000; font-weight: bold; } /* Warning */
   </style>
   <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 <!-- vim-markdown-toc GFM -->
 <ul>
 <li><a href="#requirements">Requirements</a></li>
-<li><a href="#blog">Blog</a>
+<li><a href="#graphviz">Graphviz</a>
 <ul>
-<li><a href="#pandoc-config">pandoc config</a></li>
-<li><a href="#filter-graphvizpy">filter graphviz.py</a></li>
+<li><a href="#基本语法">基本语法</a></li>
+<li><a href="#构造边">构造边</a></li>
+<li><a href="#属性">属性</a>
+<ul>
+<li><a href="#通用属性">通用属性</a></li>
+<li><a href="#图的属性">图的属性</a></li>
+<li><a href="#节点属性">节点属性</a></li>
+<li><a href="#边的属性">边的属性</a></li>
+</ul></li>
 </ul></li>
 <li><a href="#demo">Demo</a>
 <ul>
+<li><a href="#docsg">docsG</a></li>
 <li><a href="#office-example">office example</a></li>
+<li><a href="#subgraph">subgraph</a></li>
+<li><a href="#edge-direction">edge direction</a></li>
+<li><a href="#edge-position">edge position</a></li>
+<li><a href="#prog">prog</a></li>
+<li><a href="#rank">rank</a></li>
+<li><a href="#label">label</a>
+<ul>
+<li><a href="#demo1">demo1</a></li>
+<li><a href="#demo2">demo2</a></li>
+</ul></li>
+<li><a href="#distance">distance</a></li>
+<li><a href="#latex-graph">latex graph</a></li>
 <li><a href="#neural-network">neural network</a>
 <ul>
 <li><a href="#simplest">simplest</a></li>
 <li><a href="#complicated-case">complicated case</a></li>
 </ul></li>
+<li><a href="#others">others</a>
+<ul>
+<li><a href="#节点形状">节点形状</a></li>
+<li><a href="#标签">标签</a></li>
+<li><a href="#二分查找树">二分查找树</a></li>
+<li><a href="#cluster">cluster</a></li>
+<li><a href="#matrix">matrix</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#blog">Blog</a>
+<ul>
+<li><a href="#pandoc-config">pandoc config</a></li>
+<li><a href="#filter-graphvizpy">filter graphviz.py</a></li>
+<li><a href="#ladot">ladot</a></li>
 </ul></li>
 <li><a href="#references">References</a></li>
 </ul>
@@ -308,387 +366,1256 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 <h1 id="requirements"><span class="header-section-number">1</span> Requirements</h1>
 <pre class="shell"><code>sudo apt install pandoc
 sudo apt install graphviz graphviz-dev
-sudo apt install dot2tex
+sudo apt install dot2tex latex2html dvipng
 sudo pip3 install pygraphviz pandocfilters</code></pre>
-<h1 id="blog"><span class="header-section-number">2</span> Blog</h1>
-<h2 id="pandoc-config"><span class="header-section-number">2.1</span> pandoc config</h2>
-<p><a href="https://github.com/qrsforever/git-blog-setting/blob/master/_config.yml" target="_blank" rel="noopener">My Blog Config</a></p>
-<div class="sourceCode" id="cb2" data-startfrom="&quot;1"><pre class="sourceCode numberSource yaml numberLines"><code class="sourceCode yaml"><a class="sourceLine" id="cb2-1" title="1"></a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="fu">pandoc:</span></a>
-<a class="sourceLine" id="cb2-3" title="3">    <span class="fu">extra:</span></a>
-<a class="sourceLine" id="cb2-4" title="4">        <span class="kw">-</span> <span class="fu">standalone:</span></a>
-<a class="sourceLine" id="cb2-5" title="5">        <span class="kw">-</span> <span class="fu">highlight-style:</span><span class="at"> haddock</span></a>
-<a class="sourceLine" id="cb2-6" title="6">        <span class="kw">-</span> <span class="fu">number-offset:</span><span class="at"> </span><span class="dv">0</span></a>
-<a class="sourceLine" id="cb2-7" title="7">        <span class="kw">-</span> <span class="fu">columns:</span><span class="at"> </span><span class="dv">200</span></a>
-<a class="sourceLine" id="cb2-8" title="8">        <span class="kw">-</span> <span class="fu">css:</span><span class="at"> /css/pandoc.css</span></a>
-<a class="sourceLine" id="cb2-9" title="9">        <span class="kw">-</span> <span class="fu">filter:</span><span class="at"> graphviz.py</span></a>
-<a class="sourceLine" id="cb2-10" title="10">    <span class="fu">mathEngine:</span><span class="at"> mathjax</span></a></code></pre></div>
-<h2 id="filter-graphviz.py"><span class="header-section-number">2.2</span> filter graphviz.py</h2>
-<div class="sourceCode" id="cb3" data-startfrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" title="1"><span class="co">#!/usr/bin/python3</span></a>
-<a class="sourceLine" id="cb3-2" title="2"></a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="co">&quot;&quot;&quot;</span></a>
-<a class="sourceLine" id="cb3-4" title="4"><span class="co">Pandoc filter to process code blocks with class &quot;graph&quot; into</span></a>
-<a class="sourceLine" id="cb3-5" title="5"><span class="co">graphviz-generated images.</span></a>
-<a class="sourceLine" id="cb3-6" title="6"><span class="co">Requires pygraphviz, pandocfilters</span></a>
-<a class="sourceLine" id="cb3-7" title="7"><span class="co">&quot;&quot;&quot;</span></a>
-<a class="sourceLine" id="cb3-8" title="8"></a>
-<a class="sourceLine" id="cb3-9" title="9"><span class="im">import</span> os</a>
-<a class="sourceLine" id="cb3-10" title="10"><span class="im">import</span> sys</a>
-<a class="sourceLine" id="cb3-11" title="11"><span class="im">import</span> hashlib</a>
-<a class="sourceLine" id="cb3-12" title="12"></a>
-<a class="sourceLine" id="cb3-13" title="13"><span class="im">import</span> pygraphviz</a>
-<a class="sourceLine" id="cb3-14" title="14"></a>
-<a class="sourceLine" id="cb3-15" title="15"><span class="im">from</span> pandocfilters <span class="im">import</span> toJSONFilter, Para, Image, get_filename4code</a>
-<a class="sourceLine" id="cb3-16" title="16"><span class="im">from</span> pandocfilters <span class="im">import</span> get_caption, get_extension, get_value</a>
-<a class="sourceLine" id="cb3-17" title="17"></a>
-<a class="sourceLine" id="cb3-18" title="18">top_path <span class="op">=</span> os.path.abspath(os.path.dirname(<span class="va">__file__</span>))</a>
-<a class="sourceLine" id="cb3-19" title="19">dir_name <span class="op">=</span> <span class="st">&#39;graph-image&#39;</span></a>
-<a class="sourceLine" id="cb3-20" title="20">git_path <span class="op">=</span> <span class="st">&#39;https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/&#39;</span></a>
-<a class="sourceLine" id="cb3-21" title="21">git_post <span class="op">=</span> <span class="st">&#39;?sanitize=true&#39;</span></a>
-<a class="sourceLine" id="cb3-22" title="22"></a>
-<a class="sourceLine" id="cb3-23" title="23"><span class="kw">def</span> graphviz(key, value, <span class="bu">format</span>, meta):</a>
-<a class="sourceLine" id="cb3-24" title="24">    <span class="cf">if</span> key <span class="op">==</span> <span class="st">&#39;CodeBlock&#39;</span>:</a>
-<a class="sourceLine" id="cb3-25" title="25">        [[ident, classes, keyvals], code] <span class="op">=</span> value</a>
-<a class="sourceLine" id="cb3-26" title="26">        <span class="cf">if</span> <span class="st">&quot;graph&quot;</span> <span class="kw">in</span> classes:</a>
-<a class="sourceLine" id="cb3-27" title="27">            caption, typef, keyvals <span class="op">=</span> get_caption(keyvals)</a>
-<a class="sourceLine" id="cb3-28" title="28">            prog, keyvals <span class="op">=</span> get_value(keyvals, <span class="st">u&quot;prog&quot;</span>, <span class="st">u&quot;dot&quot;</span>)</a>
-<a class="sourceLine" id="cb3-29" title="29">            filetype <span class="op">=</span> get_extension(<span class="bu">format</span>, <span class="st">&quot;svg&quot;</span>, html<span class="op">=</span><span class="st">&quot;svg&quot;</span>, latex<span class="op">=</span><span class="st">&quot;pdf&quot;</span>)</a>
-<a class="sourceLine" id="cb3-30" title="30">            <span class="co"># dest = get_filename4code(graph, code, filetype)</span></a>
-<a class="sourceLine" id="cb3-31" title="31">            md5 <span class="op">=</span> hashlib.sha1(code.encode(sys.getfilesystemencoding())).hexdigest()</a>
-<a class="sourceLine" id="cb3-32" title="32">            filename, _ <span class="op">=</span> get_value(keyvals, <span class="st">u&quot;fileName&quot;</span>)</a>
-<a class="sourceLine" id="cb3-33" title="33">            <span class="cf">if</span> filename <span class="kw">is</span> <span class="va">None</span>:</a>
-<a class="sourceLine" id="cb3-34" title="34">                sys.stderr.write(<span class="st">&#39;not set filename in </span><span class="sc">{}</span><span class="ch">\n</span><span class="st">&#39;</span>)</a>
-<a class="sourceLine" id="cb3-35" title="35">                exit(<span class="op">-</span><span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb3-36" title="36">            filename <span class="op">+=</span> <span class="st">&#39;.&#39;</span> <span class="op">+</span> filetype</a>
-<a class="sourceLine" id="cb3-37" title="37">            <span class="cf">while</span> <span class="va">True</span>:</a>
-<a class="sourceLine" id="cb3-38" title="38">                <span class="cf">try</span>:</a>
-<a class="sourceLine" id="cb3-39" title="39">                    datapath <span class="op">=</span> meta[<span class="st">&#39;datapath&#39;</span>][<span class="st">&#39;c&#39;</span>]</a>
-<a class="sourceLine" id="cb3-40" title="40">                    drafts_idx <span class="op">=</span> datapath.find(<span class="st">&#39;_drafts&#39;</span>)</a>
-<a class="sourceLine" id="cb3-41" title="41">                    <span class="cf">if</span> drafts_idx <span class="op">&gt;</span> <span class="dv">0</span>:</a>
-<a class="sourceLine" id="cb3-42" title="42">                        prefix <span class="op">=</span> datapath[drafts_idx<span class="op">+</span><span class="dv">8</span>:<span class="op">-</span><span class="dv">3</span>]</a>
-<a class="sourceLine" id="cb3-43" title="43">                    <span class="cf">else</span>:</a>
-<a class="sourceLine" id="cb3-44" title="44">                        prefix <span class="op">=</span> datapath[datapath.find(<span class="st">&#39;_posts&#39;</span>)<span class="op">+</span><span class="dv">7</span>:<span class="op">-</span><span class="dv">3</span>]</a>
-<a class="sourceLine" id="cb3-45" title="45">                    filepath <span class="op">=</span> os.path.join(prefix, dir_name, filename)</a>
-<a class="sourceLine" id="cb3-46" title="46">                    <span class="cf">if</span> drafts_idx <span class="op">&gt;</span> <span class="dv">0</span>:</a>
-<a class="sourceLine" id="cb3-47" title="47">                        localpath <span class="op">=</span> os.path.join(top_path, <span class="st">&quot;source/assets&quot;</span>, filepath)</a>
-<a class="sourceLine" id="cb3-48" title="48">                        remotepath <span class="op">=</span> os.path.join(<span class="st">&quot;/assets&quot;</span>, filepath)</a>
-<a class="sourceLine" id="cb3-49" title="49">                    <span class="cf">else</span>:</a>
-<a class="sourceLine" id="cb3-50" title="50">                        localpath <span class="op">=</span> os.path.join(top_path, <span class="st">&quot;source/_assets&quot;</span>, filepath)</a>
-<a class="sourceLine" id="cb3-51" title="51">                        remotepath <span class="op">=</span> os.path.join(git_path, filepath) <span class="op">+</span> git_post</a>
-<a class="sourceLine" id="cb3-52" title="52">                    <span class="cf">if</span> os.path.exists(localpath):</a>
-<a class="sourceLine" id="cb3-53" title="53">                        <span class="cf">if</span> os.path.exists(localpath <span class="op">+</span> <span class="st">&#39;.&#39;</span> <span class="op">+</span> md5):</a>
-<a class="sourceLine" id="cb3-54" title="54">                            <span class="cf">break</span></a>
-<a class="sourceLine" id="cb3-55" title="55">                        <span class="cf">else</span>:</a>
-<a class="sourceLine" id="cb3-56" title="56">                            os.system(<span class="st">&#39;rm -f </span><span class="sc">%s</span><span class="st">*&#39;</span> <span class="op">%</span> localpath)</a>
-<a class="sourceLine" id="cb3-57" title="57"></a>
-<a class="sourceLine" id="cb3-58" title="58">                    <span class="bu">dir</span> <span class="op">=</span> os.path.dirname(localpath)</a>
-<a class="sourceLine" id="cb3-59" title="59">                    <span class="cf">if</span> <span class="kw">not</span> os.path.isdir(<span class="bu">dir</span>):</a>
-<a class="sourceLine" id="cb3-60" title="60">                        os.makedirs(<span class="bu">dir</span>)</a>
-<a class="sourceLine" id="cb3-61" title="61"></a>
-<a class="sourceLine" id="cb3-62" title="62">                    os.system(<span class="st">&#39;touch </span><span class="sc">%s</span><span class="st">.</span><span class="sc">%s</span><span class="st">&#39;</span> <span class="op">%</span> (localpath, md5))</a>
-<a class="sourceLine" id="cb3-63" title="63"></a>
-<a class="sourceLine" id="cb3-64" title="64">                    g <span class="op">=</span> pygraphviz.AGraph(string<span class="op">=</span>code)</a>
-<a class="sourceLine" id="cb3-65" title="65">                    g.layout()</a>
-<a class="sourceLine" id="cb3-66" title="66">                    g.draw(localpath, prog<span class="op">=</span>prog)</a>
-<a class="sourceLine" id="cb3-67" title="67">                    sys.stderr.write(<span class="st">&#39;Local Path [&#39;</span> <span class="op">+</span> localpath <span class="op">+</span> <span class="st">&#39;]</span><span class="ch">\n</span><span class="st">&#39;</span>)</a>
-<a class="sourceLine" id="cb3-68" title="68">                    sys.stderr.write(<span class="st">&#39;Remote Path [&#39;</span> <span class="op">+</span> remotepath <span class="op">+</span> <span class="st">&#39;]</span><span class="ch">\n</span><span class="st">&#39;</span>)</a>
-<a class="sourceLine" id="cb3-69" title="69">                <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</a>
-<a class="sourceLine" id="cb3-70" title="70">                    sys.stderr.write(<span class="st">&#39;</span><span class="sc">{}</span><span class="st">: not found datapath in meta, please patch/run.sh</span><span class="ch">\n</span><span class="st">&#39;</span>.<span class="bu">format</span>(e))</a>
-<a class="sourceLine" id="cb3-71" title="71">                    exit(<span class="op">-</span><span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb3-72" title="72">                <span class="cf">finally</span>:</a>
-<a class="sourceLine" id="cb3-73" title="73">                    <span class="cf">break</span></a>
-<a class="sourceLine" id="cb3-74" title="74"></a>
-<a class="sourceLine" id="cb3-75" title="75">            image <span class="op">=</span> Image([ident, classes, keyvals],</a>
-<a class="sourceLine" id="cb3-76" title="76">                          caption,</a>
-<a class="sourceLine" id="cb3-77" title="77">                          [remotepath, typef])</a>
-<a class="sourceLine" id="cb3-78" title="78"></a>
-<a class="sourceLine" id="cb3-79" title="79">            <span class="cf">return</span> Para([image])</a>
-<a class="sourceLine" id="cb3-80" title="80"></a>
-<a class="sourceLine" id="cb3-81" title="81"><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</a>
-<a class="sourceLine" id="cb3-82" title="82"></a>
-<a class="sourceLine" id="cb3-83" title="83">    toJSONFilter(graphviz)</a></code></pre></div>
-<h1 id="demo"><span class="header-section-number">3</span> Demo</h1>
-<h2 id="docs"><span class="header-section-number">3.1</span> docs</h2>
+<p>if need show latex equation in graphviz, also install <a href="https://brighten.bigw.org/projects/ladot/" target="_blank" rel="noopener">latex</a>.</p>
+<h1 id="graphviz"><span class="header-section-number">2</span> Graphviz</h1>
+<p><a href="http://www.graphviz.org/documentation/" target="_blank" rel="noopener">官方文档</a> <br> <a href="https://graphviz.gitlab.io/_pages/doc/info/attrs.html" target="_blank" rel="noopener">属性设置</a> <br> <a href="https://graphviz.gitlab.io/_pages/doc/info/shapes.html" target="_blank" rel="noopener">节点形状</a> <br> <a href="https://graphviz.gitlab.io/_pages/doc/info/arrows.html" target="_blank" rel="noopener">箭头形状</a> <br> <a href="https://graphviz.gitlab.io/_pages/doc/info/colors.html" target="_blank" rel="noopener">颜色配置</a> <br></p>
+<p>由<strong>图</strong>, <strong>节点</strong>, <strong>边</strong>组成.</p>
+<h2 id="基本语法"><span class="header-section-number">2.1</span> 基本语法</h2>
+<ol type="1">
+<li>字符串 都要加双引号, 可以加<code>\n</code>换行符</li>
+<li>注释 双斜杠<code>//</code> 或 <code>/* */</code></li>
+<li>有向图 digraph, 节点关系: 指向-&gt;</li>
+<li>无向图 graph, 节点关系: 连通 --</li>
+<li>子图 subgraph, 子图必须以cluster做为名称的前缀</li>
+<li>属性 node[attribute1=value1, attribute2=value2]
 <ul>
-<li><p><a href="https://graphviz.gitlab.io/_pages/doc/info/attrs.html" target="_blank" rel="noopener">attributes</a></p></li>
-<li><p><a href="https://graphviz.gitlab.io/_pages/doc/info/shapes.html" target="_blank" rel="noopener">nodes shape</a></p></li>
-<li><p><a href="https://graphviz.gitlab.io/_pages/pdf/dotguide.pdf" target="_blank" rel="noopener">dot guide</a></p></li>
+<li>大小: size="2,2"; 单位为英寸</li>
+<li>标签: label="显示在图上的内容"</li>
+<li>边: edge [color=red,style=dotted]</li>
+<li>节点: node [color=navy]</li>
+<li>边方向: rankdir=参数值;LR,RL,BT,TB</li>
+<li>节点形状: a[shape=box]; 默认是椭圆</li>
+<li>边框大小: a[width=.1,height=2.5]; 单位为英寸</li>
+<li>边框颜色: a[color=red];</li>
+</ul></li>
+</ol>
+<h2 id="构造边"><span class="header-section-number">2.2</span> 构造边</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">关系</th>
+<th style="text-align: left;">有向图</th>
+<th style="text-align: left;">无向图</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">一对一</td>
+<td style="text-align: left;">a-&gt;b;</td>
+<td style="text-align: left;">a--b;</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">一对多</td>
+<td style="text-align: left;">a-&gt;{b;c;d};</td>
+<td style="text-align: left;">a--{b;c;d};</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">多对一</td>
+<td style="text-align: left;">{b;c;d}-&gt;a;</td>
+<td style="text-align: left;">{b;c;d}--a;</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">多对多</td>
+<td style="text-align: left;">{m,n,p,q}-&gt;{b;c;d};</td>
+<td style="text-align: left;">{m,n,p,q}--{b;c;d};</td>
+</tr>
+</tbody>
+</table>
+<h2 id="属性"><span class="header-section-number">2.3</span> 属性</h2>
+<h3 id="通用属性"><span class="header-section-number">2.3.1</span> 通用属性</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">属性名称</th>
+<th style="text-align: center;">默认值</th>
+<th style="text-align: left;">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">color</td>
+<td style="text-align: center;">black</td>
+<td style="text-align: left;">颜色,颜色设置支持形如red和#FF0000两种形式</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">fontcolor</td>
+<td style="text-align: center;">black</td>
+<td style="text-align: left;">文字颜色</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">fontname</td>
+<td style="text-align: center;">Times-Roman</td>
+<td style="text-align: left;">字体</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">fontsize</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: left;">文字大小</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">label</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">显示的标签,支持''换行,对于节点默认为节点名称</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">penwidth</td>
+<td style="text-align: center;">1.0</td>
+<td style="text-align: left;">线条宽度</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">style</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">图形选项,例如 bold, dotted, filled 等</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">layer</td>
+<td style="text-align: center;">覆盖范围</td>
+<td style="text-align: left;">all id 或 id:id</td>
+</tr>
+</tbody>
+</table>
+<h3 id="图的属性"><span class="header-section-number">2.3.2</span> 图的属性</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">属性名称</th>
+<th style="text-align: center;">默认值</th>
+<th style="text-align: left;">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">bgcolor</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">背景颜色</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">center</td>
+<td style="text-align: center;">false</td>
+<td style="text-align: left;">在page的中心画图</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">clusterrank</td>
+<td style="text-align: center;">local</td>
+<td style="text-align: left;">global或none</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">concentrate</td>
+<td style="text-align: center;">false</td>
+<td style="text-align: left;">让多条边有公共部分</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">nodesep</td>
+<td style="text-align: center;">.25</td>
+<td style="text-align: left;">节点之间的间隔(英寸)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">peripheries</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;">边界数</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">rank</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">same,min,source, max,sink,设置多个节点顺序</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">rankdir</td>
+<td style="text-align: center;">TB</td>
+<td style="text-align: left;">排序方向, LR,RL,BT,TB</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ranksep</td>
+<td style="text-align: center;">.75</td>
+<td style="text-align: left;">间隔,等级之间的间隔,英寸</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">size</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">图的大小(英寸)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">splines</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">控制边的形状 none</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">labelloc</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">调整图或子图的标签的上下位置</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">labeljust</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">调整图或子图的标签的左右位置</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">compound</td>
+<td style="text-align: center;">false</td>
+<td style="text-align: left;">If true, allow edges between clusters. 配合lhead和ltail使用</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">margin</td>
+<td style="text-align: center;">.5</td>
+<td style="text-align: left;">page的空白,英寸</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">mclimit</td>
+<td style="text-align: center;">1.0</td>
+<td style="text-align: left;">mincross的跌带比例因子</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">nslimit</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: left;">如果设置了f,则使用网络界限迭代f(结点数)来设置x坐标</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">nslimit1</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: left;">如果设置了f,则使用网络界限迭代f(结点数)设置结点排名(rank)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ordering</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: left;">如果out则外部边缘顺序会保留</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">orientation</td>
+<td style="text-align: center;">portrait</td>
+<td style="text-align: left;">如果没用rotate,而值为landscape,使用风景画定位</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">page</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: left;">标记页,例如"8.5,11"</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">pagedir</td>
+<td style="text-align: center;">BL</td>
+<td style="text-align: left;">多页之间的横断</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">quantum</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: left;">结点标签的尺寸根据quantum的量度</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ratio</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: left;">近似朝向approximate aspect ratio desired,fill或auto</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">remincross</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: left;">如果为true且有多个集群,重新运行crossing最小化</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">rotate</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: left;">如果为90,设置朝向</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">samplepoints</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: left;">输出时用以表现椭圆和圆所用的点数,参见附录C</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">searchsize</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: left;">切除的最大边缘,当用以寻找网络中的最小一个(完全没看懂?)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="节点属性"><span class="header-section-number">2.3.3</span> 节点属性</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">属性名称</th>
+<th style="text-align: center;">默认值</th>
+<th style="text-align: left;">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">shape</td>
+<td style="text-align: center;">ellipse</td>
+<td style="text-align: left;">形状, ellipse</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sides</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: left;">当shape=polygon时的边数</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">skew</td>
+<td style="text-align: center;">0.0</td>
+<td style="text-align: left;">当shape=polygon, [-1.0,1.0], 从上到下的倾斜度, 相位差, 矩形转换成平行四边形</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">distortion</td>
+<td style="text-align: center;">0.0</td>
+<td style="text-align: left;">当shape=polygon, 从上到下缩短多边形, 扭曲, 矩形变成梯形</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">orientation</td>
+<td style="text-align: center;">0.0</td>
+<td style="text-align: left;">多边形的曲线方向和角度, 旋转角度</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">peripheries</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">边界曲线数量, 双圆环peripheries=2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">regular</td>
+<td style="text-align: center;">false</td>
+<td style="text-align: left;">使多边形变得规则</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">fillcolor</td>
+<td style="text-align: center;">lightgrey/black</td>
+<td style="text-align: left;">填充颜色</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">fixedsize</td>
+<td style="text-align: center;">false</td>
+<td style="text-align: left;">标签是否影响节点的大小</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">group</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">节点所属的组</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">height</td>
+<td style="text-align: center;">.5</td>
+<td style="text-align: left;">以英寸为单位的高度</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">width</td>
+<td style="text-align: center;">.75</td>
+<td style="text-align: left;">以英寸为单位的宽度</td>
+</tr>
+</tbody>
+</table>
+<h3 id="边的属性"><span class="header-section-number">2.3.4</span> 边的属性</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">属性名称</th>
+<th style="text-align: center;">默认值</th>
+<th style="text-align: left;">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">arrowhead</td>
+<td style="text-align: center;">normal</td>
+<td style="text-align: left;">箭头头部形状</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">arrowsize</td>
+<td style="text-align: center;">1.0</td>
+<td style="text-align: left;">箭头大小</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">arrowtail</td>
+<td style="text-align: center;">normal</td>
+<td style="text-align: left;">箭头尾部形状</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">constraint</td>
+<td style="text-align: center;">true</td>
+<td style="text-align: left;">是否根据边来影响节点的排序</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">decorate</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">设置之后会用一条线来连接edge和label</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">dir</td>
+<td style="text-align: center;">forward</td>
+<td style="text-align: left;">设置方向:forward,back,both,none</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">headclip</td>
+<td style="text-align: center;">true</td>
+<td style="text-align: left;">是否到边界为止</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">headport</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">n,ne,e,se,s,sw,w,nw</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tailclip</td>
+<td style="text-align: center;">true</td>
+<td style="text-align: left;">与headclip类似</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">headlabel</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">边的头部显示的标签</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">taillabel</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">边的尾部显示的标签</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">tailport</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: left;">n,ne,e,se,s,sw,w,nw</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">lhead</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">当compound为true时,lhead用于指定边指向的cluster</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ltail</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">与ltail类似</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">labelangle</td>
+<td style="text-align: center;">-25.0</td>
+<td style="text-align: left;">边标签的旋转角度</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">labeldistance</td>
+<td style="text-align: center;">1.0</td>
+<td style="text-align: left;">边标签距离结点的比例因子</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">labelfloat</td>
+<td style="text-align: center;">false</td>
+<td style="text-align: left;">边标签位置的强制约束</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">labelfontcolor</td>
+<td style="text-align: center;">black</td>
+<td style="text-align: left;">标签字体颜色</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">labelfontname</td>
+<td style="text-align: center;">Times-Roman</td>
+<td style="text-align: left;">标签字体族</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">labelfontsize</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: left;">标签字体大小</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">weight</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;">边的延伸花费整数</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">minlen</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;">头尾间最小长度</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">samehead</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: left;">头结点的tag,拥有相同头结点tag的边会使用统一端点</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sametail</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: left;">同上,尾结点</td>
+</tr>
+</tbody>
+</table>
+<h1 id="demo"><span class="header-section-number">3</span> Demo</h1>
+<h2 id="docsg"><span class="header-section-number">3.1</span> docsG</h2>
+<ul>
+<li><a href="https://graphviz.gitlab.io/_pages/pdf/dotguide.pdf" target="_blank" rel="noopener">dot guide</a></li>
 </ul>
 <h2 id="office-example"><span class="header-section-number">3.2</span> office example</h2>
-<div class="sourceCode" id="cb4" data-startfrom="1"><pre class="sourceCode numberSource numberLines"><code class="sourceCode"><a class="sourceLine" id="cb4-1" title="1">digraph G {</a>
-<a class="sourceLine" id="cb4-2" title="2"></a>
-<a class="sourceLine" id="cb4-3" title="3">  bgcolor=&quot;#ffffff00&quot;</a>
-<a class="sourceLine" id="cb4-4" title="4"></a>
-<a class="sourceLine" id="cb4-5" title="5">  subgraph cluster_0 {</a>
-<a class="sourceLine" id="cb4-6" title="6">    style=&quot;filled, rounded&quot;;</a>
-<a class="sourceLine" id="cb4-7" title="7">    color=&quot;#E6EAF2&quot;</a>
-<a class="sourceLine" id="cb4-8" title="8">    node [style=filled,color=white];</a>
-<a class="sourceLine" id="cb4-9" title="9">    a0 -&gt; a1 -&gt; a2 -&gt; a3;</a>
-<a class="sourceLine" id="cb4-10" title="10">    a3 -&gt; a1 [label = &quot; -10&quot; color=red fontcolor=red];</a>
-<a class="sourceLine" id="cb4-11" title="11">    label = &quot;System A&quot;;</a>
-<a class="sourceLine" id="cb4-12" title="12">  }</a>
-<a class="sourceLine" id="cb4-13" title="13"></a>
-<a class="sourceLine" id="cb4-14" title="14">  subgraph cluster_1 {</a>
-<a class="sourceLine" id="cb4-15" title="15">    node [style=filled color=&quot;#E6EAF2&quot;];</a>
-<a class="sourceLine" id="cb4-16" title="16">    b0 -&gt; b1 -&gt; b2 -&gt; b3;</a>
-<a class="sourceLine" id="cb4-17" title="17">    b0 -&gt; b2 [label = &quot; +12&quot; color=green fontcolor=green];</a>
-<a class="sourceLine" id="cb4-18" title="18">    label = &quot;System B&quot;;</a>
-<a class="sourceLine" id="cb4-19" title="19">    style=&quot;dashed, rounded&quot;</a>
-<a class="sourceLine" id="cb4-20" title="20">    color=blue</a>
-<a class="sourceLine" id="cb4-21" title="21">  }</a>
-<a class="sourceLine" id="cb4-22" title="22"></a>
-<a class="sourceLine" id="cb4-23" title="23">  start -&gt; a0;</a>
-<a class="sourceLine" id="cb4-24" title="24">  start -&gt; b0;</a>
-<a class="sourceLine" id="cb4-25" title="25">  a1 -&gt; b3;</a>
-<a class="sourceLine" id="cb4-26" title="26">  a3 -&gt; end;</a>
-<a class="sourceLine" id="cb4-27" title="27">  b3 -&gt; end;</a>
-<a class="sourceLine" id="cb4-28" title="28"></a>
-<a class="sourceLine" id="cb4-29" title="29">  start [label=&quot;load&quot; shape=folder];</a>
-<a class="sourceLine" id="cb4-30" title="30">  end [label=&quot;store&quot; shape=box3d];</a>
-<a class="sourceLine" id="cb4-31" title="31">}</a></code></pre></div>
+<pre><code>```{.graph .center caption=&quot;Demo&quot; fileName=&quot;test&quot;}
+digraph G {
+  bgcolor=&quot;#ffffff00&quot;
+
+  subgraph cluster_0 {
+    style=&quot;filled, rounded&quot;;
+    color=&quot;#E6EAF2&quot;
+    node [style=filled,color=white];
+    a0 -&gt; a1 -&gt; a2 -&gt; a3;
+    a3 -&gt; a1 [label = &quot; -10&quot; color=red fontcolor=red];
+    label = &quot;System A&quot;;
+  }
+
+  subgraph cluster_1 {
+    node [style=filled color=&quot;#E6EAF2&quot;];
+    b0 -&gt; b1 -&gt; b2 -&gt; b3;
+    b0 -&gt; b2 [label = &quot; +12&quot; color=green fontcolor=green];
+    label = &quot;System B&quot;;
+    style=&quot;dashed, rounded&quot;
+    color=blue
+  }
+
+  start -&gt; a0;
+  start -&gt; b0;
+  a1 -&gt; b3;
+  a3 -&gt; end;
+  b3 -&gt; end;
+
+  start [label=&quot;load&quot; shape=folder];
+  end [label=&quot;store&quot; shape=box3d];
+}
+```</code></pre>
 <p>output:</p>
 <figure>
 <img src="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/test.svg?sanitize=true" alt="Demo" class="graph center" data-filename="test"><figcaption>Demo</figcaption>
 </figure>
-<h2 id="neural-network"><span class="header-section-number">3.3</span> neural network</h2>
-<h3 id="simplest"><span class="header-section-number">3.3.1</span> simplest</h3>
-<div class="sourceCode" id="cb5" data-startfrom="1"><pre class="sourceCode numberSource numberLines"><code class="sourceCode"><a class="sourceLine" id="cb5-1" title="1">digraph G {</a>
-<a class="sourceLine" id="cb5-2" title="2"></a>
-<a class="sourceLine" id="cb5-3" title="3">    rankdir=LR;   /* makes the directed graphs drawn from left to right */</a>
-<a class="sourceLine" id="cb5-4" title="4">    splines=line; /* controls how the edges are represented */</a>
-<a class="sourceLine" id="cb5-5" title="5">    nodesep=.05;  /* forces edges to become invisible */</a>
-<a class="sourceLine" id="cb5-6" title="6">    </a>
-<a class="sourceLine" id="cb5-7" title="7">    node [label=&quot;&quot;];   /* [ ] sets the default node property */</a>
-<a class="sourceLine" id="cb5-8" title="8">        </a>
-<a class="sourceLine" id="cb5-9" title="9">    subgraph cluster_0 {</a>
-<a class="sourceLine" id="cb5-10" title="10">        color=white;</a>
-<a class="sourceLine" id="cb5-11" title="11">        node [style=solid,color=blue4, shape=circle];</a>
-<a class="sourceLine" id="cb5-12" title="12">        x1 x2 x3;</a>
-<a class="sourceLine" id="cb5-13" title="13">        label = &quot;layer 1&quot;;</a>
-<a class="sourceLine" id="cb5-14" title="14">    }</a>
-<a class="sourceLine" id="cb5-15" title="15"></a>
-<a class="sourceLine" id="cb5-16" title="16">    subgraph cluster_1 {</a>
-<a class="sourceLine" id="cb5-17" title="17">        color=white;</a>
-<a class="sourceLine" id="cb5-18" title="18">        node [style=solid,color=red2, shape=circle];</a>
-<a class="sourceLine" id="cb5-19" title="19">        a12 a22 a32 a42 a52;</a>
-<a class="sourceLine" id="cb5-20" title="20">        label = &quot;layer 2&quot;;</a>
-<a class="sourceLine" id="cb5-21" title="21">    }</a>
-<a class="sourceLine" id="cb5-22" title="22"></a>
-<a class="sourceLine" id="cb5-23" title="23">    subgraph cluster_2 {</a>
-<a class="sourceLine" id="cb5-24" title="24">        color=white;</a>
-<a class="sourceLine" id="cb5-25" title="25">        node [style=solid,color=red2, shape=circle];</a>
-<a class="sourceLine" id="cb5-26" title="26">        a13 a23 a33 a43 a53;</a>
-<a class="sourceLine" id="cb5-27" title="27">        label = &quot;layer 3&quot;;</a>
-<a class="sourceLine" id="cb5-28" title="28">    }</a>
-<a class="sourceLine" id="cb5-29" title="29"></a>
-<a class="sourceLine" id="cb5-30" title="30">    subgraph cluster_3 {</a>
-<a class="sourceLine" id="cb5-31" title="31">        color=white;</a>
-<a class="sourceLine" id="cb5-32" title="32">        node [style=solid,color=seagreen2, shape=circle];</a>
-<a class="sourceLine" id="cb5-33" title="33">        O1 O2 O3 O4;</a>
-<a class="sourceLine" id="cb5-34" title="34">        label=&quot;layer 4&quot;;</a>
-<a class="sourceLine" id="cb5-35" title="35">    }</a>
-<a class="sourceLine" id="cb5-36" title="36"></a>
-<a class="sourceLine" id="cb5-37" title="37">    x1 -&gt; a12;</a>
-<a class="sourceLine" id="cb5-38" title="38">    x1 -&gt; a22;</a>
-<a class="sourceLine" id="cb5-39" title="39">    x1 -&gt; a32;</a>
-<a class="sourceLine" id="cb5-40" title="40">    x1 -&gt; a42;</a>
-<a class="sourceLine" id="cb5-41" title="41">    x1 -&gt; a52;</a>
-<a class="sourceLine" id="cb5-42" title="42"></a>
-<a class="sourceLine" id="cb5-43" title="43">    x2 -&gt; a12;</a>
-<a class="sourceLine" id="cb5-44" title="44">    x2 -&gt; a22;</a>
-<a class="sourceLine" id="cb5-45" title="45">    x2 -&gt; a32;</a>
-<a class="sourceLine" id="cb5-46" title="46">    x2 -&gt; a42;</a>
-<a class="sourceLine" id="cb5-47" title="47">    x2 -&gt; a52;</a>
-<a class="sourceLine" id="cb5-48" title="48"></a>
-<a class="sourceLine" id="cb5-49" title="49">    x3 -&gt; a12;</a>
-<a class="sourceLine" id="cb5-50" title="50">    x3 -&gt; a22;</a>
-<a class="sourceLine" id="cb5-51" title="51">    x3 -&gt; a32;</a>
-<a class="sourceLine" id="cb5-52" title="52">    x3 -&gt; a42;</a>
-<a class="sourceLine" id="cb5-53" title="53">    x3 -&gt; a52;</a>
-<a class="sourceLine" id="cb5-54" title="54"></a>
-<a class="sourceLine" id="cb5-55" title="55">    a12 -&gt; a13</a>
-<a class="sourceLine" id="cb5-56" title="56">    a22 -&gt; a13</a>
-<a class="sourceLine" id="cb5-57" title="57">    a32 -&gt; a13</a>
-<a class="sourceLine" id="cb5-58" title="58">    a42 -&gt; a13</a>
-<a class="sourceLine" id="cb5-59" title="59">    a52 -&gt; a13</a>
-<a class="sourceLine" id="cb5-60" title="60"></a>
-<a class="sourceLine" id="cb5-61" title="61">    a12 -&gt; a23</a>
-<a class="sourceLine" id="cb5-62" title="62">    a22 -&gt; a23</a>
-<a class="sourceLine" id="cb5-63" title="63">    a32 -&gt; a23</a>
-<a class="sourceLine" id="cb5-64" title="64">    a42 -&gt; a23</a>
-<a class="sourceLine" id="cb5-65" title="65">    a52 -&gt; a23</a>
-<a class="sourceLine" id="cb5-66" title="66"></a>
-<a class="sourceLine" id="cb5-67" title="67">    a12 -&gt; a33</a>
-<a class="sourceLine" id="cb5-68" title="68">    a22 -&gt; a33</a>
-<a class="sourceLine" id="cb5-69" title="69">    a32 -&gt; a33</a>
-<a class="sourceLine" id="cb5-70" title="70">    a42 -&gt; a33</a>
-<a class="sourceLine" id="cb5-71" title="71">    a52 -&gt; a33</a>
-<a class="sourceLine" id="cb5-72" title="72"></a>
-<a class="sourceLine" id="cb5-73" title="73">    a12 -&gt; a43</a>
-<a class="sourceLine" id="cb5-74" title="74">    a22 -&gt; a43</a>
-<a class="sourceLine" id="cb5-75" title="75">    a32 -&gt; a43</a>
-<a class="sourceLine" id="cb5-76" title="76">    a42 -&gt; a43</a>
-<a class="sourceLine" id="cb5-77" title="77">    a52 -&gt; a43</a>
-<a class="sourceLine" id="cb5-78" title="78"></a>
-<a class="sourceLine" id="cb5-79" title="79">    a12 -&gt; a53</a>
-<a class="sourceLine" id="cb5-80" title="80">    a22 -&gt; a53</a>
-<a class="sourceLine" id="cb5-81" title="81">    a32 -&gt; a53</a>
-<a class="sourceLine" id="cb5-82" title="82">    a42 -&gt; a53</a>
-<a class="sourceLine" id="cb5-83" title="83">    a52 -&gt; a53</a>
-<a class="sourceLine" id="cb5-84" title="84"></a>
-<a class="sourceLine" id="cb5-85" title="85">    a13 -&gt; O1</a>
-<a class="sourceLine" id="cb5-86" title="86">    a23 -&gt; O1</a>
-<a class="sourceLine" id="cb5-87" title="87">    a33 -&gt; O1</a>
-<a class="sourceLine" id="cb5-88" title="88">    a43 -&gt; O1</a>
-<a class="sourceLine" id="cb5-89" title="89">    a53 -&gt; O1</a>
-<a class="sourceLine" id="cb5-90" title="90"></a>
-<a class="sourceLine" id="cb5-91" title="91">    a13 -&gt; O2</a>
-<a class="sourceLine" id="cb5-92" title="92">    a23 -&gt; O2</a>
-<a class="sourceLine" id="cb5-93" title="93">    a33 -&gt; O2</a>
-<a class="sourceLine" id="cb5-94" title="94">    a43 -&gt; O2</a>
-<a class="sourceLine" id="cb5-95" title="95">    a53 -&gt; O2</a>
-<a class="sourceLine" id="cb5-96" title="96"></a>
-<a class="sourceLine" id="cb5-97" title="97">    a13 -&gt; O3</a>
-<a class="sourceLine" id="cb5-98" title="98">    a23 -&gt; O3</a>
-<a class="sourceLine" id="cb5-99" title="99">    a33 -&gt; O3</a>
-<a class="sourceLine" id="cb5-100" title="100">    a43 -&gt; O3</a>
-<a class="sourceLine" id="cb5-101" title="101">    a53 -&gt; O3</a>
-<a class="sourceLine" id="cb5-102" title="102"></a>
-<a class="sourceLine" id="cb5-103" title="103">    a13 -&gt; O4</a>
-<a class="sourceLine" id="cb5-104" title="104">    a23 -&gt; O4</a>
-<a class="sourceLine" id="cb5-105" title="105">    a33 -&gt; O4</a>
-<a class="sourceLine" id="cb5-106" title="106">    a43 -&gt; O4</a>
-<a class="sourceLine" id="cb5-107" title="107">    a53 -&gt; O4</a>
-<a class="sourceLine" id="cb5-108" title="108">}</a></code></pre></div>
+<h2 id="subgraph"><span class="header-section-number">3.3</span> subgraph</h2>
+<pre><code>```{.graph .center caption=&quot;Subgraph Demo&quot; fileName=&quot;graphviz_subgraph_1&quot;}
+digraph G {
+  compound=true;
+  node [ shape = &quot;Mrecord&quot; ];
+  subgraph cluster_0 {
+    style = rounded;
+    label = &quot;Zero&quot;;
+    Node_0_0 -&gt; Node_0_1;
+  };
+  subgraph cluster_1 {
+    style = rounded;
+    label = &quot;One&quot;;
+    Node_1_0 -&gt; Node_1_1;
+  };
+  subgraph cluster_2 {
+    style = rounded;
+    label = &quot;Two&quot;;
+    Node_2_0 -&gt; Node_2_1;
+  };
+  NodeA [ style = rounded ];
+  NodeA -&gt; Node_0_0 [lhead = cluster_0];
+  NodeA -&gt; Node_1_0 [lhead = cluster_1];
+  NodeA -&gt; Node_2_0 [lhead = cluster_2];
+}
+```</code></pre>
+<p>output:</p>
+<figure>
+<img src="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_subgraph_1.svg?sanitize=true" alt="Subgraph Demo" class="graph center" data-filename="graphviz_subgraph_1"><figcaption>Subgraph Demo</figcaption>
+</figure>
+<h2 id="edge-direction"><span class="header-section-number">3.4</span> edge direction</h2>
+<pre><code>```{.graph .center caption=&quot;Edge Direction Demo&quot; fileName=&quot;graphviz_edge_1&quot;}
+digraph G {
+    A -&gt; B[dir = both]
+    B -&gt; C[dir = nonc]
+    C -&gt; D[dir = back]
+    D -&gt; A[dir = forward]
+}
+```</code></pre>
+<p>output:</p>
+<figure>
+<img src="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_edge_1.svg?sanitize=true" alt="Edge Direction Demo" class="graph center" data-filename="graphviz_edge_1"><figcaption>Edge Direction Demo</figcaption>
+</figure>
+<h2 id="edge-position"><span class="header-section-number">3.5</span> edge position</h2>
+<pre><code>```{.graph .center caption=&quot;Edge Position Demo&quot; fileName=&quot;graphviz_edge_2&quot;}
+digraph G {
+   node[shape = box]
+   c:n -&gt; d[label = n]
+   c1:ne -&gt; d1[label = ne]
+   c2:e -&gt; d2[label = e]
+   c3:se -&gt; d3[label = se]
+   c4:s -&gt; d4[label = s]
+   c5:sw -&gt; d5[label = sw]
+   c6:w -&gt; d6[label = w]
+   c7:nw -&gt; d7[label = nw]
+}
+```</code></pre>
+<p>output:</p>
+<figure>
+<img src="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_edge_2.svg?sanitize=true" alt="Edge Position Demo" class="graph center" data-filename="graphviz_edge_2"><figcaption>Edge Position Demo</figcaption>
+</figure>
+<h2 id="prog"><span class="header-section-number">3.6</span> prog</h2>
+<p>默认prog=dot, neato更适合画无向图</p>
+<pre><code>```{.graph .center prog=neato fileName=&quot;graphviz_prog&quot; caption=&quot;Star network topology.&quot;}
+graph ER {
+    bgcolor=&quot;#ffffff00&quot;
+    A -- 1
+    A -- 2
+    A -- 3
+    A -- 4
+    A -- 5
+}
+```</code></pre>
+<p>output:</p>
+<figure>
+<img src="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_prog.svg?sanitize=true" alt="Star network topology." class="graph center" data-filename="graphviz_prog"><figcaption>Star network topology.</figcaption>
+</figure>
+<h2 id="rank"><span class="header-section-number">3.7</span> rank</h2>
+<pre><code>```{.graph .center caption=&quot;Rank Demo&quot; fileName=&quot;graphviz_rank_1&quot;}
+digraph G {
+   rankdir = LR
+   {
+    node[shape = plaintext]
+    1995 -&gt; 1996 -&gt; 1997 -&gt; 1998 -&gt; 1999 -&gt; 2000 -&gt; 2001
+   }
+   {
+    node[shape = box, style = filled]
+    WAR3 -&gt; Xhero -&gt; Footman -&gt; DOTA
+    WAR3 -&gt; Battleship
+   }
+   {
+    {rank = same 1996 WAR3}
+    {rank = same 1998 Xhero Battleship}
+    {rank = same 1999 Footman}
+    {rank = same 2001 DOTA}
+   }
+}
+```</code></pre>
+<p>output:</p>
+<figure>
+<img src="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_rank_1.svg?sanitize=true" alt="Rank Demo" class="graph center" data-filename="graphviz_rank_1"><figcaption>Rank Demo</figcaption>
+</figure>
+<h2 id="label"><span class="header-section-number">3.8</span> label</h2>
+<h3 id="demo1"><span class="header-section-number">3.8.1</span> demo1</h3>
+<pre><code>```{.graph .center caption=&quot;Label Demo 1&quot; fileName=&quot;graphviz_label_1&quot;}
+graph G {
+   label = &quot;我爱你&quot; /*为图设置标签*/
+   labelloc = b    /*图标签的位置在底部，也可以设置为t到顶部*/
+   labeljust = l   /*图标签的位置在左边，也可以设置为r到右边*/
+
+   edge[decorate = true]
+   C -- D[label = &quot;s1&quot;]
+   C -- E[label = &quot;s2&quot;]
+   C -- F[label = &quot;s3&quot;]
+   D -- E[label = &quot;s4&quot;]
+   D -- F[label = &quot;s5&quot;]
+
+   edge[decorate = false, labelfontcolor = blue, fontcolor = red]
+   C1 -- D1[headlabel = &quot;d1&quot;, taillabel = &quot;c1&quot;, label = &quot;c1 - d1&quot;]
+}
+```</code></pre>
+<p>output:</p>
+<figure>
+<img src="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_label_1.svg?sanitize=true" alt="Label Demo 1" class="graph center" data-filename="graphviz_label_1"><figcaption>Label Demo 1</figcaption>
+</figure>
+<h3 id="demo2"><span class="header-section-number">3.8.2</span> demo2</h3>
+<pre><code>```{.graph .center caption=&quot;Label Demo 2&quot; fileName=&quot;graphviz_label_2&quot;}
+graph G2 {
+    node [shape=box]; User; Object; Tag;
+    node [shape=diamond,style=filled]; Triple;
+    {
+        User   -- Triple [headlabel = &quot;1&quot;, labeldistance=2.5, labelangle=20]; // 逆时针20度
+        Object -- Triple [headlabel = &quot;1&quot;, labeldistance=1.5, labelangle=-20];// 顺时针20度
+    }
+    {
+        rank=same;
+        User;
+        Object;
+    }
+    Triple -- Tag [label=&quot;n&quot;, headlabel = &quot;2&quot;];
+}
+```</code></pre>
+<p>output:</p>
+<figure>
+<img src="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_label_2.svg?sanitize=true" alt="Label Demo 2" class="graph center" data-filename="graphviz_label_2"><figcaption>Label Demo 2</figcaption>
+</figure>
+<h2 id="distance"><span class="header-section-number">3.9</span> distance</h2>
+<pre><code>```{.graph .center caption=&quot;Distance Demo&quot; fileName=&quot;graphviz_distance_1&quot;}
+digraph A {
+  rankdir=LR;
+  center=true; margin=1;    // 居中, 空白地方的大小
+  nodesep=2.5; ranksep=1.5; // 如果 randir是LR, 左右用ranksep, 上下使用nodesep.
+  size=&quot;3,3&quot;;
+
+  node [shape=point, height=&quot;.2&quot;, width=&quot;.2&quot;];
+
+  a [xlabel=&quot;a&quot;];
+  b [xlabel=&quot;b&quot;];
+  c [xlabel=&quot;c&quot;];
+  a -&gt; b -&gt; c;
+  a -&gt; c;
+}
+```</code></pre>
+<p>output:</p>
+<figure>
+<img src="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_distance_1.svg?sanitize=true" alt="Distance Demo" class="graph center" data-filename="graphviz_distance_1"><figcaption>Distance Demo</figcaption>
+</figure>
+<h2 id="latex-graph"><span class="header-section-number">3.10</span> latex graph</h2>
+<pre><code>```{.graph .center caption=&quot;Latex_Graph_Demo&quot; fileName=&quot;ladotdemo&quot; latex=&quot;true&quot; resolution=&quot;1080&quot; desity=&quot;100&quot;}
+digraph mydot {
+    rankdir=LR
+    node [shape=plaintext, width=0]
+    $v_1$(2)
+    $v_1$ -&gt; $v_2$(2) [label=$\sqrt{2}+\frac{1}{x+5}$(9)]
+    $v_2$ -&gt; $v_3$(2) [label=$S \subseteq \{1,2,3\}^4$(6)]
+    $v_3$ -&gt; $v_1$ [label=$(f \circ g)^{-1}$(7)]
+}
+```</code></pre>
+<p>output:</p>
+<figure>
+<img src="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/ladotdemo.png" alt="Latex_Graph_Demo" class="graph center" data-filename="ladotdemo" data-latex="true" data-resolution="1080" data-desity="100"><figcaption>Latex_Graph_Demo</figcaption>
+</figure>
+<h2 id="neural-network"><span class="header-section-number">3.11</span> neural network</h2>
+<h3 id="simplest"><span class="header-section-number">3.11.1</span> simplest</h3>
+<pre><code>```{.graph .center caption=&quot;simplest&quot; fileName=&quot;graphviz_simplest&quot;}
+digraph G {
+    rankdir=LR;   /* makes the directed graphs drawn from left to right */
+    splines=line; /* force edges to be straight, no curves or angles */
+    nodesep=.05;  /* forces edges to become invisible */
+    node [label=&quot;&quot;];   /* [ ] sets the default node property */
+
+    subgraph cluster_0 {
+        color=white;
+        node [style=solid,color=blue4, shape=circle];
+        x1 x2 x3;
+        label = &quot;layer 1&quot;;
+    }
+
+    subgraph cluster_1 {
+        color=white;
+        node [style=solid,color=red2, shape=circle];
+        a12 a22 a32 a42 a52;
+        label = &quot;layer 2&quot;;
+    }
+
+    subgraph cluster_2 {
+        color=white;
+        node [style=solid,color=red2, shape=circle];
+        a13 a23 a33 a43 a53;
+        label = &quot;layer 3&quot;;
+    }
+
+    subgraph cluster_3 {
+        color=white;
+        node [style=solid,color=seagreen2, shape=circle];
+        O1 O2 O3 O4;
+        label=&quot;layer 4&quot;;
+    }
+
+    x1 -&gt; a12;
+    x1 -&gt; a22;
+    x1 -&gt; a32;
+    x1 -&gt; a42;
+    x1 -&gt; a52;
+
+    x2 -&gt; a12;
+    x2 -&gt; a22;
+    x2 -&gt; a32;
+    x2 -&gt; a42;
+    x2 -&gt; a52;
+
+    x3 -&gt; a12;
+    x3 -&gt; a22;
+    x3 -&gt; a32;
+    x3 -&gt; a42;
+    x3 -&gt; a52;
+
+    a12 -&gt; a13
+    a22 -&gt; a13
+    a32 -&gt; a13
+    a42 -&gt; a13
+    a52 -&gt; a13
+
+    a12 -&gt; a23
+    a22 -&gt; a23
+    a32 -&gt; a23
+    a42 -&gt; a23
+    a52 -&gt; a23
+
+    a12 -&gt; a33
+    a22 -&gt; a33
+    a32 -&gt; a33
+    a42 -&gt; a33
+    a52 -&gt; a33
+
+    a12 -&gt; a43
+    a22 -&gt; a43
+    a32 -&gt; a43
+    a42 -&gt; a43
+    a52 -&gt; a43
+
+    a12 -&gt; a53
+    a22 -&gt; a53
+    a32 -&gt; a53
+    a42 -&gt; a53
+    a52 -&gt; a53
+
+    a13 -&gt; O1
+    a23 -&gt; O1
+    a33 -&gt; O1
+    a43 -&gt; O1
+    a53 -&gt; O1
+
+    a13 -&gt; O2
+    a23 -&gt; O2
+    a33 -&gt; O2
+    a43 -&gt; O2
+    a53 -&gt; O2
+
+    a13 -&gt; O3
+    a23 -&gt; O3
+    a33 -&gt; O3
+    a43 -&gt; O3
+    a53 -&gt; O3
+
+    a13 -&gt; O4
+    a23 -&gt; O4
+    a33 -&gt; O4
+    a43 -&gt; O4
+    a53 -&gt; O4
+}
+```</code></pre>
 <p>output:</p>
 <figure>
 <img src="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_simplest.svg?sanitize=true" alt="simplest" class="graph center" data-filename="graphviz_simplest"><figcaption>simplest</figcaption>
 </figure>
-<h3 id="complicated-case"><span class="header-section-number">3.3.2</span> complicated case</h3>
-<div class="sourceCode" id="cb6" data-startfrom="1"><pre class="sourceCode numberSource numberLines"><code class="sourceCode"><a class="sourceLine" id="cb6-1" title="1"></a>
-<a class="sourceLine" id="cb6-2" title="2">digraph G {</a>
-<a class="sourceLine" id="cb6-3" title="3">    rankdir = LR;</a>
-<a class="sourceLine" id="cb6-4" title="4">    splines=false;</a>
-<a class="sourceLine" id="cb6-5" title="5">    edge[style=invis];  /* hide the edges */</a>
-<a class="sourceLine" id="cb6-6" title="6">    ranksep= 1.4;</a>
-<a class="sourceLine" id="cb6-7" title="7"></a>
-<a class="sourceLine" id="cb6-8" title="8">    /* {...} specifies the scope of the node property */</a>
-<a class="sourceLine" id="cb6-9" title="9">    {</a>
-<a class="sourceLine" id="cb6-10" title="10">        node [shape=circle, color=yellow, style=filled, fillcolor=yellow];</a>
-<a class="sourceLine" id="cb6-11" title="11">        x0 [label=&lt;x&lt;sub&gt;0&lt;/sub&gt;&gt;]; </a>
-<a class="sourceLine" id="cb6-12" title="12">        a02 [label=&lt;a&lt;sub&gt;0&lt;/sub&gt;&lt;sup&gt;(2)&lt;/sup&gt;&gt;]; </a>
-<a class="sourceLine" id="cb6-13" title="13">        a03 [label=&lt;a&lt;sub&gt;0&lt;/sub&gt;&lt;sup&gt;(3)&lt;/sup&gt;&gt;];</a>
-<a class="sourceLine" id="cb6-14" title="14">    }</a>
-<a class="sourceLine" id="cb6-15" title="15">    {</a>
-<a class="sourceLine" id="cb6-16" title="16">        node [shape=circle, color=chartreuse, style=filled, fillcolor=chartreuse];</a>
-<a class="sourceLine" id="cb6-17" title="17">        x1 [label=&lt;x&lt;sub&gt;1&lt;/sub&gt;&gt;];</a>
-<a class="sourceLine" id="cb6-18" title="18">        x2 [label=&lt;x&lt;sub&gt;2&lt;/sub&gt;&gt;]; </a>
-<a class="sourceLine" id="cb6-19" title="19">        x3 [label=&lt;x&lt;sub&gt;3&lt;/sub&gt;&gt;];</a>
-<a class="sourceLine" id="cb6-20" title="20">    }</a>
-<a class="sourceLine" id="cb6-21" title="21">    {</a>
-<a class="sourceLine" id="cb6-22" title="22">        node [shape=circle, color=dodgerblue, style=filled, fillcolor=dodgerblue];</a>
-<a class="sourceLine" id="cb6-23" title="23">        a12 [label=&lt;a&lt;sub&gt;1&lt;/sub&gt;&lt;sup&gt;(2)&lt;/sup&gt;&gt;];</a>
-<a class="sourceLine" id="cb6-24" title="24">        a22 [label=&lt;a&lt;sub&gt;2&lt;/sub&gt;&lt;sup&gt;(2)&lt;/sup&gt;&gt;];</a>
-<a class="sourceLine" id="cb6-25" title="25">        a32 [label=&lt;a&lt;sub&gt;3&lt;/sub&gt;&lt;sup&gt;(2)&lt;/sup&gt;&gt;];</a>
-<a class="sourceLine" id="cb6-26" title="26">        a42 [label=&lt;a&lt;sub&gt;4&lt;/sub&gt;&lt;sup&gt;(2)&lt;/sup&gt;&gt;];</a>
-<a class="sourceLine" id="cb6-27" title="27">        a52 [label=&lt;a&lt;sub&gt;5&lt;/sub&gt;&lt;sup&gt;(2)&lt;/sup&gt;&gt;];</a>
-<a class="sourceLine" id="cb6-28" title="28">        a13 [label=&lt;a&lt;sub&gt;1&lt;/sub&gt;&lt;sup&gt;(3)&lt;/sup&gt;&gt;];</a>
-<a class="sourceLine" id="cb6-29" title="29">        a23 [label=&lt;a&lt;sub&gt;2&lt;/sub&gt;&lt;sup&gt;(3)&lt;/sup&gt;&gt;];</a>
-<a class="sourceLine" id="cb6-30" title="30">        a33 [label=&lt;a&lt;sub&gt;3&lt;/sub&gt;&lt;sup&gt;(3)&lt;/sup&gt;&gt;];</a>
-<a class="sourceLine" id="cb6-31" title="31">        a43 [label=&lt;a&lt;sub&gt;4&lt;/sub&gt;&lt;sup&gt;(3)&lt;/sup&gt;&gt;];</a>
-<a class="sourceLine" id="cb6-32" title="32">        a53 [label=&lt;a&lt;sub&gt;5&lt;/sub&gt;&lt;sup&gt;(3)&lt;/sup&gt;&gt;];</a>
-<a class="sourceLine" id="cb6-33" title="33">    }</a>
-<a class="sourceLine" id="cb6-34" title="34">    {</a>
-<a class="sourceLine" id="cb6-35" title="35">        node [shape=circle, color=coral1, style=filled, fillcolor=coral1];</a>
-<a class="sourceLine" id="cb6-36" title="36">        O1 [label=&lt;a&lt;sub&gt;1&lt;/sub&gt;&lt;sup&gt;(4)&lt;/sup&gt;&gt;];</a>
-<a class="sourceLine" id="cb6-37" title="37">        O2 [label=&lt;a&lt;sub&gt;2&lt;/sub&gt;&lt;sup&gt;(4)&lt;/sup&gt;&gt;]; </a>
-<a class="sourceLine" id="cb6-38" title="38">        O3 [label=&lt;a&lt;sub&gt;3&lt;/sub&gt;&lt;sup&gt;(4)&lt;/sup&gt;&gt;]; </a>
-<a class="sourceLine" id="cb6-39" title="39">        O4 [label=&lt;a&lt;sub&gt;4&lt;/sub&gt;&lt;sup&gt;(4)&lt;/sup&gt;&gt;];</a>
-<a class="sourceLine" id="cb6-40" title="40">    }</a>
-<a class="sourceLine" id="cb6-41" title="41">    {</a>
-<a class="sourceLine" id="cb6-42" title="42">        rank=same;       /* Rank constraints on the nodes in a subgraph. */</a>
-<a class="sourceLine" id="cb6-43" title="43">        x0-&gt;x1-&gt;x2-&gt;x3;  /* specifies the relative position of the four nodes */</a>
-<a class="sourceLine" id="cb6-44" title="44">    }</a>
-<a class="sourceLine" id="cb6-45" title="45">    {</a>
-<a class="sourceLine" id="cb6-46" title="46">        rank=same;</a>
-<a class="sourceLine" id="cb6-47" title="47">        a02-&gt;a12-&gt;a22-&gt;a32-&gt;a42-&gt;a52;</a>
-<a class="sourceLine" id="cb6-48" title="48">    }</a>
-<a class="sourceLine" id="cb6-49" title="49">    {</a>
-<a class="sourceLine" id="cb6-50" title="50">        rank=same;</a>
-<a class="sourceLine" id="cb6-51" title="51">        a03-&gt;a13-&gt;a23-&gt;a33-&gt;a43-&gt;a53;</a>
-<a class="sourceLine" id="cb6-52" title="52">    }</a>
-<a class="sourceLine" id="cb6-53" title="53">    {</a>
-<a class="sourceLine" id="cb6-54" title="54">        rank=same;</a>
-<a class="sourceLine" id="cb6-55" title="55">        O1-&gt;O2-&gt;O3-&gt;O4;</a>
-<a class="sourceLine" id="cb6-56" title="56">    }</a>
-<a class="sourceLine" id="cb6-57" title="57">    a02-&gt;a03;  // prevent tilting</a>
-<a class="sourceLine" id="cb6-58" title="58">    l0 [shape=plaintext, label=&quot;layer 1 (input layer)&quot;];</a>
-<a class="sourceLine" id="cb6-59" title="59">    l0-&gt;x0;</a>
-<a class="sourceLine" id="cb6-60" title="60">    {rank=same; l0;x0};</a>
-<a class="sourceLine" id="cb6-61" title="61">    l1 [shape=plaintext, label=&quot;layer 2 (hidden layer)&quot;];</a>
-<a class="sourceLine" id="cb6-62" title="62">    l1-&gt;a02;</a>
-<a class="sourceLine" id="cb6-63" title="63">    {rank=same; l1;a02};</a>
-<a class="sourceLine" id="cb6-64" title="64">    l2 [shape=plaintext, label=&quot;layer 3 (hidden layer)&quot;];</a>
-<a class="sourceLine" id="cb6-65" title="65">    l2-&gt;a03;</a>
-<a class="sourceLine" id="cb6-66" title="66">    {rank=same; l2;a03};</a>
-<a class="sourceLine" id="cb6-67" title="67">    l3 [shape=plaintext, label=&quot;layer 4 (output layer)&quot;];</a>
-<a class="sourceLine" id="cb6-68" title="68">    l3-&gt;O1;</a>
-<a class="sourceLine" id="cb6-69" title="69">    {rank=same; l3;O1};</a>
-<a class="sourceLine" id="cb6-70" title="70">    edge[style=solid, tailport=e, headport=w];  /* let all the edges point to the same position. */</a>
-<a class="sourceLine" id="cb6-71" title="71">    {x0; x1; x2; x3} -&gt; {a12;a22;a32;a42;a52};</a>
-<a class="sourceLine" id="cb6-72" title="72">    {a02;a12;a22;a32;a42;a52} -&gt; {a13;a23;a33;a43;a53};</a>
-<a class="sourceLine" id="cb6-73" title="73">    {a03;a13;a23;a33;a43;a53} -&gt; {O1,O2,O3,O4};</a>
-<a class="sourceLine" id="cb6-74" title="74">}</a></code></pre></div>
+<h3 id="complicated-case"><span class="header-section-number">3.11.2</span> complicated case</h3>
+<pre><code>```{.graph .center caption=&quot;complicated&quot; fileName=&quot;graphviz_complicated&quot;}
+digraph G {
+    rankdir = LR;
+    splines=false;
+    edge[style=invis];  /* hide the edges */
+    ranksep= 1.4;
+
+    /* {...} specifies the scope of the node property */
+    {
+        node [shape=circle, color=yellow, style=filled, fillcolor=yellow];
+        x0 [label=&lt;x&lt;sub&gt;0&lt;/sub&gt;&gt;];
+        a02 [label=&lt;a&lt;sub&gt;0&lt;/sub&gt;&lt;sup&gt;(2)&lt;/sup&gt;&gt;];
+        a03 [label=&lt;a&lt;sub&gt;0&lt;/sub&gt;&lt;sup&gt;(3)&lt;/sup&gt;&gt;];
+    }
+    {
+        node [shape=circle, color=chartreuse, style=filled, fillcolor=chartreuse];
+        x1 [label=&lt;x&lt;sub&gt;1&lt;/sub&gt;&gt;];
+        x2 [label=&lt;x&lt;sub&gt;2&lt;/sub&gt;&gt;];
+        x3 [label=&lt;x&lt;sub&gt;3&lt;/sub&gt;&gt;];
+    }
+    {
+        node [shape=circle, color=dodgerblue, style=filled, fillcolor=dodgerblue];
+        a12 [label=&lt;a&lt;sub&gt;1&lt;/sub&gt;&lt;sup&gt;(2)&lt;/sup&gt;&gt;];
+        a22 [label=&lt;a&lt;sub&gt;2&lt;/sub&gt;&lt;sup&gt;(2)&lt;/sup&gt;&gt;];
+        a32 [label=&lt;a&lt;sub&gt;3&lt;/sub&gt;&lt;sup&gt;(2)&lt;/sup&gt;&gt;];
+        a42 [label=&lt;a&lt;sub&gt;4&lt;/sub&gt;&lt;sup&gt;(2)&lt;/sup&gt;&gt;];
+        a52 [label=&lt;a&lt;sub&gt;5&lt;/sub&gt;&lt;sup&gt;(2)&lt;/sup&gt;&gt;];
+        a13 [label=&lt;a&lt;sub&gt;1&lt;/sub&gt;&lt;sup&gt;(3)&lt;/sup&gt;&gt;];
+        a23 [label=&lt;a&lt;sub&gt;2&lt;/sub&gt;&lt;sup&gt;(3)&lt;/sup&gt;&gt;];
+        a33 [label=&lt;a&lt;sub&gt;3&lt;/sub&gt;&lt;sup&gt;(3)&lt;/sup&gt;&gt;];
+        a43 [label=&lt;a&lt;sub&gt;4&lt;/sub&gt;&lt;sup&gt;(3)&lt;/sup&gt;&gt;];
+        a53 [label=&lt;a&lt;sub&gt;5&lt;/sub&gt;&lt;sup&gt;(3)&lt;/sup&gt;&gt;];
+    }
+    {
+        node [shape=circle, color=coral1, style=filled, fillcolor=coral1];
+        O1 [label=&lt;a&lt;sub&gt;1&lt;/sub&gt;&lt;sup&gt;(4)&lt;/sup&gt;&gt;];
+        O2 [label=&lt;a&lt;sub&gt;2&lt;/sub&gt;&lt;sup&gt;(4)&lt;/sup&gt;&gt;];
+        O3 [label=&lt;a&lt;sub&gt;3&lt;/sub&gt;&lt;sup&gt;(4)&lt;/sup&gt;&gt;];
+        O4 [label=&lt;a&lt;sub&gt;4&lt;/sub&gt;&lt;sup&gt;(4)&lt;/sup&gt;&gt;];
+    }
+    {
+        rank=same;       /* Rank constraints on the nodes in a subgraph. */
+        x0-&gt;x1-&gt;x2-&gt;x3;  /* specifies the relative position of the four nodes */
+    }
+    {
+        rank=same;
+        a02-&gt;a12-&gt;a22-&gt;a32-&gt;a42-&gt;a52;
+    }
+    {
+        rank=same;
+        a03-&gt;a13-&gt;a23-&gt;a33-&gt;a43-&gt;a53;
+    }
+    {
+        rank=same;
+        O1-&gt;O2-&gt;O3-&gt;O4;
+    }
+    a02-&gt;a03;  // prevent tilting
+    l0 [shape=plaintext, label=&quot;layer 1 (input layer)&quot;];
+    l0-&gt;x0;
+    {rank=same; l0;x0};
+    l1 [shape=plaintext, label=&quot;layer 2 (hidden layer)&quot;];
+    l1-&gt;a02;
+    {rank=same; l1;a02};
+    l2 [shape=plaintext, label=&quot;layer 3 (hidden layer)&quot;];
+    l2-&gt;a03;
+    {rank=same; l2;a03};
+    l3 [shape=plaintext, label=&quot;layer 4 (output layer)&quot;];
+    l3-&gt;O1;
+    {rank=same; l3;O1};
+    edge[style=solid, tailport=e, headport=w];  /* let all the edges point to the same position. */
+    {x0; x1; x2; x3} -&gt; {a12;a22;a32;a42;a52};
+    {a02;a12;a22;a32;a42;a52} -&gt; {a13;a23;a33;a43;a53};
+    {a03;a13;a23;a33;a43;a53} -&gt; {O1,O2,O3,O4};
+}
+```</code></pre>
 <p>output:</p>
 <figure>
 <img src="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_complicated.svg?sanitize=true" alt="complicated" class="graph center" data-filename="graphviz_complicated"><figcaption>complicated</figcaption>
 </figure>
-<h2 id="others"><span class="header-section-number">3.4</span> others</h2>
-<h3 id="matrix"><span class="header-section-number">3.4.1</span> matrix</h3>
-<div class="sourceCode" id="cb7" data-caption="graphviz_matrix_code" data-startfrom="1"><pre class="sourceCode numberSource numberLines"><code class="sourceCode"><a class="sourceLine" id="cb7-1" title="1"></a>
-<a class="sourceLine" id="cb7-2" title="2">digraph matrix {</a>
-<a class="sourceLine" id="cb7-3" title="3">    723-&gt;722</a>
-<a class="sourceLine" id="cb7-4" title="4">    505-&gt;732</a>
-<a class="sourceLine" id="cb7-5" title="5">    729-&gt;732</a>
-<a class="sourceLine" id="cb7-6" title="6">    731-&gt;730-&gt;729</a>
-<a class="sourceLine" id="cb7-7" title="7">    726-&gt;729</a>
-<a class="sourceLine" id="cb7-8" title="8">    730-&gt;726</a>
-<a class="sourceLine" id="cb7-9" title="9">    726-&gt;810-&gt;725</a>
-<a class="sourceLine" id="cb7-10" title="10">    729-&gt;810-&gt;725</a>
-<a class="sourceLine" id="cb7-11" title="11">    729-&gt;733-&gt;792-&gt;793</a>
-<a class="sourceLine" id="cb7-12" title="12">    722-&gt;731</a>
-<a class="sourceLine" id="cb7-13" title="13">    732-&gt;737-&gt;736-&gt;733</a>
-<a class="sourceLine" id="cb7-14" title="14">    733-&gt;810-&gt;725</a>
-<a class="sourceLine" id="cb7-15" title="15">    729-&gt;505</a>
-<a class="sourceLine" id="cb7-16" title="16">    736-&gt;506</a>
-<a class="sourceLine" id="cb7-17" title="17">    505-&gt;506</a>
-<a class="sourceLine" id="cb7-18" title="18">    179-&gt;759</a>
-<a class="sourceLine" id="cb7-19" title="19">    759-&gt;725</a>
-<a class="sourceLine" id="cb7-20" title="20">    759-&gt;737</a>
-<a class="sourceLine" id="cb7-21" title="21">    759-&gt;769-&gt;768-&gt;778</a>
-<a class="sourceLine" id="cb7-22" title="22">    768-&gt;303</a>
-<a class="sourceLine" id="cb7-23" title="23">    737-&gt;739-&gt;736-&gt;778</a>
-<a class="sourceLine" id="cb7-24" title="24">    736-&gt;769</a>
-<a class="sourceLine" id="cb7-25" title="25">    778-&gt;303</a>
-<a class="sourceLine" id="cb7-26" title="26">    506-&gt;303</a>
-<a class="sourceLine" id="cb7-27" title="27">    769-&gt;506</a>
-<a class="sourceLine" id="cb7-28" title="28">    769-&gt;780</a>
-<a class="sourceLine" id="cb7-29" title="29">    778-&gt;779</a>
-<a class="sourceLine" id="cb7-30" title="30">    736-&gt;773-&gt;774-&gt;779-&gt;780</a>
-<a class="sourceLine" id="cb7-31" title="31">    779-&gt;303</a>
-<a class="sourceLine" id="cb7-32" title="32">    780-&gt;303</a>
-<a class="sourceLine" id="cb7-33" title="33">    506-&gt;780</a>
-<a class="sourceLine" id="cb7-34" title="34">    505-&gt;724</a>
-<a class="sourceLine" id="cb7-35" title="35">}</a></code></pre></div>
+<h2 id="others"><span class="header-section-number">3.12</span> others</h2>
+<h3 id="节点形状"><span class="header-section-number">3.12.1</span> 节点形状</h3>
+<pre><code>```{.graph .center caption=&quot;节点形状&quot; fileName=&quot;graphviz_demo_other_1&quot;}
+digraph G {
+    size = &quot;4, 4&quot;;
+    main [shape=box]; /* 这是注释 */
+    main -&gt; parse [weight=8];
+    parse -&gt; execute;
+    main -&gt; init [style=dotted];
+    main -&gt; cleanup;
+    execute -&gt; { make_string; printf}
+    init -&gt; make_string;
+    edge [color=red]; // 设置生效
+    main -&gt; printf [style=bold,label=&quot;100 times&quot;];
+    make_string [label=&quot;make a\n字符串&quot;];
+    node [shape=box,style=filled,color=&quot;.7 .3 1.0&quot;];
+    execute -&gt; compare;
+}
+```</code></pre>
+<p>output:</p>
+<figure>
+<img src="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_demo_other_1.svg?sanitize=true" alt="节点形状" class="graph center" data-filename="graphviz_demo_other_1"><figcaption>节点形状</figcaption>
+</figure>
+<h3 id="标签"><span class="header-section-number">3.12.2</span> 标签</h3>
+<pre><code>```{.graph .center caption=&quot;标签实例&quot; fileName=&quot;graphviz_demo_other_2&quot;}
+digraph G {
+    a -&gt; b -&gt; c;
+    b -&gt; d;
+    a [shape=polygon,sides=5,peripheries=3,color=lightblue,style=filled];
+    c [shape=polygon,sides=4,skew=.4,label=&quot;hello world&quot;]
+    d [shape=invtriangle];
+    e [shape=polygon,sides=4,distortion=.7];
+}
+```</code></pre>
+<p>output:</p>
+<figure>
+<img src="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_demo_other_2.svg?sanitize=true" alt="标签实例" class="graph center" data-filename="graphviz_demo_other_2"><figcaption>标签实例</figcaption>
+</figure>
+<h3 id="二分查找树"><span class="header-section-number">3.12.3</span> 二分查找树</h3>
+<pre><code>```{.graph .center caption=&quot;二分查找树&quot; fileName=&quot;graphviz_demo_other_3&quot;}
+digraph g {
+    node [shape = record,height=.1];
+    node0[label = &quot;&lt;f0&gt; |&lt;f1&gt; G|&lt;f2&gt; &quot;];
+    node1[label = &quot;&lt;f0&gt; |&lt;f1&gt; E|&lt;f2&gt; &quot;];
+    node2[label = &quot;&lt;f0&gt; |&lt;f1&gt; B|&lt;f2&gt; &quot;];
+    node3[label = &quot;&lt;f0&gt; |&lt;f1&gt; F|&lt;f2&gt; &quot;];
+    node4[label = &quot;&lt;f0&gt; |&lt;f1&gt; R|&lt;f2&gt; &quot;];
+    node5[label = &quot;&lt;f0&gt; |&lt;f1&gt; H|&lt;f2&gt; &quot;];
+    node6[label = &quot;&lt;f0&gt; |&lt;f1&gt; Y|&lt;f2&gt; &quot;];
+    node7[label = &quot;&lt;f0&gt; |&lt;f1&gt; A|&lt;f2&gt; &quot;];
+    node8[label = &quot;&lt;f0&gt; |&lt;f1&gt; C|&lt;f2&gt; &quot;];
+    &quot;node0&quot;:f2 -&gt; &quot;node4&quot;:f1;
+    &quot;node0&quot;:f0 -&gt; &quot;node1&quot;:f1;
+    &quot;node1&quot;:f0 -&gt; &quot;node2&quot;:f1;
+    &quot;node1&quot;:f2 -&gt; &quot;node3&quot;:f1;
+    &quot;node2&quot;:f2 -&gt; &quot;node8&quot;:f1;
+    &quot;node2&quot;:f0 -&gt; &quot;node7&quot;:f1;
+    &quot;node4&quot;:f2 -&gt; &quot;node6&quot;:f1;
+    &quot;node4&quot;:f0 -&gt; &quot;node5&quot;:f1;
+}
+```</code></pre>
+<p>output:</p>
+<figure>
+<img src="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_demo_other_3.svg?sanitize=true" alt="二分查找树" class="graph center" data-filename="graphviz_demo_other_3"><figcaption>二分查找树</figcaption>
+</figure>
+<h3 id="cluster"><span class="header-section-number">3.12.4</span> cluster</h3>
+<pre><code>```{.graph .center caption=&quot;边直接指向cluster&quot; fileName=&quot;graphviz_demo_other_4&quot;}
+digraph G {
+    compound=true;
+    subgraph cluster0 {
+        a;
+    }
+    subgraph cluster1 {
+        b;
+    }
+    a -&gt; b [lhead=cluster1];
+}
+```</code></pre>
+<p>output:</p>
+<figure>
+<img src="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_demo_other_4.svg?sanitize=true" alt="边直接指向cluster" class="graph center" data-filename="graphviz_demo_other_4"><figcaption>边直接指向cluster</figcaption>
+</figure>
+<h3 id="matrix"><span class="header-section-number">3.12.5</span> matrix</h3>
+<pre><code>```{.graph .center caption=&quot;graphviz matrix&quot; .numberLines startFrom=&quot;1&quot; fileName=&quot;graphviz_matrix&quot;}
+digraph matrix {
+    723-&gt;722
+    505-&gt;732
+    729-&gt;732
+    731-&gt;730-&gt;729
+    726-&gt;729
+    730-&gt;726
+    726-&gt;810-&gt;725
+    729-&gt;810-&gt;725
+    729-&gt;733-&gt;792-&gt;793
+    722-&gt;731
+    732-&gt;737-&gt;736-&gt;733
+    733-&gt;810-&gt;725
+    729-&gt;505
+    736-&gt;506
+    505-&gt;506
+    179-&gt;759
+    759-&gt;725
+    759-&gt;737
+    759-&gt;769-&gt;768-&gt;778
+    768-&gt;303
+    737-&gt;739-&gt;736-&gt;778
+    736-&gt;769
+    778-&gt;303
+    506-&gt;303
+    769-&gt;506
+    769-&gt;780
+    778-&gt;779
+    736-&gt;773-&gt;774-&gt;779-&gt;780
+    779-&gt;303
+    780-&gt;303
+    506-&gt;780
+    505-&gt;724
+}
+```</code></pre>
 <p>output:</p>
 <figure>
 <img src="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/Tutorial/graphviz/graph-image/graphviz_matrix.svg?sanitize=true" alt="graphviz matrix" class="graph center numberLines" data-startfrom="1" data-filename="graphviz_matrix"><figcaption>graphviz matrix</figcaption>
 </figure>
-<h1 id="references"><span class="header-section-number">4</span> References</h1>
+<h1 id="blog"><span class="header-section-number">4</span> Blog</h1>
+<p>结合hexo一起High.</p>
+<h2 id="pandoc-config"><span class="header-section-number">4.1</span> pandoc config</h2>
+<p><a href="https://github.com/qrsforever/git-blog-setting/blob/master/_config.yml" target="_blank" rel="noopener">My Blog Config</a></p>
+<div class="sourceCode" id="cb19" data-startfrom="&quot;1"><pre class="sourceCode numberSource yaml numberLines"><code class="sourceCode yaml"><a class="sourceLine" id="cb19-1" title="1"></a>
+<a class="sourceLine" id="cb19-2" title="2"><span class="fu">pandoc:</span></a>
+<a class="sourceLine" id="cb19-3" title="3">    <span class="fu">extra:</span></a>
+<a class="sourceLine" id="cb19-4" title="4">        <span class="kw">-</span> <span class="fu">standalone:</span></a>
+<a class="sourceLine" id="cb19-5" title="5">        <span class="kw">-</span> <span class="fu">highlight-style:</span><span class="at"> haddock</span></a>
+<a class="sourceLine" id="cb19-6" title="6">        <span class="kw">-</span> <span class="fu">number-offset:</span><span class="at"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb19-7" title="7">        <span class="kw">-</span> <span class="fu">columns:</span><span class="at"> </span><span class="dv">200</span></a>
+<a class="sourceLine" id="cb19-8" title="8">        <span class="kw">-</span> <span class="fu">css:</span><span class="at"> /css/pandoc.css</span></a>
+<a class="sourceLine" id="cb19-9" title="9">        <span class="kw">-</span> <span class="fu">filter:</span><span class="at"> graphviz.py</span></a>
+<a class="sourceLine" id="cb19-10" title="10">    <span class="fu">mathEngine:</span><span class="at"> mathjax</span></a></code></pre></div>
+<h2 id="filter-graphviz.py"><span class="header-section-number">4.2</span> filter graphviz.py</h2>
+<div class="sourceCode" id="cb20" data-startfrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb20-1" title="1"><span class="co">#!/usr/bin/python3</span></a>
+<a class="sourceLine" id="cb20-2" title="2"></a>
+<a class="sourceLine" id="cb20-3" title="3"><span class="im">import</span> os</a>
+<a class="sourceLine" id="cb20-4" title="4"><span class="im">import</span> sys</a>
+<a class="sourceLine" id="cb20-5" title="5"><span class="im">import</span> hashlib</a>
+<a class="sourceLine" id="cb20-6" title="6"></a>
+<a class="sourceLine" id="cb20-7" title="7"><span class="im">import</span> pygraphviz</a>
+<a class="sourceLine" id="cb20-8" title="8"></a>
+<a class="sourceLine" id="cb20-9" title="9"><span class="im">from</span> pandocfilters <span class="im">import</span> toJSONFilter, Para, Image</a>
+<a class="sourceLine" id="cb20-10" title="10"><span class="im">from</span> pandocfilters <span class="im">import</span> get_caption, get_extension, get_value</a>
+<a class="sourceLine" id="cb20-11" title="11"></a>
+<a class="sourceLine" id="cb20-12" title="12">tmp_path <span class="op">=</span> <span class="st">&#39;/tmp/gitblog&#39;</span></a>
+<a class="sourceLine" id="cb20-13" title="13">top_path <span class="op">=</span> os.path.abspath(os.path.dirname(<span class="va">__file__</span>))</a>
+<a class="sourceLine" id="cb20-14" title="14">dir_name <span class="op">=</span> <span class="st">&#39;graph-image&#39;</span></a>
+<a class="sourceLine" id="cb20-15" title="15">git_path <span class="op">=</span> <span class="st">&#39;https://gitee.com/lidongai/assets_blog_post/raw/master/&#39;</span></a>
+<a class="sourceLine" id="cb20-16" title="16">git_post <span class="op">=</span> <span class="st">&#39;?sanitize=true&#39;</span></a>
+<a class="sourceLine" id="cb20-17" title="17"></a>
+<a class="sourceLine" id="cb20-18" title="18">doc_tmpl <span class="op">=</span> <span class="vs">r&quot;&quot;&quot;\documentclass[12pt,border=5pt,varwidth=true]</span><span class="sc">{standalone}</span></a>
+<a class="sourceLine" id="cb20-19" title="19"><span class="vs">\usepackage</span><span class="sc">{graphicx}</span></a>
+<a class="sourceLine" id="cb20-20" title="20"><span class="vs">\usepackage[utf8]</span><span class="sc">{inputenc}</span></a>
+<a class="sourceLine" id="cb20-21" title="21"><span class="vs">\usepackage[T1]</span><span class="sc">{fontenc}</span></a>
+<a class="sourceLine" id="cb20-22" title="22"><span class="vs">\usepackage</span><span class="sc">{psfrag}</span></a>
+<a class="sourceLine" id="cb20-23" title="23"><span class="vs">\begin</span><span class="sc">{document}</span></a>
+<a class="sourceLine" id="cb20-24" title="24"><span class="vs">    \input{</span><span class="sc">%s</span><span class="vs">}</span></a>
+<a class="sourceLine" id="cb20-25" title="25"><span class="vs">    \includegraphics{</span><span class="sc">%s</span><span class="vs">}</span></a>
+<a class="sourceLine" id="cb20-26" title="26"><span class="vs">\end</span><span class="sc">{document}</span><span class="vs"> &quot;&quot;&quot;</span></a>
+<a class="sourceLine" id="cb20-27" title="27"></a>
+<a class="sourceLine" id="cb20-28" title="28"><span class="kw">def</span> graphviz(key, value, <span class="bu">format</span>, meta):</a>
+<a class="sourceLine" id="cb20-29" title="29">    <span class="cf">if</span> key <span class="op">==</span> <span class="st">&#39;CodeBlock&#39;</span>:</a>
+<a class="sourceLine" id="cb20-30" title="30">        [[ident, classes, keyvals], code] <span class="op">=</span> value</a>
+<a class="sourceLine" id="cb20-31" title="31">        <span class="cf">if</span> <span class="st">&quot;graph&quot;</span> <span class="kw">in</span> classes:</a>
+<a class="sourceLine" id="cb20-32" title="32">            caption, typef, keyvals <span class="op">=</span> get_caption(keyvals)</a>
+<a class="sourceLine" id="cb20-33" title="33">            prog, keyvals <span class="op">=</span> get_value(keyvals, <span class="st">u&quot;prog&quot;</span>, <span class="st">u&quot;dot&quot;</span>)</a>
+<a class="sourceLine" id="cb20-34" title="34">            filetype <span class="op">=</span> get_extension(<span class="bu">format</span>, <span class="st">&quot;svg&quot;</span>, html<span class="op">=</span><span class="st">&quot;svg&quot;</span>, latex<span class="op">=</span><span class="st">&quot;pdf&quot;</span>)</a>
+<a class="sourceLine" id="cb20-35" title="35">            md5 <span class="op">=</span> hashlib.sha1(code.encode(sys.getfilesystemencoding())).hexdigest()</a>
+<a class="sourceLine" id="cb20-36" title="36">            basename, _ <span class="op">=</span> get_value(keyvals, <span class="st">u&quot;fileName&quot;</span>)</a>
+<a class="sourceLine" id="cb20-37" title="37">            <span class="cf">if</span> basename <span class="kw">is</span> <span class="va">None</span>:</a>
+<a class="sourceLine" id="cb20-38" title="38">                sys.stderr.write(<span class="st">&#39;not set filename in </span><span class="sc">{}</span><span class="ch">\n</span><span class="st">&#39;</span>)</a>
+<a class="sourceLine" id="cb20-39" title="39">                exit(<span class="op">-</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb20-40" title="40"></a>
+<a class="sourceLine" id="cb20-41" title="41">            latex, _ <span class="op">=</span> get_value(keyvals, <span class="st">u&quot;latex&quot;</span>)</a>
+<a class="sourceLine" id="cb20-42" title="42">            <span class="cf">if</span> latex <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</a>
+<a class="sourceLine" id="cb20-43" title="43">                filetype <span class="op">=</span> <span class="st">&#39;png&#39;</span></a>
+<a class="sourceLine" id="cb20-44" title="44"></a>
+<a class="sourceLine" id="cb20-45" title="45">            filename <span class="op">=</span> basename <span class="op">+</span> <span class="st">&#39;.&#39;</span> <span class="op">+</span> filetype</a>
+<a class="sourceLine" id="cb20-46" title="46">            <span class="cf">while</span> <span class="va">True</span>:</a>
+<a class="sourceLine" id="cb20-47" title="47">                <span class="cf">try</span>:</a>
+<a class="sourceLine" id="cb20-48" title="48">                    datapath <span class="op">=</span> meta[<span class="st">&#39;datapath&#39;</span>][<span class="st">&#39;c&#39;</span>]</a>
+<a class="sourceLine" id="cb20-49" title="49">                    drafts_idx <span class="op">=</span> datapath.find(<span class="st">&#39;_drafts&#39;</span>)</a>
+<a class="sourceLine" id="cb20-50" title="50">                    <span class="cf">if</span> drafts_idx <span class="op">&gt;</span> <span class="dv">0</span>:</a>
+<a class="sourceLine" id="cb20-51" title="51">                        prefix <span class="op">=</span> datapath[drafts_idx<span class="op">+</span><span class="dv">8</span>:<span class="op">-</span><span class="dv">3</span>]</a>
+<a class="sourceLine" id="cb20-52" title="52">                    <span class="cf">else</span>:</a>
+<a class="sourceLine" id="cb20-53" title="53">                        prefix <span class="op">=</span> datapath[datapath.find(<span class="st">&#39;_posts&#39;</span>)<span class="op">+</span><span class="dv">7</span>:<span class="op">-</span><span class="dv">3</span>]</a>
+<a class="sourceLine" id="cb20-54" title="54">                    filepath <span class="op">=</span> os.path.join(prefix, dir_name, filename)</a>
+<a class="sourceLine" id="cb20-55" title="55">                    <span class="cf">if</span> drafts_idx <span class="op">&gt;</span> <span class="dv">0</span>:</a>
+<a class="sourceLine" id="cb20-56" title="56">                        localpath <span class="op">=</span> os.path.join(top_path, <span class="st">&quot;source/assets&quot;</span>, filepath)</a>
+<a class="sourceLine" id="cb20-57" title="57">                        remotepath <span class="op">=</span> os.path.join(<span class="st">&quot;/assets&quot;</span>, filepath)</a>
+<a class="sourceLine" id="cb20-58" title="58">                    <span class="cf">else</span>:</a>
+<a class="sourceLine" id="cb20-59" title="59">                        localpath <span class="op">=</span> os.path.join(top_path, <span class="st">&quot;source/_assets&quot;</span>, filepath)</a>
+<a class="sourceLine" id="cb20-60" title="60">                        remotepath <span class="op">=</span> os.path.join(git_path, filepath) <span class="op">+</span> git_post</a>
+<a class="sourceLine" id="cb20-61" title="61">                    <span class="cf">if</span> os.path.exists(localpath):</a>
+<a class="sourceLine" id="cb20-62" title="62">                        <span class="cf">if</span> os.path.exists(localpath <span class="op">+</span> <span class="st">&#39;.&#39;</span> <span class="op">+</span> md5):</a>
+<a class="sourceLine" id="cb20-63" title="63">                            <span class="cf">break</span></a>
+<a class="sourceLine" id="cb20-64" title="64">                        <span class="cf">else</span>:</a>
+<a class="sourceLine" id="cb20-65" title="65">                            os.system(<span class="st">&#39;rm -f </span><span class="sc">%s</span><span class="st">*&#39;</span> <span class="op">%</span> localpath)</a>
+<a class="sourceLine" id="cb20-66" title="66"></a>
+<a class="sourceLine" id="cb20-67" title="67">                    <span class="bu">dir</span> <span class="op">=</span> os.path.dirname(localpath)</a>
+<a class="sourceLine" id="cb20-68" title="68">                    <span class="cf">if</span> <span class="kw">not</span> os.path.isdir(<span class="bu">dir</span>):</a>
+<a class="sourceLine" id="cb20-69" title="69">                        os.makedirs(<span class="bu">dir</span>)</a>
+<a class="sourceLine" id="cb20-70" title="70"></a>
+<a class="sourceLine" id="cb20-71" title="71">                    <span class="cf">if</span> latex <span class="kw">is</span> <span class="va">None</span>:</a>
+<a class="sourceLine" id="cb20-72" title="72">                        g <span class="op">=</span> pygraphviz.AGraph(string<span class="op">=</span>code)</a>
+<a class="sourceLine" id="cb20-73" title="73">                        g.layout()</a>
+<a class="sourceLine" id="cb20-74" title="74">                        g.draw(localpath, prog<span class="op">=</span>prog)</a>
+<a class="sourceLine" id="cb20-75" title="75">                    <span class="cf">else</span>:</a>
+<a class="sourceLine" id="cb20-76" title="76">                        ladot_file <span class="op">=</span> os.path.join(tmp_path, <span class="st">&#39;</span><span class="sc">{}</span><span class="st">.ladot&#39;</span>.<span class="bu">format</span>(basename))</a>
+<a class="sourceLine" id="cb20-77" title="77">                        latex_file <span class="op">=</span> os.path.join(tmp_path, <span class="st">&#39;</span><span class="sc">{}</span><span class="st">.latex&#39;</span>.<span class="bu">format</span>(basename))</a>
+<a class="sourceLine" id="cb20-78" title="78"></a>
+<a class="sourceLine" id="cb20-79" title="79">                        <span class="cf">with</span> <span class="bu">open</span>(ladot_file, <span class="st">&#39;w&#39;</span>) <span class="im">as</span> f:</a>
+<a class="sourceLine" id="cb20-80" title="80">                            f.write(code)</a>
+<a class="sourceLine" id="cb20-81" title="81"></a>
+<a class="sourceLine" id="cb20-82" title="82">                        <span class="cf">with</span> <span class="bu">open</span>(latex_file, <span class="st">&#39;w&#39;</span>) <span class="im">as</span> f:</a>
+<a class="sourceLine" id="cb20-83" title="83">                            f.write(doc_tmpl <span class="op">%</span> (<span class="st">&#39;</span><span class="sc">{}</span><span class="st">.tex&#39;</span>.<span class="bu">format</span>(basename), <span class="st">&#39;</span><span class="sc">{}</span><span class="st">.ps&#39;</span>.<span class="bu">format</span>(basename)))</a>
+<a class="sourceLine" id="cb20-84" title="84"></a>
+<a class="sourceLine" id="cb20-85" title="85">                        resolution, _ <span class="op">=</span> get_value(keyvals, <span class="st">u&quot;resolution&quot;</span>)</a>
+<a class="sourceLine" id="cb20-86" title="86">                        <span class="cf">if</span> resolution <span class="kw">is</span> <span class="va">None</span>:</a>
+<a class="sourceLine" id="cb20-87" title="87">                            resolution <span class="op">=</span> <span class="st">&quot;1200&quot;</span></a>
+<a class="sourceLine" id="cb20-88" title="88">                        density, _ <span class="op">=</span> get_value(keyvals, <span class="st">u&quot;density&quot;</span>)</a>
+<a class="sourceLine" id="cb20-89" title="89">                        <span class="cf">if</span> density <span class="kw">is</span> <span class="va">None</span>:</a>
+<a class="sourceLine" id="cb20-90" title="90">                            density <span class="op">=</span> <span class="st">&quot;200&quot;</span></a>
+<a class="sourceLine" id="cb20-91" title="91"></a>
+<a class="sourceLine" id="cb20-92" title="92">                        os.system(<span class="st">&#39;</span><span class="sc">{}</span><span class="st">/ladot </span><span class="sc">{}</span><span class="st"> </span><span class="sc">{}</span><span class="st"> </span><span class="sc">{}</span><span class="st"> </span><span class="sc">{}</span><span class="st">&#39;</span>.<span class="bu">format</span>(top_path, ladot_file, tmp_path, resolution, density))</a>
+<a class="sourceLine" id="cb20-93" title="93">                        <span class="cf">if</span> os.path.exists(<span class="st">&#39;</span><span class="sc">%s</span><span class="st">.png&#39;</span> <span class="op">%</span> os.path.join(tmp_path, basename)):</a>
+<a class="sourceLine" id="cb20-94" title="94">                            os.system(<span class="st">&#39;cp </span><span class="sc">%s</span><span class="st">.png </span><span class="sc">%s</span><span class="st">&#39;</span> <span class="op">%</span> (os.path.join(tmp_path, basename), localpath))</a>
+<a class="sourceLine" id="cb20-95" title="95"></a>
+<a class="sourceLine" id="cb20-96" title="96">                    sys.stderr.write(<span class="st">&#39;Local Path [&#39;</span> <span class="op">+</span> localpath <span class="op">+</span> <span class="st">&#39;]</span><span class="ch">\n</span><span class="st">&#39;</span>)</a>
+<a class="sourceLine" id="cb20-97" title="97">                    sys.stderr.write(<span class="st">&#39;Remote Path [&#39;</span> <span class="op">+</span> remotepath <span class="op">+</span> <span class="st">&#39;]</span><span class="ch">\n</span><span class="st">&#39;</span>)</a>
+<a class="sourceLine" id="cb20-98" title="98">                    os.system(<span class="st">&#39;touch </span><span class="sc">%s</span><span class="st">.</span><span class="sc">%s</span><span class="st">&#39;</span> <span class="op">%</span> (localpath, md5))</a>
+<a class="sourceLine" id="cb20-99" title="99">                <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</a>
+<a class="sourceLine" id="cb20-100" title="100">                    sys.stderr.write(<span class="st">&#39;</span><span class="sc">{}</span><span class="st">: not found datapath in meta, please patch/run.sh</span><span class="ch">\n</span><span class="st">&#39;</span>.<span class="bu">format</span>(e))</a>
+<a class="sourceLine" id="cb20-101" title="101">                    exit(<span class="op">-</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb20-102" title="102">                <span class="cf">finally</span>:</a>
+<a class="sourceLine" id="cb20-103" title="103">                    <span class="cf">break</span></a>
+<a class="sourceLine" id="cb20-104" title="104"></a>
+<a class="sourceLine" id="cb20-105" title="105">            image <span class="op">=</span> Image([ident, classes, keyvals],</a>
+<a class="sourceLine" id="cb20-106" title="106">                          caption,</a>
+<a class="sourceLine" id="cb20-107" title="107">                          [remotepath, typef])</a>
+<a class="sourceLine" id="cb20-108" title="108"></a>
+<a class="sourceLine" id="cb20-109" title="109">            <span class="cf">return</span> Para([image])</a>
+<a class="sourceLine" id="cb20-110" title="110"></a>
+<a class="sourceLine" id="cb20-111" title="111"><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</a>
+<a class="sourceLine" id="cb20-112" title="112">    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(tmp_path):</a>
+<a class="sourceLine" id="cb20-113" title="113">        os.mkdir(tmp_path)</a>
+<a class="sourceLine" id="cb20-114" title="114">    toJSONFilter(graphviz)</a></code></pre></div>
+<h2 id="ladot"><span class="header-section-number">4.3</span> ladot</h2>
+<div class="sourceCode" id="cb21" data-startfrom="1"><pre class="sourceCode numberSource perl numberLines"><code class="sourceCode perl"><a class="sourceLine" id="cb21-1" title="1"><span class="kw">#!/usr/bin/perl</span></a>
+<a class="sourceLine" id="cb21-2" title="2"></a>
+<a class="sourceLine" id="cb21-3" title="3"><span class="dt">%paststubs</span> = ();</a>
+<a class="sourceLine" id="cb21-4" title="4"></a>
+<a class="sourceLine" id="cb21-5" title="5"><span class="kw">if</span> (<span class="dt">@ARGV</span> != <span class="dv">4</span>) {</a>
+<a class="sourceLine" id="cb21-6" title="6">    <span class="fu">die</span> <span class="kw">&quot;</span><span class="st">Usage: </span><span class="dt">$0</span><span class="st"> [infile] [workspace dir] [resolution] [density]</span><span class="kw">&quot;</span>;</a>
+<a class="sourceLine" id="cb21-7" title="7">    }</a>
+<a class="sourceLine" id="cb21-8" title="8"></a>
+<a class="sourceLine" id="cb21-9" title="9"><span class="co"># switch to workspace dir</span></a>
+<a class="sourceLine" id="cb21-10" title="10"><span class="fu">chdir</span>(<span class="dt">$ARGV</span>[<span class="dv">1</span>]) <span class="kw">or</span> <span class="fu">die</span> <span class="kw">&quot;</span><span class="dt">$!</span><span class="kw">&quot;</span>;</a>
+<a class="sourceLine" id="cb21-11" title="11"><span class="dt">$resolution</span> = <span class="dt">$ARGV</span>[<span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb21-12" title="12"><span class="dt">$density</span> = <span class="dt">$ARGV</span>[<span class="dv">3</span>]</a>
+<a class="sourceLine" id="cb21-13" title="13"></a>
+<a class="sourceLine" id="cb21-14" title="14"><span class="co"># Open input and output files</span></a>
+<a class="sourceLine" id="cb21-15" title="15"><span class="fu">open</span>(INFILE, <span class="kw">&quot;</span><span class="st">&lt;</span><span class="dt">$ARGV</span><span class="st">[0]</span><span class="kw">&quot;</span>);</a>
+<a class="sourceLine" id="cb21-16" title="16"><span class="dt">$ARGV</span>[<span class="dv">0</span>] =~ <span class="kw">/</span><span class="ch">(</span><span class="ot">.</span><span class="ch">*)</span><span class="ot">\.ladot</span><span class="ch">$</span><span class="kw">/</span>;</a>
+<a class="sourceLine" id="cb21-17" title="17"><span class="dt">$basename</span> = <span class="dt">$1</span>;</a>
+<a class="sourceLine" id="cb21-18" title="18"></a>
+<a class="sourceLine" id="cb21-19" title="19"><span class="kw">if</span> (<span class="dt">$basename</span> <span class="kw">eq</span> <span class="kw">&quot;&quot;</span>) {</a>
+<a class="sourceLine" id="cb21-20" title="20">    <span class="dt">$basename</span> = <span class="dt">$ARGV</span>[<span class="dv">0</span>];</a>
+<a class="sourceLine" id="cb21-21" title="21">    }</a>
+<a class="sourceLine" id="cb21-22" title="22"><span class="fu">open</span>(DOTOUT, <span class="kw">&quot;</span><span class="st">&gt;</span><span class="dt">$basename</span><span class="st">.dot</span><span class="kw">&quot;</span>);</a>
+<a class="sourceLine" id="cb21-23" title="23"><span class="fu">open</span>(TEXOUT, <span class="kw">&quot;</span><span class="st">&gt;</span><span class="dt">$basename</span><span class="st">.tex</span><span class="kw">&quot;</span>);</a>
+<a class="sourceLine" id="cb21-24" title="24"></a>
+<a class="sourceLine" id="cb21-25" title="25"><span class="kw">while</span> (<span class="dt">$line</span> = <span class="kw">&lt;INFILE&gt;</span>)</a>
+<a class="sourceLine" id="cb21-26" title="26">    {</a>
+<a class="sourceLine" id="cb21-27" title="27">    <span class="kw">while</span> (<span class="dt">$line</span> =~ <span class="kw">/</span><span class="ch">(</span><span class="ot">\$.</span><span class="ch">*?</span><span class="ot">\$</span><span class="ch">)(</span><span class="ot">\(</span><span class="ch">(</span><span class="bn">\d</span><span class="ch">+)</span><span class="ot">\)</span><span class="ch">)?</span><span class="kw">/</span>) {</a>
+<a class="sourceLine" id="cb21-28" title="28">        <span class="co"># print &quot;LINE: $line&quot;;</span></a>
+<a class="sourceLine" id="cb21-29" title="29">        <span class="dt">$sizehint</span> = <span class="dt">$3</span>;</a>
+<a class="sourceLine" id="cb21-30" title="30">        <span class="co"># print &quot;SIZEHINT: $sizehint\n&quot;;</span></a>
+<a class="sourceLine" id="cb21-31" title="31">        <span class="dt">$tex</span> = <span class="dt">$1</span>;</a>
+<a class="sourceLine" id="cb21-32" title="32">        <span class="dt">$stub</span> = make_stub(<span class="dt">$tex</span>, <span class="dt">$sizehint</span>);</a>
+<a class="sourceLine" id="cb21-33" title="33">        <span class="dt">$line</span> =~ <span class="kw">s/</span><span class="ch">(</span><span class="ot">\$.</span><span class="ch">*?</span><span class="ot">\$</span><span class="ch">)(</span><span class="ot">\(</span><span class="ch">(</span><span class="bn">\d</span><span class="ch">+)</span><span class="ot">\)</span><span class="ch">)?</span><span class="kw">/</span><span class="dt">$stub</span><span class="st">/;</span></a>
+<a class="sourceLine" id="cb21-34" title="34"><span class="st">        print TEXOUT &quot;\\psfrag{</span><span class="dt">$stub</span><span class="st">}[</span><span class="kw">cc</span>][cc]{<span class="dt">$tex</span>}\n<span class="kw">&quot;</span><span class="st">;</span></a>
+<a class="sourceLine" id="cb21-35" title="35"><span class="st">        }</span></a>
+<a class="sourceLine" id="cb21-36" title="36"><span class="st">    print DOTOUT </span><span class="dt">$line</span><span class="st">;</span></a>
+<a class="sourceLine" id="cb21-37" title="37"><span class="st">    }</span></a>
+<a class="sourceLine" id="cb21-38" title="38"></a>
+<a class="sourceLine" id="cb21-39" title="39"><span class="st">close(DOTOUT);</span></a>
+<a class="sourceLine" id="cb21-40" title="40"><span class="st">close(TEXOUT);</span></a>
+<a class="sourceLine" id="cb21-41" title="41"></a>
+<a class="sourceLine" id="cb21-42" title="42"><span class="st"># Generate postscript of the graph, with stubs</span></a>
+<a class="sourceLine" id="cb21-43" title="43"><span class="st">system(</span><span class="kw">&quot;</span>dot -Tps <span class="dt">$basename</span>.dot &gt; <span class="dt">$basename</span>.ps<span class="kw">&quot;</span><span class="st">);</span></a>
+<a class="sourceLine" id="cb21-44" title="44"></a>
+<a class="sourceLine" id="cb21-45" title="45"><span class="st"># LaTeX</span></a>
+<a class="sourceLine" id="cb21-46" title="46"><span class="st">if (-e </span><span class="kw">&quot;</span><span class="dt">$basename</span>.latex<span class="kw">&quot;</span><span class="st">) {</span></a>
+<a class="sourceLine" id="cb21-47" title="47"><span class="st">    system(</span><span class="kw">&quot;</span>latex <span class="dt">$basename</span>.latex &gt; <span class="dt">$basename</span>.latex.log<span class="kw">&quot;</span><span class="st">);</span></a>
+<a class="sourceLine" id="cb21-48" title="48"><span class="st">    if (-e </span><span class="kw">&quot;</span><span class="dt">$basename</span>.dvi<span class="kw">&quot;</span><span class="st">) {</span></a>
+<a class="sourceLine" id="cb21-49" title="49"><span class="st">        system(</span><span class="kw">&quot;</span>dvips <span class="dt">$basename</span>.dvi -D <span class="dt">$resolution</span> <span class="kw">-o</span> <span class="dt">$basename</span>.dvips &gt; <span class="dt">$basename</span>.dvips.log<span class="kw">&quot;</span><span class="st">);</span></a>
+<a class="sourceLine" id="cb21-50" title="50"><span class="st">        if (-e </span><span class="kw">&quot;</span><span class="dt">$basename</span>.dvips<span class="kw">&quot;</span><span class="st">) {</span></a>
+<a class="sourceLine" id="cb21-51" title="51"><span class="st">            system(</span><span class="kw">&quot;</span>pstoimg <span class="dt">$basename</span>.dvips -density <span class="dt">$density</span> -out <span class="dt">$basename</span>.png &gt; <span class="dt">$basename</span>.pstoimg.log<span class="kw">&quot;</span><span class="st">);</span></a>
+<a class="sourceLine" id="cb21-52" title="52"><span class="st">        }</span></a>
+<a class="sourceLine" id="cb21-53" title="53"><span class="st">    }</span></a>
+<a class="sourceLine" id="cb21-54" title="54"><span class="st">}</span></a>
+<a class="sourceLine" id="cb21-55" title="55"></a>
+<a class="sourceLine" id="cb21-56" title="56"><span class="st"># Graphviz 2.2 and later outputs postscript in which psfrag won&#39;t replace tags.</span></a>
+<a class="sourceLine" id="cb21-57" title="57"><span class="st"># This is psfrag&#39;s fault, but our problem.  Here&#39;s a fix.</span></a>
+<a class="sourceLine" id="cb21-58" title="58"><span class="st">system(</span><span class="kw">&quot;</span>sed -ibackup \<span class="kw">&quot;</span><span class="st">s/xshow/pop show/g\&quot; </span><span class="dt">$basename</span><span class="st">.ps</span><span class="kw">&quot;</span>);</a>
+<a class="sourceLine" id="cb21-59" title="59"><span class="co"># There is a way to get sed to modify in place with no backup file, but</span></a>
+<a class="sourceLine" id="cb21-60" title="60"><span class="co"># it seems the syntax of this option is slightly different in different</span></a>
+<a class="sourceLine" id="cb21-61" title="61"><span class="co"># versions of sed.  So we just remove the backup ourselves.</span></a>
+<a class="sourceLine" id="cb21-62" title="62"><span class="co"># unlink(&quot;$basename.psbackup&quot;);</span></a>
+<a class="sourceLine" id="cb21-63" title="63"></a>
+<a class="sourceLine" id="cb21-64" title="64"><span class="co"># unlink(&quot;$basename.dot&quot;);</span></a>
+<a class="sourceLine" id="cb21-65" title="65"></a>
+<a class="sourceLine" id="cb21-66" title="66"><span class="kw">sub </span><span class="fu">make_stub</span>(<span class="dt">$$</span>)</a>
+<a class="sourceLine" id="cb21-67" title="67">    {</a>
+<a class="sourceLine" id="cb21-68" title="68">    <span class="co"># Make a placeholder (stub) for the TeX which will be substituted for the</span></a>
+<a class="sourceLine" id="cb21-69" title="69">    <span class="co"># real formatted TeX later.  Arguments are TeX code and an optional</span></a>
+<a class="sourceLine" id="cb21-70" title="70">    <span class="co"># &quot;hint&quot; about the desired width of the box.</span></a>
+<a class="sourceLine" id="cb21-71" title="71"></a>
+<a class="sourceLine" id="cb21-72" title="72">    <span class="co"># This is tricky because the length of the stub</span></a>
+<a class="sourceLine" id="cb21-73" title="73">    <span class="co"># that we choose affects how Dot formats the PostScript.  We use the</span></a>
+<a class="sourceLine" id="cb21-74" title="74">    <span class="co"># heuristic that the length of the LaTeX code is correlated with the</span></a>
+<a class="sourceLine" id="cb21-75" title="75">    <span class="co"># amount of space needed to render the LaTeX code.</span></a>
+<a class="sourceLine" id="cb21-76" title="76"></a>
+<a class="sourceLine" id="cb21-77" title="77">    <span class="kw">if</span> (<span class="dt">$paststubs</span>{<span class="dt">$_</span>[<span class="dv">0</span>]}) {</a>
+<a class="sourceLine" id="cb21-78" title="78">        <span class="kw">return</span> <span class="dt">$paststubs</span>{<span class="dt">$_</span>[<span class="dv">0</span>]};</a>
+<a class="sourceLine" id="cb21-79" title="79">        }</a>
+<a class="sourceLine" id="cb21-80" title="80"></a>
+<a class="sourceLine" id="cb21-81" title="81">    <span class="kw">my</span> <span class="dt">$length</span> = <span class="fu">int</span>(<span class="dt">$_</span>[<span class="dv">1</span>]);</a>
+<a class="sourceLine" id="cb21-82" title="82">    <span class="kw">if</span> (<span class="dt">$length</span> == <span class="dv">0</span>) {</a>
+<a class="sourceLine" id="cb21-83" title="83">        <span class="co"># no sizehint given</span></a>
+<a class="sourceLine" id="cb21-84" title="84">        <span class="dt">$length</span> = <span class="fu">length</span>(<span class="dt">$_</span>[<span class="dv">0</span>]) - <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb21-85" title="85">        }</a>
+<a class="sourceLine" id="cb21-86" title="86">    <span class="co"># print &quot;LENGTH of $_[0]: $length\n&quot;;</span></a>
+<a class="sourceLine" id="cb21-87" title="87">    <span class="co"># The first character of an unquoted string in Dot has to be one of these.</span></a>
+<a class="sourceLine" id="cb21-88" title="88">    <span class="dt">$first_charset</span>=<span class="kw">&quot;</span><span class="st">_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</span><span class="kw">&quot;</span>;</a>
+<a class="sourceLine" id="cb21-89" title="89">    <span class="co"># Subsequent characters can be any of these.</span></a>
+<a class="sourceLine" id="cb21-90" title="90">    <span class="dt">$subseq_charset</span>=<span class="kw">&quot;</span><span class="st">1234567890</span><span class="dt">$first_charset</span><span class="kw">&quot;</span>;</a>
+<a class="sourceLine" id="cb21-91" title="91">    <span class="kw">my</span> <span class="dt">$stub</span> = <span class="kw">&quot;&quot;</span>;</a>
+<a class="sourceLine" id="cb21-92" title="92">    <span class="kw">for</span> (<span class="kw">my</span> <span class="dt">$i</span> = <span class="dv">1</span>; <span class="dt">$i</span> &lt;= <span class="dt">$length</span>; <span class="dt">$i</span>++) {</a>
+<a class="sourceLine" id="cb21-93" title="93">        <span class="kw">if</span> (<span class="dt">$i</span> == <span class="dv">1</span>) {</a>
+<a class="sourceLine" id="cb21-94" title="94">            <span class="dt">$charset</span> = <span class="dt">$first_charset</span>;</a>
+<a class="sourceLine" id="cb21-95" title="95">            }</a>
+<a class="sourceLine" id="cb21-96" title="96">        <span class="kw">else</span> {</a>
+<a class="sourceLine" id="cb21-97" title="97">            <span class="dt">$charset</span> = <span class="dt">$subseq_charset</span>;</a>
+<a class="sourceLine" id="cb21-98" title="98">            }</a>
+<a class="sourceLine" id="cb21-99" title="99">        <span class="dt">$stub</span> .= <span class="fu">substr</span>(<span class="dt">$charset</span>, <span class="fu">int</span>(<span class="fu">rand</span>(<span class="fu">length</span>(<span class="dt">$charset</span>))), <span class="dv">1</span>);</a>
+<a class="sourceLine" id="cb21-100" title="100">        }</a>
+<a class="sourceLine" id="cb21-101" title="101">    <span class="co">#print &quot;NEW STUB for $_[0]: $stub\n&quot;;</span></a>
+<a class="sourceLine" id="cb21-102" title="102">    <span class="dt">$paststubs</span>{<span class="dt">$_</span>[<span class="dv">0</span>]} = <span class="dt">$stub</span>;</a>
+<a class="sourceLine" id="cb21-103" title="103">    <span class="kw">return</span> <span class="dt">$stub</span>;</a>
+<a class="sourceLine" id="cb21-104" title="104">    }</a></code></pre></div>
+<h1 id="references"><span class="header-section-number">5</span> References</h1>
 <ol>
 <li><p>http://www.nrstickley.com/pandoc-markdown</p></li>
 <li><p>http://github.com/qrsforever/git-blog-setting</p></li>
 <li><p>https://zhu45.org/posts/2017/May/25/draw-a-neural-network-through-graphviz</p></li>
+<li><p>https://www.iteye.com/blog/gashero-1748795#id32</p></li>
+<li><p>https://blog.csdn.net/mouday/article/details/80902992</p></li>
+<li><p>https://blog.csdn.net/sd10086/article/details/52979462</p></li>
+<li><p>https://zhuanlan.zhihu.com/p/51578351</p></li>
 </ol>
 </body>
 </html>
@@ -700,7 +1627,7 @@ sudo pip3 install pygraphviz pandocfilters</code></pre>
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-07-25T14:01:22.669Z" itemprop="dateUpdated">2019-07-25 22:01:22</time>
+    最后更新时间：<time datetime="2020-05-23T13:02:54.071Z" itemprop="dateUpdated">2020-05-23 21:02:54</time>
 </span><br>
 
 
@@ -724,7 +1651,7 @@ sudo pip3 install pygraphviz pandocfilters</code></pre>
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How/">How</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DrawIt/">DrawIt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How/">How</a></li></ul>
 
 
             
@@ -734,7 +1661,7 @@ sudo pip3 install pygraphviz pandocfilters</code></pre>
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2019/07/24/Tutorial/graphviz/&title=《Graphviz绘图》 — 大地小神&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2019/07/24/Tutorial/graphviz/&title=《(原创)Graphviz绘图》 — 大地小神&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -744,7 +1671,7 @@ sudo pip3 install pygraphviz pandocfilters</code></pre>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2019/07/24/Tutorial/graphviz/&title=《Graphviz绘图》 — 大地小神&source=
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2019/07/24/Tutorial/graphviz/&title=《(原创)Graphviz绘图》 — 大地小神&source=
 
 
   
@@ -763,7 +1690,7 @@ sudo pip3 install pygraphviz pandocfilters</code></pre>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Graphviz绘图》 — 大地小神&url=https://qrsforever.github.io/2019/07/24/Tutorial/graphviz/&via=https://qrsforever.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《(原创)Graphviz绘图》 — 大地小神&url=https://qrsforever.github.io/2019/07/24/Tutorial/graphviz/&via=https://qrsforever.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -788,7 +1715,14 @@ sudo pip3 install pygraphviz pandocfilters</code></pre>
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/07/31/Tutorial/doxygen/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Doxygen文档生成</h4>
+      </a>
+    </div>
   
 
   
@@ -894,7 +1828,7 @@ sudo pip3 install pygraphviz pandocfilters</code></pre>
         </p>
     </div>
     <div class="bottom">
-        <p><span>qrsforever &copy; 2017 - 2019</span>
+        <p><span>qrsforever &copy; 2017 - 2020</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -912,7 +1846,7 @@ sudo pip3 install pygraphviz pandocfilters</code></pre>
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2019/07/24/Tutorial/graphviz/&title=《Graphviz绘图》 — 大地小神&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2019/07/24/Tutorial/graphviz/&title=《(原创)Graphviz绘图》 — 大地小神&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -922,7 +1856,7 @@ sudo pip3 install pygraphviz pandocfilters</code></pre>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2019/07/24/Tutorial/graphviz/&title=《Graphviz绘图》 — 大地小神&source=
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2019/07/24/Tutorial/graphviz/&title=《(原创)Graphviz绘图》 — 大地小神&source=
 
 
   
@@ -941,7 +1875,7 @@ sudo pip3 install pygraphviz pandocfilters</code></pre>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Graphviz绘图》 — 大地小神&url=https://qrsforever.github.io/2019/07/24/Tutorial/graphviz/&via=https://qrsforever.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《(原创)Graphviz绘图》 — 大地小神&url=https://qrsforever.github.io/2019/07/24/Tutorial/graphviz/&via=https://qrsforever.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>

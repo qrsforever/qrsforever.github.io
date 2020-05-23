@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?cb4be66237379541488b8502a6eca006"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>(draft)梯度下降算法 | 大地小神 | 你们都是大傻瓜, 我是天下大赢家</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Draft,Guide">
+    <meta name="description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta name="keywords" content="Draft,Guide">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(draft)梯度下降算法">
+<meta property="og:url" content="https://qrsforever.github.io/2019/09/20/ML/Guide/optimizing_gradient_descent/index.html">
+<meta property="og:site_name" content="大地小神">
+<meta property="og:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://gitee.com/lidongai/assets_blog_post/raw/master/ML/Guide/sgd_algorithms_tree.png">
+<meta property="og:image" content="https://gitee.com/lidongai/assets_blog_post/raw/master/ML/Guide/Momentum_vs_NAG.png">
+<meta property="og:updated_time" content="2020-05-23T13:02:54.071Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="(draft)梯度下降算法">
+<meta name="twitter:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta name="twitter:image" content="https://gitee.com/lidongai/assets_blog_post/raw/master/ML/Guide/sgd_algorithms_tree.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="大地小神" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">qrsforever</h5>
+          <a href="mailto:985612771@qq.com" title="985612771@qq.com" class="mail">985612771@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://gitee.com/lidongai" target="_blank" >
+                <i class="icon icon-lg icon-code-fork"></i>
+                Gitee
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/705723886/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                Twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2017/08/30/CV"  >
+                <i class="icon icon-lg icon-user-circle"></i>
+                Author
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">(draft)梯度下降算法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">(draft)梯度下降算法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-09-20T02:18:25.000Z" itemprop="datePublished" class="page-time">
+  2019-09-20
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#keys"><span class="post-toc-text">1 Keys</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#newton-method"><span class="post-toc-text">1.1 Newton Method</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#defination"><span class="post-toc-text">2 Defination</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#draft"><span class="post-toc-text">3 Draft</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#gradient-descent"><span class="post-toc-text">4 Gradient descent</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#bgd-batch-gradient-descent"><span class="post-toc-text">4.1 BGD (batch gradient descent)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#sgd-stochastic-gradient-descent"><span class="post-toc-text">4.2 SGD (stochastic gradient descent)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#sgd-with-gaussian-noise"><span class="post-toc-text">4.2.1 SGD with Gaussian Noise</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mgd-mini-batch-gradient-descent"><span class="post-toc-text">4.3 MGD (mini-batch gradient descent)</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#algorithms"><span class="post-toc-text">5 Algorithms</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#momentum"><span class="post-toc-text">5.1 Momentum</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#nag-nesterovs-accelerated-gradient"><span class="post-toc-text">5.2 NAG (Nesterov&#39;s accelerated gradient)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#adagrad"><span class="post-toc-text">5.3 Adagrad</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#adadelta"><span class="post-toc-text">5.4 Adadelta</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#accumulate-over-window"><span class="post-toc-text">5.4.1 Accumulate Over Window</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#correct-units-with-hessian-approximation"><span class="post-toc-text">5.4.2 Correct Units with Hessian Approximation</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#rmsprop"><span class="post-toc-text">5.5 RMSprop</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#adam"><span class="post-toc-text">5.6 Adam</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#adamax"><span class="post-toc-text">5.7 AdaMax</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#nadam"><span class="post-toc-text">5.8 Nadam</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#amsgrad"><span class="post-toc-text">5.9 AMSGrad</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#compare"><span class="post-toc-text">6 Compare</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#references"><span class="post-toc-text">7 References</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-ML/Guide/optimizing_gradient_descent"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">(draft)梯度下降算法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-09-20 10:18:25" datetime="2019-09-20T02:18:25.000Z"  itemprop="datePublished">2019-09-20</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+  <script src="/usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+</head>
+<body>
+<p><a href="https://gitee.com/lidongai/code_blog_post/raw/master/ML/Guide/optimizing_gradient_descent.md" target="_blank" rel="noopener">RAWCODE</a></p>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#keys">Keys</a>
+<ul>
+<li><a href="#newton-method">Newton Method</a></li>
+</ul></li>
+<li><a href="#defination">Defination</a></li>
+<li><a href="#draft">Draft</a></li>
+<li><a href="#gradient-descent">Gradient descent</a>
+<ul>
+<li><a href="#bgd-batch-gradient-descent">BGD (batch gradient descent)</a></li>
+<li><a href="#sgd-stochastic-gradient-descent">SGD (stochastic gradient descent)</a></li>
+<li><a href="#mgd-mini-batch-gradient-descent">MGD (mini-batch gradient descent)</a></li>
+</ul></li>
+<li><a href="#algorithms">Algorithms</a>
+<ul>
+<li><a href="#momentum">Momentum</a></li>
+<li><a href="#nag-nesterovs-accelerated-gradient">NAG (Nesterov's accelerated gradient)</a></li>
+<li><a href="#adagrad">Adagrad</a></li>
+<li><a href="#adadelta">Adadelta</a>
+<ul>
+<li><a href="#accumulate-over-window">Accumulate Over Window</a></li>
+<li><a href="#correct-units-with-hessian-approximation">Correct Units with Hessian Approximation</a></li>
+</ul></li>
+<li><a href="#rmsprop">RMSprop</a></li>
+<li><a href="#adam">Adam</a></li>
+<li><a href="#adamax">AdaMax</a></li>
+<li><a href="#nadam">Nadam</a></li>
+<li><a href="#amsgrad">AMSGrad</a></li>
+</ul></li>
+<li><a href="#compare">Compare</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+<!-- vim-markdown-toc -->
+<a id="more"></a>
+<h1 id="keys"><span class="header-section-number">1</span> Keys</h1>
+<p>损坏函数(误差函数), 凸误差函数, 非凸误差函数, 学习率, 鞍点, 参数更新, 海瑟矩阵, 指数衰减, 泰勒级数</p>
+<h2 id="newton-method"><span class="header-section-number">1.1</span> Newton Method</h2>
+<p>牛顿法的基本思想是利用迭代点<span class="math inline">\(x_k\)</span>处的一阶导数(梯度)和二阶导数(Hessen矩阵)对目标函数进行二次函数近似,然后把二次 模型的极小点作为新的迭代点,并不断重复这一过程,直至求得满足精度的近似<strong>极小值</strong>.</p>
+<p><strong>核心思想</strong>是对函数进行泰勒级数展开</p>
+<h1 id="defination"><span class="header-section-number">2</span> Defination</h1>
+<p>w.r.t. : with regard to</p>
+<blockquote><!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+  <script src="/usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+</head>
+<body>
+<p>Gradient descent is a way to minimize an objective function <span class="math inline">\(J(\theta)\)</span> parameterized by a model's parameters <span class="math inline">\(\theta \in \mathbb R^d\)</span> by updating the parameters in the opposite direction of the gradient of the objective function <span class="math inline">\(\nabla_\theta J(\theta)\)</span> w.r.t. to the parameters. The learning rate <span class="math inline">\(\eta\)</span> determines the size of the steps we take to reach a (local) minimum.</p>
+</body>
+</html>
+<footer><strong>ruder.io</strong><cite><a href="http://ruder.io/optimizing-gradient-descent" target="_blank" rel="noopener">An overview of gradient descent optimization algorithms</a></cite></footer></blockquote>
+<h1 id="draft"><span class="header-section-number">3</span> Draft</h1>
+<p>优化计算目标函数的梯度需要根据使用的数据的量的多少进行在<code>精度</code>和<code>时间</code>上权衡去择取合适的算法.</p>
+<p>对于凸误差函数,批梯度下降法能够保证收敛到全局最小值,对于非凸函数,则收敛到一个局部最小值.</p>
+<h1 id="gradient-descent"><span class="header-section-number">4</span> Gradient descent</h1>
+<p><a href="https://qrsforever.github.io/2019/05/28/ML/Scratch/GD/">代码实现(old)</a></p>
+<p><a href="https://qrsforever.github.io/2019/09/23/ML/Scratch/gradient_descent_algorithms">代码实现(new)</a></p>
+<h2 id="bgd-batch-gradient-descent"><span class="header-section-number">4.1</span> BGD (batch gradient descent)</h2>
+<p>批量梯度下降</p>
+<p><em>Defination</em>:</p>
+<p>Vanilla gradient descent computes the gradient of the cost function w.r.t. to the parameters <span class="math inline">\(\theta\)</span> for the entire training dataset: <span class="math display">\[
+\theta = \theta - \eta \nabla_\theta J(\theta)
+\]</span></p>
+<p><strong>对全部训练数据进行依次更新</strong>, 如果数据集比较大, 造成冗余计算.</p>
+<p><em>Code</em>:</p>
+<blockquote>
+<div class="sourceCode" id="cb1" data-startfrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" title="1"><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(nb_epochs):</a>
+<a class="sourceLine" id="cb1-2" title="2">    params_grad <span class="op">=</span> evaluate_gradient(loss_function, data, params)</a>
+<a class="sourceLine" id="cb1-3" title="3">    params <span class="op">=</span> params <span class="op">-</span> learning_rate <span class="op">*</span> params_grad</a></code></pre></div>
+</blockquote>
+<h2 id="sgd-stochastic-gradient-descent"><span class="header-section-number">4.2</span> SGD (stochastic gradient descent)</h2>
+<p>随机梯度下降法, 有时也叫<code>on-line</code>gradient descent, 对每一条训练数据进行一次更新.</p>
+<p><em>Defination</em>:</p>
+<p>Stochastic gradient descent (SGD) performs a parameter update for each training example <span class="math inline">\(x^{(i)}\)</span> and label <span class="math inline">\(y^{(i)}\)</span>: <span class="math display">\[
+\theta = \theta - \eta \nabla_\theta J(\theta; x^{(i)}; y^{(i)})
+\]</span></p>
+<p><strong>对每条训练数据进行一次更新</strong>, 更新频繁会出现<span class="math inline">\(J\)</span>值的上下波动, 反而可能跳到新的,潜在的更好的局部最优 上.</p>
+<p><em>Codes</em>:</p>
+<blockquote>
+<div class="sourceCode" id="cb2" data-startfrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" title="1"><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(nb_epochs):</a>
+<a class="sourceLine" id="cb2-2" title="2">    np.random.shuffle(data)</a>
+<a class="sourceLine" id="cb2-3" title="3">    <span class="cf">for</span> example <span class="kw">in</span> data:</a>
+<a class="sourceLine" id="cb2-4" title="4">        params_grad <span class="op">=</span> evaluate_gradient(loss_function, example, params)</a>
+<a class="sourceLine" id="cb2-5" title="5">        params <span class="op">=</span> params <span class="op">-</span> learning_rate <span class="op">*</span> params_grad</a></code></pre></div>
+</blockquote>
+<h3 id="sgd-with-gaussian-noise"><span class="header-section-number">4.2.1</span> SGD with Gaussian Noise</h3>
+<blockquote><!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+  <script src="/usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+</head>
+<body>
+<p>Results in Deep Learning never cease to surprise me. One ICLR 2016 paper from Google Brain team suggests a simple 1-line code change to improve your parameter estimation across the board — by adding a Gaussian noise to the computed gradients. Typical SGD updates parameters by taking a step in the direction of the gradient (simplified): <span class="math display">\[
+\mathbf{\Theta}_{t+1} \leftarrow \mathbf{\Theta}_{t} + \alpha_{t}\nabla\mathbf{\Theta}
+\]</span> Instead of doing that the suggestion is add a small random noise to the update: <span class="math display">\[
+\mathbf{\Theta}_{t+1} \leftarrow \mathbf{\Theta}_{t} + \alpha_{t}(\nabla\mathbf{\Theta} + N(0, \sigma_t^2))
+\]</span> Further, <span class="math inline">\(\sigma\)</span> is prescribed to be: <span class="math display">\[
+\sigma_t^2 = \frac{\eta}{(1 + t)^{0.55}}
+\]</span> and <span class="math inline">\(\eta\)</span> is one of <span class="math inline">\(\{0.01, 0.3, 1.0\}\)</span>!</p>
+</body>
+</html>
+<footer><strong>Deplip Rao</strong><cite><a href="https://deliprao.com/archives/153" target="_blank" rel="noopener">Make your Stochastic Gradient Descent more Stochastic</a></cite></footer></blockquote>
+<h2 id="mgd-mini-batch-gradient-descent"><span class="header-section-number">4.3</span> MGD (mini-batch gradient descent)</h2>
+<p>小批量梯度下降法</p>
+<p><em>Defination</em>:</p>
+<p>Mini-batch gradient descent finally takes the best of both worlds and performs an update for every mini-batch of n training examples: <span class="math display">\[
+\theta = \theta - \eta \nabla_\theta J(\theta; x^{(i, i+n)}; y^{(i, i+n)})
+\]</span></p>
+<p><em>Codes</em>:</p>
+<blockquote>
+<div class="sourceCode" id="cb3" data-startfrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" title="1"><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(nb_epochs):</a>
+<a class="sourceLine" id="cb3-2" title="2">    np.random.shuffle(data)</a>
+<a class="sourceLine" id="cb3-3" title="3">    <span class="cf">for</span> batch <span class="kw">in</span> get_batches(data, batch_size<span class="op">=</span><span class="dv">50</span>):</a>
+<a class="sourceLine" id="cb3-4" title="4">        params_grad <span class="op">=</span> evaluate_gradient(loss_function, batch, params)</a>
+<a class="sourceLine" id="cb3-5" title="5">        params <span class="op">=</span> params <span class="op">-</span> learning_rate <span class="op">*</span> params_grad</a></code></pre></div>
+</blockquote>
+<p><strong>对一组训练数据进行一次更新</strong>, 解决了SGD的跳动带来的收敛不稳定的问题, 有时机器学习中SGD可能就是指的是MGD.</p>
+<h1 id="algorithms"><span class="header-section-number">5</span> Algorithms</h1>
+<p>上面传统的梯度下降最优算法与将要介绍的下面的算法有些不同, 下面将要介绍的算法learning rate会变化, 传统的算 法则是单一的learning rate进行更新权重.</p>
+<figure>
+<img src="https://gitee.com/lidongai/assets_blog_post/raw/master/ML/Guide/sgd_algorithms_tree.png" alt="算法关系" class="center"><figcaption>算法关系</figcaption>
+</figure>
+<h2 id="momentum"><span class="header-section-number">5.1</span> Momentum</h2>
+<p>动量法</p>
+<p><em>Defination</em>:</p>
+<p>Momentum is a method that helps accelerate SGD in the relevant direction and dampens oscillations. It does this by adding a fraction <span class="math inline">\(\gamma\)</span> of the update vector of the past time step to the current update vector:</p>
+<p><span class="math display">\[
+\begin{align}
+    \begin{split}
+    v_t &amp;= \gamma v_{t-1} + \eta \nabla_\theta J( \theta) \\
+    \theta &amp;= \theta - v_t
+    \end{split}
+\end{align}
+\]</span></p>
+<p>SGD波动最容易发生在局部最优处, 假设从山顶到山底通过一个斜坡滑下(最斜的一条), 则动量会累加, 即越靠近山底, 滑下的速度越快, SGD因为抖动做不到, 而<strong>动量法</strong>的原理就是在从山顶到山底滑下的通道上(梯度向量)加上一个累加 分量<span class="math inline">\(\gamma\)</span>(衰减因子), 如果滑下的过程中斜坡不变, <span class="math inline">\(\gamma\)</span>一直累加, 即参数更新的step变大, 收敛更快.</p>
+<blockquote><!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+</head>
+<body>
+<p>The momentum term increases for dimensions whose gradients point in the same directions and reduces updates for dimensions whose gradients change directions. As a result, we gain faster convergence and reduced oscillation.</p>
+</body>
+</html>
+<footer><strong>ruder.io</strong><cite><a href="http://ruder.io/optimizing-gradient-descent/index.html#momentum" target="_blank" rel="noopener">momentum</a></cite></footer></blockquote>
+<p><em>Codes</em>:</p>
+<blockquote>
+<div class="sourceCode" id="cb4" data-startfrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" title="1"><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(nb_epochs):</a>
+<a class="sourceLine" id="cb4-2" title="2">    np.random.shuffle(data)</a>
+<a class="sourceLine" id="cb4-3" title="3">    <span class="cf">for</span> batch <span class="kw">in</span> get_batches(data, batch_size<span class="op">=</span><span class="dv">50</span>):</a>
+<a class="sourceLine" id="cb4-4" title="4">        params_grad <span class="op">=</span> evaluate_gradient(loss_function, batch, params)</a>
+<a class="sourceLine" id="cb4-5" title="5">        v[:] <span class="op">=</span> momentum <span class="op">*</span> v <span class="op">+</span> learning_rate <span class="op">*</span> params_grad</a>
+<a class="sourceLine" id="cb4-6" title="6">        params <span class="op">=</span> params <span class="op">-</span> v</a></code></pre></div>
+</blockquote>
+<h2 id="nag-nesterovs-accelerated-gradient"><span class="header-section-number">5.2</span> NAG (Nesterov's accelerated gradient)</h2>
+<p>内斯特罗夫加速梯度(Look ahead)</p>
+<p>动量法的高阶版本</p>
+<p><em>Defination</em>:</p>
+<p>Nesterov accelerated gradient (NAG) is a way to give our momentum term this kind of prescience, so we look <strong>ahead</strong> by calculating the gradient not w.r.t. to our <strong>current</strong> parameters <span class="math inline">\(\theta\)</span> but w.r.t. the approximate <strong>future</strong> position of our parameters: <span class="math display">\[
+\begin{align}
+    \begin{split}
+    v_t &amp;= \gamma v_{t-1} + \eta \nabla_\theta J( \theta - \gamma v_{t-1} ) \\
+    \theta &amp;= \theta - v_t
+    \end{split}
+\end{align}
+\]</span></p>
+<p>理解NAG, 关键要理解<strong>超前预知</strong>, 比如, 沿着斜坡下滑, 根据当前的下滑加速度(momentum), 提前预知下一时刻会到 达何处, 如果下一时刻到达的地方的斜率和当前不一样(eg.相反), 及时调整了加速度.</p>
+<p>收敛速度比动量更新方法更快,收敛曲线更加稳定.</p>
+<p><em>Momentum vs NAG</em>:</p>
+<p><img src="https://gitee.com/lidongai/assets_blog_post/raw/master/ML/Guide/Momentum_vs_NAG.png"></p>
+<p>图片来自<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<h2 id="adagrad"><span class="header-section-number">5.3</span> Adagrad</h2>
+<p>适应性梯度算法, 梯度二阶矩</p>
+<p><em>Defination</em>:</p>
+<p>Adagrad adapts the learning rate to the parameters, performing smaller updates (i.e. low learning rates) for parameters associated with <strong>frequently</strong> occurring features, and larger updates (i.e. high learning rates) for parameters associated with <strong>infrequent</strong> features.</p>
+<p>单个参数更新形式1: <span class="math display">\[
+\begin{align*}
+g_{t, i} &amp;= \nabla_\theta J( \theta_{t, i} ) \\
+\theta_{t+1, i} &amp;= \theta_{t, i} - \eta \cdot g_{t, i} \\
+\theta_{t+1, i} &amp;= \theta_{t, i} - \dfrac{\eta}{\sqrt{G_{t, ii} + \epsilon}} \cdot g_{t, i} \\
+\end{align*}
+\]</span></p>
+<p><span class="math inline">\(G_{t} \in \mathbb{R}^{d \times d}\)</span> is a diagonal matrix.</p>
+<p>矩阵向量更新形式2: <span class="math display">\[
+\theta_{t+1} = \theta_{t} - \dfrac{\eta}{\sqrt{G_{t} + \epsilon}} \odot g_{t}
+\]</span></p>
+<p>这个算法存在一个问题, <span class="math inline">\(G_{t}\)</span>记载所有参数历史梯度累加平方和, 在整个训练过程中, 这个累加和不断增大, 这会导 致学习率变小, 无限变小时, 这个算法就会再也获取不到额外的信息.</p>
+<p><span class="math inline">\(G_{t}\)</span>可以表示为:<span class="math inline">\(\sum_{\tau=1}^{t}(g_{\tau})^{2}\)</span>, 注意累加的是梯度(gradient),不是参数<span class="math inline">\(\theta\)</span>.</p>
+<p>由<span class="math inline">\(\Delta \theta_{t} = - \dfrac{\eta}{\sqrt{\sum_{\tau=1}^{t}(g_{\tau})^{2} + \epsilon}} \odot g_{t}\)</span>得:</p>
+<ul>
+<li><p>训练前期<strong>激励阶段</strong>: 累加梯度平方值小, 从而<span class="math inline">\(\Delta \theta_{t}\)</span>值较大, 参数变化明显.</p></li>
+<li><p>训练后期<strong>惩罚阶段</strong>: 累加梯度平方值大, 从而<span class="math inline">\(\Delta \theta_{t}\)</span>值较小, 参数变化非常小 (缺点).</p></li>
+</ul>
+<h2 id="adadelta"><span class="header-section-number">5.4</span> Adadelta</h2>
+<p>自适应学习率调整, 梯度二阶矩均值</p>
+<p><em>Defination</em>:</p>
+<p>Adadelta is an extension of Adagrad, Instead of accumulating all past squared gradients, Adadelta restricts the window of accumulated past gradients to some fixed size <span class="math inline">\(w\)</span></p>
+<p>正如上面描述的<strong>Adagrad</strong>的缺点, 如果数据集很大, 会导致累加的梯度平方和很大, 导致继续训练很难得到额外的信 息. Adadelta试图寻找一个平衡, 不用计算所有的(时间序列)梯度平方和, <strong>Adagrad</strong>为了每次计算所有的梯度平方和, 需要额外保存历史梯度值的记录, <strong>Adadelta</strong>是将梯度的平方和递归的表示成所有历史梯度平方的衰减均值: <strong>the sum of gradients is recursively defined as a decaying average of all past squared gradients.</strong></p>
+<p>注意, 因为即使存放<span class="math inline">\(w\)</span>个之前的梯度(对窗口w中的梯度求和), 这方法也是低效的, 所以最终采用的对所有梯度平方衰减 均值的方式实现.</p>
+<p><em>TODO</em></p>
+<blockquote>
+<p>不明白什么是<strong>decaying average</strong>?, 为了继续下面的内容, 对<strong>decaying average</strong>的理解, 可以先用下面的例 子忽悠一下 (纯属自娱自乐):</p>
+<p>hypothesis data: <span class="math inline">\(x_1, x_2, \cdots, x_n\)</span></p>
+<p>then: <span class="math inline">\(E[x]_n = \dfrac{1}{n}\sum_{i}^{n} x_i \label{adadelta_1} \tag{1}\)</span></p>
+<p>if we insert <span class="math inline">\(x_{n+1}\)</span> into data: <span class="math inline">\(x_1, x_2, \cdots, x_n, x_{n+1}\)</span></p>
+<p>then: <span class="math inline">\(E[x]_{n+1} = \dfrac{1}{n+1} \sum_{i}^{n+1} x_i \label{adadelta_2} \tag{2}\)</span></p>
+<p>from (<span class="math inline">\(\ref{adadelta_1}\)</span>) and (<span class="math inline">\(\ref{adadelta_2}\)</span>) we can get:</p>
+<p><span class="math display">\[
+\begin{align*}
+E[x]_{n+1} &amp;= \dfrac{nE[x]_n + x_{n+1}}{n+1} \\
+    &amp;= \dfrac{n}{n+1}E[x]_n + \dfrac{1}{n+1} x_{n+1}
+\end{align*}
+\]</span></p>
+<p>if let <span class="math inline">\(\gamma = \dfrac{n}{n+1}\)</span></p>
+<p>then: <span class="math inline">\(1-\gamma = \dfrac{1}{n+1}\)</span></p>
+<p>then: <span class="math inline">\(E[x]_{n+1} = \gamma E[x]_n + (1-\gamma)x_{n+1}\)</span></p>
+</blockquote>
+<h3 id="accumulate-over-window"><span class="header-section-number">5.4.1</span> Accumulate Over Window</h3>
+<p>已知前面元素的均值, 在训练过程中不断加入新值, 再重新计算所有元素均值, 使用近似的方法(个人认为这也是why call decaying)求得, 忽略真实的训练次数, 使用<span class="math inline">\(\gamma\)</span>表示: <span class="math display">\[
+E[g^2]_t = \gamma E[g^2]_{t-1} + (1 - \gamma) g^2_t
+\]</span></p>
+<p>使用(平方和)均值的方式可以杜绝(解决)<strong>Adagrad</strong>累加(平方和)渐进增大的问题.</p>
+<p>with the decaying average over past squared gradients:</p>
+<p><span class="math display">\[
+\Delta \theta_t = - \dfrac{\eta}{\sqrt{E[g^2]_t + \epsilon}} g_{t} = - \dfrac{\eta}{RMS[g]_{t}} g_t
+\]</span></p>
+<p>最终得到Accumulate Over Window的形式为:</p>
+<p><span class="math display">\[
+\begin{align*}
+\theta_{t+1} &amp;= \theta_t + \Delta \theta_t \\
+    &amp;= \theta_t - \dfrac{\eta}{RMS[g]_{t}} g_t
+\end{align*}
+\]</span></p>
+<h3 id="correct-units-with-hessian-approximation"><span class="header-section-number">5.4.2</span> Correct Units with Hessian Approximation</h3>
+<p>TODO 没明白, 后续补充, 先把公式列出:</p>
+<p><span class="math display">\[
+E[\Delta \theta^2]_t = \gamma E[\Delta \theta^2]_{t-1} + (1 - \gamma) \Delta \theta^2_t
+\]</span></p>
+<p><span class="math display">\[
+RMS[\Delta \theta]_{t} = \sqrt{E[\Delta \theta^2]_t + \epsilon}
+\]</span></p>
+<p><span class="math display">\[
+\begin{align}
+\begin{split}
+\Delta \theta_t &amp;= - \dfrac{RMS[\Delta \theta]_{t-1}}{RMS[g]_{t}} g_{t} \\
+\theta_{t+1} &amp;= \theta_t + \Delta \theta_t
+\end{split}
+\end{align}
+\]</span></p>
+<h2 id="rmsprop"><span class="header-section-number">5.5</span> RMSprop</h2>
+<p>均方根传播, Adadelta的一个特殊情况 (Accumulate Over Window)</p>
+<p>RMSprop and Adadelta have both been developed independently around the same time stemming from the need to resolve Adagrad's radically diminishing learning rates.</p>
+<p><span class="math display">\[
+\begin{align}
+\begin{split}
+E[g^2]_t &amp;= 0.9 E[g^2]_{t-1} + 0.1 g^2_t \\
+\theta_{t+1} &amp;= \theta_{t} - \dfrac{\eta}{\sqrt{E[g^2]_t + \epsilon}} g_{t}
+\end{split}
+\end{align}
+\]</span></p>
+<h2 id="adam"><span class="header-section-number">5.6</span> Adam</h2>
+<p>Adaptive Moment Estimation 自适应矩估计 亚当</p>
+<p>Adam可以看做是RMSprop和动量法的结合.</p>
+<p>一阶矩(均值) with exponentially decaying average of past gradients <span class="math inline">\(m_t\)</span>:</p>
+<p><span class="math display">\[m_t = \beta_1 m_{t-1} + (1 - \beta_1) g_t\]</span> like <strong>momentum</strong>.</p>
+<p>二阶矩(非中心的方差) with exponentially decaying average of past squared gradients <span class="math inline">\(v_t\)</span>:</p>
+<p><span class="math display">\[v_t = \beta_2 v_{t-1} + (1 - \beta_2) g_t^2\]</span> like <strong>Adadelta</strong> or <strong>RMSprop</strong>.</p>
+<p>偏差校正:</p>
+<p><span class="math display">\[
+\begin{align}
+\begin{split}
+\hat{m}_t &amp;= \dfrac{m_t}{1 - \beta^t_1} \\
+\hat{v}_t &amp;= \dfrac{v_t}{1 - \beta^t_2} \end{split}
+\end{align}
+\]</span></p>
+<p>and last:</p>
+<p><span class="math display">\[
+\theta_{t+1} = \theta_{t} - \dfrac{\eta}{\sqrt{\hat{v}_t} + \epsilon} \hat{m}_t
+\]</span></p>
+<p>算法完美, 既使用到了<strong>momentum</strong>的动量特性(梯度方向不变, 越来越快), 同时具有<strong>RMSprop</strong>的自动更新学习速率.</p>
+<h2 id="adamax"><span class="header-section-number">5.7</span> AdaMax</h2>
+<p>亚当的变种, L范数</p>
+<p>TODO</p>
+<p><span class="math display">\[
+\begin{align}
+\begin{split}
+u_t &amp;= \beta_2^\infty v_{t-1} + (1 - \beta_2^\infty) |g_t|^\infty\\
+&amp; = \max(\beta_2 \cdot v_{t-1}, |g_t|)
+\end{split}
+\end{align}
+\]</span></p>
+<p><span class="math inline">\(\theta_{t+1} = \theta_{t} - \dfrac{\eta}{u_t} \hat{m}_t\)</span></p>
+<h2 id="nadam"><span class="header-section-number">5.8</span> Nadam</h2>
+<p>Nesterov-accelerated Adaptive Moment Estimation, 那达慕, 带有<strong>Nesterov</strong>动量项的亚当</p>
+<p>Nadam (Nesterov-accelerated Adaptive Moment Estimation) thus combines Adam and NAG. 即它是Adam和NAG的组合</p>
+<p>回顾一下Momentum动量formulas:</p>
+<p><span class="math display">\[
+\begin{align*} 
+g_t &amp;= \nabla_{\theta_t}J(\theta_t)\\ 
+m_t &amp;= \gamma m_{t-1} + \eta g_t\\ 
+\theta_{t+1} &amp;= \theta_t - m_t 
+\end{align*}
+\]</span></p>
+<p>回顾一下NAG具有预测能力(先一步<span class="math inline">\(J(\theta_t - \gamma m_{t-1})\)</span>)的算法 formulas:</p>
+<p><span class="math display">\[
+\begin{align*} 
+g_t &amp;= \nabla_{\theta_t}J(\theta_t - \gamma m_{t-1}) \\ 
+m_t &amp;= \gamma m_{t-1} + \eta g_t \\ 
+\theta_{t+1} &amp;= \theta_t - m_t 
+\end{align*}
+\]</span></p>
+<p>从上面的公式会发现动量计算出现2处, 一处为了更新梯度<span class="math inline">\(J(\theta_t - \gamma m_{t-1})\)</span>, 另一处最后更新参数时, Dozat提出了一种方式修正NAG (look-ahead of weights, not gradient):</p>
+<p><span class="math display">\[
+\begin{align*} 
+g_t &amp;= \nabla_{\theta_t}J(\theta_t) \\ 
+m_t &amp;= \gamma m_{t-1} + \eta g_t \\ 
+\theta_{t+1} &amp;= \theta_t - (\gamma m_t + \eta g_t) 
+\end{align*}
+\]</span></p>
+<p>回顾一下Adam:</p>
+<p><span class="math display">\[
+\begin{align*} 
+m_t &amp;= \beta_1 m_{t-1} + (1 - \beta_1) g_t \\ 
+v_t &amp;= \beta_2 v_{t-1} + (1 - \beta_2) g_t^2  \\
+\hat{m}_t &amp; = \frac{m_t}{1 - \beta^t_1} \\ 
+\hat{v}_t &amp;= \dfrac{v_t}{1 - \beta^t_2} \\
+\theta_{t+1} &amp;= \theta_{t} - \frac{\eta}{\sqrt{\hat{v}_t} + \epsilon} \hat{m}_t  \\
+\theta_{t+1} &amp;= \theta_{t} - \frac{\eta}{\sqrt{\hat{v}_t} + \epsilon} (\frac{\beta_1 m_{t-1}}{1 - \beta^t_1} + \dfrac{(1 - \beta_1) g_t}{1 - \beta^t_1})
+\end{align*}
+\]</span></p>
+<p>Nadam真容:</p>
+<p><span class="math display">\[
+\theta_{t+1} = \theta_{t} - \dfrac{\eta}{\sqrt{\hat{v}_t} + \epsilon} (\beta_1 \hat{m}_t + \dfrac{(1 - \beta_1) g_t}{1 - \beta^t_1})
+\]</span></p>
+<p>把<span class="math inline">\(\dfrac{m_{t-1}}{1 - \beta_1^t} = \hat{m_{t-1}}\)</span>换成<span class="math inline">\(\hat{m_t}\)</span> ignore that the denominator is <span class="math inline">\(1 - \beta^t_1\)</span> and not <span class="math inline">\(1 - \beta^{t-1}_1\)</span></p>
+<h2 id="amsgrad"><span class="header-section-number">5.9</span> AMSGrad</h2>
+<p>TODO</p>
+<h1 id="compare"><span class="header-section-number">6</span> Compare</h1>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">算法</th>
+<th style="text-align: left;">优点</th>
+<th style="text-align: left;">缺点</th>
+<th style="text-align: left;">适用情况</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">BGD</td>
+<td style="text-align: left;">目标函数为凸函数时,可以找到全局最优值</td>
+<td style="text-align: left;">收敛速度慢,需要用到全部数据,内存消耗大</td>
+<td style="text-align: left;">不适用于大数据集,不能在线更新模型</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">SGD</td>
+<td style="text-align: left;">避免冗余数据的干扰,收敛速度加快,能够在线学习</td>
+<td style="text-align: left;">更新值的方差较大,收敛过程会产生波动,可能落入极小值(卡在鞍点),选择合适的学习率比较困难(需要不断减小学习率)</td>
+<td style="text-align: left;">适用于需要在线更新的模型,适用于大规模训练样本情况</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Momentum</td>
+<td style="text-align: left;">能够在相关方向加速SGD,抑制振荡,从而加快收敛</td>
+<td style="text-align: left;">需要人工设定学习率</td>
+<td style="text-align: left;">适用于有可靠的初始化参数</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Adagrad</td>
+<td style="text-align: left;">实现学习率的自动更改</td>
+<td style="text-align: left;">仍依赖于人工设置一个全局学习率,学习率设置过大,对梯度的调节太大.中后期,梯度接近于0,使得训练提前结束</td>
+<td style="text-align: left;">需要快速收敛,训练复杂网络时;适合处理稀疏梯度1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Adadelta</td>
+<td style="text-align: left;">不需要预设一个默认学习率,训练初中期,加速效果不错,很快,可以避免参数更新时两边单位不统一的问题</td>
+<td style="text-align: left;">在局部最小值附近震荡,可能不收敛</td>
+<td style="text-align: left;">需要快速收敛,训练复杂网络时</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Adam</td>
+<td style="text-align: left;">速度快,对内存需求较小,为不同的参数计算不同的自适应学习率</td>
+<td style="text-align: left;">在局部最小值附近震荡,可能不收敛</td>
+<td style="text-align: left;">需要快速收敛,训练复杂网络时;善于处理稀疏梯度和处理非平稳目标的优点,也适用于大多非凸优化 - 适用于大数据集和高维空间</td>
+</tr>
+</tbody>
+</table>
+<h1 id="references"><span class="header-section-number">7</span> References</h1>
+<ul>
+<li><a href="http://ruder.io/optimizing-gradient-descent/" class="uri" target="_blank" rel="noopener">http://ruder.io/optimizing-gradient-descent/</a></li>
+<li><a href="https://blog.csdn.net/google19890102/article/details/69942970" class="uri" target="_blank" rel="noopener">https://blog.csdn.net/google19890102/article/details/69942970</a></li>
+<li><a href="https://blog.csdn.net/yzy_1996/article/details/84618536" class="uri" target="_blank" rel="noopener">https://blog.csdn.net/yzy_1996/article/details/84618536</a></li>
+<li><a href="http://louistiao.me/notes/visualizing-and-animating-optimization-algorithms-with-matplotlib/" class="uri" target="_blank" rel="noopener">http://louistiao.me/notes/visualizing-and-animating-optimization-algorithms-with-matplotlib/</a></li>
+<li><a href="https://towardsdatascience.com/10-gradient-descent-optimisation-algorithms-86989510b5e9" class="uri" target="_blank" rel="noopener">https://towardsdatascience.com/10-gradient-descent-optimisation-algorithms-86989510b5e9</a></li>
+<li><a href="https://colab.research.google.com/drive/1Xsv6KtSwG5wD9oErEZerd2DZao8wiC6h" class="uri" target="_blank" rel="noopener">https://colab.research.google.com/drive/1Xsv6KtSwG5wD9oErEZerd2DZao8wiC6h</a></li>
+<li><a href="https://mc.ai/learning-parameters-part-2-momentum-based-and-nesterov-accelerated-gradient-descent/" class="uri" target="_blank" rel="noopener">https://mc.ai/learning-parameters-part-2-momentum-based-and-nesterov-accelerated-gradient-descent/</a></li>
+<li><a href="https://gist.github.com/akshaychandra21" class="uri" target="_blank" rel="noopener">https://gist.github.com/akshaychandra21</a></li>
+<li><a href="https://blog.csdn.net/yzy_1996/article/details/84618536" class="uri" target="_blank" rel="noopener">https://blog.csdn.net/yzy_1996/article/details/84618536</a></li>
+<li><a href="https://www.cnblogs.com/neopenx/p/4768388.html" class="uri" target="_blank" rel="noopener">https://www.cnblogs.com/neopenx/p/4768388.html</a></li>
+</ul>
+<section class="footnotes">
+<hr>
+<ol>
+<li id="fn1"><p>https://mc.ai/learning-parameters-part-2-momentum-based-and-nesterov-accelerated-gradient-descent<a href="#fnref1" class="footnote-back">↩</a></p></li>
+</ol>
+</section>
+</body>
+</html>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-05-23T13:02:54.071Z" itemprop="dateUpdated">2020-05-23 21:02:54</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://qrsforever.github.io">
+            <img src="/img/avatar.jpg" alt="qrsforever">
+            qrsforever
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Draft/">Draft</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Guide/">Guide</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2019/09/20/ML/Guide/optimizing_gradient_descent/&title=《(draft)梯度下降算法》 — 大地小神&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2019/09/20/ML/Guide/optimizing_gradient_descent/&title=《(draft)梯度下降算法》 — 大地小神&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2019/09/20/ML/Guide/optimizing_gradient_descent/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《(draft)梯度下降算法》 — 大地小神&url=https://qrsforever.github.io/2019/09/20/ML/Guide/optimizing_gradient_descent/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2019/09/20/ML/Guide/optimizing_gradient_descent/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/09/22/ML/Guide/Newton_method/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">牛顿法</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/09/19/ML/Scratch/rnn_lstm/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">(draft)LSTM算法numpy实现</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <!-- <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script> -->
+    <script src="/js/av-min.js"></script>
+    <script src="/js/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "bpShGWdW8DpODhnDko5O2IBB-gzGzoHsz",
+            appKey: "rwmasTllBbHE69ADuLjFyFWf",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢打赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>qrsforever &copy; 2017 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2019/09/20/ML/Guide/optimizing_gradient_descent/&title=《(draft)梯度下降算法》 — 大地小神&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2019/09/20/ML/Guide/optimizing_gradient_descent/&title=《(draft)梯度下降算法》 — 大地小神&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2019/09/20/ML/Guide/optimizing_gradient_descent/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《(draft)梯度下降算法》 — 大地小神&url=https://qrsforever.github.io/2019/09/20/ML/Guide/optimizing_gradient_descent/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2019/09/20/ML/Guide/optimizing_gradient_descent/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://qrsforever.github.io/2019/09/20/ML/Guide/optimizing_gradient_descent/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- lidong cha. -->
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- lidong end. -->
+
+</body>
+</html>

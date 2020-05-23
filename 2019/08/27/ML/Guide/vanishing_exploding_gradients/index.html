@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?cb4be66237379541488b8502a6eca006"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>梯度消失,梯度爆炸 | 大地小神 | 你们都是大傻瓜, 我是天下大赢家</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Guide,Graph">
+    <meta name="description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta name="keywords" content="Guide,Graph">
+<meta property="og:type" content="article">
+<meta property="og:title" content="梯度消失,梯度爆炸">
+<meta property="og:url" content="https://qrsforever.github.io/2019/08/27/ML/Guide/vanishing_exploding_gradients/index.html">
+<meta property="og:site_name" content="大地小神">
+<meta property="og:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/ML/Guide/vanishing_exploding_gradients/graph-image/veg_g1.svg?sanitize=true">
+<meta property="og:image" content="https://gitee.com/lidongai/assets_blog_post/raw/master/Books/ML/sigmoid.png">
+<meta property="og:updated_time" content="2020-05-23T13:02:54.067Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="梯度消失,梯度爆炸">
+<meta name="twitter:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/ML/Guide/vanishing_exploding_gradients/graph-image/veg_g1.svg?sanitize=true">
+    
+        <link rel="alternate" type="application/atom+xml" title="大地小神" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">qrsforever</h5>
+          <a href="mailto:985612771@qq.com" title="985612771@qq.com" class="mail">985612771@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://gitee.com/lidongai" target="_blank" >
+                <i class="icon icon-lg icon-code-fork"></i>
+                Gitee
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/705723886/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                Twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2017/08/30/CV"  >
+                <i class="icon icon-lg icon-user-circle"></i>
+                Author
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">梯度消失,梯度爆炸</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">梯度消失,梯度爆炸</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-08-27T05:29:56.000Z" itemprop="datePublished" class="page-time">
+  2019-08-27
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#梯度不稳定"><span class="post-toc-text">1 梯度不稳定</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#梯度消失"><span class="post-toc-text">1.1 梯度消失</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#梯度爆炸"><span class="post-toc-text">1.2 梯度爆炸</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#实例"><span class="post-toc-text">2 实例</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#解决办法"><span class="post-toc-text">3 解决办法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#clip-gradients"><span class="post-toc-text">3.1 clip gradients</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#references"><span class="post-toc-text">4 References</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-ML/Guide/vanishing_exploding_gradients"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">梯度消失,梯度爆炸</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-08-27 13:29:56" datetime="2019-08-27T05:29:56.000Z"  itemprop="datePublished">2019-08-27</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+  <script src="/usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+</head>
+<body>
+<p><a href="https://gitee.com/lidongai/code_blog_post/raw/master/Books/ML/vanishing_exploding_gradients.md" target="_blank" rel="noopener">RAWCODE</a></p>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#梯度不稳定">梯度不稳定</a>
+<ul>
+<li><a href="#梯度消失">梯度消失</a></li>
+<li><a href="#梯度爆炸">梯度爆炸</a></li>
+</ul></li>
+<li><a href="#实例">实例</a></li>
+<li><a href="#解决办法">解决办法</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+<!-- vim-markdown-toc -->
+<a id="more"></a>
+<h1 id="梯度不稳定"><span class="header-section-number">1</span> 梯度不稳定</h1>
+<p>前面层上的梯度是来自于后面层上梯度的乘乘积.当存在过多的层次时,就出现了内在本质上的不稳定场景,如梯度消失和梯度爆炸.</p>
+<h2 id="梯度消失"><span class="header-section-number">1.1</span> 梯度消失</h2>
+<p>vanishing gradient</p>
+<p>当前面层的梯度比后面层的梯度变化更小, 会引起vanishing gradient.</p>
+<h2 id="梯度爆炸"><span class="header-section-number">1.2</span> 梯度爆炸</h2>
+<p>exploding gradient</p>
+<p>当前面层的梯度比后面层的梯度变化更大, 会引起exploding gradient.</p>
+<h1 id="实例"><span class="header-section-number">2</span> 实例</h1>
+<p>1个输入层, 3个隐藏层, 1个输出层, 激活函数为<span class="math inline">\(\sigma = sigmoid()\)</span> 为例:</p>
+<figure>
+<img src="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/ML/Guide/vanishing_exploding_gradients/graph-image/veg_g1.svg?sanitize=true" alt="简单神经元网络" class="graph center" data-filename="veg_g1"><figcaption>简单神经元网络</figcaption>
+</figure>
+<p><span class="math display">\[
+\begin{align*}
+a_1 &amp;= \sigma(z_1 = w_1 x_0 + b_1) \\
+a_2 &amp;= \sigma(z_2 = w_2 a_1 + b_2) \\
+a_3 &amp;= \sigma(z_3 = w_3 a_2 + b_3) \\
+a_4 &amp;= \sigma(z_4 = w_4 a_3 + b_4) \\
+C &amp;= Cost(a_4, y)
+\end{align*}
+\]</span></p>
+<p>给出sigmoid函数以及导函数图:</p>
+<p><img src="https://gitee.com/lidongai/assets_blog_post/raw/master/Books/ML/sigmoid.png"></p>
+<p>然后计算梯度:</p>
+<p><span class="math display">\[
+\begin{align*}
+\dfrac{\partial{C}}{\partial{b_1}} &amp;= \sigma(z_1)&#39; w_2 \sigma(z_2)&#39; w_2 \sigma(z_3)&#39; w_3 \sigma(z_4)&#39; w_4 \dfrac{\partial{C}}{\partial{a_4}} \\
+\dfrac{\partial{C}}{\partial{b_3}} &amp;= \sigma(z_3)&#39; w_3 \sigma(z_4)&#39; w_4 \dfrac{\partial{C}}{\partial{a_4}}
+\end{align*}
+\]</span></p>
+<p>从sigmoid的导函数看大于4或小于-4时, 值变得接近于0, 而且导函数的最大值为0.25, 如果权重初始化时值比较小, 上 面的计算公式可以看出, 最后计算出的梯度, 是非常小的, 且越靠前面的层的梯度越小(一直连乘一个小于1的数), 所以 会出现梯度消失的情况. 同样道理, 如果权重值初始化值很大(或者过程中计算出的值大于1), 经过连乘之后会发现前面层的值越来越大, 引起梯 度爆炸.</p>
+<h1 id="解决办法"><span class="header-section-number">3</span> 解决办法</h1>
+<p>使用ReLU,maxout等替代sigmoid.</p>
+<h2 id="clip-gradients"><span class="header-section-number">3.1</span> clip gradients</h2>
+<ul>
+<li>首先设置一个梯度阈值：clip_gradient</li>
+<li>在后向传播中求出各参数的梯度，这里我们不直接使用梯度进去参数更新，我们求这些梯度的l2范数</li>
+<li>然后比较梯度的l2范数||g||与clip_gradient的大小</li>
+<li>如果前者大，求缩放因子clip_gradient/||g||,　由缩放因子可以看出梯度越大，则缩放因子越小，这样便很好地控制了梯度的范围</li>
+<li>最后将梯度乘上缩放因子便得到最后所需的梯度</li>
+</ul>
+<p>draft:</p>
+<pre><code>常见的 gradient clipping 有两种做法
+
+根据参数的 gradient 的值直接进行裁剪
+根据若干参数的 gradient 组成的 vector 的 L2 norm 进行裁剪
+第一种做法很容易理解，就是先设定一个 gradient 的范围如 (-1, 1), 小于 -1 的 gradient 设为 -1， 大于这个 1 的 gradient 设为 1.
+
+第二种方法则更为常见，先设定一个 clip_norm, 然后在某一次反向传播后，通过各个参数的 gradient 构成一个
+vector，计算这个 vector 的 L2 norm（平方和后开根号）记为 LNorm，然后比较 LNorm 和 clip_norm 的值，若 LNorm
+&lt;= clip_norm 不做处理，否则计算缩放因子 scale_factor = clip_norm/LNorm ，然后令原来的梯度乘上这个缩放因子
+。这样做是为了让 gradient vector 的 L2 norm 小于预设的 clip_norm。</code></pre>
+<h1 id="references"><span class="header-section-number">4</span> References</h1>
+<ul>
+<li><p><a href="https://www.cnblogs.com/DjangoBlog/p/7699664.html" class="uri" target="_blank" rel="noopener">https://www.cnblogs.com/DjangoBlog/p/7699664.html</a></p></li>
+<li><p><a href="https://blog.csdn.net/u010814042/article/details/76154391" class="uri" target="_blank" rel="noopener">https://blog.csdn.net/u010814042/article/details/76154391</a></p></li>
+<li><p><a href="https://machinelearningmastery.com/how-to-avoid-exploding-gradients-in-neural-networks-with-gradient-clipping" class="uri" target="_blank" rel="noopener">https://machinelearningmastery.com/how-to-avoid-exploding-gradients-in-neural-networks-with-gradient-clipping</a></p></li>
+<li><p><a href="https://blog.floydhub.com/gru-with-pytorch/" class="uri" target="_blank" rel="noopener">https://blog.floydhub.com/gru-with-pytorch/</a></p></li>
+</ul>
+</body>
+</html>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-05-23T13:02:54.067Z" itemprop="dateUpdated">2020-05-23 21:02:54</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://qrsforever.github.io">
+            <img src="/img/avatar.jpg" alt="qrsforever">
+            qrsforever
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Graph/">Graph</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Guide/">Guide</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2019/08/27/ML/Guide/vanishing_exploding_gradients/&title=《梯度消失,梯度爆炸》 — 大地小神&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2019/08/27/ML/Guide/vanishing_exploding_gradients/&title=《梯度消失,梯度爆炸》 — 大地小神&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2019/08/27/ML/Guide/vanishing_exploding_gradients/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《梯度消失,梯度爆炸》 — 大地小神&url=https://qrsforever.github.io/2019/08/27/ML/Guide/vanishing_exploding_gradients/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2019/08/27/ML/Guide/vanishing_exploding_gradients/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/08/28/Tutorial/docker/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Dorcker</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/08/27/ML/Guide/dropout/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">丢弃法</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <!-- <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script> -->
+    <script src="/js/av-min.js"></script>
+    <script src="/js/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "bpShGWdW8DpODhnDko5O2IBB-gzGzoHsz",
+            appKey: "rwmasTllBbHE69ADuLjFyFWf",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢打赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>qrsforever &copy; 2017 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2019/08/27/ML/Guide/vanishing_exploding_gradients/&title=《梯度消失,梯度爆炸》 — 大地小神&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2019/08/27/ML/Guide/vanishing_exploding_gradients/&title=《梯度消失,梯度爆炸》 — 大地小神&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2019/08/27/ML/Guide/vanishing_exploding_gradients/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《梯度消失,梯度爆炸》 — 大地小神&url=https://qrsforever.github.io/2019/08/27/ML/Guide/vanishing_exploding_gradients/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2019/08/27/ML/Guide/vanishing_exploding_gradients/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://qrsforever.github.io/2019/08/27/ML/Guide/vanishing_exploding_gradients/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- lidong cha. -->
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- lidong end. -->
+
+</body>
+</html>

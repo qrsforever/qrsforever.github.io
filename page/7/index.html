@@ -103,6 +103,13 @@
             </li>
         
             <li class="waves-block waves-effect">
+              <a href="https://gitee.com/lidongai" target="_blank" >
+                <i class="icon icon-lg icon-code-fork"></i>
+                Gitee
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
               <a href="http://weibo.com/705723886/" target="_blank" >
                 <i class="icon icon-lg icon-weibo"></i>
                 Weibo
@@ -110,9 +117,16 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://zytforever.github.io" target="_blank" >
-                <i class="icon icon-lg icon-eye"></i>
-                Stocktech
+              <a href="https://twitter.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                Twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2017/08/30/CV"  >
+                <i class="icon icon-lg icon-user-circle"></i>
+                Author
               </a>
             </li>
         
@@ -167,14 +181,14 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
-            <article id="post-Note/IOT/Rule-Engine-Design"
+            <article id="post-Story/System/ubuntu_apps"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-05-27 21:04:19" datetime="2018-05-27T13:04:19.000Z"  itemprop="datePublished">2018-05-27</time>
+        <time class="post-time" title="2019-08-15 11:05:35" datetime="2019-08-15T03:05:35.000Z"  itemprop="datePublished">2019-08-15</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Story/">Story</a></li></ul>
 
 
 
@@ -185,7 +199,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/05/27/Note/IOT/Rule-Engine-Design/">(原创)IOT之规则引擎</a>
+      <a class="post-title-link" href="/2019/08/15/Story/System/ubuntu_apps/">Ubuntu系统软件必备</a>
     </h3>
   
 
@@ -208,45 +222,398 @@
       span.underline{text-decoration: underline;}
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+  </style>
   <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 <!-- vim-markdown-toc GFM -->
 <ul>
-<li><a href="#design">Design</a>
+<li><a href="#system-monitor">System Monitor</a>
 <ul>
-<li><a href="#framework">Framework</a></li>
-<li><a href="#class">Class</a>
+<li><a href="#gui">GUI</a></li>
+<li><a href="#command-line">Command Line</a>
 <ul>
-<li><a href="#message">Message</a></li>
-<li><a href="#log">Log</a></li>
-<li><a href="#rule-engine-driver">Rule Engine Driver</a></li>
+<li><a href="#vmstat">vmstat</a></li>
+<li><a href="#htop">htop</a></li>
+<li><a href="#glances">glances</a></li>
+<li><a href="#lm-sensors">lm-sensors</a></li>
+<li><a href="#nvidia-smi">nvidia-smi</a></li>
+<li><a href="#gpustat">gpustat</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#develop">Develop</a>
+</ul>
+<!-- vim-markdown-toc -->
+    
+
+        <a href="/2019/08/15/Story/System/ubuntu_apps/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/System/">System</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Note/Math/product"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-08-13 20:01:44" datetime="2019-08-13T12:01:44.000Z"  itemprop="datePublished">2019-08-13</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/08/13/Note/Math/product/">(draft)向量矩阵乘积</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+</head>
+<body>
+    
+
+        <a href="/2019/08/13/Note/Math/product/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Math/">Math</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Tutorial/doxygen"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-07-31 18:53:08" datetime="2019-07-31T10:53:08.000Z"  itemprop="datePublished">2019-07-31</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Tutorial/">Tutorial</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/07/31/Tutorial/doxygen/">Doxygen文档生成</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+</head>
+<body>
+<!-- vim-markdown-toc GFM -->
 <ul>
-<li><a href="#module-tasks">Module Tasks</a></li>
-<li><a href="#module-sample">Module Sample</a></li>
+<li><a href="#tags">Tags</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+<!-- vim-markdown-toc -->
+    
+
+        <a href="/2019/07/31/Tutorial/doxygen/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How/">How</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Tutorial/graphviz"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-07-24 14:00:24" datetime="2019-07-24T06:00:24.000Z"  itemprop="datePublished">2019-07-24</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Tutorial/">Tutorial</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/07/24/Tutorial/graphviz/">(原创)Graphviz绘图</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+</head>
+<body>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#graphviz">Graphviz</a>
+<ul>
+<li><a href="#基本语法">基本语法</a></li>
+<li><a href="#构造边">构造边</a></li>
+<li><a href="#属性">属性</a>
+<ul>
+<li><a href="#通用属性">通用属性</a></li>
+<li><a href="#图的属性">图的属性</a></li>
+<li><a href="#节点属性">节点属性</a></li>
+<li><a href="#边的属性">边的属性</a></li>
 </ul></li>
-<li><a href="#todo">TODO</a>
-<ul>
-<li><a href="#test-supported">Test Supported</a></li>
 </ul></li>
+<li><a href="#demo">Demo</a>
+<ul>
+<li><a href="#docsg">docsG</a></li>
+<li><a href="#office-example">office example</a></li>
+<li><a href="#subgraph">subgraph</a></li>
+<li><a href="#edge-direction">edge direction</a></li>
+<li><a href="#edge-position">edge position</a></li>
+<li><a href="#prog">prog</a></li>
+<li><a href="#rank">rank</a></li>
+<li><a href="#label">label</a>
+<ul>
+<li><a href="#demo1">demo1</a></li>
+<li><a href="#demo2">demo2</a></li>
+</ul></li>
+<li><a href="#distance">distance</a></li>
+<li><a href="#latex-graph">latex graph</a></li>
+<li><a href="#neural-network">neural network</a>
+<ul>
+<li><a href="#simplest">simplest</a></li>
+<li><a href="#complicated-case">complicated case</a></li>
+</ul></li>
+<li><a href="#others">others</a>
+<ul>
+<li><a href="#节点形状">节点形状</a></li>
+<li><a href="#标签">标签</a></li>
+<li><a href="#二分查找树">二分查找树</a></li>
+<li><a href="#cluster">cluster</a></li>
+<li><a href="#matrix">matrix</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#blog">Blog</a>
+<ul>
+<li><a href="#pandoc-config">pandoc config</a></li>
+<li><a href="#filter-graphvizpy">filter graphviz.py</a></li>
+<li><a href="#ladot">ladot</a></li>
+</ul></li>
+<li><a href="#references">References</a></li>
 </ul>
 <!-- vim-markdown-toc -->
     
 
-        <a href="/2018/05/27/Note/IOT/Rule-Engine-Design/" class="post-more waves-effect waves-button">
+        <a href="/2019/07/24/Tutorial/graphviz/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DrawIt/">DrawIt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOT/">IOT</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DrawIt/">DrawIt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How/">How</a></li></ul>
 
     </div>
     
@@ -255,14 +622,14 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Note/IOT/Iotivity-SmartHome"
+            <article id="post-Story/Website/papers"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-05-16 14:09:38" datetime="2018-05-16T06:09:38.000Z"  itemprop="datePublished">2018-05-16</time>
+        <time class="post-time" title="2019-07-24 10:00:08" datetime="2019-07-24T02:00:08.000Z"  itemprop="datePublished">2019-07-24</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Story/">Story</a></li></ul>
 
 
 
@@ -273,7 +640,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/05/16/Note/IOT/Iotivity-SmartHome/">(原创)Iotivity之SmartHome</a>
+      <a class="post-title-link" href="/2019/07/24/Story/Website/papers/">论文在线</a>
     </h3>
   
 
@@ -297,28 +664,25 @@
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 <!-- vim-markdown-toc GFM -->
 <ul>
-<li><a href="#discovery-payload">Discovery Payload</a></li>
-<li><a href="#discovery-uml">Discovery UML</a></li>
-<li><a href="#remoteresource-uml">RemoteResource UML</a></li>
+<li><a href="#paper">Paper</a></li>
+<li><a href="#search">Search</a></li>
+<li><a href="#other">Other</a></li>
 </ul>
 <!-- vim-markdown-toc -->
     
 
-        <a href="/2018/05/16/Note/IOT/Iotivity-SmartHome/" class="post-more waves-effect waves-button">
+        <a href="/2019/07/24/Story/Website/papers/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DrawIt/">DrawIt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOT/">IOT</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Website/">Website</a></li></ul>
 
     </div>
     
@@ -327,14 +691,14 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Note/IOT/Iotivity-Payload"
+            <article id="post-ML/Guide/conv_mode"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-05-10 12:41:16" datetime="2018-05-10T04:41:16.000Z"  itemprop="datePublished">2018-05-10</time>
+        <time class="post-time" title="2019-07-23 13:52:26" datetime="2019-07-23T05:52:26.000Z"  itemprop="datePublished">2019-07-23</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
 
 
 
@@ -345,7 +709,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/05/10/Note/IOT/Iotivity-Payload/">(原创)Iotivity之Payload</a>
+      <a class="post-title-link" href="/2019/07/23/ML/Guide/conv_mode/">(原创)卷积三种模式使用numpy实现</a>
     </h3>
   
 
@@ -369,26 +733,30 @@
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 <!-- vim-markdown-toc GFM -->
 <ul>
-<li><a href="#payload类图">Payload类图</a></li>
+<li><a href="#mode">Mode</a>
+<ul>
+<li><a href="#full">full</a></li>
+<li><a href="#same">same</a></li>
+<li><a href="#valid">valid</a></li>
+</ul></li>
+<li><a href="#codes">Codes</a></li>
+<li><a href="#references">References</a></li>
 </ul>
 <!-- vim-markdown-toc -->
     
 
-        <a href="/2018/05/10/Note/IOT/Iotivity-Payload/" class="post-more waves-effect waves-button">
+        <a href="/2019/07/23/ML/Guide/conv_mode/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DrawIt/">DrawIt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOT/">IOT</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Guide/">Guide</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
 
     </div>
     
@@ -397,14 +765,14 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Note/IOT/Iotivity-RE"
+            <article id="post-ML/Scratch/backpropagation_algorithm"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-05-08 12:58:38" datetime="2018-05-08T04:58:38.000Z"  itemprop="datePublished">2018-05-08</time>
+        <time class="post-time" title="2019-07-19 21:41:28" datetime="2019-07-19T13:41:28.000Z"  itemprop="datePublished">2019-07-19</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
 
 
 
@@ -415,7 +783,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/05/08/Note/IOT/Iotivity-RE/">(原创)Iotivity之Resource-Encapsulation</a>
+      <a class="post-title-link" href="/2019/07/19/ML/Scratch/backpropagation_algorithm/">(原创)神经网络之反向传播实例</a>
     </h3>
   
 
@@ -439,28 +807,27 @@
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
+  <script src="/usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
 </head>
 <body>
 <!-- vim-markdown-toc GFM -->
 <ul>
-<li><a href="#server端类图">Server端类图</a></li>
-<li><a href="#client端类图">Client端类图</a></li>
-<li><a href="#sample实例流程图">Sample实例流程图</a></li>
+<li><a href="#description">Description</a></li>
+<li><a href="#drawit">Drawit</a></li>
+<li><a href="#codes">Codes</a></li>
+<li><a href="#references">References</a></li>
 </ul>
 <!-- vim-markdown-toc -->
     
 
-        <a href="/2018/05/08/Note/IOT/Iotivity-RE/" class="post-more waves-effect waves-button">
+        <a href="/2019/07/19/ML/Scratch/backpropagation_algorithm/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DrawIt/">DrawIt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOT/">IOT</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scratch/">Scratch</a></li></ul>
 
     </div>
     
@@ -469,14 +836,14 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Note/IOT/Iotivity-Batch-LinkedList"
+            <article id="post-Story/Website/dataset"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-04-27 15:02:43" datetime="2018-04-27T07:02:43.000Z"  itemprop="datePublished">2018-04-27</time>
+        <time class="post-time" title="2019-07-19 20:59:12" datetime="2019-07-19T12:59:12.000Z"  itemprop="datePublished">2019-07-19</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Story/">Story</a></li></ul>
 
 
 
@@ -487,7 +854,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/04/27/Note/IOT/Iotivity-Batch-LinkedList/">(原创)Iotivity之Colloction流程</a>
+      <a class="post-title-link" href="/2019/07/19/Story/Website/dataset/">数据集</a>
     </h3>
   
 
@@ -511,330 +878,30 @@
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
-<!-- vim-markdown-toc GFM -->
-<ul>
-<li><a href="#资源collection类图">资源Collection类图</a></li>
-<li><a href="#sample流程图">Sample流程图</a></li>
-</ul>
-<!-- vim-markdown-toc -->
-    
-
-        <a href="/2018/04/27/Note/IOT/Iotivity-Batch-LinkedList/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DrawIt/">DrawIt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOT/">IOT</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Note/IOT/Iotivity-Presence-Observe"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-04-26 11:00:21" datetime="2018-04-26T03:00:21.000Z"  itemprop="datePublished">2018-04-26</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/04/26/Note/IOT/Iotivity-Presence-Observe/">(原创)Iotivity之Presence&amp;Observe流程图</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
-<head>
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>dummy</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<!-- vim-markdown-toc GFM -->
-<ul>
-<li><a href="#presence流程图">Presence流程图</a></li>
-<li><a href="#observe流程图">Observe流程图</a></li>
-</ul>
-<!-- vim-markdown-toc -->
-    
-
-        <a href="/2018/04/26/Note/IOT/Iotivity-Presence-Observe/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DrawIt/">DrawIt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOT/">IOT</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Note/IOT/Iotivity-Client-Server"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-04-25 18:32:50" datetime="2018-04-25T10:32:50.000Z"  itemprop="datePublished">2018-04-25</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/04/25/Note/IOT/Iotivity-Client-Server/">(原创)Iotivity之Client&amp;Server回调流程图</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
-<head>
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>dummy</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<!-- vim-markdown-toc GFM -->
-<ul>
-<li><a href="#c层类图">C++层类图</a></li>
-<li><a href="#c-s流程图">C-S流程图</a></li>
-</ul>
-<!-- vim-markdown-toc -->
-    
-
-        <a href="/2018/04/25/Note/IOT/Iotivity-Client-Server/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DrawIt/">DrawIt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOT/">IOT</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Note/IOT/Iotivity-Request-Response"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-04-24 16:40:06" datetime="2018-04-24T08:40:06.000Z"  itemprop="datePublished">2018-04-24</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/04/24/Note/IOT/Iotivity-Request-Response/">(原创)Iotivity之请求响应流程图</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
-<head>
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>dummy</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<!-- vim-markdown-toc GFM -->
-<ul>
-<li><a href="#ca连接抽象层">CA连接抽象层</a></li>
-<li><a href="#handle层">Handle层</a></li>
-</ul>
-<!-- vim-markdown-toc -->
-    
-
-        <a href="/2018/04/24/Note/IOT/Iotivity-Request-Response/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DrawIt/">DrawIt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOT/">IOT</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Note/Android/MediaBinder"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-03-08 16:47:05" datetime="2018-03-08T08:47:05.000Z"  itemprop="datePublished">2018-03-08</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/03/08/Note/Android/MediaBinder/">(原创)MediaBinder-草稿</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
-<head>
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>dummy</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<p><a href="https://pan.baidu.com/s/1c1mSTDe" target="_blank" rel="noopener">源码</a></p>
-<figure>
-<img src="https://raw.githubusercontent.com/qrsforever/assets/master/Note/Android/MediaBinder.jpg" alt="MediaBinder"><figcaption>MediaBinder</figcaption>
-</figure>
-<h1 id="总结"><span class="header-section-number">1</span> 总结</h1>
+<p><a href="https://pan.baidu.com/s/1gAFZ9gSf4pHJBt5W6_PgPQ" title="提取码: gxk4" target="_blank" rel="noopener">百度云盘Dataset</a></p>
+<h1 id="statistics"><span class="header-section-number">1</span> Statistics</h1>
+<p>pass</p>
+<h1 id="ml"><span class="header-section-number">2</span> ML</h1>
 <ol type="1">
-<li>音视频媒体播放机制主要在binder.<br>
-</li>
-<li>BpBinder是个代理, 主要传输工作交给了ICPThreadState类.<br>
-</li>
-<li>Interface用来制订业务, Binder用来实现通讯, 分工明确.<br>
-</li>
-<li>通讯属于C-S模式, Bnxxx是本地对象, Bpxxx是代理对象, 一端是本地服务, 另一端是远程代理.<br>
-</li>
-<li>本地&lt;-&gt;代理 类型的转换是在kernel中binder.c文件的binder_transaction函数中实现的.<br>
-</li>
-<li>binder_transaction函数会为代理生成handle, 在用户空间通过ProcessState::getStrongProxyForHandle创建BpBinder代理.<br>
-</li>
-<li>Parcel类readStrongBinder和writeStrongBinder记录或还原obj的type, binder, cookie.<br>
-</li>
-<li>Binder驱动层面的结构体未在图中体现. 需要单独分析.</li>
+<li><p><a href="http://archive.ics.uci.edu/ml/datasets.php" title="UC Irvine Machine Learning Repository" target="_blank" rel="noopener">UCI</a></p></li>
+<li><p><a href="https://www.kaggle.com/datasets" title="Kaggle" target="_blank" rel="noopener">Kaggle</a></p></li>
+<li><p><a href="https://www.mldata.io" target="_blank" rel="noopener">mldata</a></p></li>
 </ol>
 </body>
 </html>
 
     
 
-        <a href="/2018/03/08/Note/Android/MediaBinder/" class="post-more waves-effect waves-button">
+        <a href="/2019/07/19/Story/Website/dataset/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Website/">Website</a></li></ul>
 
     </div>
     
@@ -843,14 +910,14 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Note/IOT/QCloud_Shadow"
+            <article id="post-ML/Scratch/nn_convolution"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-02-06 10:01:00" datetime="2018-02-06T02:01:00.000Z"  itemprop="datePublished">2018-02-06</time>
+        <time class="post-time" title="2019-07-19 15:33:06" datetime="2019-07-19T07:33:06.000Z"  itemprop="datePublished">2019-07-19</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
 
 
 
@@ -861,7 +928,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/02/06/Note/IOT/QCloud_Shadow/">(原创)万物互联之腾讯Shadow</a>
+      <a class="post-title-link" href="/2019/07/19/ML/Scratch/nn_convolution/">(draft)神经网络之卷积过程实例</a>
     </h3>
   
 
@@ -885,34 +952,177 @@
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
+  <script src="/usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
 </head>
 <body>
 <!-- vim-markdown-toc GFM -->
 <ul>
-<li><a href="#shadow学习">Shadow学习</a>
+<li><a href="#introduction">Introduction</a>
 <ul>
-<li><a href="#1框架api接口">1.框架API接口</a></li>
-<li><a href="#2静态类图">2.静态类图</a></li>
-<li><a href="#3时序图">3.时序图</a></li>
-<li><a href="#4设备影子接口">4.设备影子接口</a></li>
-<li><a href="#5sample回调函数">5.Sample回调函数</a></li>
-<li><a href="#6调试运行sample">6.调试运行Sample</a></li>
+<li><a href="#notation">Notation</a></li>
+<li><a href="#full-connected-network">Full Connected Network</a></li>
+<li><a href="#convolutional-neural-network">Convolutional Neural Network</a></li>
+<li><a href="#standard-neural-network-and-convolution-nerual-network">Standard Neural Network and Convolution Nerual Network</a></li>
 </ul></li>
+<li><a href="#codes">Codes</a>
+<ul>
+<li><a href="#demo1">demo1</a></li>
+<li><a href="#demo2">demo2</a></li>
+</ul></li>
+<li><a href="#references">References</a></li>
 </ul>
 <!-- vim-markdown-toc -->
     
 
-        <a href="/2018/02/06/Note/IOT/QCloud_Shadow/" class="post-more waves-effect waves-button">
+        <a href="/2019/07/19/ML/Scratch/nn_convolution/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DrawIt/">DrawIt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOT/">IOT</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Draft/">Draft</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scratch/">Scratch</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Tools/How/china_images"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-07-18 10:31:07" datetime="2019-07-18T02:31:07.000Z"  itemprop="datePublished">2019-07-18</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Tools/">Tools</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/07/18/Tools/How/china_images/">国内镜像</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+</head>
+<body>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#apt">apt</a>
+<ul>
+<li><a href="#阿里">阿里</a></li>
+<li><a href="#清华大学">清华大学</a></li>
+<li><a href="#东北大学">东北大学</a></li>
+</ul></li>
+<li><a href="#mvn">mvn</a></li>
+<li><a href="#pip">pip</a></li>
+<li><a href="#docker">docker</a></li>
+<li><a href="#npm">npm</a></li>
+<li><a href="#gradle">gradle</a></li>
+<li><a href="#anaconda">anaconda</a>
+<ul>
+<li><a href="#清华大学-1">清华大学</a></li>
+<li><a href="#上海交通大学">上海交通大学</a></li>
+<li><a href="#上海科技大学">上海科技大学</a></li>
+</ul></li>
+</ul>
+<!-- vim-markdown-toc -->
+    
+
+        <a href="/2019/07/18/Tools/How/china_images/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How/">How</a></li></ul>
 
     </div>
     
@@ -925,7 +1135,7 @@
     
 <nav id="page-nav">
     <div class="inner">
-    <a class="extend prev" rel="prev" href="/page/6/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/8/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/6/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/8/">下一页</a>
     </div>
 </nav>
 
@@ -944,7 +1154,7 @@
         </p>
     </div>
     <div class="bottom">
-        <p><span>qrsforever &copy; 2017 - 2019</span>
+        <p><span>qrsforever &copy; 2017 - 2020</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

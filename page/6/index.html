@@ -103,6 +103,13 @@
             </li>
         
             <li class="waves-block waves-effect">
+              <a href="https://gitee.com/lidongai" target="_blank" >
+                <i class="icon icon-lg icon-code-fork"></i>
+                Gitee
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
               <a href="http://weibo.com/705723886/" target="_blank" >
                 <i class="icon icon-lg icon-weibo"></i>
                 Weibo
@@ -110,9 +117,16 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://zytforever.github.io" target="_blank" >
-                <i class="icon icon-lg icon-eye"></i>
-                Stocktech
+              <a href="https://twitter.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                Twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2017/08/30/CV"  >
+                <i class="icon icon-lg icon-user-circle"></i>
+                Author
               </a>
             </li>
         
@@ -167,14 +181,14 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
-            <article id="post-Books/Statistics/statistics_inference"
+            <article id="post-ML/Guide/normalization"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-11-19 10:38:12" datetime="2018-11-19T02:38:12.000Z"  itemprop="datePublished">2018-11-19</time>
+        <time class="post-time" title="2019-08-27 09:58:25" datetime="2019-08-27T01:58:25.000Z"  itemprop="datePublished">2019-08-27</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Books/">Books</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
 
 
 
@@ -185,7 +199,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/11/19/Books/Statistics/statistics_inference/">统计推断</a>
+      <a class="post-title-link" href="/2019/08/27/ML/Guide/normalization/">归一化</a>
     </h3>
   
 
@@ -209,67 +223,33 @@
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <link rel="stylesheet" href="/css/pandoc.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
+  <script src="/usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
 </head>
 <body>
+<p><a href="https://gitee.com/lidongai/code_blog_post/raw/master/Books/ML/normalization.md" target="_blank" rel="noopener">RAWCODE</a></p>
 <!-- vim-markdown-toc GFM -->
 <ul>
-<li><a href="#参考书籍">参考书籍</a></li>
-<li><a href="#参数估计">参数估计</a>
+<li><a href="#why">Why</a></li>
+<li><a href="#method">Method</a>
 <ul>
-<li><a href="#矩估计">矩估计</a></li>
-<li><a href="#极大似然估计mle">极大似然估计(MLE)</a></li>
-<li><a href="#评价估计量的标准">评价估计量的标准</a></li>
-<li><a href="#区间估计">区间估计</a>
-<ul>
-<li><a href="#如何理解">如何理解</a></li>
-<li><a href="#单总体均值的估计">单总体均值的估计</a></li>
-<li><a href="#单总体方差的估计">单总体方差的估计</a></li>
+<li><a href="#0-1标准化">0-1标准化</a></li>
+<li><a href="#z-score标准化">z-score标准化</a></li>
+<li><a href="#sigmoid函数">sigmoid函数</a></li>
+<li><a href="#references">References</a></li>
 </ul></li>
-<li><a href="#贝叶斯估计">贝叶斯估计</a></li>
-</ul></li>
-<li><a href="#假设检验">假设检验</a>
-<ul>
-<li><a href="#原理">原理</a></li>
-<li><a href="#拒绝域">拒绝域</a></li>
-<li><a href="#假设">假设</a></li>
-<li><a href="#p值">P值</a></li>
-<li><a href="#总体检验">总体检验</a>
-<ul>
-<li><a href="#一个总体参数检验">一个总体参数检验</a></li>
-<li><a href="#两个总体参数检验">两个总体参数检验</a></li>
-</ul></li>
-<li><a href="#参数检验和非参数检验">参数检验和非参数检验</a></li>
-<li><a href="#其他">其他</a>
-<ul>
-<li><a href="#列联分析">列联分析</a></li>
-<li><a href="#方差分析">方差分析</a></li>
-<li><a href="#回归分析">回归分析</a></li>
-</ul></li>
-</ul></li>
+<li><a href="#todo">TODO</a></li>
 </ul>
 <!-- vim-markdown-toc -->
-<h1 id="参考书籍"><span class="header-section-number">1</span> 参考书籍</h1>
-<ol type="1">
-<li><a href="https://pan.baidu.com/s/16FU_ZwFqw7wxH85Ry59chw" title="提取码: u4w4" target="_blank" rel="noopener">概率论与数理统计(第二版)-茆诗松</a></li>
-<li><a href="https://pan.baidu.com/s/16FU_ZwFqw7wxH85Ry59chw" title="提取码: u4w4" target="_blank" rel="noopener">概率论与数理统计(第四版)-盛骤</a></li>
-<li><a href="https://pan.baidu.com/s/16FU_ZwFqw7wxH85Ry59chw" title="提取码: u4w4" target="_blank" rel="noopener">统计学(第四版)-贾俊平</a></li>
-<li><a href="https://pan.baidu.com/s/16FU_ZwFqw7wxH85Ry59chw" title="提取码: u4w4" target="_blank" rel="noopener">计量经济学(第三版)-李子奈</a></li>
-<li><a href="https://pan.baidu.com/s/16FU_ZwFqw7wxH85Ry59chw" title="提取码: u4w4" target="_blank" rel="noopener">Probability and Statistics (4th)-Morris H. DeGroot</a></li>
-</ol>
     
 
-        <a href="/2018/11/19/Books/Statistics/statistics_inference/" class="post-more waves-effect waves-button">
+        <a href="/2019/08/27/ML/Guide/normalization/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Statistics/">Statistics</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Guide/">Guide</a></li></ul>
 
     </div>
     
@@ -278,14 +258,14 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Books/Statistics/Bayesian"
+            <article id="post-ML/Guide/models_tree"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-11-13 21:49:01" datetime="2018-11-13T13:49:01.000Z"  itemprop="datePublished">2018-11-13</time>
+        <time class="post-time" title="2019-08-26 19:55:07" datetime="2019-08-26T11:55:07.000Z"  itemprop="datePublished">2019-08-26</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Books/">Books</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
 
 
 
@@ -296,351 +276,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/11/13/Books/Statistics/Bayesian/">贝叶斯</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
-<head>
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>dummy</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<h1 id="drafts"><span class="header-section-number">1</span> drafts</h1>
-<h2 id="先验概率"><span class="header-section-number">1.1</span> 先验概率</h2>
-<ul>
-<li>客观先验概率(历史资料)</li>
-<li>主观先验概率(主观经验)</li>
-</ul>
-<p>https://blog.csdn.net/a358463121/article/details/52562940</p>
-</body>
-</html>
-
-    
-
-        <a href="/2018/11/13/Books/Statistics/Bayesian/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bayesian/">Bayesian</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Statistics/">Statistics</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Books/Statistics/statistics_elements"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-11-05 15:28:39" datetime="2018-11-05T07:28:39.000Z"  itemprop="datePublished">2018-11-05</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Books/">Books</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/11/05/Books/Statistics/statistics_elements/">统计学基础</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
-<head>
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>dummy</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <link rel="stylesheet" href="/css/pandoc.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<!-- vim-markdown-toc GFM -->
-<ul>
-<li><a href="#参考书籍">参考书籍</a></li>
-<li><a href="#概率论">概率论</a>
-<ul>
-<li><a href="#概念">概念</a></li>
-<li><a href="#多维">多维</a></li>
-<li><a href="#条件分布和条件期望">条件分布和条件期望</a></li>
-<li><a href="#大数定理">大数定理</a></li>
-<li><a href="#中心极限定理">中心极限定理</a>
-<ul>
-<li><a href="#代码演示">代码演示</a></li>
-</ul></li>
-<li><a href="#经验分布">经验分布</a></li>
-</ul></li>
-<li><a href="#数理统计">数理统计</a>
-<ul>
-<li><a href="#抽样">抽样</a>
-<ul>
-<li><a href="#代码演示-1">代码演示</a></li>
-</ul></li>
-<li><a href="#参数估计">参数估计</a></li>
-<li><a href="#假设检验">假设检验</a></li>
-</ul></li>
-<li><a href="#学习框架">学习框架</a></li>
-</ul>
-<!-- vim-markdown-toc -->
-<h1 id="参考书籍"><span class="header-section-number">1</span> 参考书籍</h1>
-<ol type="1">
-<li><a href="https://pan.baidu.com/s/16FU_ZwFqw7wxH85Ry59chw" title="提取码: u4w4" target="_blank" rel="noopener">概率论与数理统计(第二版)-茆诗松</a></li>
-<li><a href="https://pan.baidu.com/s/16FU_ZwFqw7wxH85Ry59chw" title="提取码: u4w4" target="_blank" rel="noopener">概率论与数理统计(第四版)-盛骤</a></li>
-<li><a href="https://pan.baidu.com/s/16FU_ZwFqw7wxH85Ry59chw" title="提取码: u4w4" target="_blank" rel="noopener">统计学(第四版)-贾俊平</a></li>
-<li><a href="https://pan.baidu.com/s/16FU_ZwFqw7wxH85Ry59chw" title="提取码: u4w4" target="_blank" rel="noopener">Probability and Statistics (4th)-Morris H. DeGroot</a></li>
-</ol>
-    
-
-        <a href="/2018/11/05/Books/Statistics/statistics_elements/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Statistics/">Statistics</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Tutorial/Latex"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-10-31 17:16:20" datetime="2018-10-31T09:16:20.000Z"  itemprop="datePublished">2018-10-31</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Tutorial/">Tutorial</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/10/31/Tutorial/Latex/">(原创)Tutorial for Latex</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
-<head>
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>dummy</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <link rel="stylesheet" href="/css/pandoc.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<!-- vim-markdown-toc GFM -->
-<ul>
-<li><a href="#行内行间应用方式">行内行间应用方式</a></li>
-<li><a href="#常用希腊字母">常用希腊字母</a></li>
-<li><a href="#常用求和符号和积分号">常用求和符号和积分号</a></li>
-<li><a href="#其他常用符号">其他常用符号</a></li>
-<li><a href="#运算符">运算符</a></li>
-<li><a href="#声调">声调</a></li>
-<li><a href="#根号">根号</a></li>
-<li><a href="#上标下标">上标下标</a></li>
-<li><a href="#空白类型列举">空白类型列举</a></li>
-<li><a href="#公式锚点">公式锚点</a></li>
-<li><a href="#矩阵">矩阵</a>
-<ul>
-<li><a href="#简单的矩阵">简单的矩阵</a></li>
-<li><a href="#带括号的矩阵">带括号的矩阵</a></li>
-</ul></li>
-<li><a href="#排版">排版</a>
-<ul>
-<li><a href="#多行方程组对齐">多行方程组对齐</a></li>
-<li><a href="#多行公式等号对齐">多行公式等号对齐</a></li>
-<li><a href="#大括号右多行赋值">大括号右多行赋值</a></li>
-</ul></li>
-<li><a href="#字体">字体</a></li>
-<li><a href="#括号">括号</a></li>
-<li><a href="#颜色">颜色</a></li>
-<li><a href="#特殊例子">特殊例子</a>
-<ul>
-<li><a href="#分子分母">分子分母</a></li>
-<li><a href="#分布">分布</a></li>
-<li><a href="#在线使用">在线使用</a></li>
-</ul></li>
-</ul>
-<!-- vim-markdown-toc -->
-<p><a href="https://blog.csdn.net/qq_17528659/article/details/82152530" target="_blank" rel="noopener">参考1</a></p>
-<p><a href="https://blog.csdn.net/kevinelstri/article/details/62419242" target="_blank" rel="noopener">参考2</a></p>
-<p><a href="http://latex.codecogs.com/eqneditor/editor.php" target="_blank" rel="noopener">在线编辑</a></p>
-    
-
-        <a href="/2018/10/31/Tutorial/Latex/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Story/Math/Frequentist_Bayesian"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-10-30 10:51:02" datetime="2018-10-30T02:51:02.000Z"  itemprop="datePublished">2018-10-30</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Story/">Story</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/10/30/Story/Math/Frequentist_Bayesian/">Frequentist和Bayesian之前的故事</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
-<head>
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>dummy</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<p><a href="http://blog.sina.com.cn/s/blog_a8fead9b01014kj7.html" target="_blank" rel="noopener">原文</a></p>
-    
-
-        <a href="/2018/10/30/Story/Math/Frequentist_Bayesian/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Math/">Math</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Tools/How/vim"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-06-25 10:26:15" datetime="2018-06-25T02:26:15.000Z"  itemprop="datePublished">2018-06-25</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Tools/">Tools</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/06/25/Tools/How/vim/">Ubutnu编辑器VIM配置</a>
+      <a class="post-title-link" href="/2019/08/26/ML/Guide/models_tree/">(draft)机器学习算法汇总</a>
     </h3>
   
 
@@ -722,23 +358,271 @@ code span.vs { color: #008080; } /* VerbatimString */
 code span.wa { color: #008000; font-weight: bold; } /* Warning */
   </style>
   <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 <!-- vim-markdown-toc GFM -->
 <ul>
-<li><a href="#一把利剑">一把利剑</a></li>
-<li><a href="#目录结构">目录结构</a></li>
-<li><a href="#基本配置vimrc">基本配置vimrc</a></li>
-<li><a href="#依赖">依赖</a></li>
+<li><a href="#alphatree">AlphaTree</a>
+<ul>
+<li><a href="#object-classification">Object Classification</a>
+<ul>
+<li><a href="#lenet">LeNet</a></li>
+<li><a href="#alexnet">AlexNet</a></li>
+<li><a href="#vgg">VGG</a></li>
+</ul></li>
+<li><a href="#object-detection">Object Detection</a></li>
+<li><a href="#object-segmentation">Object Segmentation</a></li>
+</ul></li>
 </ul>
 <!-- vim-markdown-toc -->
-<p><a href="https://github.com/qrsforever/vim" target="_blank" rel="noopener">VIM配置</a></p>
     
 
-        <a href="/2018/06/25/Tools/How/vim/" class="post-more waves-effect waves-button">
+        <a href="/2019/08/26/ML/Guide/models_tree/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Draft/">Draft</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Guide/">Guide</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-ML/Guide/cnn_translation_invariance"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-08-26 13:46:56" datetime="2019-08-26T05:46:56.000Z"  itemprop="datePublished">2019-08-26</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/08/26/ML/Guide/cnn_translation_invariance/">(draft)ConvNet平移不变性</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+</head>
+<body>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#translation-picture">Translation Picture</a></li>
+<li><a href="#invariance-vs-equivariance">Invariance vs. Equivariance</a></li>
+<li><a href="#why-and-how">Why and how</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+<!-- vim-markdown-toc -->
+    
+
+        <a href="/2019/08/26/ML/Guide/cnn_translation_invariance/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Draft/">Draft</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Guide/">Guide</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-ML/Pytorch/handbook"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-08-25 17:42:56" datetime="2019-08-25T09:42:56.000Z"  itemprop="datePublished">2019-08-25</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/08/25/ML/Pytorch/handbook/">(draft)Pytorch快速入门</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+</head>
+<body>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#入门教程">入门教程</a>
+<ul>
+<li><a href="#重点">重点</a></li>
+</ul></li>
+</ul>
+<!-- vim-markdown-toc -->
+<h1 id="入门教程"><span class="header-section-number">1</span> 入门教程</h1>
+<p>学习Pytorch必先看此书<a href="https://github.com/zergtant/pytorch-handbook" target="_blank" rel="noopener">GITHUB:zergtant/pytorch-handbook</a>, 然后看<a href="https://pytorch.org/tutorials/" target="_blank" rel="noopener">官网文档</a></p>
+<h2 id="重点"><span class="header-section-number">1.1</span> 重点</h2>
+<p><strong>为什么激活函数都是非线性的?</strong></p>
+<blockquote><!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+</head>
+<body>
+<p>在神经网络的计算过程中，每层都相当于矩阵相乘，无论神经网络有多少层输出都是输入的线性组合，就算我们有几千层 的计算，无非还是个矩阵相乘，和一层矩阵相乘所获得的信息差距不大，所以需要激活函数来引入非线性因素，使得神经 网络可以任意逼近任何非线性函数，这样神经网络就可以应用到众多的非线性模型中，增加了神经网络模型泛化的特性。</p>
+</body>
+</html>
+<footer><strong>zergtant, https://github.com/zergtant</strong><cite><a href="https://github.com/zergtant/pytorch-handbook/blob/master/chapter2/2.3-deep-learning-neural-network-introduction.ipynb" target="_blank" rel="noopener">神经网络简介</a></cite></footer></blockquote>
+</body>
+</html>
+
+    
+
+        <a href="/2019/08/25/ML/Pytorch/handbook/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Draft/">Draft</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pytorch/">Pytorch</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Tools/How/ssh_x11"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-08-22 19:44:47" datetime="2019-08-22T11:44:47.000Z"  itemprop="datePublished">2019-08-22</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Tools/">Tools</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/08/22/Tools/How/ssh_x11/">SSH远端服务器使用GUI</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+</head>
+<body>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#ssh设置">SSH设置</a>
+<ul>
+<li><a href="#ssh多个连接共享">SSH多个连接共享</a></li>
+<li><a href="#ssh远程gui">SSH远程GUI</a></li>
+<li><a href="#本地操作远程文件">本地操作远程文件</a></li>
+<li><a href="#主机别名">主机别名</a></li>
+<li><a href="#xauth警告">xauth警告</a></li>
+</ul></li>
+<li><a href="#完整的配置">完整的配置</a></li>
+<li><a href="#安装中文字体">安装中文字体</a></li>
+<li><a href="#遇到的问题">遇到的问题</a></li>
+</ul>
+<!-- vim-markdown-toc -->
+    
+
+        <a href="/2019/08/22/Tools/How/ssh_x11/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
@@ -754,14 +638,14 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Books/Math/derivative_rules"
+            <article id="post-Company/Cauthy/framework"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-06-24 16:25:43" datetime="2018-06-24T08:25:43.000Z"  itemprop="datePublished">2018-06-24</time>
+        <time class="post-time" title="2019-08-21 17:23:32" datetime="2019-08-21T09:23:32.000Z"  itemprop="datePublished">2019-08-21</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Books/">Books</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Company/">Company</a></li></ul>
 
 
 
@@ -772,7 +656,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/06/24/Books/Math/derivative_rules/">求导法则</a>
+      <a class="post-title-link" href="/2019/08/21/Company/Cauthy/framework/">(draft)机器学习CV框架</a>
     </h3>
   
 
@@ -796,28 +680,38 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
-<h1 id="基本求导法则"><span class="header-section-number">1</span> 基本求导法则</h1>
-<p><img src="https://raw.githubusercontent.com/qrsforever/assets/master/Books/Math/derivative_rule0.png.png"></p>
-<h1 id="复合求导法则"><span class="header-section-number">2</span> 复合求导法则</h1>
-<p><img src="https://raw.githubusercontent.com/qrsforever/assets/master/Books/Math/derivative_rule1.png"></p>
-</body>
-</html>
-
+<p><link href="/static/css/qrs.css" rel="stylesheet"></p>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#introduction">Introduction</a>
+<ul>
+<li><a href="#nginx">nginx</a></li>
+<li><a href="#yii">yii</a></li>
+<li><a href="#visdom">Visdom</a></li>
+<li><a href="#torchcv">torchcv</a></li>
+</ul></li>
+<li><a href="#cauchy">Cauchy</a>
+<ul>
+<li><a href="#architecture">Architecture</a></li>
+<li><a href="#start-servers">Start Servers</a></li>
+<li><a href="#dynamic-process">Dynamic Process</a></li>
+<li><a href="#project-directory">Project Directory</a></li>
+</ul></li>
+<li><a href="#references">References</a></li>
+</ul>
+<!-- vim-markdown-toc -->
     
 
-        <a href="/2018/06/24/Books/Math/derivative_rules/" class="post-more waves-effect waves-button">
+        <a href="/2019/08/21/Company/Cauthy/framework/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Math/">Math</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cauchy/">Cauchy</a></li></ul>
 
     </div>
     
@@ -826,14 +720,14 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Note/IOT/Rule-Engine-Design2"
+            <article id="post-ML/Guide/datasets"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-06-14 15:48:14" datetime="2018-06-14T07:48:14.000Z"  itemprop="datePublished">2018-06-14</time>
+        <time class="post-time" title="2019-08-21 10:03:49" datetime="2019-08-21T02:03:49.000Z"  itemprop="datePublished">2019-08-21</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
 
 
 
@@ -844,7 +738,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/06/14/Note/IOT/Rule-Engine-Design2/">(原创)本地规则引擎介绍</a>
+      <a class="post-title-link" href="/2019/08/21/ML/Guide/datasets/">(draft)数据集介绍</a>
     </h3>
   
 
@@ -868,45 +762,43 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 <!-- vim-markdown-toc GFM -->
 <ul>
-<li><a href="#elink">Elink</a>
+<li><a href="#cifar">CIFAR</a>
 <ul>
-<li><a href="#rule-schema">Rule Schema</a></li>
-<li><a href="#device-schema">Device Schema</a></li>
+<li><a href="#cifar10">CIFAR10</a></li>
+<li><a href="#cifar100">CIFAR100</a></li>
 </ul></li>
-<li><a href="#rule-model-design">Rule Model Design</a>
+<li><a href="#mnist">MNIST</a></li>
+<li><a href="#kmnist">KMNIST</a></li>
+<li><a href="#fashionmnist">FashionMNIST</a></li>
+<li><a href="#emnist">EMNIST</a>
 <ul>
-<li><a href="#lhs-tree">LHS Tree</a></li>
-<li><a href="#clp-struct">Clp Struct</a></li>
-<li><a href="#rule-class-uml">Rule Class UML</a></li>
-<li><a href="#clp-script-design">Clp Script Design</a></li>
-<li><a href="#act-auto-gen-rule">Act Auto Gen Rule</a></li>
+<li><a href="#balanced">Balanced</a></li>
+<li><a href="#digits">Digits</a></li>
+<li><a href="#letters">Letters</a></li>
+<li><a href="#mnist-1">MNIST</a></li>
 </ul></li>
-<li><a href="#others">Others</a>
-<ul>
-<li><a href="#local-build">Local Build</a></li>
-<li><a href="#sync-elink-script">Sync Elink Script</a></li>
-<li><a href="#rule-categories">Rule Categories</a></li>
-</ul></li>
-<li><a href="#todo">TODO</a></li>
+<li><a href="#chars74k">Chars74k</a></li>
+<li><a href="#dogs">Dogs</a></li>
+<li><a href="#animals">Animals</a></li>
+<li><a href="#fruits360">Fruits360</a></li>
+<li><a href="#boats">Boats</a></li>
+<li><a href="#voc">VOC</a></li>
 </ul>
 <!-- vim-markdown-toc -->
     
 
-        <a href="/2018/06/14/Note/IOT/Rule-Engine-Design2/" class="post-more waves-effect waves-button">
+        <a href="/2019/08/21/ML/Guide/datasets/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DrawIt/">DrawIt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOT/">IOT</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Guide/">Guide</a></li></ul>
 
     </div>
     
@@ -915,14 +807,14 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Design/C++/Log-Pool"
+            <article id="post-ML/Guide/performance_optimization"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-05-31 13:30:25" datetime="2018-05-31T05:30:25.000Z"  itemprop="datePublished">2018-05-31</time>
+        <time class="post-time" title="2019-08-19 17:41:12" datetime="2019-08-19T09:41:12.000Z"  itemprop="datePublished">2019-08-19</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Design/">Design</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
 
 
 
@@ -933,7 +825,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/05/31/Design/C++/Log-Pool/">Log-Pool</a>
+      <a class="post-title-link" href="/2019/08/19/ML/Guide/performance_optimization/">(draft)模型优化</a>
     </h3>
   
 
@@ -957,26 +849,19 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
-<!-- vim-markdown-toc GFM -->
-<ul>
-<li><a href="#框架图">框架图</a></li>
-</ul>
-<!-- vim-markdown-toc -->
+<p>pass</p>
     
 
-        <a href="/2018/05/31/Design/C++/Log-Pool/" class="post-more waves-effect waves-button">
+        <a href="/2019/08/19/ML/Guide/performance_optimization/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Guide/">Guide</a></li></ul>
 
     </div>
     
@@ -985,14 +870,14 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Design/C++/Message-Handler"
+            <article id="post-ML/Pytorch/transforms"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-05-31 13:30:25" datetime="2018-05-31T05:30:25.000Z"  itemprop="datePublished">2018-05-31</time>
+        <time class="post-time" title="2019-08-19 15:14:09" datetime="2019-08-19T07:14:09.000Z"  itemprop="datePublished">2019-08-19</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Design/">Design</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
 
 
 
@@ -1003,7 +888,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/05/31/Design/C++/Message-Handler/">Message-Handler</a>
+      <a class="post-title-link" href="/2019/08/19/ML/Pytorch/transforms/">(draft)Transforms</a>
     </h3>
   
 
@@ -1027,26 +912,95 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
-<!-- vim-markdown-toc GFM -->
-<ul>
-<li><a href="#框架图">框架图</a></li>
-</ul>
-<!-- vim-markdown-toc -->
+<p>pass</p>
     
 
-        <a href="/2018/05/31/Design/C++/Message-Handler/" class="post-more waves-effect waves-button">
+        <a href="/2019/08/19/ML/Pytorch/transforms/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Draft/">Draft</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pytorch/">Pytorch</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-ML/Guide/ml_terms"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-08-19 10:35:45" datetime="2019-08-19T02:35:45.000Z"  itemprop="datePublished">2019-08-19</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/08/19/ML/Guide/ml_terms/">(draft)机器学习术语</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+</head>
+<body>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#gradient-descent">Gradient Descent</a>
+<ul>
+<li><a href="#epoch">Epoch</a></li>
+<li><a href="#batch-size">Batch Size</a></li>
+<li><a href="#iterations">Iterations</a></li>
+</ul></li>
+<li><a href="#optimization-algorithom">Optimization Algorithom</a>
+<ul>
+<li><a href="#adamadaptive-momentum-algorithom">Adam(Adaptive momentum algorithom)</a></li>
+</ul></li>
+</ul>
+<!-- vim-markdown-toc -->
+    
+
+        <a href="/2019/08/19/ML/Guide/ml_terms/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Guide/">Guide</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Terms/">Terms</a></li></ul>
 
     </div>
     
@@ -1059,7 +1013,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
     
 <nav id="page-nav">
     <div class="inner">
-    <a class="extend prev" rel="prev" href="/page/5/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/7/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/5/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/7/">下一页</a>
     </div>
 </nav>
 
@@ -1078,7 +1032,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
         </p>
     </div>
     <div class="bottom">
-        <p><span>qrsforever &copy; 2017 - 2019</span>
+        <p><span>qrsforever &copy; 2017 - 2020</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

@@ -103,6 +103,13 @@
             </li>
         
             <li class="waves-block waves-effect">
+              <a href="https://gitee.com/lidongai" target="_blank" >
+                <i class="icon icon-lg icon-code-fork"></i>
+                Gitee
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
               <a href="http://weibo.com/705723886/" target="_blank" >
                 <i class="icon icon-lg icon-weibo"></i>
                 Weibo
@@ -110,9 +117,16 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://zytforever.github.io" target="_blank" >
-                <i class="icon icon-lg icon-eye"></i>
-                Stocktech
+              <a href="https://twitter.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                Twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2017/08/30/CV"  >
+                <i class="icon icon-lg icon-user-circle"></i>
+                Author
               </a>
             </li>
         
@@ -167,83 +181,11 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
-            <article id="post-Tools/Math/symbols"
+            <article id="post-ML/Pytorch/tensor_dims_convert"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2019-06-25 09:53:18" datetime="2019-06-25T01:53:18.000Z"  itemprop="datePublished">2019-06-25</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Tools/">Tools</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/06/25/Tools/Math/symbols/">数学符号表</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
-<head>
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>dummy</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <link rel="stylesheet" href="/css/pandoc.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<!-- vim-markdown-toc GFM -->
-<ul>
-<li><a href="#统计学">统计学</a></li>
-<li><a href="#机器学习">机器学习</a></li>
-</ul>
-<!-- vim-markdown-toc -->
-    
-
-        <a href="/2019/06/25/Tools/Math/symbols/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Math/">Math</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-ML/Guide/cross_entropy_loss"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-06-23 15:24:43" datetime="2019-06-23T07:24:43.000Z"  itemprop="datePublished">2019-06-23</time>
+        <time class="post-time" title="2020-01-25 12:12:00" datetime="2020-01-25T04:12:00.000Z"  itemprop="datePublished">2020-01-25</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
@@ -257,7 +199,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/06/23/ML/Guide/cross_entropy_loss/">(原创)交叉熵损失函数</a>
+      <a class="post-title-link" href="/2020/01/25/ML/Pytorch/tensor_dims_convert/">(Draft)Tensor-dims</a>
     </h3>
   
 
@@ -281,39 +223,18 @@
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <link rel="stylesheet" href="/css/pandoc.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
-<!-- vim-markdown-toc GFM -->
-<ul>
-<li><a href="#百科">百科</a>
-<ul>
-<li><a href="#相关概念">相关概念</a></li>
-<li><a href="#交叉熵">交叉熵</a></li>
-<li><a href="#与似然的关系">与似然的关系</a></li>
-</ul></li>
-<li><a href="#交叉熵损失函数">交叉熵损失函数</a>
-<ul>
-<li><a href="#定义符号">定义符号</a></li>
-<li><a href="#logistic回归的交叉熵">Logistic回归的交叉熵</a></li>
-<li><a href="#softmax回归的交叉熵">Softmax回归的交叉熵</a></li>
-</ul></li>
-<li><a href="#参考">参考</a></li>
-</ul>
-<!-- vim-markdown-toc -->
     
 
-        <a href="/2019/06/23/ML/Guide/cross_entropy_loss/" class="post-more waves-effect waves-button">
+        <a href="/2020/01/25/ML/Pytorch/tensor_dims_convert/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Guide/">Guide</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Draft/">Draft</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PyTorch/">PyTorch</a></li></ul>
 
     </div>
     
@@ -322,11 +243,198 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Note/IOT/Rule-Engine-Summary"
+            <article id="post-ML/Pytorch/tensor_autograd_hooks"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2019-06-17 15:59:42" datetime="2019-06-17T07:59:42.000Z"  itemprop="datePublished">2019-06-17</time>
+        <time class="post-time" title="2020-01-23 19:11:00" datetime="2020-01-23T11:11:00.000Z"  itemprop="datePublished">2020-01-23</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2020/01/23/ML/Pytorch/tensor_autograd_hooks/">(Draft)Tensor基础-autograd hooks</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+</head>
+<body>
+    
+
+        <a href="/2020/01/23/ML/Pytorch/tensor_autograd_hooks/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Draft/">Draft</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pytorch/">Pytorch</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-ML/Pytorch/tensor_api"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2020-01-23 18:08:00" datetime="2020-01-23T10:08:00.000Z"  itemprop="datePublished">2020-01-23</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2020/01/23/ML/Pytorch/tensor_api/">(Draft)Tensor-api</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+</head>
+<body>
+    
+
+        <a href="/2020/01/23/ML/Pytorch/tensor_api/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Draft/">Draft</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pytorch/">Pytorch</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-ML/Guide/RNN/RNN"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-12-25 13:33:00" datetime="2019-12-25T05:33:00.000Z"  itemprop="datePublished">2019-12-25</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/12/25/ML/Guide/RNN/RNN/">RNN</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+</head>
+<body>
+<p>TODO</p>
+    
+
+        <a href="/2019/12/25/ML/Guide/RNN/RNN/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Guide/">Guide</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RNN/">RNN</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Note/Jupyter/magic"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-12-19 16:10:00" datetime="2019-12-19T08:10:00.000Z"  itemprop="datePublished">2019-12-19</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
@@ -340,7 +448,265 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/06/17/Note/IOT/Rule-Engine-Summary/">(原创)本地规则引擎设计</a>
+      <a class="post-title-link" href="/2019/12/19/Note/Jupyter/magic/">Notebook 技巧</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+</head>
+<body>
+    
+
+        <a href="/2019/12/19/Note/Jupyter/magic/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Draft/">Draft</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jupyter/">Jupyter</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Note/Jupyter/pywidgets_demo"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-12-16 16:47:00" datetime="2019-12-16T08:47:00.000Z"  itemprop="datePublished">2019-12-16</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/12/16/Note/Jupyter/pywidgets_demo/">Pywdigets Demo</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+</head>
+<body>
+    
+
+        <a href="/2019/12/16/Note/Jupyter/pywidgets_demo/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jupyter/">Jupyter</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Tools/How/browser_vim"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-12-13 17:53:00" datetime="2019-12-13T09:53:00.000Z"  itemprop="datePublished">2019-12-13</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Tools/">Tools</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/12/13/Tools/How/browser_vim/">浏览器vim插件</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+</head>
+<body>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#browser">browser</a>
+<ul>
+<li><a href="#firfox">firfox</a></li>
+<li><a href="#chrome">chrome</a></li>
+</ul></li>
+<li><a href="#keymap">keymap</a></li>
+</ul>
+<!-- vim-markdown-toc -->
+    
+
+        <a href="/2019/12/13/Tools/How/browser_vim/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How/">How</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Note/Jupyter/widgets_html"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-12-13 15:24:00" datetime="2019-12-13T07:24:00.000Z"  itemprop="datePublished">2019-12-13</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/12/13/Note/Jupyter/widgets_html/">使用Notebook学习HTML</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+</head>
+<body>
+    
+
+        <a href="/2019/12/13/Note/Jupyter/widgets_html/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jupyter/">Jupyter</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Story/System/shadowsocks"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-12-13 12:05:00" datetime="2019-12-13T04:05:00.000Z"  itemprop="datePublished">2019-12-13</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Story/">Story</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/12/13/Story/System/shadowsocks/">shadowsocks配置</a>
     </h3>
   
 
@@ -422,527 +788,91 @@ code span.vs { color: #008080; } /* VerbatimString */
 code span.wa { color: #008000; font-weight: bold; } /* Warning */
   </style>
   <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
+</head>
+<body>
+    
+
+        <a href="/2019/12/13/Story/System/shadowsocks/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How/">How</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/System/">System</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-ML/Guide/neural_nlp_milestones"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-11-26 11:10:39" datetime="2019-11-26T03:10:39.000Z"  itemprop="datePublished">2019-11-26</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/11/26/ML/Guide/neural_nlp_milestones/">(draft)NLP应用里程碑</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
 </head>
 <body>
 <!-- vim-markdown-toc GFM -->
 <ul>
-<li><a href="#总体设计">总体设计</a></li>
-<li><a href="#日志系统">日志系统</a></li>
-<li><a href="#消息系统">消息系统</a></li>
-<li><a href="#引擎设计">引擎设计</a>
-<ul>
-<li><a href="#模型">模型</a>
-<ul>
-<li><a href="#设备模型">设备模型</a></li>
-<li><a href="#规则模型">规则模型</a></li>
-</ul></li>
-<li><a href="#clp语言">CLP语言</a></li>
-<li><a href="#rulepayload设计">RulePayload设计</a></li>
-<li><a href="#clp设计">CLP设计</a></li>
-<li><a href="#引擎uml">引擎UML</a></li>
-</ul></li>
-<li><a href="#httphandler">HttpHandler</a></li>
-<li><a href="#调试系统">调试系统</a>
-<ul>
-<li><a href="#系统监控python">系统监控(Python)</a></li>
-<li><a href="#规则配置js">规则配置(JS)</a></li>
-</ul></li>
+<li><a href="#co-reference-resolution-共指消解">Co-Reference Resolution: 共指消解</a></li>
+<li><a href="#sentiment-analysis-语义分析">Sentiment Analysis: 语义分析</a></li>
+<li><a href="#named-entity-recognition-aka-ner-命名实体">Named Entity Recognition (aka NER): 命名实体</a></li>
+<li><a href="#machine-comprehension-aka-mc-机器理解">Machine Comprehension (aka MC): 机器理解</a></li>
+<li><a href="#textual-entailment-aka-te-文本蕴涵">Textual Entailment (aka TE): 文本蕴涵</a></li>
+<li><a href="#semantic-role-labeling-aka-srl-语义角色标注">Semantic Role Labeling (aka SRL): 语义角色标注</a></li>
+<li><a href="#references">References</a></li>
 </ul>
 <!-- vim-markdown-toc -->
     
 
-        <a href="/2019/06/17/Note/IOT/Rule-Engine-Summary/" class="post-more waves-effect waves-button">
+        <a href="/2019/11/26/ML/Guide/neural_nlp_milestones/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design/">Design</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOT/">IOT</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-ML/Scratch/convolution_plot"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-06-14 16:13:39" datetime="2019-06-14T08:13:39.000Z"  itemprop="datePublished">2019-06-14</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/06/14/ML/Scratch/convolution_plot/">(原创)用数据模拟卷积-初探</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
-<head>
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>dummy</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<p>网上很多写卷积的文档都是用"很简单"表示卷积so easy, 但草民认真读了他们的文章后, 反而对 卷积更不理解, 即使到现在还是不能理解, 这篇文章只是从数据上分析卷积过程, 很多疑点还需继 续探究</p>
-    
-
-        <a href="/2019/06/14/ML/Scratch/convolution_plot/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scracth/">Scracth</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Note/Jupyter/animations"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-06-13 16:18:35" datetime="2019-06-13T08:18:35.000Z"  itemprop="datePublished">2019-06-13</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/06/13/Note/Jupyter/animations/">Jupyter支持动态图</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
-<head>
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>dummy</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<h1 id="参考"><span class="header-section-number">1</span> 参考</h1>
-<p>http://louistiao.me/posts/notebooks/embedding-matplotlib-animations-in-jupyter-notebooks/</p>
-<p>http://louistiao.me/posts/notebooks/embedding-matplotlib-animations-in-jupyter-as-interactive-javascript-widgets/</p>
-    
-
-        <a href="/2019/06/13/Note/Jupyter/animations/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jupyter/">Jupyter</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Story/Math/Guide_Vectors_and_Tensors"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-06-12 10:03:33" datetime="2019-06-12T02:03:33.000Z"  itemprop="datePublished">2019-06-12</time>
-
-        
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/06/12/Story/Math/Guide_Vectors_and_Tensors/">A Student&#39;s Guide to Vectors and Tensors</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
-<head>
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>dummy</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<p>非常形象的讲解张量</p>
-<p><a href="https://www.youtube.com/watch?v=f5liqUk0ZTw" target="_blank" rel="noopener">youtube</a></p>
-<p><a href="https://www.zhihu.com/question/23720923" target="_blank" rel="noopener">知乎部分翻译</a></p>
-</body>
-</html>
-
-    
-
-        <a href="/2019/06/12/Story/Math/Guide_Vectors_and_Tensors/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-ML/Scratch/simple_perceptron"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-06-03 23:53:37" datetime="2019-06-03T15:53:37.000Z"  itemprop="datePublished">2019-06-03</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/06/03/ML/Scratch/simple_perceptron/">(原创)简单感知机-初探</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
-<head>
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>dummy</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<p>一个简单的小程序, 来了解感知机如何工作的, 激活函数为<strong>sign</strong></p>
-    
-
-        <a href="/2019/06/03/ML/Scratch/simple_perceptron/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scracth/">Scracth</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Story/Website/fav"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-06-03 20:30:21" datetime="2019-06-03T12:30:21.000Z"  itemprop="datePublished">2019-06-03</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/06/03/Story/Website/fav/">收藏学习网站</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
-<head>
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>dummy</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<!-- vim-markdown-toc GFM -->
-<ul>
-<li><a href="#ai">AI</a></li>
-<li><a href="#other">Other</a>
-<ul>
-<li><a href="#印度极客门户">印度极客门户</a></li>
-</ul></li>
-</ul>
-<!-- vim-markdown-toc -->
-    
-
-        <a href="/2019/06/03/Story/Website/fav/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Website/">Website</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-ML/Guide/cnn_intro"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-06-03 18:08:15" datetime="2019-06-03T10:08:15.000Z"  itemprop="datePublished">2019-06-03</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/06/03/ML/Guide/cnn_intro/">卷积神经网络CNN理解</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
-<head>
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>dummy</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<h2 id="网络资源"><span class="header-section-number">0.1</span> 网络资源</h2>
-<p><a href="https://towardsdatascience.com/intuitively-understanding-convolutions-for-deep-learning-1f6f42faee1" target="_blank" rel="noopener">Intuitively Understanding Convolutions for Deep Learning</a><br>
-<a href="https://www.cnblogs.com/skyfsm/p/6790245.html" target="_blank" rel="noopener">卷积神经网络CNN总结</a><br>
-<a href="https://blog.csdn.net/leadai/article/details/83353470" target="_blank" rel="noopener">卷积要旋转180度</a><br>
-<a href="https://zhuanlan.zhihu.com/p/25249694" target="_blank" rel="noopener">卷积神经网络简介</a><br>
-<a href="https://blog.csdn.net/qq_39521554/article/details/79083864" target="_blank" rel="noopener">别怕,"卷积"其实很简单</a><br>
-<a href="https://en.wikipedia.org/wiki/Convolution" target="_blank" rel="noopener">wikipedia:convolution</a><br>
-<a href="https://zh.wikipedia.org/wiki/%E5%8D%B7%E7%A7%AF" target="_blank" rel="noopener">wikipedia:卷积</a><br>
-<a href="http://mathworld.wolfram.com/Convolution.html" target="_blank" rel="noopener">mathworld</a><br>
-<a href="https://lpsa.swarthmore.edu/Convolution/CI.html" target="_blank" rel="noopener">图形Demo1</a><br>
-<a href="https://phiresky.github.io/convolution-demo/" target="_blank" rel="noopener">图形Demo2</a><br>
-<a href="https://blog.csdn.net/bitcarmanlee/article/details/54729807" target="_blank" rel="noopener">最容易理解的对卷积(convolution)的解释</a> <a href="https://colah.github.io/posts/2014-07-Understanding-Convolutions/" target="_blank" rel="noopener">Understanding Convolutions</a> <a href="https://blog.csdn.net/heshiip/article/details/79223442" target="_blank" rel="noopener">离散卷积过程举例图示详解</a></p>
-<p><a href="https://lpsa.swarthmore.edu/Convolution/Convolution.html" target="_blank" rel="noopener">推荐: 卷积介绍</a></p>
-    
-
-        <a href="/2019/06/03/ML/Guide/cnn_intro/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Guide/">Guide</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-ML/Scratch/snowflake_neural_logic"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-06-02 23:33:56" datetime="2019-06-02T15:33:56.000Z"  itemprop="datePublished">2019-06-02</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/06/02/ML/Scratch/snowflake_neural_logic/">(原创)神经元节点之雪花分割图例</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
-<head>
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>dummy</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<p>模拟一下如何处理线性不可分的问题, 纯属自娱自乐.</p>
-    
-
-        <a href="/2019/06/02/ML/Scratch/snowflake_neural_logic/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scracth/">Scracth</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Draft/">Draft</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/">NLP</a></li></ul>
 
     </div>
     
@@ -955,7 +885,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
     
 <nav id="page-nav">
     <div class="inner">
-    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
+    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
     </div>
 </nav>
 
@@ -974,7 +904,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
         </p>
     </div>
     <div class="bottom">
-        <p><span>qrsforever &copy; 2017 - 2019</span>
+        <p><span>qrsforever &copy; 2017 - 2020</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

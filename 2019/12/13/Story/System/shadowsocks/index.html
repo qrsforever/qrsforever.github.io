@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?cb4be66237379541488b8502a6eca006"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>shadowsocks配置 | 大地小神 | 你们都是大傻瓜, 我是天下大赢家</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="How,System,Ubuntu">
+    <meta name="description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta name="keywords" content="How,System,Ubuntu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shadowsocks配置">
+<meta property="og:url" content="https://qrsforever.github.io/2019/12/13/Story/System/shadowsocks/index.html">
+<meta property="og:site_name" content="大地小神">
+<meta property="og:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-04-28T14:47:10.273Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="shadowsocks配置">
+<meta name="twitter:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+    
+        <link rel="alternate" type="application/atom+xml" title="大地小神" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">qrsforever</h5>
+          <a href="mailto:985612771@qq.com" title="985612771@qq.com" class="mail">985612771@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://gitee.com/lidongai" target="_blank" >
+                <i class="icon icon-lg icon-code-fork"></i>
+                Gitee
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/705723886/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                Twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2017/08/30/CV"  >
+                <i class="icon icon-lg icon-user-circle"></i>
+                Author
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">shadowsocks配置</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">shadowsocks配置</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-12-13T04:05:00.000Z" itemprop="datePublished" class="page-time">
+  2019-12-13
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Story/">Story</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#支持chacha20加密"><span class="post-toc-text">0.1 支持chacha20加密</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装shadowsocks客户端"><span class="post-toc-text">0.2 安装shadowsocks客户端</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置"><span class="post-toc-text">0.3 配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#启动服务"><span class="post-toc-text">0.4 启动服务</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结果"><span class="post-toc-text">0.5 结果</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ss中继"><span class="post-toc-text">0.6 SS中继</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-text">0.7 参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Story/System/shadowsocks"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">shadowsocks配置</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-12-13 12:05:00" datetime="2019-12-13T04:05:00.000Z"  itemprop="datePublished">2019-12-13</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Story/">Story</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+</head>
+<body>
+<a id="more"></a>
+<h2 id="支持chacha20加密"><span class="header-section-number">0.1</span> 支持chacha20加密</h2>
+<pre><code>sudo apt install libsodium -y</code></pre>
+<h2 id="安装shadowsocks客户端"><span class="header-section-number">0.2</span> 安装shadowsocks客户端</h2>
+<pre><code>sudo pip3 install https://github.com/shadowsocks/shadowsocks/archive/master.zip --isolated -v -U
+
+or
+
+sudo pip3 install shadowsocks</code></pre>
+<p><strong>注意, slocal,ssserver 两个命令的安装路径(~/.local/bin by pip.conf configure), 记得设置PATH</strong></p>
+<p><strong>或者pip install指定--isolated</strong></p>
+<h2 id="配置"><span class="header-section-number">0.3</span> 配置</h2>
+<pre><code>{
+  &quot;server&quot;:&quot;x.x.x.x&quot;,           # ss 服务器 地址
+  &quot;server_port&quot;:14131,          # ss 服务器端口
+  &quot;local_address&quot;: &quot;127.0.0.1&quot;, # 本地ip
+  &quot;local_port&quot;:1080,            # 本地端口
+  &quot;password&quot;:&quot;password&quot;,        # 连接 ss 密码
+  &quot;timeout&quot;:300,                # 等待超时
+  &quot;method&quot;:&quot;aes-256-cfb&quot;,       # 加密方式
+  &quot;fast_open&quot;: false,           # fast_open：true或false。开启fast_open以降低延迟，但要求Linux内核在3.7+。
+  &quot;workers&quot;: 1                  # 工作线程数
+}</code></pre>
+<h2 id="启动服务"><span class="header-section-number">0.4</span> 启动服务</h2>
+<blockquote>
+<p>vim /etc/systemd/system/shadowsocks.service</p>
+</blockquote>
+<pre><code>[Unit]
+Description=Shadowsocks
+
+[Service]
+TimeoutStartSec=0
+ExecStart=/usr/local/bin/sslocal -c /etc/shadowsocks/shadowsocks.json
+
+[Install]
+WantedBy=multi-user.target</code></pre>
+<blockquote>
+<p>systemctl</p>
+</blockquote>
+<pre><code>sudo systemctl enable shadowsocks.service
+sudo systemctl start shadowsocks.service
+sudo systemctl status shadowsocks.service</code></pre>
+<h2 id="结果"><span class="header-section-number">0.5</span> 结果</h2>
+<pre><code>● shadowsocks.service - Shadowsocks
+   Loaded: loaded (/etc/systemd/system/shadowsocks.service; enabled; vendor preset: enabled)
+   Active: active (running) since Fri 2019-12-13 12:51:03 CST; 4s ago
+ Main PID: 12018 (sslocal)
+    Tasks: 1 (limit: 4915)
+   CGroup: /system.slice/shadowsocks.service
+           └─12018 /usr/bin/python3 /usr/local/bin/sslocal -c /etc/shadowsocks/shadowsocks.json
+
+Dec 13 12:51:03 omega systemd[1]: Started Shadowsocks.
+Dec 13 12:51:03 omega sslocal[12018]: INFO: loading config from /etc/shadowsocks/shadowsocks.json
+Dec 13 12:51:03 omega sslocal[12018]: 2019-12-13 12:51:03 INFO     loading libsodium from libsodium.so.23
+Dec 13 12:51:03 omega sslocal[12018]: 2019-12-13 12:51:03 INFO     starting local at 127.0.0.1:1080</code></pre>
+<h2 id="ss中继"><span class="header-section-number">0.6</span> SS中继</h2>
+<ul>
+<li>sudo apt install privoxy</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb7-1" title="1"><span class="er">forward-socks5</span>   <span class="er">/</span>               <span class="er">127.0.0.1:1080</span> <span class="er">.</span></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="er">listen-address</span>  <span class="er">0.0.0.0:8118</span></a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="er">#</span> <span class="er">local</span> <span class="er">network</span> <span class="er">do</span> <span class="er">not</span> <span class="er">use</span> <span class="er">proxy</span></a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="er">forward</span>         <span class="er">192.168.*.*/</span>     <span class="er">.</span></a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="er">forward</span>            <span class="er">10.*.*.*/</span>     <span class="er">.</span></a>
+<a class="sourceLine" id="cb7-6" title="6"><span class="er">forward</span>           <span class="er">127.*.*.*/</span>     <span class="er">.</span></a>
+<a class="sourceLine" id="cb7-7" title="7"><span class="er">****</span></a></code></pre></div>
+<p>sudo /etc/init.d/privoxy restart</p>
+<h2 id="参考"><span class="header-section-number">0.7</span> 参考</h2>
+<p>https://dylanyang.top/post/2019/05/15/centos7%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEshadowsocks%E5%AE%A2%E6%88%B7%E7%AB%AF/</p>
+<p>http://woshishagua.com/?p=89</p>
+</body>
+</html>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-04-28T14:47:10.273Z" itemprop="dateUpdated">2020-04-28 22:47:10</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://qrsforever.github.io">
+            <img src="/img/avatar.jpg" alt="qrsforever">
+            qrsforever
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How/">How</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/System/">System</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2019/12/13/Story/System/shadowsocks/&title=《shadowsocks配置》 — 大地小神&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2019/12/13/Story/System/shadowsocks/&title=《shadowsocks配置》 — 大地小神&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2019/12/13/Story/System/shadowsocks/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《shadowsocks配置》 — 大地小神&url=https://qrsforever.github.io/2019/12/13/Story/System/shadowsocks/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2019/12/13/Story/System/shadowsocks/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/12/13/Note/Jupyter/widgets_html/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">使用Notebook学习HTML</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/11/26/ML/Guide/neural_nlp_milestones/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">(draft)NLP应用里程碑</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <!-- <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script> -->
+    <script src="/js/av-min.js"></script>
+    <script src="/js/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "bpShGWdW8DpODhnDko5O2IBB-gzGzoHsz",
+            appKey: "rwmasTllBbHE69ADuLjFyFWf",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢打赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>qrsforever &copy; 2017 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2019/12/13/Story/System/shadowsocks/&title=《shadowsocks配置》 — 大地小神&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2019/12/13/Story/System/shadowsocks/&title=《shadowsocks配置》 — 大地小神&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2019/12/13/Story/System/shadowsocks/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《shadowsocks配置》 — 大地小神&url=https://qrsforever.github.io/2019/12/13/Story/System/shadowsocks/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2019/12/13/Story/System/shadowsocks/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://qrsforever.github.io/2019/12/13/Story/System/shadowsocks/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- lidong cha. -->
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- lidong end. -->
+
+</body>
+</html>

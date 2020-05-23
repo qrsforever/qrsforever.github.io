@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?cb4be66237379541488b8502a6eca006"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>(drfat)矩阵求导 | 大地小神 | 你们都是大傻瓜, 我是天下大赢家</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Math">
+    <meta name="description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta name="keywords" content="Math">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(drfat)矩阵求导">
+<meta property="og:url" content="https://qrsforever.github.io/2019/09/17/Note/Math/matrix_derivative/index.html">
+<meta property="og:site_name" content="大地小神">
+<meta property="og:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-05-23T12:51:39.737Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="(drfat)矩阵求导">
+<meta name="twitter:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+    
+        <link rel="alternate" type="application/atom+xml" title="大地小神" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">qrsforever</h5>
+          <a href="mailto:985612771@qq.com" title="985612771@qq.com" class="mail">985612771@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://gitee.com/lidongai" target="_blank" >
+                <i class="icon icon-lg icon-code-fork"></i>
+                Gitee
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/705723886/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                Twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2017/08/30/CV"  >
+                <i class="icon icon-lg icon-user-circle"></i>
+                Author
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">(drfat)矩阵求导</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">(drfat)矩阵求导</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-09-17T08:04:21.000Z" itemprop="datePublished" class="page-time">
+  2019-09-17
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#注解"><span class="post-toc-text">1 注解</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#一元微分-导数"><span class="post-toc-text">2 一元微分: 导数</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#多元微分-梯度"><span class="post-toc-text">3 多元微分: 梯度</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#矩阵导数"><span class="post-toc-text">4 矩阵导数</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#references"><span class="post-toc-text">5 References</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Note/Math/matrix_derivative"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">(drfat)矩阵求导</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-09-17 16:04:21" datetime="2019-09-17T08:04:21.000Z"  itemprop="datePublished">2019-09-17</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+  <script src="/usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+</head>
+<body>
+<p><a href="https://gitee.com/lidongai/code_blog_post/raw/master/Note/Math/matrix_derivative.md" target="_blank" rel="noopener">RAWCODE</a></p>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#注解">注解</a></li>
+<li><a href="#一元微分-导数">一元微分: 导数</a></li>
+<li><a href="#多元微分-梯度">多元微分: 梯度</a></li>
+<li><a href="#矩阵导数">矩阵导数</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+<!-- vim-markdown-toc -->
+<a id="more"></a>
+<h1 id="注解"><span class="header-section-number">1</span> 注解</h1>
+<table>
+<thead>
+<tr class="header">
+<th>符号</th>
+<th>表示</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(x\)</span></td>
+<td>标量</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\mathbf x\)</span></td>
+<td>粗体小写, 列向量</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(X\)</span></td>
+<td>大些字母, 矩阵</td>
+</tr>
+</tbody>
+</table>
+<h1 id="一元微分-导数"><span class="header-section-number">2</span> 一元微分: 导数</h1>
+<p><span class="math display">\[
+df = f&#39;(x)dx;
+\]</span></p>
+<h1 id="多元微分-梯度"><span class="header-section-number">3</span> 多元微分: 梯度</h1>
+<p><span class="math display">\[
+\begin{align*}
+df &amp;= \sum_{i=1}^n \dfrac{\partial{f}}{\partial{x_i}} dx_i \\
+   &amp;= {\dfrac{\partial{f}}{\partial{\mathbf x}}}^T d\mathbf x
+\end{align*}
+\]</span></p>
+<p>第一个等号是全微分形式;</p>
+<p>第二个等号是梯度与微分的关系: <span class="math inline">\(\dfrac{\partial{f}}{\partial{\mathbf x}}\)</span> (n x 1)梯度向量与微分向量<span class="math inline">\(d\mathbf x\)</span> (n x 1)的内积.</p>
+<h1 id="矩阵导数"><span class="header-section-number">4</span> 矩阵导数</h1>
+<p><span class="math display">\[
+\begin{align*}
+df &amp;= \sum_{i=1}^{m}\sum_{j=1}^{n} \dfrac{\partial f}{\partial X_{ij}} dX_{ij} \\
+   &amp;= tr \bigg({\dfrac{\partial f}{\partial X}}^T dX \bigg)
+\end{align*}
+\]</span></p>
+<p><code>tr</code>表示方阵的迹<span class="math inline">\(tr(AB)=\sum_{i,j}A_{i,j}B{ij}\)</span>, 对角线元素的和, tr的性质:</p>
+<ol type="1">
+<li>标量的迹: <span class="math inline">\(a = tr(a)\)</span></li>
+<li>转置: <span class="math inline">\(tr(A^T) = tr(A)\)</span></li>
+<li>线性: <span class="math inline">\(tr(A \pm B) = tr(A) \pm tr(B)\)</span></li>
+<li>乘法交换: <span class="math inline">\(tr(AB) = tr(BA)\)</span></li>
+<li>逐元素乘法交换: <span class="math inline">\(tr(A^T(B \bigodot C)) = tr((A \bigodot B)^TC)\)</span></li>
+</ol>
+<p>矩阵微分运算法则:</p>
+<ol type="1">
+<li>加减法: <span class="math inline">\(d(X \pm Y) = dX \pm dY\)</span></li>
+<li>乘法: <span class="math inline">\(d(XY) = (dX)Y + XdY\)</span></li>
+<li>转置: <span class="math inline">\(d(X^T) = (dX)^T\)</span></li>
+<li>迹: <span class="math inline">\(dtr(X) = tr(dX)\)</span></li>
+<li>逆: <span class="math inline">\(dX^{-1} = -X^{-1}dX X^{-1}\)</span></li>
+<li>逐元素乘法: <span class="math inline">\(d(X \bigodot Y) = dX \bigodot Y + X \bigodot dY\)</span></li>
+<li>逐元素函数: <span class="math inline">\(d\sigma(X) = \sigma&#39;(X) \bigodot dX\)</span></li>
+</ol>
+<h1 id="references"><span class="header-section-number">5</span> References</h1>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/24709748" target="_blank" rel="noopener">矩阵求导术1</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/24863977" target="_blank" rel="noopener">矩阵求导术2</a></li>
+</ul>
+</body>
+</html>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-05-23T12:51:39.737Z" itemprop="dateUpdated">2020-05-23 20:51:39</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://qrsforever.github.io">
+            <img src="/img/avatar.jpg" alt="qrsforever">
+            qrsforever
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Math/">Math</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2019/09/17/Note/Math/matrix_derivative/&title=《(drfat)矩阵求导》 — 大地小神&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2019/09/17/Note/Math/matrix_derivative/&title=《(drfat)矩阵求导》 — 大地小神&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2019/09/17/Note/Math/matrix_derivative/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《(drfat)矩阵求导》 — 大地小神&url=https://qrsforever.github.io/2019/09/17/Note/Math/matrix_derivative/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2019/09/17/Note/Math/matrix_derivative/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/09/18/ML/Scratch/rnn_builder/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">(draft)RNN代码实例(numpy)</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/09/12/ML/Guide/rnn_intro/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">循环神经网络RNN介绍</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <!-- <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script> -->
+    <script src="/js/av-min.js"></script>
+    <script src="/js/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "bpShGWdW8DpODhnDko5O2IBB-gzGzoHsz",
+            appKey: "rwmasTllBbHE69ADuLjFyFWf",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢打赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>qrsforever &copy; 2017 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2019/09/17/Note/Math/matrix_derivative/&title=《(drfat)矩阵求导》 — 大地小神&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2019/09/17/Note/Math/matrix_derivative/&title=《(drfat)矩阵求导》 — 大地小神&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2019/09/17/Note/Math/matrix_derivative/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《(drfat)矩阵求导》 — 大地小神&url=https://qrsforever.github.io/2019/09/17/Note/Math/matrix_derivative/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2019/09/17/Note/Math/matrix_derivative/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://qrsforever.github.io/2019/09/17/Note/Math/matrix_derivative/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- lidong cha. -->
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- lidong end. -->
+
+</body>
+</html>

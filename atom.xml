@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qrsforever.github.io/"/>
-  <updated>2019-07-25T14:01:22.669Z</updated>
+  <updated>2020-05-23T11:56:33.568Z</updated>
   <id>https://qrsforever.github.io/</id>
   
   <author>
@@ -17,273 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Graphviz绘图</title>
-    <link href="https://qrsforever.github.io/2019/07/24/Tutorial/graphviz/"/>
-    <id>https://qrsforever.github.io/2019/07/24/Tutorial/graphviz/</id>
-    <published>2019-07-24T06:00:24.000Z</published>
-    <updated>2019-07-25T14:01:22.669Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!DOCTYPE html&gt;
-&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang xml:lang&gt;
-&lt;head&gt;
-  &lt;meta charset=&quot;utf-8&quot;&gt;
-  &lt;meta name=&quot;generator&quot; content=&quot;pandoc&quot;&gt;
-  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;&gt;
-  &lt;title&gt;dummy&lt;/title&gt;
-  &lt;style type=&quot;text/css&quot;&gt;
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  &lt;/style&gt;
-  &lt;style type=&quot;text/css&quot;&gt;
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; } /* Alert */
-code span.an { color: #008000; } /* Annotation */
-code span.at { } /* Attribute */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #0000ff; } /* ControlFlow */
-code span.ch { color: #008080; } /* Char */
-code span.cn { } /* Constant */
-code span.co { color: #008000; } /* Comment */
-code span.cv { color: #008000; } /* CommentVar */
-code span.do { color: #008000; } /* Documentation */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.im { } /* Import */
-code span.in { color: #008000; } /* Information */
-code span.kw { color: #0000ff; } /* Keyword */
-code span.op { } /* Operator */
-code span.ot { color: #ff4000; } /* Other */
-code span.pp { color: #ff4000; } /* Preprocessor */
-code span.sc { color: #008080; } /* SpecialChar */
-code span.ss { color: #008080; } /* SpecialString */
-code span.st { color: #008080; } /* String */
-code span.va { } /* Variable */
-code span.vs { color: #008080; } /* VerbatimString */
-code span.wa { color: #008000; font-weight: bold; } /* Warning */
-  &lt;/style&gt;
-  &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/pandoc.css&quot;&gt;
-  &lt;!--[if lt IE 9]&gt;
-    &lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js&quot;&gt;&lt;/script&gt;
-  &lt;![endif]--&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;!-- vim-markdown-toc GFM --&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#requirements&quot;&gt;Requirements&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#blog&quot;&gt;Blog&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#pandoc-config&quot;&gt;pandoc config&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#filter-graphvizpy&quot;&gt;filter graphviz.py&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#demo&quot;&gt;Demo&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#office-example&quot;&gt;office example&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#neural-network&quot;&gt;neural network&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#simplest&quot;&gt;simplest&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#complicated-case&quot;&gt;complicated case&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#references&quot;&gt;References&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;!-- vim-markdown-toc --&gt;
-    
-    </summary>
-    
-      <category term="Tutorial" scheme="https://qrsforever.github.io/categories/Tutorial/"/>
-    
-    
-      <category term="How" scheme="https://qrsforever.github.io/tags/How/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>论文在线</title>
-    <link href="https://qrsforever.github.io/2019/07/24/Story/Website/papers/"/>
-    <id>https://qrsforever.github.io/2019/07/24/Story/Website/papers/</id>
-    <published>2019-07-24T02:00:08.000Z</published>
-    <updated>2019-07-25T13:33:14.576Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!DOCTYPE html&gt;
-&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang xml:lang&gt;
-&lt;head&gt;
-  &lt;meta charset=&quot;utf-8&quot;&gt;
-  &lt;meta name=&quot;generator&quot; content=&quot;pandoc&quot;&gt;
-  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;&gt;
-  &lt;title&gt;dummy&lt;/title&gt;
-  &lt;style type=&quot;text/css&quot;&gt;
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  &lt;/style&gt;
-  &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/pandoc.css&quot;&gt;
-  &lt;!--[if lt IE 9]&gt;
-    &lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js&quot;&gt;&lt;/script&gt;
-  &lt;![endif]--&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;!-- vim-markdown-toc GFM --&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#paper&quot;&gt;Paper&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#search&quot;&gt;Search&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#other&quot;&gt;Other&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;!-- vim-markdown-toc --&gt;
-    
-    </summary>
-    
-      <category term="Story" scheme="https://qrsforever.github.io/categories/Story/"/>
-    
-    
-      <category term="Website" scheme="https://qrsforever.github.io/tags/Website/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>(原创)卷积三种模式使用numpy实现</title>
-    <link href="https://qrsforever.github.io/2019/07/23/ML/Guide/conv_mode/"/>
-    <id>https://qrsforever.github.io/2019/07/23/ML/Guide/conv_mode/</id>
-    <published>2019-07-23T05:52:26.000Z</published>
-    <updated>2019-07-25T13:33:14.576Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!DOCTYPE html&gt;
-&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang xml:lang&gt;
-&lt;head&gt;
-  &lt;meta charset=&quot;utf-8&quot;&gt;
-  &lt;meta name=&quot;generator&quot; content=&quot;pandoc&quot;&gt;
-  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;&gt;
-  &lt;title&gt;dummy&lt;/title&gt;
-  &lt;style type=&quot;text/css&quot;&gt;
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  &lt;/style&gt;
-  &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/pandoc.css&quot;&gt;
-  &lt;!--[if lt IE 9]&gt;
-    &lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js&quot;&gt;&lt;/script&gt;
-  &lt;![endif]--&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;!-- vim-markdown-toc GFM --&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#mode&quot;&gt;Mode&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#full&quot;&gt;full&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#same&quot;&gt;same&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#valid&quot;&gt;valid&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#codes&quot;&gt;Codes&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#references&quot;&gt;References&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;!-- vim-markdown-toc --&gt;
-    
-    </summary>
-    
-      <category term="ML" scheme="https://qrsforever.github.io/categories/ML/"/>
-    
-    
-      <category term="Python" scheme="https://qrsforever.github.io/tags/Python/"/>
-    
-      <category term="Guide" scheme="https://qrsforever.github.io/tags/Guide/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>(原创)神经网络之反向传播实例</title>
-    <link href="https://qrsforever.github.io/2019/07/19/ML/Scratch/backpropagation_algorithm/"/>
-    <id>https://qrsforever.github.io/2019/07/19/ML/Scratch/backpropagation_algorithm/</id>
-    <published>2019-07-19T13:41:28.000Z</published>
-    <updated>2019-07-29T13:59:07.638Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!DOCTYPE html&gt;
-&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang xml:lang&gt;
-&lt;head&gt;
-  &lt;meta charset=&quot;utf-8&quot;&gt;
-  &lt;meta name=&quot;generator&quot; content=&quot;pandoc&quot;&gt;
-  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;&gt;
-  &lt;title&gt;dummy&lt;/title&gt;
-  &lt;style type=&quot;text/css&quot;&gt;
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  &lt;/style&gt;
-  &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/pandoc.css&quot;&gt;
-  &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
-  &lt;!--[if lt IE 9]&gt;
-    &lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js&quot;&gt;&lt;/script&gt;
-  &lt;![endif]--&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;!-- vim-markdown-toc GFM --&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#description&quot;&gt;Description&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#drawit&quot;&gt;Drawit&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#codes&quot;&gt;Codes&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#references&quot;&gt;References&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;!-- vim-markdown-toc --&gt;
-    
-    </summary>
-    
-      <category term="ML" scheme="https://qrsforever.github.io/categories/ML/"/>
-    
-    
-      <category term="Python" scheme="https://qrsforever.github.io/tags/Python/"/>
-    
-      <category term="Scratch" scheme="https://qrsforever.github.io/tags/Scratch/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据集</title>
-    <link href="https://qrsforever.github.io/2019/07/19/Story/Website/dataset/"/>
-    <id>https://qrsforever.github.io/2019/07/19/Story/Website/dataset/</id>
-    <published>2019-07-19T12:59:12.000Z</published>
-    <updated>2019-07-22T17:13:32.868Z</updated>
+    <title>PCA</title>
+    <link href="https://qrsforever.github.io/2020/04/16/Note/Math/PCA/"/>
+    <id>https://qrsforever.github.io/2020/04/16/Note/Math/PCA/</id>
+    <published>2020-04-16T07:33:00.000Z</published>
+    <updated>2020-05-23T11:56:33.568Z</updated>
     
     <summary type="html">
     
@@ -298,221 +36,19 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
     
     </summary>
     
-      <category term="Story" scheme="https://qrsforever.github.io/categories/Story/"/>
+      <category term="note" scheme="https://qrsforever.github.io/categories/note/"/>
     
     
-      <category term="Website" scheme="https://qrsforever.github.io/tags/Website/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>(原创)神经网络之卷积过程实例</title>
-    <link href="https://qrsforever.github.io/2019/07/19/ML/Scratch/nn_convolution/"/>
-    <id>https://qrsforever.github.io/2019/07/19/ML/Scratch/nn_convolution/</id>
-    <published>2019-07-19T07:33:06.000Z</published>
-    <updated>2019-07-29T13:47:59.301Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!DOCTYPE html&gt;
-&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang xml:lang&gt;
-&lt;head&gt;
-  &lt;meta charset=&quot;utf-8&quot;&gt;
-  &lt;meta name=&quot;generator&quot; content=&quot;pandoc&quot;&gt;
-  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;&gt;
-  &lt;title&gt;dummy&lt;/title&gt;
-  &lt;style type=&quot;text/css&quot;&gt;
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  &lt;/style&gt;
-  &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/pandoc.css&quot;&gt;
-  &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
-  &lt;!--[if lt IE 9]&gt;
-    &lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js&quot;&gt;&lt;/script&gt;
-  &lt;![endif]--&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;!-- vim-markdown-toc GFM --&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#standard-neural-network-and-convolution-nerual-network&quot;&gt;Standard Neural Network and Convolution Nerual Network&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#references&quot;&gt;References&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;!-- vim-markdown-toc --&gt;
-    
-    </summary>
-    
-      <category term="ML" scheme="https://qrsforever.github.io/categories/ML/"/>
-    
-    
-      <category term="Python" scheme="https://qrsforever.github.io/tags/Python/"/>
-    
-      <category term="Scratch" scheme="https://qrsforever.github.io/tags/Scratch/"/>
+      <category term="math" scheme="https://qrsforever.github.io/tags/math/"/>
     
   </entry>
   
   <entry>
-    <title>国内镜像</title>
-    <link href="https://qrsforever.github.io/2019/07/18/Tools/How/china_images/"/>
-    <id>https://qrsforever.github.io/2019/07/18/Tools/How/china_images/</id>
-    <published>2019-07-18T02:31:07.000Z</published>
-    <updated>2019-07-25T14:00:54.830Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!DOCTYPE html&gt;
-&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang xml:lang&gt;
-&lt;head&gt;
-  &lt;meta charset=&quot;utf-8&quot;&gt;
-  &lt;meta name=&quot;generator&quot; content=&quot;pandoc&quot;&gt;
-  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;&gt;
-  &lt;title&gt;dummy&lt;/title&gt;
-  &lt;style type=&quot;text/css&quot;&gt;
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  &lt;/style&gt;
-  &lt;style type=&quot;text/css&quot;&gt;
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; } /* Alert */
-code span.an { color: #008000; } /* Annotation */
-code span.at { } /* Attribute */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #0000ff; } /* ControlFlow */
-code span.ch { color: #008080; } /* Char */
-code span.cn { } /* Constant */
-code span.co { color: #008000; } /* Comment */
-code span.cv { color: #008000; } /* CommentVar */
-code span.do { color: #008000; } /* Documentation */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.im { } /* Import */
-code span.in { color: #008000; } /* Information */
-code span.kw { color: #0000ff; } /* Keyword */
-code span.op { } /* Operator */
-code span.ot { color: #ff4000; } /* Other */
-code span.pp { color: #ff4000; } /* Preprocessor */
-code span.sc { color: #008080; } /* SpecialChar */
-code span.ss { color: #008080; } /* SpecialString */
-code span.st { color: #008080; } /* String */
-code span.va { } /* Variable */
-code span.vs { color: #008080; } /* VerbatimString */
-code span.wa { color: #008000; font-weight: bold; } /* Warning */
-  &lt;/style&gt;
-  &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/pandoc.css&quot;&gt;
-  &lt;!--[if lt IE 9]&gt;
-    &lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js&quot;&gt;&lt;/script&gt;
-  &lt;![endif]--&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;!-- vim-markdown-toc GFM --&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#apt&quot;&gt;apt&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#mvn&quot;&gt;mvn&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#pip&quot;&gt;pip&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#npm&quot;&gt;npm&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#gradle&quot;&gt;gradle&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;!-- vim-markdown-toc --&gt;
-    
-    </summary>
-    
-      <category term="Tools" scheme="https://qrsforever.github.io/categories/Tools/"/>
-    
-    
-      <category term="How" scheme="https://qrsforever.github.io/tags/How/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>(原创)神经网络之交叉熵代码实例</title>
-    <link href="https://qrsforever.github.io/2019/07/01/ML/Scratch/nn_crossent/"/>
-    <id>https://qrsforever.github.io/2019/07/01/ML/Scratch/nn_crossent/</id>
-    <published>2019-07-01T14:47:37.000Z</published>
-    <updated>2019-07-21T05:31:48.409Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!DOCTYPE html&gt;
-&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang xml:lang&gt;
-&lt;head&gt;
-  &lt;meta charset=&quot;utf-8&quot;&gt;
-  &lt;meta name=&quot;generator&quot; content=&quot;pandoc&quot;&gt;
-  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;&gt;
-  &lt;title&gt;dummy&lt;/title&gt;
-  &lt;style type=&quot;text/css&quot;&gt;
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  &lt;/style&gt;
-  &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/pandoc.css&quot;&gt;
-  &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
-  &lt;!--[if lt IE 9]&gt;
-    &lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js&quot;&gt;&lt;/script&gt;
-  &lt;![endif]--&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;!-- vim-markdown-toc GFM --&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#intro&quot;&gt;Intro&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#se-and-ce&quot;&gt;SE and CE&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#gradient&quot;&gt;Gradient&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#hiden&quot;&gt;Hiden&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#codes&quot;&gt;Codes&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;!-- vim-markdown-toc --&gt;
-    
-    </summary>
-    
-      <category term="ML" scheme="https://qrsforever.github.io/categories/ML/"/>
-    
-    
-      <category term="Python" scheme="https://qrsforever.github.io/tags/Python/"/>
-    
-      <category term="Scratch" scheme="https://qrsforever.github.io/tags/Scratch/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MSE和CE不同</title>
-    <link href="https://qrsforever.github.io/2019/06/25/Story/Passage/diff_mse_ce/"/>
-    <id>https://qrsforever.github.io/2019/06/25/Story/Passage/diff_mse_ce/</id>
-    <published>2019-06-25T13:41:53.000Z</published>
-    <updated>2019-06-27T13:59:11.975Z</updated>
+    <title>Scatter,Covariance,Correlation Matrix</title>
+    <link href="https://qrsforever.github.io/2020/04/16/Note/Math/scatter_covariance_correlation_matrix/"/>
+    <id>https://qrsforever.github.io/2020/04/16/Note/Math/scatter_covariance_correlation_matrix/</id>
+    <published>2020-04-16T03:36:00.000Z</published>
+    <updated>2020-04-28T14:47:10.269Z</updated>
     
     <summary type="html">
     
@@ -527,101 +63,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
     
     </summary>
     
-      <category term="Story" scheme="https://qrsforever.github.io/categories/Story/"/>
-    
-    
-      <category term="Passage" scheme="https://qrsforever.github.io/tags/Passage/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>(原创)交叉熵实例</title>
-    <link href="https://qrsforever.github.io/2019/06/25/ML/Scratch/CE_error/"/>
-    <id>https://qrsforever.github.io/2019/06/25/ML/Scratch/CE_error/</id>
-    <published>2019-06-25T03:33:49.000Z</published>
-    <updated>2019-07-21T05:31:48.409Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!DOCTYPE html&gt;
-&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang xml:lang&gt;
-&lt;head&gt;
-  &lt;meta charset=&quot;utf-8&quot;&gt;
-  &lt;meta name=&quot;generator&quot; content=&quot;pandoc&quot;&gt;
-  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;&gt;
-  &lt;title&gt;dummy&lt;/title&gt;
-  &lt;style type=&quot;text/css&quot;&gt;
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  &lt;/style&gt;
-  &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/pandoc.css&quot;&gt;
-  &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
-  &lt;!--[if lt IE 9]&gt;
-    &lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js&quot;&gt;&lt;/script&gt;
-  &lt;![endif]--&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;!-- vim-markdown-toc GFM --&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#神经网络&quot;&gt;神经网络&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#简图&quot;&gt;简图&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#描述&quot;&gt;描述&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#梯度&quot;&gt;梯度&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;!-- vim-markdown-toc --&gt;
-    
-    </summary>
-    
-      <category term="ML" scheme="https://qrsforever.github.io/categories/ML/"/>
-    
-    
-      <category term="Scracth" scheme="https://qrsforever.github.io/tags/Scracth/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数学符号表</title>
-    <link href="https://qrsforever.github.io/2019/06/25/Tools/Math/symbols/"/>
-    <id>https://qrsforever.github.io/2019/06/25/Tools/Math/symbols/</id>
-    <published>2019-06-25T01:53:18.000Z</published>
-    <updated>2019-07-29T13:47:59.301Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!DOCTYPE html&gt;
-&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang xml:lang&gt;
-&lt;head&gt;
-  &lt;meta charset=&quot;utf-8&quot;&gt;
-  &lt;meta name=&quot;generator&quot; content=&quot;pandoc&quot;&gt;
-  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;&gt;
-  &lt;title&gt;dummy&lt;/title&gt;
-  &lt;style type=&quot;text/css&quot;&gt;
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  &lt;/style&gt;
-  &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/pandoc.css&quot;&gt;
-  &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
-  &lt;!--[if lt IE 9]&gt;
-    &lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js&quot;&gt;&lt;/script&gt;
-  &lt;![endif]--&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;!-- vim-markdown-toc GFM --&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#统计学&quot;&gt;统计学&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#机器学习&quot;&gt;机器学习&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;!-- vim-markdown-toc --&gt;
-    
-    </summary>
-    
-      <category term="Tools" scheme="https://qrsforever.github.io/categories/Tools/"/>
+      <category term="Note" scheme="https://qrsforever.github.io/categories/Note/"/>
     
     
       <category term="Math" scheme="https://qrsforever.github.io/tags/Math/"/>
@@ -629,11 +71,38 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
   </entry>
   
   <entry>
-    <title>(原创)交叉熵损失函数</title>
-    <link href="https://qrsforever.github.io/2019/06/23/ML/Guide/cross_entropy_loss/"/>
-    <id>https://qrsforever.github.io/2019/06/23/ML/Guide/cross_entropy_loss/</id>
-    <published>2019-06-23T07:24:43.000Z</published>
-    <updated>2019-07-16T15:50:14.735Z</updated>
+    <title>KL散度和JS散度</title>
+    <link href="https://qrsforever.github.io/2020/04/15/Note/Math/KLD_JSD/"/>
+    <id>https://qrsforever.github.io/2020/04/15/Note/Math/KLD_JSD/</id>
+    <published>2020-04-15T11:55:00.000Z</published>
+    <updated>2020-04-28T14:47:10.265Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;!DOCTYPE html&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang xml:lang&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;generator&quot; content=&quot;
+      
+    
+    </summary>
+    
+      <category term="Note" scheme="https://qrsforever.github.io/categories/Note/"/>
+    
+    
+      <category term="Math" scheme="https://qrsforever.github.io/tags/Math/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>(Draft)RL-rlpyt</title>
+    <link href="https://qrsforever.github.io/2020/03/23/ML/rl/rlpyt/"/>
+    <id>https://qrsforever.github.io/2020/03/23/ML/rl/rlpyt/</id>
+    <published>2020-03-23T12:01:00.000Z</published>
+    <updated>2020-05-23T12:02:35.461Z</updated>
     
     <summary type="html">
     
@@ -651,29 +120,95 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   &lt;/style&gt;
   &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/pandoc.css&quot;&gt;
-  &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
-  &lt;!--[if lt IE 9]&gt;
-    &lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js&quot;&gt;&lt;/script&gt;
-  &lt;![endif]--&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;!-- vim-markdown-toc GFM --&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#百科&quot;&gt;百科&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#相关概念&quot;&gt;相关概念&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#交叉熵&quot;&gt;交叉熵&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#与似然的关系&quot;&gt;与似然的关系&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#交叉熵损失函数&quot;&gt;交叉熵损失函数&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#定义符号&quot;&gt;定义符号&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#logistic回归的交叉熵&quot;&gt;Logistic回归的交叉熵&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#softmax回归的交叉熵&quot;&gt;Softmax回归的交叉熵&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#参考&quot;&gt;参考&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;!-- vim-markdown-toc --&gt;
+    
+    </summary>
+    
+      <category term="ML" scheme="https://qrsforever.github.io/categories/ML/"/>
+    
+    
+      <category term="Draft" scheme="https://qrsforever.github.io/tags/Draft/"/>
+    
+      <category term="RL" scheme="https://qrsforever.github.io/tags/RL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LSTM</title>
+    <link href="https://qrsforever.github.io/2020/03/23/ML/Guide/RNN/LSTM/"/>
+    <id>https://qrsforever.github.io/2020/03/23/ML/Guide/RNN/LSTM/</id>
+    <published>2020-03-23T11:48:00.000Z</published>
+    <updated>2020-05-23T11:49:06.334Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;!DOCTYPE html&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang xml:lang&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;generator&quot; content=&quot;
+      
+    
+    </summary>
+    
+      <category term="ML" scheme="https://qrsforever.github.io/categories/ML/"/>
+    
+    
+      <category term="RNN" scheme="https://qrsforever.github.io/tags/RNN/"/>
+    
+      <category term="Models" scheme="https://qrsforever.github.io/tags/Models/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GRU</title>
+    <link href="https://qrsforever.github.io/2020/03/23/ML/Guide/RNN/GRU/"/>
+    <id>https://qrsforever.github.io/2020/03/23/ML/Guide/RNN/GRU/</id>
+    <published>2020-03-23T11:47:00.000Z</published>
+    <updated>2020-05-23T11:48:45.463Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;!DOCTYPE html&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang xml:lang&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;generator&quot; content=&quot;
+      
+    
+    </summary>
+    
+      <category term="ML" scheme="https://qrsforever.github.io/categories/ML/"/>
+    
+    
+      <category term="RNN" scheme="https://qrsforever.github.io/tags/RNN/"/>
+    
+      <category term="Models" scheme="https://qrsforever.github.io/tags/Models/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Torch内存</title>
+    <link href="https://qrsforever.github.io/2020/03/03/ML/Guide/memory_used/"/>
+    <id>https://qrsforever.github.io/2020/03/03/ML/Guide/memory_used/</id>
+    <published>2020-03-03T08:07:00.000Z</published>
+    <updated>2020-03-03T08:08:31.543Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;!DOCTYPE html&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang xml:lang&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;generator&quot; content=&quot;
+      
     
     </summary>
     
@@ -685,134 +220,38 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
   </entry>
   
   <entry>
-    <title>(原创)本地规则引擎设计</title>
-    <link href="https://qrsforever.github.io/2019/06/17/Note/IOT/Rule-Engine-Summary/"/>
-    <id>https://qrsforever.github.io/2019/06/17/Note/IOT/Rule-Engine-Summary/</id>
-    <published>2019-06-17T07:59:42.000Z</published>
-    <updated>2019-06-24T15:12:29.178Z</updated>
+    <title>Opera mp4 play</title>
+    <link href="https://qrsforever.github.io/2020/02/19/Story/System/opera_mp4/"/>
+    <id>https://qrsforever.github.io/2020/02/19/Story/System/opera_mp4/</id>
+    <published>2020-02-19T09:36:00.000Z</published>
+    <updated>2020-02-19T09:37:42.764Z</updated>
     
     <summary type="html">
     
-      &lt;!DOCTYPE html&gt;
+      
+      
+        &lt;!DOCTYPE html&gt;
 &lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang xml:lang&gt;
 &lt;head&gt;
   &lt;meta charset=&quot;utf-8&quot;&gt;
-  &lt;meta name=&quot;generator&quot; content=&quot;pandoc&quot;&gt;
-  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;&gt;
-  &lt;title&gt;dummy&lt;/title&gt;
-  &lt;style type=&quot;text/css&quot;&gt;
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  &lt;/style&gt;
-  &lt;style type=&quot;text/css&quot;&gt;
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; } /* Alert */
-code span.an { color: #008000; } /* Annotation */
-code span.at { } /* Attribute */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #0000ff; } /* ControlFlow */
-code span.ch { color: #008080; } /* Char */
-code span.cn { } /* Constant */
-code span.co { color: #008000; } /* Comment */
-code span.cv { color: #008000; } /* CommentVar */
-code span.do { color: #008000; } /* Documentation */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.im { } /* Import */
-code span.in { color: #008000; } /* Information */
-code span.kw { color: #0000ff; } /* Keyword */
-code span.op { } /* Operator */
-code span.ot { color: #ff4000; } /* Other */
-code span.pp { color: #ff4000; } /* Preprocessor */
-code span.sc { color: #008080; } /* SpecialChar */
-code span.ss { color: #008080; } /* SpecialString */
-code span.st { color: #008080; } /* String */
-code span.va { } /* Variable */
-code span.vs { color: #008080; } /* VerbatimString */
-code span.wa { color: #008000; font-weight: bold; } /* Warning */
-  &lt;/style&gt;
-  &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/pandoc.css&quot;&gt;
-  &lt;!--[if lt IE 9]&gt;
-    &lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js&quot;&gt;&lt;/script&gt;
-  &lt;![endif]--&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;!-- vim-markdown-toc GFM --&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#总体设计&quot;&gt;总体设计&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#日志系统&quot;&gt;日志系统&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#消息系统&quot;&gt;消息系统&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#引擎设计&quot;&gt;引擎设计&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#模型&quot;&gt;模型&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#设备模型&quot;&gt;设备模型&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#规则模型&quot;&gt;规则模型&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#clp语言&quot;&gt;CLP语言&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#rulepayload设计&quot;&gt;RulePayload设计&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#clp设计&quot;&gt;CLP设计&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#引擎uml&quot;&gt;引擎UML&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#httphandler&quot;&gt;HttpHandler&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#调试系统&quot;&gt;调试系统&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#系统监控python&quot;&gt;系统监控(Python)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#规则配置js&quot;&gt;规则配置(JS)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;!-- vim-markdown-toc --&gt;
+  &lt;meta name=&quot;generator&quot; content=&quot;
+      
     
     </summary>
     
-      <category term="Note" scheme="https://qrsforever.github.io/categories/Note/"/>
+      <category term="Story" scheme="https://qrsforever.github.io/categories/Story/"/>
     
     
-      <category term="IOT" scheme="https://qrsforever.github.io/tags/IOT/"/>
-    
-      <category term="Design" scheme="https://qrsforever.github.io/tags/Design/"/>
+      <category term="System" scheme="https://qrsforever.github.io/tags/System/"/>
     
   </entry>
   
   <entry>
-    <title>(原创)用数据模拟卷积-初探</title>
-    <link href="https://qrsforever.github.io/2019/06/14/ML/Scratch/convolution_plot/"/>
-    <id>https://qrsforever.github.io/2019/06/14/ML/Scratch/convolution_plot/</id>
-    <published>2019-06-14T08:13:39.000Z</published>
-    <updated>2019-07-21T05:31:48.409Z</updated>
+    <title>(Draft)Tensor-scatter gather</title>
+    <link href="https://qrsforever.github.io/2020/01/30/ML/Pytorch/tensor_scatter_gather/"/>
+    <id>https://qrsforever.github.io/2020/01/30/ML/Pytorch/tensor_scatter_gather/</id>
+    <published>2020-01-30T12:15:00.000Z</published>
+    <updated>2020-05-23T11:53:54.074Z</updated>
     
     <summary type="html">
     
@@ -830,30 +269,26 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   &lt;/style&gt;
   &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/pandoc.css&quot;&gt;
-  &lt;!--[if lt IE 9]&gt;
-    &lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js&quot;&gt;&lt;/script&gt;
-  &lt;![endif]--&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;p&gt;网上很多写卷积的文档都是用&quot;很简单&quot;表示卷积so easy, 但草民认真读了他们的文章后, 反而对 卷积更不理解, 即使到现在还是不能理解, 这篇文章只是从数据上分析卷积过程, 很多疑点还需继 续探究&lt;/p&gt;
     
     </summary>
     
       <category term="ML" scheme="https://qrsforever.github.io/categories/ML/"/>
     
     
-      <category term="Python" scheme="https://qrsforever.github.io/tags/Python/"/>
+      <category term="Draft" scheme="https://qrsforever.github.io/tags/Draft/"/>
     
-      <category term="Scracth" scheme="https://qrsforever.github.io/tags/Scracth/"/>
+      <category term="Pytorch" scheme="https://qrsforever.github.io/tags/Pytorch/"/>
     
   </entry>
   
   <entry>
-    <title>Jupyter支持动态图</title>
-    <link href="https://qrsforever.github.io/2019/06/13/Note/Jupyter/animations/"/>
-    <id>https://qrsforever.github.io/2019/06/13/Note/Jupyter/animations/</id>
-    <published>2019-06-13T08:18:35.000Z</published>
-    <updated>2019-06-24T15:12:29.178Z</updated>
+    <title>(Draft)Tensor-index slice</title>
+    <link href="https://qrsforever.github.io/2020/01/29/ML/Pytorch/tensor_index_slice/"/>
+    <id>https://qrsforever.github.io/2020/01/29/ML/Pytorch/tensor_index_slice/</id>
+    <published>2020-01-29T12:14:00.000Z</published>
+    <updated>2020-05-23T11:53:45.130Z</updated>
     
     <summary type="html">
     
@@ -871,14 +306,231 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   &lt;/style&gt;
   &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/pandoc.css&quot;&gt;
-  &lt;!--[if lt IE 9]&gt;
-    &lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js&quot;&gt;&lt;/script&gt;
-  &lt;![endif]--&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;h1 id=&quot;参考&quot;&gt;&lt;span class=&quot;header-section-number&quot;&gt;1&lt;/span&gt; 参考&lt;/h1&gt;
-&lt;p&gt;http://louistiao.me/posts/notebooks/embedding-matplotlib-animations-in-jupyter-notebooks/&lt;/p&gt;
-&lt;p&gt;http://louistiao.me/posts/notebooks/embedding-matplotlib-animations-in-jupyter-as-interactive-javascript-widgets/&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="ML" scheme="https://qrsforever.github.io/categories/ML/"/>
+    
+    
+      <category term="Draft" scheme="https://qrsforever.github.io/tags/Draft/"/>
+    
+      <category term="PyTorch" scheme="https://qrsforever.github.io/tags/PyTorch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>(Draft)Tensor-dims</title>
+    <link href="https://qrsforever.github.io/2020/01/25/ML/Pytorch/tensor_dims_convert/"/>
+    <id>https://qrsforever.github.io/2020/01/25/ML/Pytorch/tensor_dims_convert/</id>
+    <published>2020-01-25T04:12:00.000Z</published>
+    <updated>2020-05-23T11:53:29.202Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!DOCTYPE html&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang xml:lang&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;generator&quot; content=&quot;pandoc&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;&gt;
+  &lt;title&gt;dummy&lt;/title&gt;
+  &lt;style type=&quot;text/css&quot;&gt;
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  &lt;/style&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/pandoc.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    
+    </summary>
+    
+      <category term="ML" scheme="https://qrsforever.github.io/categories/ML/"/>
+    
+    
+      <category term="Draft" scheme="https://qrsforever.github.io/tags/Draft/"/>
+    
+      <category term="PyTorch" scheme="https://qrsforever.github.io/tags/PyTorch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>(Draft)Tensor基础-autograd hooks</title>
+    <link href="https://qrsforever.github.io/2020/01/23/ML/Pytorch/tensor_autograd_hooks/"/>
+    <id>https://qrsforever.github.io/2020/01/23/ML/Pytorch/tensor_autograd_hooks/</id>
+    <published>2020-01-23T11:11:00.000Z</published>
+    <updated>2020-05-23T11:53:40.474Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!DOCTYPE html&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang xml:lang&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;generator&quot; content=&quot;pandoc&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;&gt;
+  &lt;title&gt;dummy&lt;/title&gt;
+  &lt;style type=&quot;text/css&quot;&gt;
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  &lt;/style&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/pandoc.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    
+    </summary>
+    
+      <category term="ML" scheme="https://qrsforever.github.io/categories/ML/"/>
+    
+    
+      <category term="Draft" scheme="https://qrsforever.github.io/tags/Draft/"/>
+    
+      <category term="Pytorch" scheme="https://qrsforever.github.io/tags/Pytorch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>(Draft)Tensor-api</title>
+    <link href="https://qrsforever.github.io/2020/01/23/ML/Pytorch/tensor_api/"/>
+    <id>https://qrsforever.github.io/2020/01/23/ML/Pytorch/tensor_api/</id>
+    <published>2020-01-23T10:08:00.000Z</published>
+    <updated>2020-05-23T11:53:35.226Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!DOCTYPE html&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang xml:lang&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;generator&quot; content=&quot;pandoc&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;&gt;
+  &lt;title&gt;dummy&lt;/title&gt;
+  &lt;style type=&quot;text/css&quot;&gt;
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  &lt;/style&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/pandoc.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    
+    </summary>
+    
+      <category term="ML" scheme="https://qrsforever.github.io/categories/ML/"/>
+    
+    
+      <category term="Draft" scheme="https://qrsforever.github.io/tags/Draft/"/>
+    
+      <category term="Pytorch" scheme="https://qrsforever.github.io/tags/Pytorch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RNN</title>
+    <link href="https://qrsforever.github.io/2019/12/25/ML/Guide/RNN/RNN/"/>
+    <id>https://qrsforever.github.io/2019/12/25/ML/Guide/RNN/RNN/</id>
+    <published>2019-12-25T05:33:00.000Z</published>
+    <updated>2020-05-23T11:49:17.298Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!DOCTYPE html&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang xml:lang&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;generator&quot; content=&quot;pandoc&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;&gt;
+  &lt;title&gt;dummy&lt;/title&gt;
+  &lt;style type=&quot;text/css&quot;&gt;
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  &lt;/style&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/pandoc.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;p&gt;TODO&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="ML" scheme="https://qrsforever.github.io/categories/ML/"/>
+    
+    
+      <category term="Guide" scheme="https://qrsforever.github.io/tags/Guide/"/>
+    
+      <category term="RNN" scheme="https://qrsforever.github.io/tags/RNN/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Notebook 技巧</title>
+    <link href="https://qrsforever.github.io/2019/12/19/Note/Jupyter/magic/"/>
+    <id>https://qrsforever.github.io/2019/12/19/Note/Jupyter/magic/</id>
+    <published>2019-12-19T08:10:00.000Z</published>
+    <updated>2019-12-27T15:50:18.465Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!DOCTYPE html&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang xml:lang&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;generator&quot; content=&quot;pandoc&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;&gt;
+  &lt;title&gt;dummy&lt;/title&gt;
+  &lt;style type=&quot;text/css&quot;&gt;
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  &lt;/style&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/pandoc.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    
+    </summary>
+    
+      <category term="Note" scheme="https://qrsforever.github.io/categories/Note/"/>
+    
+    
+      <category term="Draft" scheme="https://qrsforever.github.io/tags/Draft/"/>
+    
+      <category term="Jupyter" scheme="https://qrsforever.github.io/tags/Jupyter/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Pywdigets Demo</title>
+    <link href="https://qrsforever.github.io/2019/12/16/Note/Jupyter/pywidgets_demo/"/>
+    <id>https://qrsforever.github.io/2019/12/16/Note/Jupyter/pywidgets_demo/</id>
+    <published>2019-12-16T08:47:00.000Z</published>
+    <updated>2019-12-19T13:35:53.085Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!DOCTYPE html&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang xml:lang&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;generator&quot; content=&quot;pandoc&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;&gt;
+  &lt;title&gt;dummy&lt;/title&gt;
+  &lt;style type=&quot;text/css&quot;&gt;
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  &lt;/style&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/pandoc.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
     
     </summary>
     
@@ -890,34 +542,11 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
   </entry>
   
   <entry>
-    <title>A Student&#39;s Guide to Vectors and Tensors</title>
-    <link href="https://qrsforever.github.io/2019/06/12/Story/Math/Guide_Vectors_and_Tensors/"/>
-    <id>https://qrsforever.github.io/2019/06/12/Story/Math/Guide_Vectors_and_Tensors/</id>
-    <published>2019-06-12T02:03:33.000Z</published>
-    <updated>2019-06-24T15:12:29.198Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;!DOCTYPE html&gt;
-&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang xml:lang&gt;
-&lt;head&gt;
-  &lt;meta charset=&quot;utf-8&quot;&gt;
-  &lt;meta name=&quot;generator&quot; content=&quot;
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>(原创)简单感知机-初探</title>
-    <link href="https://qrsforever.github.io/2019/06/03/ML/Scratch/simple_perceptron/"/>
-    <id>https://qrsforever.github.io/2019/06/03/ML/Scratch/simple_perceptron/</id>
-    <published>2019-06-03T15:53:37.000Z</published>
-    <updated>2019-07-21T05:31:48.413Z</updated>
+    <title>浏览器vim插件</title>
+    <link href="https://qrsforever.github.io/2019/12/13/Tools/How/browser_vim/"/>
+    <id>https://qrsforever.github.io/2019/12/13/Tools/How/browser_vim/</id>
+    <published>2019-12-13T09:53:00.000Z</published>
+    <updated>2019-12-19T13:35:53.085Z</updated>
     
     <summary type="html">
     
@@ -935,77 +564,166 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   &lt;/style&gt;
   &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/pandoc.css&quot;&gt;
-  &lt;!--[if lt IE 9]&gt;
-    &lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js&quot;&gt;&lt;/script&gt;
-  &lt;![endif]--&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;p&gt;一个简单的小程序, 来了解感知机如何工作的, 激活函数为&lt;strong&gt;sign&lt;/strong&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="ML" scheme="https://qrsforever.github.io/categories/ML/"/>
-    
-    
-      <category term="Python" scheme="https://qrsforever.github.io/tags/Python/"/>
-    
-      <category term="Scracth" scheme="https://qrsforever.github.io/tags/Scracth/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>收藏学习网站</title>
-    <link href="https://qrsforever.github.io/2019/06/03/Story/Website/fav/"/>
-    <id>https://qrsforever.github.io/2019/06/03/Story/Website/fav/</id>
-    <published>2019-06-03T12:30:21.000Z</published>
-    <updated>2019-07-25T15:08:13.867Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!DOCTYPE html&gt;
-&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang xml:lang&gt;
-&lt;head&gt;
-  &lt;meta charset=&quot;utf-8&quot;&gt;
-  &lt;meta name=&quot;generator&quot; content=&quot;pandoc&quot;&gt;
-  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;&gt;
-  &lt;title&gt;dummy&lt;/title&gt;
-  &lt;style type=&quot;text/css&quot;&gt;
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  &lt;/style&gt;
-  &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/pandoc.css&quot;&gt;
-  &lt;!--[if lt IE 9]&gt;
-    &lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js&quot;&gt;&lt;/script&gt;
-  &lt;![endif]--&gt;
 &lt;/head&gt;
 &lt;body&gt;
 &lt;!-- vim-markdown-toc GFM --&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#ai&quot;&gt;AI&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#other&quot;&gt;Other&lt;/a&gt;
+&lt;li&gt;&lt;a href=&quot;#browser&quot;&gt;browser&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#印度极客门户&quot;&gt;印度极客门户&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#firfox&quot;&gt;firfox&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#chrome&quot;&gt;chrome&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#keymap&quot;&gt;keymap&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;!-- vim-markdown-toc --&gt;
+    
+    </summary>
+    
+      <category term="Tools" scheme="https://qrsforever.github.io/categories/Tools/"/>
+    
+    
+      <category term="How" scheme="https://qrsforever.github.io/tags/How/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用Notebook学习HTML</title>
+    <link href="https://qrsforever.github.io/2019/12/13/Note/Jupyter/widgets_html/"/>
+    <id>https://qrsforever.github.io/2019/12/13/Note/Jupyter/widgets_html/</id>
+    <published>2019-12-13T07:24:00.000Z</published>
+    <updated>2019-12-19T13:35:53.085Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!DOCTYPE html&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang xml:lang&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;generator&quot; content=&quot;pandoc&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;&gt;
+  &lt;title&gt;dummy&lt;/title&gt;
+  &lt;style type=&quot;text/css&quot;&gt;
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  &lt;/style&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/pandoc.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
     
     </summary>
     
       <category term="Note" scheme="https://qrsforever.github.io/categories/Note/"/>
     
     
-      <category term="Website" scheme="https://qrsforever.github.io/tags/Website/"/>
+      <category term="Jupyter" scheme="https://qrsforever.github.io/tags/Jupyter/"/>
     
   </entry>
   
   <entry>
-    <title>卷积神经网络CNN理解</title>
-    <link href="https://qrsforever.github.io/2019/06/03/ML/Guide/cnn_intro/"/>
-    <id>https://qrsforever.github.io/2019/06/03/ML/Guide/cnn_intro/</id>
-    <published>2019-06-03T10:08:15.000Z</published>
-    <updated>2019-06-24T15:12:29.178Z</updated>
+    <title>shadowsocks配置</title>
+    <link href="https://qrsforever.github.io/2019/12/13/Story/System/shadowsocks/"/>
+    <id>https://qrsforever.github.io/2019/12/13/Story/System/shadowsocks/</id>
+    <published>2019-12-13T04:05:00.000Z</published>
+    <updated>2020-04-28T14:47:10.273Z</updated>
+    
+    <summary type="html">
+    
+      &lt;!DOCTYPE html&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang xml:lang&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;generator&quot; content=&quot;pandoc&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;&gt;
+  &lt;title&gt;dummy&lt;/title&gt;
+  &lt;style type=&quot;text/css&quot;&gt;
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  &lt;/style&gt;
+  &lt;style type=&quot;text/css&quot;&gt;
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+  &lt;/style&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/pandoc.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    
+    </summary>
+    
+      <category term="Story" scheme="https://qrsforever.github.io/categories/Story/"/>
+    
+    
+      <category term="How" scheme="https://qrsforever.github.io/tags/How/"/>
+    
+      <category term="System" scheme="https://qrsforever.github.io/tags/System/"/>
+    
+      <category term="Ubuntu" scheme="https://qrsforever.github.io/tags/Ubuntu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>(draft)NLP应用里程碑</title>
+    <link href="https://qrsforever.github.io/2019/11/26/ML/Guide/neural_nlp_milestones/"/>
+    <id>https://qrsforever.github.io/2019/11/26/ML/Guide/neural_nlp_milestones/</id>
+    <published>2019-11-26T03:10:39.000Z</published>
+    <updated>2019-12-19T13:35:53.069Z</updated>
     
     <summary type="html">
     
@@ -1023,72 +741,28 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   &lt;/style&gt;
   &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/pandoc.css&quot;&gt;
-  &lt;!--[if lt IE 9]&gt;
-    &lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js&quot;&gt;&lt;/script&gt;
-  &lt;![endif]--&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;h2 id=&quot;网络资源&quot;&gt;&lt;span class=&quot;header-section-number&quot;&gt;0.1&lt;/span&gt; 网络资源&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://towardsdatascience.com/intuitively-understanding-convolutions-for-deep-learning-1f6f42faee1&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Intuitively Understanding Convolutions for Deep Learning&lt;/a&gt;&lt;br&gt;
-&lt;a href=&quot;https://www.cnblogs.com/skyfsm/p/6790245.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;卷积神经网络CNN总结&lt;/a&gt;&lt;br&gt;
-&lt;a href=&quot;https://blog.csdn.net/leadai/article/details/83353470&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;卷积要旋转180度&lt;/a&gt;&lt;br&gt;
-&lt;a href=&quot;https://zhuanlan.zhihu.com/p/25249694&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;卷积神经网络简介&lt;/a&gt;&lt;br&gt;
-&lt;a href=&quot;https://blog.csdn.net/qq_39521554/article/details/79083864&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;别怕,&quot;卷积&quot;其实很简单&lt;/a&gt;&lt;br&gt;
-&lt;a href=&quot;https://en.wikipedia.org/wiki/Convolution&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;wikipedia:convolution&lt;/a&gt;&lt;br&gt;
-&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E5%8D%B7%E7%A7%AF&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;wikipedia:卷积&lt;/a&gt;&lt;br&gt;
-&lt;a href=&quot;http://mathworld.wolfram.com/Convolution.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;mathworld&lt;/a&gt;&lt;br&gt;
-&lt;a href=&quot;https://lpsa.swarthmore.edu/Convolution/CI.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;图形Demo1&lt;/a&gt;&lt;br&gt;
-&lt;a href=&quot;https://phiresky.github.io/convolution-demo/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;图形Demo2&lt;/a&gt;&lt;br&gt;
-&lt;a href=&quot;https://blog.csdn.net/bitcarmanlee/article/details/54729807&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;最容易理解的对卷积(convolution)的解释&lt;/a&gt; &lt;a href=&quot;https://colah.github.io/posts/2014-07-Understanding-Convolutions/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Understanding Convolutions&lt;/a&gt; &lt;a href=&quot;https://blog.csdn.net/heshiip/article/details/79223442&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;离散卷积过程举例图示详解&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://lpsa.swarthmore.edu/Convolution/Convolution.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;推荐: 卷积介绍&lt;/a&gt;&lt;/p&gt;
+&lt;!-- vim-markdown-toc GFM --&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#co-reference-resolution-共指消解&quot;&gt;Co-Reference Resolution: 共指消解&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sentiment-analysis-语义分析&quot;&gt;Sentiment Analysis: 语义分析&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#named-entity-recognition-aka-ner-命名实体&quot;&gt;Named Entity Recognition (aka NER): 命名实体&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#machine-comprehension-aka-mc-机器理解&quot;&gt;Machine Comprehension (aka MC): 机器理解&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#textual-entailment-aka-te-文本蕴涵&quot;&gt;Textual Entailment (aka TE): 文本蕴涵&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#semantic-role-labeling-aka-srl-语义角色标注&quot;&gt;Semantic Role Labeling (aka SRL): 语义角色标注&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#references&quot;&gt;References&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- vim-markdown-toc --&gt;
     
     </summary>
     
       <category term="ML" scheme="https://qrsforever.github.io/categories/ML/"/>
     
     
-      <category term="Guide" scheme="https://qrsforever.github.io/tags/Guide/"/>
+      <category term="Draft" scheme="https://qrsforever.github.io/tags/Draft/"/>
     
-  </entry>
-  
-  <entry>
-    <title>(原创)神经元节点之雪花分割图例</title>
-    <link href="https://qrsforever.github.io/2019/06/02/ML/Scratch/snowflake_neural_logic/"/>
-    <id>https://qrsforever.github.io/2019/06/02/ML/Scratch/snowflake_neural_logic/</id>
-    <published>2019-06-02T15:33:56.000Z</published>
-    <updated>2019-07-21T05:31:48.413Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!DOCTYPE html&gt;
-&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang xml:lang&gt;
-&lt;head&gt;
-  &lt;meta charset=&quot;utf-8&quot;&gt;
-  &lt;meta name=&quot;generator&quot; content=&quot;pandoc&quot;&gt;
-  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;&gt;
-  &lt;title&gt;dummy&lt;/title&gt;
-  &lt;style type=&quot;text/css&quot;&gt;
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  &lt;/style&gt;
-  &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/pandoc.css&quot;&gt;
-  &lt;!--[if lt IE 9]&gt;
-    &lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js&quot;&gt;&lt;/script&gt;
-  &lt;![endif]--&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;p&gt;模拟一下如何处理线性不可分的问题, 纯属自娱自乐.&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="ML" scheme="https://qrsforever.github.io/categories/ML/"/>
-    
-    
-      <category term="Python" scheme="https://qrsforever.github.io/tags/Python/"/>
-    
-      <category term="Scracth" scheme="https://qrsforever.github.io/tags/Scracth/"/>
+      <category term="NLP" scheme="https://qrsforever.github.io/tags/NLP/"/>
     
   </entry>
   

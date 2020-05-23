@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?cb4be66237379541488b8502a6eca006"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>循环神经网络RNN介绍 | 大地小神 | 你们都是大傻瓜, 我是天下大赢家</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Guide,Graph">
+    <meta name="description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta name="keywords" content="Guide,Graph">
+<meta property="og:type" content="article">
+<meta property="og:title" content="循环神经网络RNN介绍">
+<meta property="og:url" content="https://qrsforever.github.io/2019/09/12/ML/Guide/rnn_intro/index.html">
+<meta property="og:site_name" content="大地小神">
+<meta property="og:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/ML/Guide/rnn_intro/graph-image/rnn_intro_g1.svg?sanitize=true">
+<meta property="og:image" content="https://gitee.com/lidongai/assets_blog_post/raw/master/ML/Guide/rnn_classic_BPTT.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/ML/Guide/rnn_intro/graph-image/rnn_intro_full.png">
+<meta property="og:image" content="https://gitee.com/lidongai/assets_blog_post/raw/master/ML/Guide/rnn-bptt-with-gradients.png">
+<meta property="og:image" content="https://gitee.com/lidongai/assets_blog_post/raw/master/ML/Guide/rnn_grad_vanishing.gif">
+<meta property="og:image" content="https://gitee.com/lidongai/assets_blog_post/raw/master/ML/Guide/rnn_time_grad_vanishing.gif">
+<meta property="og:image" content="https://gitee.com/lidongai/assets_blog_post/raw/master/ML/Guide/LSTM3-SimpleRNN.png">
+<meta property="og:image" content="https://gitee.com/lidongai/assets_blog_post/raw/master/ML/Guide/LSTM3-chain.png">
+<meta property="og:updated_time" content="2020-05-23T13:02:54.067Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="循环神经网络RNN介绍">
+<meta name="twitter:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/ML/Guide/rnn_intro/graph-image/rnn_intro_g1.svg?sanitize=true">
+    
+        <link rel="alternate" type="application/atom+xml" title="大地小神" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">qrsforever</h5>
+          <a href="mailto:985612771@qq.com" title="985612771@qq.com" class="mail">985612771@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://gitee.com/lidongai" target="_blank" >
+                <i class="icon icon-lg icon-code-fork"></i>
+                Gitee
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/705723886/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                Twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2017/08/30/CV"  >
+                <i class="icon icon-lg icon-user-circle"></i>
+                Author
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">循环神经网络RNN介绍</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">循环神经网络RNN介绍</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-09-12T05:52:48.000Z" itemprop="datePublished" class="page-time">
+  2019-09-12
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#符号注解"><span class="post-toc-text">1 符号注解</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#rnnbptt"><span class="post-toc-text">2 RNN(BPTT)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#隐马尔可夫模型"><span class="post-toc-text">2.1 隐马尔可夫模型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#bptt"><span class="post-toc-text">2.2 BPTT</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#思考"><span class="post-toc-text">2.2.1 思考</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#梯度"><span class="post-toc-text">2.2.2 梯度</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#计算例子"><span class="post-toc-text">2.2.3 计算例子</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#lstm"><span class="post-toc-text">3 LSTM</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#长期依赖"><span class="post-toc-text">3.1 长期依赖</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#梯度消失"><span class="post-toc-text">3.2 梯度消失</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#与标准rnn对比"><span class="post-toc-text">3.3 与标准RNN对比</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#应用场景"><span class="post-toc-text">4 应用场景</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#语音识别"><span class="post-toc-text">4.1 语音识别</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#语言翻译"><span class="post-toc-text">4.2 语言翻译</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#股票预测"><span class="post-toc-text">4.3 股票预测</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#图像识别图里的内容"><span class="post-toc-text">4.4 图像识别(图里的内容)</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#其他"><span class="post-toc-text">5 其他</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关键字"><span class="post-toc-text">5.1 关键字</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#references"><span class="post-toc-text">6 References</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-ML/Guide/rnn_intro"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">循环神经网络RNN介绍</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-09-12 13:52:48" datetime="2019-09-12T05:52:48.000Z"  itemprop="datePublished">2019-09-12</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+  <script src="/usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+</head>
+<body>
+<p><a href="https://gitee.com/lidongai/code_blog_post/raw/master/ML/Guide/rnn_intro.md" target="_blank" rel="noopener">RAWCODE</a></p>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#符号注解">符号注解</a></li>
+<li><a href="#rnnbptt">RNN(BPTT)</a>
+<ul>
+<li><a href="#隐马尔可夫模型">隐马尔可夫模型</a></li>
+<li><a href="#bptt">BPTT</a>
+<ul>
+<li><a href="#思考">思考</a></li>
+<li><a href="#梯度">梯度</a></li>
+<li><a href="#计算例子">计算例子</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#lstm">LSTM</a>
+<ul>
+<li><a href="#长期依赖">长期依赖</a></li>
+<li><a href="#梯度消失">梯度消失</a></li>
+<li><a href="#与标准rnn对比">与标准RNN对比</a></li>
+</ul></li>
+<li><a href="#应用场景">应用场景</a>
+<ul>
+<li><a href="#语音识别">语音识别</a></li>
+<li><a href="#语言翻译">语言翻译</a></li>
+<li><a href="#股票预测">股票预测</a></li>
+<li><a href="#图像识别图里的内容">图像识别(图里的内容)</a></li>
+</ul></li>
+<li><a href="#其他">其他</a>
+<ul>
+<li><a href="#关键字">关键字</a></li>
+</ul></li>
+<li><a href="#references">References</a></li>
+</ul>
+<!-- vim-markdown-toc -->
+<a id="more"></a>
+<h1 id="符号注解"><span class="header-section-number">1</span> 符号注解</h1>
+<table>
+<thead>
+<tr class="header">
+<th>符号</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(K\)</span></td>
+<td>词汇表的大小</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(T\)</span></td>
+<td>句子的长度</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(H\)</span></td>
+<td>隐藏层单元数</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\mathbb{x}={x_1, x_2,...,x_T}\)</span></td>
+<td>句子的单词序列</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(x_t\in\mathbb{R}^{K\times 1}\)</span></td>
+<td>t时刻RNN的输入,为one-hot vector,1表示一个单词的出现,0表示不出现</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(x\in \mathbb{R}^{T \times K}\)</span></td>
+<td>一个完整的句子, 句子的长度T</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\hat{y}_t\in\mathbb{R}^{K\times 1}\)</span></td>
+<td>t时刻softmax层的输出, 估计每个词出现的概率, 有时用<span class="math inline">\(o_t\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(y_t\in\mathbb{R}^{K\times 1}\)</span></td>
+<td>t时刻的label, 真实每个词出现的概率, one-hot vector.</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(E_t\)</span></td>
+<td>第t个时刻(第t个word)的损失函数,定义为交叉熵误差<span class="math inline">\(E_t=−y_t^Tlog(\hat{y}_t)\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(E\)</span></td>
+<td>一个句子的损失函数,由各个时刻(即每个word)的损失函数组成,<span class="math inline">\(E=\sum\limits_t^T E_t\)</span>.</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(s_t\in\mathbb{R}^{H\times 1}\)</span></td>
+<td>t个时刻RNN隐藏层的输入</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(h_t\in\mathbb{R}^{H\times 1}\)</span></td>
+<td>t个时刻RNN隐藏层的输出</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(z_t\in\mathbb{R}^{K\times 1}\)</span></td>
+<td>输出层的汇集输入 (空间映射:H到K)</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(r_t=\hat{y}_t−y_t\)</span></td>
+<td>残差向量</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(W\in\mathbb{R}^{H\times K}\)</span></td>
+<td>从输入层到隐藏层的权值</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(U\in\mathbb{R}^{H\times H}\)</span></td>
+<td>隐藏层上一个时刻到当前时刻的权值</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(V\in\mathbb{R}^{K\times H}\)</span></td>
+<td>隐藏层到输出层的权值</td>
+</tr>
+</tbody>
+</table>
+<p>函数关系:</p>
+<p><span class="math display">\[
+\left\{
+  \begin{align*}
+    s_t &amp;= Uh_{t-1} + Wx_t \\
+    h_t &amp;= tanh(s_t) \\
+    z_t &amp;= Vh_t \\
+    \hat{y}_t &amp;= softmax(z_t) \\
+    E_t &amp;= -y_t^Tlog\hat{y}_t \\
+  \end{align*}
+\right.
+\]</span></p>
+<p>由于<span class="math inline">\(x_t, y_t\)</span>都是one-hot vector, 可以得出以下几点:</p>
+<ul>
+<li><p><span class="math inline">\(Wx_t\)</span> 如果是输入的是第j个词(对应j值1, 其余为0), 计算结果简化为将<span class="math inline">\(W\)</span>的第j列取出.</p></li>
+<li><p>当前时刻交叉熵<span class="math inline">\(E_t=-y_t^Tlog(\hat{y}_t) = -log(\hat{y}_t,j\)</span>, 即如果t时出现的是第j个词, 只需要看 <span class="math inline">\(\hat{y}_t\)</span>的第j个分量.</p></li>
+</ul>
+<h1 id="rnnbptt"><span class="header-section-number">2</span> RNN(BPTT)</h1>
+<h2 id="隐马尔可夫模型"><span class="header-section-number">2.1</span> 隐马尔可夫模型</h2>
+<p>Hidden Markov Model(HMM)</p>
+<blockquote><!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+</head>
+<body>
+<p>马尔科夫链的核心是说, 在给定当前知识或信息的情况下, 观察对象的过去的历史状态, 对于将来的预测来说预测是无关 的. 也可以说, 在观察一个系统变化的时候, 它下一个状态(n+1)如何的概率只需观察和统计当前状态(n).</p>
+<p>隐马尔科夫链是个双重随机过程, 不仅状态转移之间是个随机过程, 状态和输出之间也是个随机过程.</p>
+</body>
+</html>
+<footer><strong>高杨 <<白话深度学习与tensorflow>></白话深度学习与tensorflow></strong></footer></blockquote>
+<figure>
+<img src="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/ML/Guide/rnn_intro/graph-image/rnn_intro_g1.svg?sanitize=true" alt="隐马尔可夫链" class="graph center" data-filename="rnn_intro_g1"><figcaption>隐马尔可夫链</figcaption>
+</figure>
+<p>状态的改变是使用虚线表示<span class="math inline">\(X_1\)</span>到<span class="math inline">\(X_T\)</span> (隐含状态链), 我们没法直接观察到, 而我们能够直接看到的是状态改变时带 来的观察值的变化<span class="math inline">\(O_1\)</span>到<span class="math inline">\(O_T\)</span> (可见状态链). 可见状态之间没有直接的转换概率, 隐含状态和可见状态之间存在一个 概率叫做<strong>输出概率</strong></p>
+<p>训练模型:</p>
+<p>通过输入<span class="math inline">\(X_i\)</span>和<span class="math inline">\(O_i\)</span>两个序列, 经过统计学模型训练, 最后得到两个矩阵, 一个是<span class="math inline">\(X\)</span>之间的隐含状态转移关系的矩阵, 一个是<span class="math inline">\(X\)</span>到<span class="math inline">\(O\)</span>之间的输出概率矩阵.</p>
+<p>RNN好的地方是它可以记住前面一段时间的输入信息,不好的地方是它只能记住某段时间的输入信息,虽然理论上RNN可以 处理长时间的信息,但是实际上它却不能很好的学习这些信息.对于长时间的输入信息它无能为力.</p>
+<h2 id="bptt"><span class="header-section-number">2.2</span> BPTT</h2>
+<p>Backpropagation Through Time(时序反向传播算法):</p>
+<p>The parameters are shared by all times in the rnn network, the gradient at each output depends not only the current time steps but also the previous time steps. For example, in order to calculate the gradient at <span class="math inline">\(t=4\)</span>, we would need to backpropagate 3 steps and sum up the gradients.</p>
+<figure>
+<img src="https://gitee.com/lidongai/assets_blog_post/raw/master/ML/Guide/rnn_classic_BPTT.jpg" alt="A recurrent neural network and the unfolding in time of the computation involved in its forward computation"><figcaption>A recurrent neural network and the unfolding in time of the computation involved in its forward computation</figcaption>
+</figure>
+<p>Formulas:</p>
+<p><span class="math inline">\(x_t\)</span>: one-hot vector, t时刻的输入. <br> <span class="math inline">\(s_t\)</span>: hidden state, t时候的隐藏状态, 通过前一个隐藏状态和当前输入计算出来的, <span class="math inline">\(s_t = f(Ux_t + Ws_{t-1})\)</span>, f可以是tanh或relu. <br> <span class="math inline">\(o_t\)</span>: output, <span class="math inline">\(o_t = softmax(Vs_t)\)</span> <br></p>
+<p>注意, 有的地方还加了一个非线性变换:</p>
+<p><span class="math inline">\(h_t\)</span>: hidden output, <span class="math inline">\(h_t = tanh(s_t)\)</span> <br> <span class="math inline">\(z_t\)</span>: output, <span class="math inline">\(z_t = Vh_t = V tanh(s_t)\)</span> <br> <span class="math inline">\(\hat{y}_t = softmax(z_t) = softmax(Vtanh(s_t))\)</span> <br></p>
+<p>模型里是蕴含着这样的逻辑的, 那就是前一次输入的向量<span class="math inline">\(x_{t-1}\)</span>所产生的结果对于本次输出的结果是有一定的影响的, 甚至更远期的<span class="math inline">\(x_{t-2}, x_{t-3} ··· ···\)</span>都"潜移默化"地在影响本次输出的结果.</p>
+<h3 id="思考"><span class="header-section-number">2.2.1</span> 思考</h3>
+<ol type="1">
+<li>为什么隐藏层的输出需要<span class="math inline">\(V\)</span>,即<span class="math inline">\(\hat{y}_t = softmax(Vz_t)\)</span>, 不能直接<span class="math inline">\(\hat{y}_t = softmax(h_t)\)</span> ?</li>
+</ol>
+<blockquote>
+<p>从变量的类型分析, <span class="math inline">\(\hat{y}_t \in \mathbb{R}^{K\times 1}, h_t \in \mathbb{R}^{H\times 1}, V \in \mathbb{R}^{K\times H}\)</span>, <span class="math inline">\(V\)</span>矩阵可以把H空间映射到K空间.</p>
+</blockquote>
+<ol start="2" type="1">
+<li><span class="math inline">\(U\)</span>, <span class="math inline">\(V\)</span>, <span class="math inline">\(W\)</span>分别有什么意义?</li>
+</ol>
+<blockquote>
+<p>RNN神经网络和传统的神经网络一样由<code>输入层</code>, <code>隐藏层</code>,<code>输出层</code>组成, 不同的是RNN网络中超参数是共享的, <span class="math inline">\(W\)</span>将输入层的词向量映射到隐藏层的空间中, <span class="math inline">\(U\)</span>是自身状态的映射, 结合上下文进行记忆的取舍, <span class="math inline">\(W\)</span>结合<span class="math inline">\(U\)</span>形成当前时刻的隐藏层的知识状态, <span class="math inline">\(V\)</span>是隐藏层到输出层的映射. <span class="math inline">\(U\)</span>为输入权重, <span class="math inline">\(W\)</span>为递归权重; <span class="math inline">\(V\)</span>为输出权重</p>
+</blockquote>
+<p>There are a few things to note here:</p>
+<blockquote><!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+</head>
+<body>
+<ul>
+<li><p>You can think of the hidden state s_t as the memory of the network. s_t captures information about what happened in all the previous time steps. The output at step o_t is calculated solely based on the memory at time t. As briefly mentioned above, it's a bit more complicated in practice because s_t typically can't capture information from too many time steps ago.</p></li>
+<li><p>Unlike a traditional deep neural network, which uses different parameters at each layer, a RNN shares the same parameters (U, V, W above) across all steps. This reflects the fact that we are performing the same task at each step, just with different inputs. This greatly reduces the total number of parameters we need to learn.</p></li>
+<li><p>The above diagram has outputs at each time step, but depending on the task this may not be necessary. For example, when predicting the sentiment of a sentence we may only care about the final output, not the sentiment after each word. Similarly, we may not need inputs at each time step. The main feature of an RNN is its hidden state, which captures some information about a sequence.</p></li>
+</ul>
+</body>
+</html>
+<footer><strong>wildml</strong><cite><a href="http://www.wildml.com/2015/09/recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/" target="_blank" rel="noopener">recurrent-neural-networks-tutorial-part-1-introduction-to-rnns</a></cite></footer></blockquote>
+<h3 id="梯度"><span class="header-section-number">2.2.2</span> 梯度</h3>
+<p>完整图:</p>
+<figure>
+<img src="https://raw.githubusercontent.com/qrsforever/assets_blog_post/master/ML/Guide/rnn_intro/graph-image/rnn_intro_full.png" alt="BPTT横向与纵向求导图" class="graph center" data-filename="rnn_intro_full" data-latex="true" data-resolution="1080" data-desity="100"><figcaption>BPTT横向与纵向求导图</figcaption>
+</figure>
+<p>从上图可以看到, 梯度不仅从空间结构上传播(纵向), 而且从时间结构上传播(横向), 这也是BPTT名字的由来.</p>
+<p>if:</p>
+<p><span class="math inline">\(\phi\)</span> is <span class="math inline">\(tanh()\)</span></p>
+<p><span class="math inline">\(\psi\)</span> is <span class="math inline">\(softmax()\)</span></p>
+<p>损失函数使用CEE(cross entropy loss), 总误差(所有输出节点的误差总和):</p>
+<p><span class="math display">\[
+\begin{align*}
+E_t(y_t, \hat{y}_t) &amp;= -\dfrac{1}{n}y_tlog\hat{y}_t \\
+E(y, \hat{y}) &amp;= \sum_t E_t(y_t, \hat{y}_t) \\
+ &amp;= - \sum_t y_tlog\hat{y}_t
+\end{align*}
+\]</span></p>
+<p>then:</p>
+<p><span class="math display">\[
+\begin{align*}
+\dfrac{\partial E_t}{\partial z_t} &amp;= \dfrac{\partial E_t}{\partial \hat{y}_t} \psi&#39;(z_t) \\
+ &amp;= \hat{y}_t - y_t \qquad \text{ if } \psi \text { is softmax() } \tag{1}
+\end{align*}
+\]</span></p>
+<p>很多公式某些地方没考虑矩阵或向量不同维度相乘的情况, 不是很严谨(严格说是<strong>错误</strong>的), 仅供参考.</p>
+<ol type="1">
+<li>对<span class="math inline">\(V\)</span>梯度</li>
+</ol>
+<p><span class="math display">\[
+\begin{align*}
+\dfrac{\partial E_t}{\partial V} &amp;= \dfrac{\partial E_t}{\partial z_t} \dfrac{\partial z_t}{\partial V} \\
+ &amp;= \dfrac{\partial E_t}{\partial \hat{y}_t} \psi&#39;(z_t) \otimes h_t \\
+ &amp;= (\hat{y} - y_t) {h_t}^T \tag{2} \\
+\end{align*}
+\]</span></p>
+<p><span class="math display">\[
+\dfrac{\partial E}{\partial V} = \sum_{k=0}{t} (\hat{y}_k - y_k) \otimes h_k
+\]</span></p>
+<p>只和当前状态的输出有关.</p>
+<ol start="2" type="1">
+<li>对<span class="math inline">\(U\)</span>求梯度</li>
+</ol>
+<p><span class="math display">\[
+\begin{align*}
+\dfrac{\partial E_t}{\partial U} &amp;= \dfrac{\partial E_t}{\partial z_t}
+    \dfrac{\partial z_t}{\partial h_t} \phi&#39;(s_t) \dfrac{\partial s_t}{\partial U}
+    \dfrac{\partial s_t}{\partial h_{t-1}} \phi&#39;(s_{t-1}) \dfrac{\partial s_{t-1}}{\partial U}\cdots \\
+ &amp;= \dfrac{\partial E_t}{\partial z_t} V^T \phi&#39;(s_t) \dfrac{\partial s_t}{\partial U}
+    W^T \phi&#39;(s_{t-1}) \dfrac{\partial s_{t-1}}{\partial U}\cdots \\
+ &amp;= \sum_{k=1}^{t} \dfrac{\partial E_t}{\partial z_t}\dfrac{\partial z_t}{\partial h_t}
+    \dfrac{\partial h_t}{\partial h_k} \dfrac{\partial h_k}{\partial s_k}
+    \dfrac{\partial s_k}{\partial U} \\
+ &amp;= \sum_{k=1}^{t} \dfrac{\partial E_t}{\partial h_k}
+    \dfrac{\partial h_k}{\partial s_k} {x_k}^T \tag {3}
+\end{align*}
+\]</span></p>
+<p>由于<span class="math inline">\(s_t\)</span>的上一个状态输出<span class="math inline">\(h_{t-1}\)</span>依然含有<span class="math inline">\(U\)</span>的分量, 形式变为:</p>
+<ol start="3" type="1">
+<li>对<span class="math inline">\(W\)</span>求梯度</li>
+</ol>
+<p><span class="math display">\[
+\begin{align*}
+\dfrac{\partial E_t}{\partial W} &amp;= \dfrac{\partial E_t}{\partial z_t}
+    \dfrac{\partial z_t}{\partial h_t} \phi&#39;(s_t) \dfrac{\partial s_t}{\partial W}
+    \dfrac{\partial s_t}{\partial h_{t-1}} \phi&#39;(s_{t-1}) \dfrac{\partial s_{t-1}}{\partial W}\cdots \\
+ &amp;= \dfrac{\partial E_t}{\partial z_t} V^T \phi&#39;(s_t) \dfrac{\partial s_t}{\partial W}
+    W^T \phi&#39;(s_{t-1}) \dfrac{\partial s_{t-1}}{\partial W}\cdots \\
+ &amp;= \sum_{k=1}^{t} \dfrac{\partial E_t}{\partial z_t}\dfrac{\partial z_t}{\partial h_t}
+    \dfrac{\partial h_t}{\partial h_k} \dfrac{\partial h_k}{\partial s_k}
+    \dfrac{\partial s_k}{\partial W} \\
+ &amp;= \sum_{k=1}^{t} \dfrac{\partial E_t}{\partial h_k}
+    \dfrac{\partial h_k}{\partial s_k} {h_{k-1}}^T \tag {4}
+\end{align*}
+\]</span></p>
+<p>另<span class="math inline">\(h_0\)</span>全0向量.</p>
+<h3 id="计算例子"><span class="header-section-number">2.2.3</span> 计算例子</h3>
+<p>形式和上面的有些不同, 隐藏层输入和隐藏层输出合成一个<span class="math inline">\(s_t = tanh(Ux_t + Ws_{t-1})\)</span>.</p>
+<p><img src="https://gitee.com/lidongai/assets_blog_post/raw/master/ML/Guide/rnn-bptt-with-gradients.png"></p>
+<p>let:</p>
+<ol type="1">
+<li>formulas</li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; s_0 = tanh(U x_0 + W s_{-1}) \\
+&amp; z_0 = V s_0   \\
+&amp; o_0 \triangleq \hat{y}_{0} = sigmoid(z_0) \\\\
+&amp; s_1 = tanh(U x_1 + W s_0) \\
+&amp; z_1 = V s_1   \\
+&amp; o_1 \triangleq \hat{y}_{1} = sigmoid(z_1) \\\\
+&amp; s_2 = tanh(U x_2 + W s_1) \\
+&amp; z_2 = V s_2   \\
+&amp; o_2 \triangleq \hat{y}_{2} = sigmoid(z_2) \\\\
+&amp; s_3 = tanh(U x_3 + W s_2) \\
+&amp; z_3 = V s_3   \\
+&amp; o_3 \triangleq \hat{y}_{3} = sigmoid(z_3) \\
+\end{aligned}
+\]</span></p>
+<ol start="2" type="1">
+<li>loss</li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+L(y, o) = - \frac{1}{N}\sum_{n \in N}y_n \log o_n
+\end{aligned}
+\]</span></p>
+<ol start="3" type="1">
+<li>partial derivative</li>
+</ol>
+<p>if: <span class="math inline">\(d_t \triangleq \dfrac{\partial E_t}{\partial s_t}\)</span> then:</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; d_3 \triangleq \big(\hat{y}_3 - y_3 \big) \cdot V \cdot \big(1 - s_3 ^ 2 \big) \\
+&amp; d_2 \triangleq d_3 \cdot W \cdot \big(1 - s_2 ^ 2 \big) \\
+&amp; d_1 \triangleq d_2 \cdot W \cdot \big(1 - s_1 ^ 2 \big) \\
+&amp; d_0 \triangleq d_1 \cdot W \cdot \big(1 - s_0 ^ 2 \big) \\
+\end{aligned}
+\]</span></p>
+<p>so calculate dLdV, dLdU, dLdW:</p>
+<ol type="1">
+<li><span class="math inline">\(\frac{\partial{L}}{\partial{V}}\)</span></li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{\partial{E_3}}{\partial{V}} &amp;= \frac{\partial{E_3}}{\partial{\hat{y}_3}} \frac{\partial{\hat{y}_3}}{\partial{z_3}} \frac{\partial{z_3}}{\partial{V}} \\
+&amp;= (\hat{y}_{3} - y_3)  s_3
+\end{aligned}
+\]</span></p>
+<ol start="2" type="1">
+<li><span class="math inline">\(\frac{\partial{L}}{\partial{U}}\)</span></li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{\partial{s_0}}{\partial{U}} &amp;= \big(1 - s_0 ^ 2 \big) \left(x_0 + \frac{\partial{s_{-1}}}{\partial{U}} \right) \\
+&amp;= \big(1 - s_0 ^ 2 \big) \cdot x_0 \\\\
+\frac{\partial{s_1}}{\partial{U}} &amp;= \big(1 - s_1 ^ 2 \big) \left(x_1 + W \cdot \frac{\partial{s_{0}}}{\partial{U}} \right) \\
+&amp;= \big(1 - s_1 ^ 2 \big) \big(x_1 + W \cdot \big(1 - s_0 ^ 2 \big) \cdot x_0 \big) \\\\
+\frac{\partial{s_2}}{\partial{U}} &amp;= \big(1 - s_2 ^ 2 \big) \left(x_2 + W \cdot \frac{\partial{s_{1}}}{\partial{U}} \right) \\
+&amp;= \big(1 - s_2 ^ 2 \big) \Big(x_2 + W \cdot \big(1 - s_1 ^ 2 \big) \big(x_1 + W \cdot \big(1 - s_0 ^ 2 \big) \cdot x_0 \big) \Big)\\\\
+\frac{\partial{s_3}}{\partial{U}} &amp;= \big(1 - s_3 ^ 2 \big) \left(x_3 + W \cdot \frac{\partial{s_{2}}}{\partial{U}} \right) \\
+&amp;= \big(1 - s_3 ^ 2 \big) \\
+&amp; \bigg(x_3 + W \cdot \big(1 - s_2 ^ 2 \big) \Big(x_2 + W \cdot \big(1 - s_1 ^ 2 \big) \big(x_1 + W \cdot \big(1 - s_0 ^ 2 \big) \cdot x_0 \big) \Big)  \bigg)\\\\
+\end{aligned}
+\]</span></p>
+<hr>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{\partial{E_3}}{\partial{U}} &amp;= \frac{\partial{E_3}}{\partial{\hat{y}_3}} \frac{\partial{\hat{y}_3}}{\partial{z_3}} \frac{\partial{z_3}}{\partial{s_3}} \frac{\partial{s_3}}{\partial{U}}  \\
+&amp;= \left(\frac{\partial{E_3}}{\partial{\hat{y}_3}} \frac{\partial{\hat{y}_3}}{\partial{z_3}} \right) \cdot \frac{\partial{z_3}}{\partial{s_3}} \cdot \frac{\partial{s_3}}{\partial{U}}  \\
+&amp;= \big(\hat{y}_3 - y_3 \big) \cdot V \cdot \frac{\partial{s_3}}{\partial{U}}  \\
+&amp;= \big(\hat{y}_3 - y_3 \big) \cdot V \cdot \big(1 - s_3 ^ 2 \big) \bigg(x_3 + W \cdot \big(1 - s_2 ^ 2 \big) \Big(x_2 + W \cdot \big(1 - s_1 ^ 2 \big) \big(x_1 + W \cdot \big(1 - s_0 ^ 2 \big) \cdot x_0 \big) \Big)  \bigg)\\
+&amp; \triangleq d_3 \big[x_3 + W \cdot  \big(1 - s_2 ^ 2 \big) \Big(x_2 + W \cdot \big(1 - s_1 ^ 2 \big) \big(x_1 + W \cdot \big(1 - s_0 ^ 2 \big) \cdot x_0 \big) \Big)   \big]\\
+&amp;= d_3 x_3 + d_3 W \cdot \big(1 - s_2 ^ 2 \big) \Big(x_2 + W \cdot \big(1 - s_1 ^ 2 \big) \big(x_1 + W \cdot \big(1 - s_0 ^ 2 \big) \cdot x_0 \big) \Big) \\
+&amp; \triangleq d_3 x_3 + d_2 \Big(x_2 + W \cdot \big(1 - s_1 ^ 2 \big) \big(x_1 + W \cdot \big(1 - s_0 ^ 2 \big) \cdot x_0 \big)\Big) \\
+&amp;= d_3 x_3 + d_2 x_2 + d_2 W \cdot \big(1 - s_1 ^ 2 \big) \big(x_1 + W \cdot \big(1 - s_0 ^ 2 \big) \cdot x_0 \big) \\
+&amp; \triangleq d_3 x_3 + d_2 x_2 + d_1 \big(x_1 + W \cdot \big(1 - s_0 ^ 2 \big) \cdot x_0 \big) \\
+&amp;= d_3 x_3 + d_2 x_2 + d_1 x_1 + d_1 W \cdot \big(1 - s_0 ^ 2 \big) \cdot x_0  \\
+&amp; \triangleq d_3 x_3 + d_2 x_2 + d_1 x_1 + d_0 \cdot x_0  \\
+\end{aligned}
+\]</span></p>
+<ol start="3" type="1">
+<li><span class="math inline">\(\frac{\partial{L}}{\partial{W}}\)</span></li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{\partial{s_0}}{\partial{W}} &amp;= \big(1 - s_0 ^ 2 \big) \left(s_{-1} + \frac{\partial{s_{-1}}}{\partial{W}} \right) \\
+&amp;= \big(1 - s_0 ^ 2 \big) \cdot s_{-1} \\\\
+\frac{\partial{s_1}}{\partial{W}} &amp;= \big(1 - s_1 ^ 2 \big) \left(s_0 + W \cdot \frac{\partial{s_{0}}}{\partial{W}} \right) \\
+&amp;= \big(1 - s_1 ^ 2 \big) \big(s_0 + W \cdot \big(1 - s_0 ^ 2 \big) \cdot s_{-1} \big) \\\\
+\frac{\partial{s_2}}{\partial{W}} &amp;= \big(1 - s_2 ^ 2 \big) \left(s_1 + W \cdot \frac{\partial{s_{1}}}{\partial{W}} \right) \\
+&amp;= \big(1 - s_2 ^ 2 \big) \Big(s_1 + W \cdot \big(1 - s_1 ^ 2 \big) \big(s_0 + W \cdot \big(1 - s_0 ^ 2 \big) \cdot s_{-1} \big) \Big)\\\\
+\frac{\partial{s_3}}{\partial{W}} &amp;= \big(1 - s_3 ^ 2 \big) \left(s_2 + W \cdot \frac{\partial{s_{2}}}{\partial{W}} \right) \\
+&amp;= \big(1 - s_3 ^ 2 \big) \bigg(s_2 + W \cdot \big(1 - s_2 ^ 2 \big) \Big(s_1 + W \cdot \big(1 - s_1 ^ 2 \big) \big(s_0 + W \cdot \big(1 - s_0 ^ 2 \big) \cdot s_{-1} \big) \Big)  \bigg)\\\\
+\end{aligned}
+\]</span></p>
+<hr>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{\partial{E_3}}{\partial{W}} &amp;= \frac{\partial{E_3}}{\partial{\hat{y}_3}} \frac{\partial{\hat{y}_3}}{\partial{z_3}} \frac{\partial{z_3}}{\partial{s_3}} \frac{\partial{s_3}}{\partial{W}}  \\
+&amp;= \left(\frac{\partial{E_3}}{\partial{\hat{y}_3}} \frac{\partial{\hat{y}_3}}{\partial{z_3}} \right) \cdot \frac{\partial{z_3}}{\partial{s_3}} \cdot \frac{\partial{s_3}}{\partial{W}}  \\
+&amp;= \big(\hat{y}_3 - y_3 \big) \cdot V \cdot \frac{\partial{s_3}}{\partial{W}}  \\
+&amp;= \big(\hat{y}_3 - y_3 \big) \cdot V \cdot \big(1 - s_3 ^ 2 \big) \bigg(s_2 + W \cdot \big(1 - s_2 ^ 2 \big) \Big(s_1 + W \cdot \big(1 - s_1 ^ 2 \big) \big(s_0 + W \cdot \big(1 - s_0 ^ 2 \big) \cdot s_{-1} \big) \Big)  \bigg)\\
+&amp; \triangleq d_3    \bigg(s_2 + W \cdot \big(1 - s_2 ^ 2 \big) \Big(s_1 + W \cdot \big(1 - s_1 ^ 2 \big) \big(s_0 + W \cdot \big(1 - s_0 ^ 2 \big) \cdot s_{-1} \big) \Big)  \bigg)   \\
+&amp;= d_3 s_2 + d_3 W \cdot \big(1 - s_2 ^ 2 \big) \Big(s_1 + W \cdot \big(1 - s_1 ^ 2 \big) \big(s_0 + W \cdot \big(1 - s_0 ^ 2 \big) \cdot s_{-1} \big) \Big) \\
+&amp; \triangleq d_3 s_2 + d_2 \Big(s_1 + W \cdot \big(1 - s_1 ^ 2 \big) \big(s_0 + W \cdot \big(1 - s_0 ^ 2 \big) \cdot s_{-1} \big) \Big) \\
+&amp;= d_3 s_2 + d_2 s_1 + d_2 W \cdot \big(1 - s_1 ^ 2 \big) \big(s_0 + W \cdot \big(1 - s_0 ^ 2 \big) \cdot s_{-1} \big) \\
+&amp; \triangleq d_3 s_2 + d_2 s_1 + d_1 \big(s_0 + W \cdot \big(1 - s_0 ^ 2 \big) \cdot s_{-1} \big) \\
+&amp;= d_3 s_2 + d_2 s_1 + d_1 s_0 + d_1 W \cdot \big(1 - s_0 ^ 2 \big) \cdot s_{-1}  \\
+&amp; \triangleq d_3 s_2 + d_2 s_1 + d_1 s_0 + d_0 \cdot s_{-1}  \\
+\end{aligned}
+\]</span></p>
+<h1 id="lstm"><span class="header-section-number">3</span> LSTM</h1>
+<h2 id="长期依赖"><span class="header-section-number">3.1</span> 长期依赖</h2>
+<p>LSTM 解决避免长时期依赖(long-term dependency)的问题</p>
+<h2 id="梯度消失"><span class="header-section-number">3.2</span> 梯度消失</h2>
+<p>LSTM 在某种程度上可以克服梯度消失问题.</p>
+<figure>
+<img src="https://gitee.com/lidongai/assets_blog_post/raw/master/ML/Guide/rnn_grad_vanishing.gif" alt="传统后向传播"><figcaption>传统后向传播</figcaption>
+</figure>
+<figure>
+<img src="https://gitee.com/lidongai/assets_blog_post/raw/master/ML/Guide/rnn_time_grad_vanishing.gif" alt="时间后向传播"><figcaption>时间后向传播</figcaption>
+</figure>
+<p>图片来自<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<h2 id="与标准rnn对比"><span class="header-section-number">3.3</span> 与标准RNN对比</h2>
+<figure>
+<img src="https://gitee.com/lidongai/assets_blog_post/raw/master/ML/Guide/LSTM3-SimpleRNN.png" alt="The repeating module in a standard RNN contains a single layer."><figcaption>The repeating module in a standard RNN contains a single layer.</figcaption>
+</figure>
+<p>VS</p>
+<figure>
+<img src="https://gitee.com/lidongai/assets_blog_post/raw/master/ML/Guide/LSTM3-chain.png" alt="The repeating module in an LSTM contains four interacting layers."><figcaption>The repeating module in an LSTM contains four interacting layers.</figcaption>
+</figure>
+<p>非常详细的介绍请点击<a href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/" target="_blank" rel="noopener">这里</a></p>
+<h1 id="应用场景"><span class="header-section-number">4</span> 应用场景</h1>
+<h2 id="语音识别"><span class="header-section-number">4.1</span> 语音识别</h2>
+<h2 id="语言翻译"><span class="header-section-number">4.2</span> 语言翻译</h2>
+<h2 id="股票预测"><span class="header-section-number">4.3</span> 股票预测</h2>
+<h2 id="图像识别图里的内容"><span class="header-section-number">4.4</span> 图像识别(图里的内容)</h2>
+<h1 id="其他"><span class="header-section-number">5</span> 其他</h1>
+<h2 id="关键字"><span class="header-section-number">5.1</span> 关键字</h2>
+<p>神经注意力模块(Attention) = 向前预测单元 + 后向回顾单元</p>
+<h1 id="references"><span class="header-section-number">6</span> References</h1>
+<ul>
+<li><a href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/" target="_blank" rel="noopener">Understanding LSTM Networks</a></li>
+<li><a href="https://www.cnblogs.com/mfryf/p/7904017.html" target="_blank" rel="noopener">译 Understanding LSTM Networks</a></li>
+<li><a href="https://blog.floydhub.com/a-beginners-guide-on-recurrent-neural-networks-with-pytorch/" target="_blank" rel="noopener">Pytorch RNN</a></li>
+<li><a href="https://baijiahao.baidu.com/s?id=1612358810937334377&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">如何深度理解RNN?——看图就好!</a></li>
+<li><a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">Attention Is All You Need</a></li>
+<li><a href="http://www.wildml.com/2015/09/recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/" target="_blank" rel="noopener">recurrent-neural-networks-tutorial-part-1-introduction-to-rnns</a></li>
+<li><a href="http://www.wildml.com/2015/10/recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/" target="_blank" rel="noopener">recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients</a></li>
+<li><a href="https://github.com/hschen0712/machine-learning-notes/blob/master/Deep-Learning/back-propagation-through-time.ipynb" target="_blank" rel="noopener">BTPP推导1</a></li>
+<li><a href="https://www.cnblogs.com/wacc/p/5341670.html" target="_blank" rel="noopener">BTPP推导2</a></li>
+<li><a href="https://towardsdatascience.com/back-to-basics-deriving-back-propagation-on-simple-rnn-lstm-feat-aidan-gomez-c7f286ba973d" target="_blank" rel="noopener">deriving-back-propagation-on-simple-rnn-lstm</a></li>
+<li><a href="https://blog.csdn.net/flyinglittlepig/article/details/71598144" target="_blank" rel="noopener">RNN-BPTT</a></li>
+<li><a href="https://songhuiming.github.io/pages/2017/08/20/build-recurrent-neural-network-from-scratch/" target="_blank" rel="noopener">build-recurrent-neural-network-from-scratch</a></li>
+</ul>
+<section class="footnotes">
+<hr>
+<ol>
+<li id="fn1"><p>https://baijiahao.baidu.com/s?id=1612358810937334377&amp;wfr=spider&amp;for=p<a href="#fnref1" class="footnote-back">↩</a></p></li>
+</ol>
+</section>
+</body>
+</html>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-05-23T13:02:54.067Z" itemprop="dateUpdated">2020-05-23 21:02:54</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://qrsforever.github.io">
+            <img src="/img/avatar.jpg" alt="qrsforever">
+            qrsforever
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Graph/">Graph</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Guide/">Guide</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2019/09/12/ML/Guide/rnn_intro/&title=《循环神经网络RNN介绍》 — 大地小神&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2019/09/12/ML/Guide/rnn_intro/&title=《循环神经网络RNN介绍》 — 大地小神&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2019/09/12/ML/Guide/rnn_intro/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《循环神经网络RNN介绍》 — 大地小神&url=https://qrsforever.github.io/2019/09/12/ML/Guide/rnn_intro/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2019/09/12/ML/Guide/rnn_intro/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/09/17/Note/Math/matrix_derivative/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">(drfat)矩阵求导</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/09/10/Note/C++/makefile/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Makefile模板</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <!-- <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script> -->
+    <script src="/js/av-min.js"></script>
+    <script src="/js/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "bpShGWdW8DpODhnDko5O2IBB-gzGzoHsz",
+            appKey: "rwmasTllBbHE69ADuLjFyFWf",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢打赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>qrsforever &copy; 2017 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2019/09/12/ML/Guide/rnn_intro/&title=《循环神经网络RNN介绍》 — 大地小神&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2019/09/12/ML/Guide/rnn_intro/&title=《循环神经网络RNN介绍》 — 大地小神&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2019/09/12/ML/Guide/rnn_intro/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《循环神经网络RNN介绍》 — 大地小神&url=https://qrsforever.github.io/2019/09/12/ML/Guide/rnn_intro/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2019/09/12/ML/Guide/rnn_intro/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://qrsforever.github.io/2019/09/12/ML/Guide/rnn_intro/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- lidong cha. -->
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- lidong end. -->
+
+</body>
+</html>

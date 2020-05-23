@@ -19,7 +19,7 @@
     
     
     
-    <title>卷积神经网络CNN理解 | 大地小神 | 你们都是大傻瓜, 我是天下大赢家</title>
+    <title>卷积神经网络CNN介绍 | 大地小神 | 你们都是大傻瓜, 我是天下大赢家</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
@@ -29,14 +29,14 @@
     <meta name="description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
 <meta name="keywords" content="Guide">
 <meta property="og:type" content="article">
-<meta property="og:title" content="卷积神经网络CNN理解">
+<meta property="og:title" content="卷积神经网络CNN介绍">
 <meta property="og:url" content="https://qrsforever.github.io/2019/06/03/ML/Guide/cnn_intro/index.html">
 <meta property="og:site_name" content="大地小神">
 <meta property="og:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-24T15:12:29.178Z">
+<meta property="og:updated_time" content="2019-12-19T13:35:53.069Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="卷积神经网络CNN理解">
+<meta name="twitter:title" content="卷积神经网络CNN介绍">
 <meta name="twitter:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
     
         <link rel="alternate" type="application/atom+xml" title="大地小神" href="/atom.xml">
@@ -108,6 +108,13 @@
             </li>
         
             <li class="waves-block waves-effect">
+              <a href="https://gitee.com/lidongai" target="_blank" >
+                <i class="icon icon-lg icon-code-fork"></i>
+                Gitee
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
               <a href="http://weibo.com/705723886/" target="_blank" >
                 <i class="icon icon-lg icon-weibo"></i>
                 Weibo
@@ -115,9 +122,16 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://zytforever.github.io" target="_blank" >
-                <i class="icon icon-lg icon-eye"></i>
-                Stocktech
+              <a href="https://twitter.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                Twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2017/08/30/CV"  >
+                <i class="icon icon-lg icon-user-circle"></i>
+                Author
               </a>
             </li>
         
@@ -132,7 +146,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">卷积神经网络CNN理解</div>
+        <div class="flex-col header-title ellipsis">卷积神经网络CNN介绍</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -154,7 +168,7 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">卷积神经网络CNN理解</h1>
+        <h1 class="title">卷积神经网络CNN介绍</h1>
         <h5 class="subtitle">
             
                 <time datetime="2019-06-03T10:08:15.000Z" itemprop="datePublished" class="page-time">
@@ -188,7 +202,7 @@
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">卷积神经网络CNN理解</h1>
+        <h1 class="post-card-title">卷积神经网络CNN介绍</h1>
         <div class="post-meta">
             <time class="post-time" title="2019-06-03 18:08:15" datetime="2019-06-03T10:08:15.000Z"  itemprop="datePublished">2019-06-03</time>
 
@@ -215,24 +229,11 @@
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 <h2 id="网络资源"><span class="header-section-number">0.1</span> 网络资源</h2>
-<p><a href="https://towardsdatascience.com/intuitively-understanding-convolutions-for-deep-learning-1f6f42faee1" target="_blank" rel="noopener">Intuitively Understanding Convolutions for Deep Learning</a><br>
-<a href="https://www.cnblogs.com/skyfsm/p/6790245.html" target="_blank" rel="noopener">卷积神经网络CNN总结</a><br>
-<a href="https://blog.csdn.net/leadai/article/details/83353470" target="_blank" rel="noopener">卷积要旋转180度</a><br>
-<a href="https://zhuanlan.zhihu.com/p/25249694" target="_blank" rel="noopener">卷积神经网络简介</a><br>
-<a href="https://blog.csdn.net/qq_39521554/article/details/79083864" target="_blank" rel="noopener">别怕,"卷积"其实很简单</a><br>
-<a href="https://en.wikipedia.org/wiki/Convolution" target="_blank" rel="noopener">wikipedia:convolution</a><br>
-<a href="https://zh.wikipedia.org/wiki/%E5%8D%B7%E7%A7%AF" target="_blank" rel="noopener">wikipedia:卷积</a><br>
-<a href="http://mathworld.wolfram.com/Convolution.html" target="_blank" rel="noopener">mathworld</a><br>
-<a href="https://lpsa.swarthmore.edu/Convolution/CI.html" target="_blank" rel="noopener">图形Demo1</a><br>
-<a href="https://phiresky.github.io/convolution-demo/" target="_blank" rel="noopener">图形Demo2</a><br>
-<a href="https://blog.csdn.net/bitcarmanlee/article/details/54729807" target="_blank" rel="noopener">最容易理解的对卷积(convolution)的解释</a> <a href="https://colah.github.io/posts/2014-07-Understanding-Convolutions/" target="_blank" rel="noopener">Understanding Convolutions</a> <a href="https://blog.csdn.net/heshiip/article/details/79223442" target="_blank" rel="noopener">离散卷积过程举例图示详解</a></p>
-<p><a href="https://lpsa.swarthmore.edu/Convolution/Convolution.html" target="_blank" rel="noopener">推荐: 卷积介绍</a></p>
+<p><a href="https://towardsdatascience.com/intuitively-understanding-convolutions-for-deep-learning-1f6f42faee1" target="_blank" rel="noopener">Intuitively Understanding Convolutions for Deep Learning</a> <br> <a href="https://www.cnblogs.com/skyfsm/p/6790245.html" target="_blank" rel="noopener">卷积神经网络CNN总结</a> <br> <a href="https://blog.csdn.net/leadai/article/details/83353470" target="_blank" rel="noopener">卷积要旋转180度</a> <br> <a href="https://zhuanlan.zhihu.com/p/25249694" target="_blank" rel="noopener">卷积神经网络简介</a> <br> <a href="https://blog.csdn.net/qq_39521554/article/details/79083864" target="_blank" rel="noopener">别怕,"卷积"其实很简单</a> <br> <a href="https://en.wikipedia.org/wiki/Convolution" target="_blank" rel="noopener">wikipedia:convolution</a> <br> <a href="https://zh.wikipedia.org/wiki/%E5%8D%B7%E7%A7%AF" target="_blank" rel="noopener">wikipedia:卷积</a> <br> <a href="http://mathworld.wolfram.com/Convolution.html" target="_blank" rel="noopener">mathworld</a> <br> <a href="https://lpsa.swarthmore.edu/Convolution/CI.html" target="_blank" rel="noopener">图形Demo1</a> <br> <a href="https://phiresky.github.io/convolution-demo/" target="_blank" rel="noopener">图形Demo2</a> <br> <a href="https://blog.csdn.net/bitcarmanlee/article/details/54729807" target="_blank" rel="noopener">最容易理解的对卷积(convolution)的解释</a> <br> <a href="https://colah.github.io/posts/2014-07-Understanding-Convolutions/" target="_blank" rel="noopener">Understanding Convolutions</a> <br> <a href="https://blog.csdn.net/heshiip/article/details/79223442" target="_blank" rel="noopener">离散卷积过程举例图示详解</a> <br> <a href="http://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">必看: ConvNets</a> <br></p>
+<p><a href="https://lpsa.swarthmore.edu/Convolution/Convolution.html" target="_blank" rel="noopener">推荐: 卷积介绍</a> <br></p>
 <a id="more"></a>
 <h2 id="重要语句"><span class="header-section-number">0.2</span> 重要语句</h2>
 <p>卷积的重要的物理意义是:一个函数(如:单位响应)在另一个函数(如:输入信号)上的<strong>加权叠加</strong>. 对于线性时不变系统,如果知道该系统的单位响应,那么将单位响应和输入信号求卷积,就相当于把 输入信号的各个时间点的单位响应<strong>加权叠加</strong>,就直接得到了输出信号.系统的零状态响应等于单位 冲击响应卷积上输入函数.</p>
@@ -246,7 +247,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-06-24T15:12:29.178Z" itemprop="dateUpdated">2019-06-24 23:12:29</time>
+    最后更新时间：<time datetime="2019-12-19T13:35:53.069Z" itemprop="dateUpdated">2019-12-19 21:35:53</time>
 </span><br>
 
 
@@ -280,7 +281,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2019/06/03/ML/Guide/cnn_intro/&title=《卷积神经网络CNN理解》 — 大地小神&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2019/06/03/ML/Guide/cnn_intro/&title=《卷积神经网络CNN介绍》 — 大地小神&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -290,7 +291,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2019/06/03/ML/Guide/cnn_intro/&title=《卷积神经网络CNN理解》 — 大地小神&source=
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2019/06/03/ML/Guide/cnn_intro/&title=《卷积神经网络CNN介绍》 — 大地小神&source=
 
 
   
@@ -309,7 +310,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《卷积神经网络CNN理解》 — 大地小神&url=https://qrsforever.github.io/2019/06/03/ML/Guide/cnn_intro/&via=https://qrsforever.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《卷积神经网络CNN介绍》 — 大地小神&url=https://qrsforever.github.io/2019/06/03/ML/Guide/cnn_intro/&via=https://qrsforever.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -447,7 +448,7 @@
         </p>
     </div>
     <div class="bottom">
-        <p><span>qrsforever &copy; 2017 - 2019</span>
+        <p><span>qrsforever &copy; 2017 - 2020</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -465,7 +466,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2019/06/03/ML/Guide/cnn_intro/&title=《卷积神经网络CNN理解》 — 大地小神&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2019/06/03/ML/Guide/cnn_intro/&title=《卷积神经网络CNN介绍》 — 大地小神&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -475,7 +476,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2019/06/03/ML/Guide/cnn_intro/&title=《卷积神经网络CNN理解》 — 大地小神&source=
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2019/06/03/ML/Guide/cnn_intro/&title=《卷积神经网络CNN介绍》 — 大地小神&source=
 
 
   
@@ -494,7 +495,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《卷积神经网络CNN理解》 — 大地小神&url=https://qrsforever.github.io/2019/06/03/ML/Guide/cnn_intro/&via=https://qrsforever.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《卷积神经网络CNN介绍》 — 大地小神&url=https://qrsforever.github.io/2019/06/03/ML/Guide/cnn_intro/&via=https://qrsforever.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>

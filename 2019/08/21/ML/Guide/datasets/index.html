@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?cb4be66237379541488b8502a6eca006"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>(draft)数据集介绍 | 大地小神 | 你们都是大傻瓜, 我是天下大赢家</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Guide">
+    <meta name="description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta name="keywords" content="Guide">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(draft)数据集介绍">
+<meta property="og:url" content="https://qrsforever.github.io/2019/08/21/ML/Guide/datasets/index.html">
+<meta property="og:site_name" content="大地小神">
+<meta property="og:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-16T12:56:11.909Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="(draft)数据集介绍">
+<meta name="twitter:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+    
+        <link rel="alternate" type="application/atom+xml" title="大地小神" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">qrsforever</h5>
+          <a href="mailto:985612771@qq.com" title="985612771@qq.com" class="mail">985612771@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://gitee.com/lidongai" target="_blank" >
+                <i class="icon icon-lg icon-code-fork"></i>
+                Gitee
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/705723886/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                Twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2017/08/30/CV"  >
+                <i class="icon icon-lg icon-user-circle"></i>
+                Author
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">(draft)数据集介绍</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">(draft)数据集介绍</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-08-21T02:03:49.000Z" itemprop="datePublished" class="page-time">
+  2019-08-21
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#cifar"><span class="post-toc-text">1 CIFAR</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#cifar10"><span class="post-toc-text">1.1 CIFAR10</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#cifar100"><span class="post-toc-text">1.2 CIFAR100</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#mnist"><span class="post-toc-text">2 MNIST</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#kmnist"><span class="post-toc-text">3 KMNIST</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#fashionmnist"><span class="post-toc-text">4 FashionMNIST</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#emnist"><span class="post-toc-text">5 EMNIST</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#balanced"><span class="post-toc-text">5.1 Balanced</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#digits"><span class="post-toc-text">5.2 Digits</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#letters"><span class="post-toc-text">5.3 Letters</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mnist-1"><span class="post-toc-text">5.4 MNIST</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#chars74k"><span class="post-toc-text">6 Chars74k</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#dogs"><span class="post-toc-text">7 Dogs</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#animals"><span class="post-toc-text">8 Animals</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#fruits360"><span class="post-toc-text">9 Fruits360</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#boats"><span class="post-toc-text">10 Boats</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#voc"><span class="post-toc-text">11 VOC</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ade20k"><span class="post-toc-text">12 ADE20K</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#adechallengedata2016"><span class="post-toc-text">12.1 ADEChallengeData2016</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#coco"><span class="post-toc-text">13 COCO</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#references"><span class="post-toc-text">14 References</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-ML/Guide/datasets"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">(draft)数据集介绍</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-08-21 10:03:49" datetime="2019-08-21T02:03:49.000Z"  itemprop="datePublished">2019-08-21</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+</head>
+<body>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#cifar">CIFAR</a>
+<ul>
+<li><a href="#cifar10">CIFAR10</a></li>
+<li><a href="#cifar100">CIFAR100</a></li>
+</ul></li>
+<li><a href="#mnist">MNIST</a></li>
+<li><a href="#kmnist">KMNIST</a></li>
+<li><a href="#fashionmnist">FashionMNIST</a></li>
+<li><a href="#emnist">EMNIST</a>
+<ul>
+<li><a href="#balanced">Balanced</a></li>
+<li><a href="#digits">Digits</a></li>
+<li><a href="#letters">Letters</a></li>
+<li><a href="#mnist-1">MNIST</a></li>
+</ul></li>
+<li><a href="#chars74k">Chars74k</a></li>
+<li><a href="#dogs">Dogs</a></li>
+<li><a href="#animals">Animals</a></li>
+<li><a href="#fruits360">Fruits360</a></li>
+<li><a href="#boats">Boats</a></li>
+<li><a href="#voc">VOC</a></li>
+</ul>
+<!-- vim-markdown-toc -->
+<a id="more"></a>
+<h1 id="cifar"><span class="header-section-number">1</span> CIFAR</h1>
+<p><a href="http://www.cs.toronto.edu/~kriz/cifar.html" target="_blank" rel="noopener">INTRO</a></p>
+<p>The CIFAR-10 and CIFAR-100 are labeled subsets of the 80 million tiny images dataset.</p>
+<h2 id="cifar10"><span class="header-section-number">1.1</span> CIFAR10</h2>
+<p>The CIFAR-10 dataset consists of 60000 32x32 colour images in 10 classes, with 6000 images per class. There are 50000 training images and 10000 test images.</p>
+<h2 id="cifar100"><span class="header-section-number">1.2</span> CIFAR100</h2>
+<p>This dataset is just like the CIFAR-10, except it has 100 classes containing 600 images each. There are 500 training images and 100 testing images per class.</p>
+<div class="alert alert-info">
+<p>
+</p><p><strong>dataset</strong>: 10000 x 3072 = 10000(test images) x 32(width) x 32(height) x 3(channels:RGB)</p>
+<p><strong>labels</strong>: a list of 10000 numbers in the range 0-9, <strong>labels_names</strong> in the batches.meta files.</p>
+<p></p>
+</div>
+<hr>
+<h1 id="mnist"><span class="header-section-number">2</span> MNIST</h1>
+<p><a href="http://yann.lecun.com/exdb/mnist" target="_blank" rel="noopener">INTRO</a></p>
+<p>The MNIST database of handwritten digits, available from this page, has a training set of 60,000 examples, and a test set of 10,000 examples. The digits have been size-normalized and centered in a fixed-size image of 28x28 pixels.</p>
+<p>The MNIST database is a subset of a much larger datasetknown as the NIST Special Database 19 which contains handwritten digits and characters collected from over 500 writers.</p>
+<p>The MNIST database was constructed from NIST's Special Database 3 and Special Database 1 which contain binary images of handwritten digits. NIST originally designated SD-3 as their training set and SD-1 as their test set.</p>
+<p>The MNIST training set is composed of 30,000 patterns from SD-3 and 30,000 patterns from SD-1. Our test set was composed of 5,000 patterns from SD-3 and 5,000 patterns from SD-1. The 60,000 pattern training set contained examples from approximately 250 writers.</p>
+<div class="alert alert-info">
+<p>
+</p><p><strong>size</strong>: 28(width) x 28(height)</p>
+<p>In the original dataset each pixel of the image is represented by a value between 0 and 255, where 0 is black, 255 is white and anything in between is a different shade of grey.</p>
+<p></p>
+</div>
+<p>MNIST is often the first dataset researchers try, they said:</p>
+<blockquote><!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+</head>
+<body>
+<p>" If it doesn't work on MNIST, it won't work at all, Well, if it does work on MNIST, it may still fail on others."</p>
+</body>
+</html>
+</blockquote>
+<hr>
+<h1 id="kmnist"><span class="header-section-number">3</span> KMNIST</h1>
+<p><a href="https://www.simonwenkel.com/2018/12/18/Kuzushiji-MNIST.html" target="_blank" rel="noopener">INTRO</a></p>
+<p>The Kuzushiji-MNIST or KMNIST dataset contains 10 classes of hiragana(日语) characters with a resolution of 28x28 (grayscale) similar to MNIST. In total it contains 70000 images, 60000 for training and 10000 for testing.</p>
+<hr>
+<h1 id="fashionmnist"><span class="header-section-number">4</span> FashionMNIST</h1>
+<p><a href="http://www.worldlink.com.cn/en/osdir/fashion-mnist.html" target="_blank" rel="noopener">INTRO</a></p>
+<p>Fashion-MNIST is a dataset of Zalando's article images—consisting of a training set of 60,000 examples and a test set of 10,000 examples. Each example is a 28x28 grayscale image, associated with a label from 10 classes. We intend Fashion-MNIST to serve as a direct drop-in replacement for the original MNIST dataset for benchmarking machine learning algorithms. It shares the same image size and structure of training and testing splits.</p>
+<hr>
+<h1 id="emnist"><span class="header-section-number">5</span> EMNIST</h1>
+<p><a href="https://www.westernsydney.edu.au/bens/home/reproducible_research/emnist" target="_blank" rel="noopener">INTRO</a></p>
+<p><a href="https://arxiv.org/pdf/1702.05373.pdf" target="_blank" rel="noopener">arxiv</a></p>
+<p>Extended Modified NIST (EMNIST).</p>
+<p>Structure and Organization of the EMNIST datasets:</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Name</th>
+<th style="text-align: center;">Classes</th>
+<th style="text-align: center;">No. Training</th>
+<th style="text-align: center;">No. Testing</th>
+<th style="text-align: center;">Validation</th>
+<th style="text-align: center;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">ByClass</td>
+<td style="text-align: center;">62</td>
+<td style="text-align: center;">697,932</td>
+<td style="text-align: center;">116,323</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">814,255</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">ByMerge</td>
+<td style="text-align: center;">47</td>
+<td style="text-align: center;">697,932</td>
+<td style="text-align: center;">116,323</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">814,255</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Balanced</td>
+<td style="text-align: center;">47</td>
+<td style="text-align: center;">112,800</td>
+<td style="text-align: center;">18,800</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">131,600</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Digits</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">240,000</td>
+<td style="text-align: center;">40,000</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">280,000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Letters</td>
+<td style="text-align: center;">37</td>
+<td style="text-align: center;">88,800</td>
+<td style="text-align: center;">14,800</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">103,600</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">MNIST</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">60,000</td>
+<td style="text-align: center;">10,000</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">70,000</td>
+</tr>
+</tbody>
+</table>
+<h2 id="balanced"><span class="header-section-number">5.1</span> Balanced</h2>
+<p>total 131600, 47 classes, 2400 train examples and 400 test examples for each classs</p>
+<div class="alert alert-info">
+<p>
+</p><p>131600 = 47 x (2400 + 400)</p>
+<p></p>
+</div>
+<h2 id="digits"><span class="header-section-number">5.2</span> Digits</h2>
+<p>total 28000, 10 classes, 2400 train examples and 400 test examples for each classs</p>
+<div class="alert alert-info">
+<p>
+</p><p>28000 = 10 x (2400 + 400)</p>
+<p></p>
+</div>
+<h2 id="letters"><span class="header-section-number">5.3</span> Letters</h2>
+<p>total 145600, 26 classes, 5600 train examples and 800 test examples for each classs</p>
+<div class="alert alert-info">
+<p>
+</p><p>145600 = 26 x (5600 + 800)</p>
+<p></p>
+</div>
+<h2 id="mnist-1"><span class="header-section-number">5.4</span> MNIST</h2>
+<p>total 70000, 10 classes, 6000 train examples and 1000 test examples for each classs</p>
+<div class="alert alert-info">
+<p>
+</p><p>70000 = 10 x (6000 + 1000)</p>
+<p></p>
+</div>
+<hr>
+<h1 id="chars74k"><span class="header-section-number">6</span> Chars74k</h1>
+<p><a href="http://www.ee.surrey.ac.uk/CVSSP/demos/chars74k/" target="_blank" rel="noopener">INTRO</a></p>
+<p>Character recognition datasets which consisting of all English alphabet letters in uppercase as well as lowercase , along with the digits 0-9</p>
+<p>The Chars74k dataset consists of:</p>
+<ul>
+<li>64 classes (0-9, A-Z, a-z)</li>
+<li>7705 characters obtained from natural images</li>
+<li>3410 hand drawn characters using a tablet PC</li>
+<li>62992 synthesised characters from computer fonts</li>
+</ul>
+<p>This gives a total of over 74K images.</p>
+<div class="alert alert-info">
+<p>
+</p><p>TODO</p>
+<p></p>
+</div>
+<hr>
+<h1 id="dogs"><span class="header-section-number">7</span> Dogs</h1>
+<p><a href="https://www.kaggle.com/jessicali9530/stanford-dogs-dataset" target="_blank" rel="noopener">INTRO</a></p>
+<p>The Stanford Dogs dataset contains images of 120 breeds of dogs from around the world. This dataset has been built using images and annotation from ImageNet for the task of fine-grained image categorization.</p>
+<p>Contents of this dataset:</p>
+<ul>
+<li>Number of categories: 120</li>
+<li>Number of images: 20,580</li>
+<li>Annotations: Class labels, Bounding boxes</li>
+</ul>
+<div class="alert alert-info">
+<p>
+</p><p>TODO</p>
+<p></p>
+</div>
+<hr>
+<h1 id="animals"><span class="header-section-number">8</span> Animals</h1>
+<div class="alert alert-info">
+<p>
+</p><p>TODO</p>
+<p></p>
+</div>
+<hr>
+<h1 id="fruits360"><span class="header-section-number">9</span> Fruits360</h1>
+<p><a href="https://github.com/Horea94/Fruit-Images-Dataset" target="_blank" rel="noopener">INTRO</a></p>
+<p>A dataset of images containing fruits.</p>
+<div class="alert alert-info">
+<p>
+</p><p>TODO</p>
+<p></p>
+</div>
+<hr>
+<h1 id="boats"><span class="header-section-number">10</span> Boats</h1>
+<div class="alert alert-info">
+<p>
+</p><p>TODO</p>
+<p></p>
+</div>
+<hr>
+<h1 id="voc"><span class="header-section-number">11</span> VOC</h1>
+<p>TODO</p>
+<hr>
+<h1 id="ade20k"><span class="header-section-number">12</span> ADE20K</h1>
+<p><a href="http://groups.csail.mit.edu/vision/datasets/ADE20K/" target="_blank" rel="noopener">INTRO-Full</a> <br> <a href="http://sceneparsing.csail.mit.edu/" target="_blank" rel="noopener">INTRO-Scene</a></p>
+<p>Contains more than 20K scene-centric images exhaustively annotated with objects and object parts. Specifically, the benchmark is divided into 20K images for training, 2K images for validation, and another batch of held-out images for testing.</p>
+<p>It has 20210 training images and 2000 validation images.</p>
+<h2 id="adechallengedata2016"><span class="header-section-number">12.1</span> ADEChallengeData2016</h2>
+<p><a href="http://sceneparsing.csail.mit.edu/index_challenge.html" target="_blank" rel="noopener">INTRO</a></p>
+<hr>
+<h1 id="coco"><span class="header-section-number">13</span> COCO</h1>
+<p>TODO</p>
+<hr>
+<h1 id="references"><span class="header-section-number">14</span> References</h1>
+<ol>
+<li><p><a href="http://www.manongjc.com/article/27377.html" class="uri" target="_blank" rel="noopener">http://www.manongjc.com/article/27377.html</a></p></li>
+<li><p><a href="https://github.com/chainer/chainercv/tree/master/chainercv/datasets" class="uri" target="_blank" rel="noopener">https://github.com/chainer/chainercv/tree/master/chainercv/datasets</a></p></li>
+</ol>
+</body>
+</html>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-09-16T12:56:11.909Z" itemprop="dateUpdated">2019-09-16 20:56:11</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://qrsforever.github.io">
+            <img src="/img/avatar.jpg" alt="qrsforever">
+            qrsforever
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Guide/">Guide</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2019/08/21/ML/Guide/datasets/&title=《(draft)数据集介绍》 — 大地小神&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2019/08/21/ML/Guide/datasets/&title=《(draft)数据集介绍》 — 大地小神&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2019/08/21/ML/Guide/datasets/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《(draft)数据集介绍》 — 大地小神&url=https://qrsforever.github.io/2019/08/21/ML/Guide/datasets/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2019/08/21/ML/Guide/datasets/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/08/21/Company/Cauthy/framework/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">(draft)机器学习CV框架</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/08/19/ML/Guide/performance_optimization/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">(draft)模型优化</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <!-- <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script> -->
+    <script src="/js/av-min.js"></script>
+    <script src="/js/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "bpShGWdW8DpODhnDko5O2IBB-gzGzoHsz",
+            appKey: "rwmasTllBbHE69ADuLjFyFWf",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢打赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>qrsforever &copy; 2017 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2019/08/21/ML/Guide/datasets/&title=《(draft)数据集介绍》 — 大地小神&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2019/08/21/ML/Guide/datasets/&title=《(draft)数据集介绍》 — 大地小神&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2019/08/21/ML/Guide/datasets/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《(draft)数据集介绍》 — 大地小神&url=https://qrsforever.github.io/2019/08/21/ML/Guide/datasets/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2019/08/21/ML/Guide/datasets/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://qrsforever.github.io/2019/08/21/ML/Guide/datasets/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- lidong cha. -->
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- lidong end. -->
+
+</body>
+</html>

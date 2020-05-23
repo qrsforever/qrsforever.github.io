@@ -103,6 +103,13 @@
             </li>
         
             <li class="waves-block waves-effect">
+              <a href="https://gitee.com/lidongai" target="_blank" >
+                <i class="icon icon-lg icon-code-fork"></i>
+                Gitee
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
               <a href="http://weibo.com/705723886/" target="_blank" >
                 <i class="icon icon-lg icon-weibo"></i>
                 Weibo
@@ -110,9 +117,16 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://zytforever.github.io" target="_blank" >
-                <i class="icon icon-lg icon-eye"></i>
-                Stocktech
+              <a href="https://twitter.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                Twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2017/08/30/CV"  >
+                <i class="icon icon-lg icon-user-circle"></i>
+                Author
               </a>
             </li>
         
@@ -167,11 +181,762 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
-            <article id="post-Tutorial/Hexo"
+            <article id="post-ML/Guide/rnn_intro"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-12-18 21:20:26" datetime="2018-12-18T13:20:26.000Z"  itemprop="datePublished">2018-12-18</time>
+        <time class="post-time" title="2019-09-12 13:52:48" datetime="2019-09-12T05:52:48.000Z"  itemprop="datePublished">2019-09-12</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/09/12/ML/Guide/rnn_intro/">循环神经网络RNN介绍</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+  <script src="/usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+</head>
+<body>
+<p><a href="https://gitee.com/lidongai/code_blog_post/raw/master/ML/Guide/rnn_intro.md" target="_blank" rel="noopener">RAWCODE</a></p>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#符号注解">符号注解</a></li>
+<li><a href="#rnnbptt">RNN(BPTT)</a>
+<ul>
+<li><a href="#隐马尔可夫模型">隐马尔可夫模型</a></li>
+<li><a href="#bptt">BPTT</a>
+<ul>
+<li><a href="#思考">思考</a></li>
+<li><a href="#梯度">梯度</a></li>
+<li><a href="#计算例子">计算例子</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#lstm">LSTM</a>
+<ul>
+<li><a href="#长期依赖">长期依赖</a></li>
+<li><a href="#梯度消失">梯度消失</a></li>
+<li><a href="#与标准rnn对比">与标准RNN对比</a></li>
+</ul></li>
+<li><a href="#应用场景">应用场景</a>
+<ul>
+<li><a href="#语音识别">语音识别</a></li>
+<li><a href="#语言翻译">语言翻译</a></li>
+<li><a href="#股票预测">股票预测</a></li>
+<li><a href="#图像识别图里的内容">图像识别(图里的内容)</a></li>
+</ul></li>
+<li><a href="#其他">其他</a>
+<ul>
+<li><a href="#关键字">关键字</a></li>
+</ul></li>
+<li><a href="#references">References</a></li>
+</ul>
+<!-- vim-markdown-toc -->
+    
+
+        <a href="/2019/09/12/ML/Guide/rnn_intro/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Graph/">Graph</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Guide/">Guide</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Note/C++/makefile"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-09-10 11:24:21" datetime="2019-09-10T03:24:21.000Z"  itemprop="datePublished">2019-09-10</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/09/10/Note/C++/makefile/">Makefile模板</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+</head>
+<body>
+<p><a href="https://gitee.com/lidongai/code_blog_post/raw/master/Note/C++/makefile.md" target="_blank" rel="noopener">RAWCODE</a></p>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#通用">通用</a></li>
+</ul>
+<!-- vim-markdown-toc -->
+    
+
+        <a href="/2019/09/10/Note/C++/makefile/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Template/">Template</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Note/Hadoop/hadoop_xml"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-09-10 10:41:48" datetime="2019-09-10T02:41:48.000Z"  itemprop="datePublished">2019-09-10</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/09/10/Note/Hadoop/hadoop_xml/">Hadoop配置xml文件模板</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+</head>
+<body>
+<p><a href="https://gitee.com/lidongai/code_blog_post/raw/master/Note/Hadoop/hadoop_xml.md" target="_blank" rel="noopener">RAWCODE</a></p>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#xml">XML</a>
+<ul>
+<li><a href="#core-site">core-site</a></li>
+<li><a href="#hdfs-site">hdfs-site</a></li>
+<li><a href="#mapred-site">mapred-site</a></li>
+<li><a href="#yarn-site">yarn-site</a></li>
+<li><a href="#hdbase-site">hdbase-site</a></li>
+</ul></li>
+<li><a href="#default-ports">Default Ports</a></li>
+</ul>
+<!-- vim-markdown-toc -->
+    
+
+        <a href="/2019/09/10/Note/Hadoop/hadoop_xml/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hadoop/">Hadoop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Template/">Template</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Company/Cauthy/ex_visdom"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-09-04 20:48:29" datetime="2019-09-04T12:48:29.000Z"  itemprop="datePublished">2019-09-04</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Company/">Company</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/09/04/Company/Cauthy/ex_visdom/">改进visdom来适应项目</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+</head>
+<body>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#当前现状">当前现状</a></li>
+<li><a href="#改进方案">改进方案</a></li>
+<li><a href="#代码">代码</a>
+<ul>
+<li><a href="#visdom-client">Visdom Client</a></li>
+<li><a href="#websocket-client">WebSocket Client</a></li>
+<li><a href="#visdom-server">Visdom Server</a></li>
+</ul></li>
+<li><a href="#测试">测试</a></li>
+</ul>
+<!-- vim-markdown-toc -->
+    
+
+        <a href="/2019/09/04/Company/Cauthy/ex_visdom/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cauchy/">Cauchy</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Note/AI/visdom"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-09-03 13:20:08" datetime="2019-09-03T05:20:08.000Z"  itemprop="datePublished">2019-09-03</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/09/03/Note/AI/visdom/">Visdom原理</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+</head>
+<body>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#visdom">Visdom</a></li>
+<li><a href="#how-to-talk-with">How to Talk with</a></li>
+<li><a href="#drawit">DrawIt</a></li>
+<li><a href="#conclution">Conclution</a></li>
+</ul>
+<!-- vim-markdown-toc -->
+    
+
+        <a href="/2019/09/03/Note/AI/visdom/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI/">AI</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Company/Cauthy/how_run"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-08-31 13:53:32" datetime="2019-08-31T05:53:32.000Z"  itemprop="datePublished">2019-08-31</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Company/">Company</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/08/31/Company/Cauthy/how_run/">框架运行docker设计</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+</head>
+<body>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#如何启动框架">如何启动框架</a></li>
+<li><a href="#三层镜像">三层镜像</a></li>
+<li><a href="#制作镜像">制作镜像</a>
+<ul>
+<li><a href="#制作第二层">制作第二层</a></li>
+<li><a href="#制作第三层">制作第三层</a></li>
+</ul></li>
+<li><a href="#简单总结">简单总结</a></li>
+<li><a href="#补充">补充</a></li>
+</ul>
+<!-- vim-markdown-toc -->
+    
+
+        <a href="/2019/08/31/Company/Cauthy/how_run/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cauchy/">Cauchy</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Tutorial/docker"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-08-28 21:23:39" datetime="2019-08-28T13:23:39.000Z"  itemprop="datePublished">2019-08-28</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Tutorial/">Tutorial</a></li></ul>
@@ -185,7 +950,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/12/18/Tutorial/Hexo/">(原创)Tutorial for Hexo</a>
+      <a class="post-title-link" href="/2019/08/28/Tutorial/docker/">Dorcker</a>
     </h3>
   
 
@@ -208,37 +973,126 @@
       span.underline{text-decoration: underline;}
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+  </style>
   <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 <!-- vim-markdown-toc GFM -->
 <ul>
-<li><a href="#tag-plugins">Tag Plugins</a>
+<li><a href="#install">Install</a></li>
+<li><a href="#what">What</a>
 <ul>
-<li><a href="#block-quote">Block Quote</a></li>
-<li><a href="#include-posts">Include Posts</a></li>
-<li><a href="#include-assets">Include Assets</a></li>
+<li><a href="#dockerfile">Dockerfile</a></li>
+<li><a href="#containers">Containers</a></li>
+<li><a href="#networks">Networks</a></li>
+<li><a href="#restart-policy">Restart Policy</a></li>
 </ul></li>
+<li><a href="#alias">Alias</a></li>
+<li><a href="#command">Command</a>
+<ul>
+<li><a href="#search-image">Search image</a></li>
+<li><a href="#download-image">Download image</a></li>
+<li><a href="#rename-image-name">Rename image name</a></li>
+<li><a href="#display-image-or-container-information">Display image or container information</a></li>
+<li><a href="#display-information-using-index">Display information using index</a></li>
+<li><a href="#filter-label-and-format-it">Filter label and format it</a></li>
+<li><a href="#display-container-running-state">Display container running state</a></li>
+<li><a href="#display-container-by-image-tag-and-status">Display container by image, tag and status</a></li>
+<li><a href="#display-the-command-in-runtime">Display the command in runtime</a></li>
+<li><a href="#remove-all-containers-with-statusexited">Remove all containers with status=exited</a></li>
+<li><a href="#stop-all-containers">Stop all containers</a></li>
+<li><a href="#run-and-attach-to-container">Run and attach to container</a></li>
+<li><a href="#pass-environment-variables-to-docker">Pass environment variables to docker</a></li>
+<li><a href="#remove-all-docker-images">Remove all docker images</a></li>
+<li><a href="#bind-local-folder-the-docker-folder-on-docker-run">Bind local folder the docker folder on docker run</a></li>
+<li><a href="#see-logs-in-container">See logs in container</a></li>
+<li><a href="#backuprestore-of-container">Backup/Restore of container</a></li>
+<li><a href="#copy-and-paste-files">Copy and paste files</a></li>
+<li><a href="#binding-ports">Binding ports</a></li>
+<li><a href="#adding-metadata">Adding Metadata</a></li>
+<li><a href="#namedpath-based-volumes">Named/Path Based Volumes</a>
+<ul>
+<li><a href="#named-volumn">Named Volumn</a></li>
+<li><a href="#path-volumn">Path Volumn</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#expose-port">Expose port</a></li>
+<li><a href="#composer">Composer</a>
+<ul>
+<li><a href="#install-1">install</a></li>
+<li><a href="#yaml">yaml</a></li>
+</ul></li>
+<li><a href="#todo">TODO</a></li>
+<li><a href="#references">References</a></li>
 </ul>
 <!-- vim-markdown-toc -->
-<p><a href="https://hexo.io/docs/tag-plugins.html" target="_blank" rel="noopener">原文</a></p>
-<h1 id="requirements"><span class="header-section-number">1</span> Requirements</h1>
-<pre class="shell"><code>sudo apt install pandoc
-sudo apt install nbconvert
-sudo apt install texlive</code></pre>
     
 
-        <a href="/2018/12/18/Tutorial/Hexo/" class="post-more waves-effect waves-button">
+        <a href="/2019/08/28/Tutorial/docker/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How/">How</a></li></ul>
 
     </div>
     
@@ -247,14 +1101,14 @@ sudo apt install texlive</code></pre>
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Books/Statistics/Confidence_Prediction_Intervals"
+            <article id="post-ML/Guide/vanishing_exploding_gradients"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-12-18 15:19:55" datetime="2018-12-18T07:19:55.000Z"  itemprop="datePublished">2018-12-18</time>
+        <time class="post-time" title="2019-08-27 13:29:56" datetime="2019-08-27T05:29:56.000Z"  itemprop="datePublished">2019-08-27</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Books/">Books</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
 
 
 
@@ -265,7 +1119,7 @@ sudo apt install texlive</code></pre>
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/12/18/Books/Statistics/Confidence_Prediction_Intervals/">置信区间和预测区间</a>
+      <a class="post-title-link" href="/2019/08/27/ML/Guide/vanishing_exploding_gradients/">梯度消失,梯度爆炸</a>
     </h3>
   
 
@@ -289,27 +1143,32 @@ sudo apt install texlive</code></pre>
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
+  <script src="/usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
 </head>
 <body>
+<p><a href="https://gitee.com/lidongai/code_blog_post/raw/master/Books/ML/vanishing_exploding_gradients.md" target="_blank" rel="noopener">RAWCODE</a></p>
 <!-- vim-markdown-toc GFM -->
 <ul>
-<li><a href="#资料">资料</a></li>
-<li><a href="#实践">实践</a></li>
+<li><a href="#梯度不稳定">梯度不稳定</a>
+<ul>
+<li><a href="#梯度消失">梯度消失</a></li>
+<li><a href="#梯度爆炸">梯度爆炸</a></li>
+</ul></li>
+<li><a href="#实例">实例</a></li>
+<li><a href="#解决办法">解决办法</a></li>
+<li><a href="#references">References</a></li>
 </ul>
 <!-- vim-markdown-toc -->
     
 
-        <a href="/2018/12/18/Books/Statistics/Confidence_Prediction_Intervals/" class="post-more waves-effect waves-button">
+        <a href="/2019/08/27/ML/Guide/vanishing_exploding_gradients/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Statistics/">Statistics</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Graph/">Graph</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Guide/">Guide</a></li></ul>
 
     </div>
     
@@ -318,14 +1177,14 @@ sudo apt install texlive</code></pre>
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Books/Statistics/OLS_WLS_GLS"
+            <article id="post-ML/Guide/dropout"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-12-18 15:16:23" datetime="2018-12-18T07:16:23.000Z"  itemprop="datePublished">2018-12-18</time>
+        <time class="post-time" title="2019-08-27 13:28:58" datetime="2019-08-27T05:28:58.000Z"  itemprop="datePublished">2019-08-27</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Books/">Books</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
 
 
 
@@ -336,7 +1195,7 @@ sudo apt install texlive</code></pre>
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/12/18/Books/Statistics/OLS_WLS_GLS/">OLS, WLS, GLS</a>
+      <a class="post-title-link" href="/2019/08/27/ML/Guide/dropout/">丢弃法</a>
     </h3>
   
 
@@ -360,41 +1219,26 @@ sudo apt install texlive</code></pre>
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <link rel="stylesheet" href="/css/pandoc.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
+<p><a href="https://gitee.com/lidongai/code_blog_post/raw/master/Books/ML/dropout.md" target="_blank" rel="noopener">RAWCODE</a></p>
 <!-- vim-markdown-toc GFM -->
 <ul>
-<li><a href="#资源">资源</a></li>
-<li><a href="#线性回归模型">线性回归模型</a>
-<ul>
-<li><a href="#高斯马尔科夫定理">高斯马尔科夫定理</a></li>
-</ul></li>
-<li><a href="#ols-ordinal-least-squares-普通">OLS: Ordinal Least Squares: 普通</a></li>
-<li><a href="#wls-weighted-least-squares-加权">WLS: Weighted Least Squares: 加权</a></li>
-<li><a href="#gls-general-least-squares-广义">GLS: General Least Squares: 广义</a></li>
-<li><a href="#实践">实践</a></li>
+<li><a href="#what">What</a></li>
+<li><a href="#drawit">DrawIt</a></li>
+<li><a href="#references">References</a></li>
 </ul>
 <!-- vim-markdown-toc -->
-<h1 id="资源"><span class="header-section-number">1</span> 资源</h1>
-<ul>
-<li><p><a href="https://pan.baidu.com/s/16FU_ZwFqw7wxH85Ry59chw" title="提取码: u4w4" target="_blank" rel="noopener">加权最小平方法及稳健回归模型之简介</a></p></li>
-<li><p><a href="https://pan.baidu.com/s/16FU_ZwFqw7wxH85Ry59chw" title="提取码: u4w4" target="_blank" rel="noopener">Introduction to Linear Regression Analysis(5th)-Douglas</a></p></li>
-<li><p><a href="https://pan.baidu.com/s/16FU_ZwFqw7wxH85Ry59chw" title="提取码: u4w4" target="_blank" rel="noopener">OLS in Matrix Form</a></p></li>
-</ul>
     
 
-        <a href="/2018/12/18/Books/Statistics/OLS_WLS_GLS/" class="post-more waves-effect waves-button">
+        <a href="/2019/08/27/ML/Guide/dropout/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Statistics/">Statistics</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Guide/">Guide</a></li></ul>
 
     </div>
     
@@ -403,14 +1247,14 @@ sudo apt install texlive</code></pre>
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Books/Statistics/Hypothesis_Tests"
+            <article id="post-ML/Guide/regularization"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-12-14 17:30:07" datetime="2018-12-14T09:30:07.000Z"  itemprop="datePublished">2018-12-14</time>
+        <time class="post-time" title="2019-08-27 10:24:46" datetime="2019-08-27T02:24:46.000Z"  itemprop="datePublished">2019-08-27</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Books/">Books</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
 
 
 
@@ -421,7 +1265,7 @@ sudo apt install texlive</code></pre>
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/12/14/Books/Statistics/Hypothesis_Tests/">假设检验</a>
+      <a class="post-title-link" href="/2019/08/27/ML/Guide/regularization/">正则化</a>
     </h3>
   
 
@@ -445,536 +1289,31 @@ sudo apt install texlive</code></pre>
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
+  <script src="/usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
 </head>
 <body>
-<h1 id="draft"><span class="header-section-number">1</span> Draft</h1>
-<p>Statistical hypothesis tests can be grouped into parametric tests and nonparametric tests. Parametric tests assume that the data can be well described by a distribution that is defined by one or more parameters</p>
-<hr>
-<h2 id="tests-for-normality"><span class="header-section-number">1.1</span> Tests for normality</h2>
-<h3 id="probability-plots"><span class="header-section-number">1.1.1</span> Probability-Plots</h3>
-<hr>
-</body>
-</html>
-
-    
-
-        <a href="/2018/12/14/Books/Statistics/Hypothesis_Tests/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Statistics/">Statistics</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Books/Statistics/Kernel_Density_Estimation"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-12-14 17:15:54" datetime="2018-12-14T09:15:54.000Z"  itemprop="datePublished">2018-12-14</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Books/">Books</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/12/14/Books/Statistics/Kernel_Density_Estimation/">核密度</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
-<head>
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>dummy</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
+<p><a href="https://gitee.com/lidongai/code_blog_post/raw/master/Books/ML/regularization.md" target="_blank" rel="noopener">RAWCODE</a></p>
 <!-- vim-markdown-toc GFM -->
 <ul>
-<li><a href="#资源">资源</a></li>
-<li><a href="#概念">概念</a></li>
-<li><a href="#其他">其他</a></li>
-</ul>
-<!-- vim-markdown-toc -->
-    
-
-        <a href="/2018/12/14/Books/Statistics/Kernel_Density_Estimation/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Statistics/">Statistics</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Books/Statistics/analysis_correlation"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-12-07 17:44:17" datetime="2018-12-07T09:44:17.000Z"  itemprop="datePublished">2018-12-07</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Books/">Books</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/12/07/Books/Statistics/analysis_correlation/">相关分析</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
-<head>
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>dummy</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<!-- vim-markdown-toc GFM -->
+<li><a href="#what">What</a></li>
+<li><a href="#cost">Cost</a>
 <ul>
-<li><a href="#资源">资源</a></li>
-<li><a href="#定义">定义</a></li>
-<li><a href="#方法">方法</a></li>
-<li><a href="#其他">其他</a></li>
-</ul>
-<!-- vim-markdown-toc -->
-    
-
-        <a href="/2018/12/07/Books/Statistics/analysis_correlation/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Draft/">Draft</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Statistics/">Statistics</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Books/Statistics/Naked_Statistics"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-12-05 15:06:37" datetime="2018-12-05T07:06:37.000Z"  itemprop="datePublished">2018-12-05</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Books/">Books</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/12/05/Books/Statistics/Naked_Statistics/">赤裸裸统计学</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
-<head>
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>dummy</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <link rel="stylesheet" href="/css/pandoc.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<!-- vim-markdown-toc GFM -->
-<ul>
-<li><a href="#书籍">书籍</a>
-<ul>
-<li><a href="#数据集">数据集</a></li>
-</ul></li>
-<li><a href="#中心极限地理">中心极限地理</a></li>
-<li><a href="#假设检验">假设检验</a>
-<ul>
-<li><a href="#数字的意义">数字的意义</a></li>
-<li><a href="#权衡犯错类型">权衡犯错类型</a></li>
-</ul></li>
-<li><a href="#回归分析">回归分析</a></li>
-</ul>
-<!-- vim-markdown-toc -->
-<h1 id="书籍"><span class="header-section-number">1</span> 书籍</h1>
-<ol type="1">
-<li><a href="https://pan.baidu.com/s/16FU_ZwFqw7wxH85Ry59chw" title="提取码: u4w4" target="_blank" rel="noopener">赤裸裸的统计学-Naked Statistics-曹槟(译)</a></li>
-</ol>
-<h2 id="数据集"><span class="header-section-number">1.1</span> 数据集</h2>
-<p><a href="https://www.isr.umich.edu/acl/data.htm" target="_blank" rel="noopener">变化的一生-数据集-官网</a></p>
-<p><a href="https://pan.baidu.com/s/16QauVNm5HnTNu9E5k6XdcA" target="_blank" rel="noopener">变化的一生-数据集-百度云</a></p>
-    
-
-        <a href="/2018/12/05/Books/Statistics/Naked_Statistics/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Draft/">Draft</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Statistics/">Statistics</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Books/Statistics/Normality_Test"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-11-27 13:56:02" datetime="2018-11-27T05:56:02.000Z"  itemprop="datePublished">2018-11-27</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Books/">Books</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/11/27/Books/Statistics/Normality_Test/">正态性检验</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
-<head>
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>dummy</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <link rel="stylesheet" href="/css/pandoc.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<!-- vim-markdown-toc GFM -->
-<ul>
-<li><a href="#资源">资源</a></li>
-<li><a href="#正态分布">正态分布</a>
-<ul>
-<li><a href="#统计量">统计量</a></li>
-<li><a href="#代码演示">代码演示</a></li>
-<li><a href="#估计量">估计量</a></li>
-</ul></li>
-<li><a href="#w检验">W检验</a></li>
-<li><a href="#ks检验">KS检验</a></li>
-<li><a href="#probability-plot">Probability Plot</a>
-<ul>
-<li><a href="#qq-plot">QQ Plot</a></li>
+<li><a href="#l1正则化项">L1正则化项</a></li>
+<li><a href="#l2正则化项">L2正则化项</a></li>
+<li><a href="#可视化">可视化</a></li>
 </ul></li>
 </ul>
 <!-- vim-markdown-toc -->
     
 
-        <a href="/2018/11/27/Books/Statistics/Normality_Test/" class="post-more waves-effect waves-button">
+        <a href="/2019/08/27/ML/Guide/regularization/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Statistics/">Statistics</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Books/Statistics/analysis_regression"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-11-26 19:37:44" datetime="2018-11-26T11:37:44.000Z"  itemprop="datePublished">2018-11-26</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Books/">Books</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/11/26/Books/Statistics/analysis_regression/">回归分析</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
-<head>
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>dummy</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <link rel="stylesheet" href="/css/pandoc.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<!-- vim-markdown-toc GFM -->
-<ul>
-<li><a href="#资源">资源</a></li>
-<li><a href="#概念">概念</a>
-<ul>
-<li><a href="#函数关系和相关关系">函数关系和相关关系</a></li>
-<li><a href="#相关分析和回归分析">相关分析和回归分析</a></li>
-<li><a href="#共线性">共线性</a></li>
-<li><a href="#虚拟变量">虚拟变量</a></li>
-<li><a href="#回归">回归</a></li>
-<li><a href="#拟合优度">拟合优度</a></li>
-<li><a href="#参考">参考</a></li>
-</ul></li>
-<li><a href="#回归模型的参数估计">回归模型的参数估计</a>
-<ul>
-<li><a href="#点估计">点估计</a>
-<ul>
-<li><a href="#普通最小二乘ols">普通最小二乘OLS</a></li>
-<li><a href="#极大似然估计ml">极大似然估计ML</a></li>
-<li><a href="#矩法mm">矩法MM</a></li>
-</ul></li>
-<li><a href="#区间估计">区间估计</a>
-<ul>
-<li><a href="#置信区间估计">置信区间估计</a></li>
-<li><a href="#预测区间估计">预测区间估计</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#回归模型的显著性检验">回归模型的显著性检验</a>
-<ul>
-<li><a href="#线性关系f检验">线性关系F检验</a></li>
-<li><a href="#回归系数t检验">回归系数t检验</a></li>
-<li><a href="#预测">预测</a></li>
-<li><a href="#残差分析">残差分析</a></li>
-</ul></li>
-<li><a href="#线性回归几种方法实现">线性回归几种方法实现</a></li>
-<li><a href="#其他">其他</a></li>
-<li><a href="#问题">问题</a></li>
-<li><a href="#draft">draft</a></li>
-</ul>
-<!-- vim-markdown-toc -->
-    
-
-        <a href="/2018/11/26/Books/Statistics/analysis_regression/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Draft/">Draft</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Statistics/">Statistics</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Books/Statistics/analysis_variance"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-11-22 15:47:25" datetime="2018-11-22T07:47:25.000Z"  itemprop="datePublished">2018-11-22</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Books/">Books</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/11/22/Books/Statistics/analysis_variance/">方差分析</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
-<head>
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>dummy</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <link rel="stylesheet" href="/css/pandoc.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<!-- vim-markdown-toc GFM -->
-<ul>
-<li><a href="#什么个鬼">什么个鬼</a>
-<ul>
-<li><a href="#方差分析的假定">方差分析的假定</a></li>
-</ul></li>
-<li><a href="#单因素">单因素</a>
-<ul>
-<li><a href="#统计量">统计量</a></li>
-</ul></li>
-<li><a href="#双因素">双因素</a>
-<ul>
-<li><a href="#方差分析的假定-1">方差分析的假定</a></li>
-<li><a href="#无交互作用">无交互作用</a></li>
-<li><a href="#有交互作用">有交互作用</a></li>
-</ul></li>
-</ul>
-<!-- vim-markdown-toc -->
-    
-
-        <a href="/2018/11/22/Books/Statistics/analysis_variance/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Statistics/">Statistics</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Guide/">Guide</a></li></ul>
 
     </div>
     
@@ -987,7 +1326,7 @@ sudo apt install texlive</code></pre>
     
 <nav id="page-nav">
     <div class="inner">
-    <a class="extend prev" rel="prev" href="/page/4/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/6/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/4/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/6/">下一页</a>
     </div>
 </nav>
 
@@ -1006,7 +1345,7 @@ sudo apt install texlive</code></pre>
         </p>
     </div>
     <div class="bottom">
-        <p><span>qrsforever &copy; 2017 - 2019</span>
+        <p><span>qrsforever &copy; 2017 - 2020</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

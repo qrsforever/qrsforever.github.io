@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?cb4be66237379541488b8502a6eca006"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>(draft)机器学习CV框架 | 大地小神 | 你们都是大傻瓜, 我是天下大赢家</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Cauchy">
+    <meta name="description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta name="keywords" content="Cauchy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(draft)机器学习CV框架">
+<meta property="og:url" content="https://qrsforever.github.io/2019/08/21/Company/Cauthy/framework/index.html">
+<meta property="og:site_name" content="大地小神">
+<meta property="og:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://www.yiiframework.com/doc/guide/2.0/en/images/application-structure.png">
+<meta property="og:updated_time" content="2019-09-16T12:56:11.909Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="(draft)机器学习CV框架">
+<meta name="twitter:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta name="twitter:image" content="https://www.yiiframework.com/doc/guide/2.0/en/images/application-structure.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="大地小神" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">qrsforever</h5>
+          <a href="mailto:985612771@qq.com" title="985612771@qq.com" class="mail">985612771@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://gitee.com/lidongai" target="_blank" >
+                <i class="icon icon-lg icon-code-fork"></i>
+                Gitee
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/705723886/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                Twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2017/08/30/CV"  >
+                <i class="icon icon-lg icon-user-circle"></i>
+                Author
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">(draft)机器学习CV框架</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">(draft)机器学习CV框架</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-08-21T09:23:32.000Z" itemprop="datePublished" class="page-time">
+  2019-08-21
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Company/">Company</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#introduction"><span class="post-toc-text">1 Introduction</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#nginx"><span class="post-toc-text">1.1 nginx</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#yii"><span class="post-toc-text">1.2 yii</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#visdom"><span class="post-toc-text">1.3 Visdom</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#torchcv"><span class="post-toc-text">1.4 torchcv</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#cauchy"><span class="post-toc-text">2 Cauchy</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#architecture"><span class="post-toc-text">2.1 Architecture</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#start-servers"><span class="post-toc-text">2.2 Start Servers</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#dynamic-process"><span class="post-toc-text">2.3 Dynamic Process</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#project-directory"><span class="post-toc-text">2.4 Project Directory</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#references"><span class="post-toc-text">3 References</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Company/Cauthy/framework"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">(draft)机器学习CV框架</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-08-21 17:23:32" datetime="2019-08-21T09:23:32.000Z"  itemprop="datePublished">2019-08-21</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Company/">Company</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+</head>
+<body>
+<p><link href="/static/css/qrs.css" rel="stylesheet"></p>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#introduction">Introduction</a>
+<ul>
+<li><a href="#nginx">nginx</a></li>
+<li><a href="#yii">yii</a></li>
+<li><a href="#visdom">Visdom</a></li>
+<li><a href="#torchcv">torchcv</a></li>
+</ul></li>
+<li><a href="#cauchy">Cauchy</a>
+<ul>
+<li><a href="#architecture">Architecture</a></li>
+<li><a href="#start-servers">Start Servers</a></li>
+<li><a href="#dynamic-process">Dynamic Process</a></li>
+<li><a href="#project-directory">Project Directory</a></li>
+</ul></li>
+<li><a href="#references">References</a></li>
+</ul>
+<!-- vim-markdown-toc -->
+<a id="more"></a>
+<h1 id="introduction"><span class="header-section-number">1</span> Introduction</h1>
+<h2 id="nginx"><span class="header-section-number">1.1</span> nginx</h2>
+<p>Nginx [engine x] is an HTTP and reverse proxy server, a mail proxy server, and a generic TCP/UDP proxy server.</p>
+<p>See more <a href="http://nginx.org/en/" target="_blank" rel="noopener">HOME PAGE</a></p>
+<h2 id="yii"><span class="header-section-number">1.2</span> yii</h2>
+<p>Yii is a fast, secure, and efficient PHP framework.</p>
+<p>The name Yii (pronounced Yee or [ji:]) means "simple and evolutionary" in Chinese. It can also be thought of as an acronym for <strong>Yes It Is!</strong></p>
+<p><img src="https://www.yiiframework.com/doc/guide/2.0/en/images/application-structure.png"></p>
+<p>See more <a href="https://www.yiiframework.com/" target="_blank" rel="noopener">HOME PAGE</a>, <a href="https://github.com/yiisoft/yii2" target="_blank" rel="noopener">GITHUB</a></p>
+<h2 id="visdom"><span class="header-section-number">1.3</span> Visdom</h2>
+<p>Visdom is a visualization tool that generates rich visualizations of live data to help researchers and developers stay on top of their scientific experiments that are run on remote servers. Visualizations in Visdom can be viewed in browsers and easily shared with others.</p>
+<p>See more <a href="https://ai.facebook.com/tools/visdom/" target="_blank" rel="noopener">HOME PAGE</a>, <a href="https://github.com/facebookresearch/visdom" target="_blank" rel="noopener">GITHUB</a></p>
+<h2 id="torchcv"><span class="header-section-number">1.4</span> torchcv</h2>
+<p>A PyTorch-Based Framework for Deep Learning in Computer Vision.</p>
+<p>Implemented Papers</p>
+<ul>
+<li><a href="https://github.com/youansheng/torchcv/tree/master/methods/cls" target="_blank" rel="noopener">Image Classification</a>
+<ul>
+<li>VGG: Very Deep Convolutional Networks for Large-Scale Image Recognition</li>
+<li>ResNet: Deep Residual Learning for Image Recognition</li>
+<li>DenseNet: Densely Connected Convolutional Networks</li>
+<li>ShuffleNet: An Extremely Efficient Convolutional Neural Network for Mobile Devices</li>
+<li>ShuffleNet V2: Practical Guidelines for Ecient CNN Architecture Design</li>
+</ul></li>
+<li><a href="https://github.com/youansheng/torchcv/tree/master/methods/seg" target="_blank" rel="noopener">Semantic Segmentation</a>
+<ul>
+<li>DeepLabV3: Rethinking Atrous Convolution for Semantic Image Segmentation</li>
+<li>PSPNet: Pyramid Scene Parsing Network</li>
+<li>DenseASPP: DenseASPP for Semantic Segmentation in Street Scenes</li>
+</ul></li>
+<li><a href="https://github.com/youansheng/torchcv/tree/master/methods/det" target="_blank" rel="noopener">Object Detection</a>
+<ul>
+<li>SSD: Single Shot MultiBox Detector</li>
+<li>Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks</li>
+<li>YOLOv3: An Incremental Improvement</li>
+<li>FPN: Feature Pyramid Networks for Object Detection</li>
+</ul></li>
+<li><a href="https://github.com/youansheng/torchcv/tree/master/methods/pose" target="_blank" rel="noopener">Pose Estimation</a>
+<ul>
+<li>CPM: Convolutional Pose Machines</li>
+<li>OpenPose: Realtime Multi-Person 2D Pose Estimation using Part Affinity Fields</li>
+</ul></li>
+<li><a href="https://github.com/youansheng/torchcv/tree/master/methods/seg" target="_blank" rel="noopener">Instance Segmentation</a>
+<ul>
+<li>Mask R-CNN</li>
+</ul></li>
+<li><a href="https://github.com/youansheng/torchcv/tree/master/methods/gan" target="_blank" rel="noopener">Generative Adversarial Networks</a>
+<ul>
+<li>Pix2pix: Image-to-Image Translation with Conditional Adversarial Nets</li>
+<li>CycleGAN: Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks.</li>
+</ul></li>
+</ul>
+<p>See more <a href="https://github.com/donnyyou/torchcv" target="_blank" rel="noopener">GITHUB</a></p>
+<hr>
+<h1 id="cauchy"><span class="header-section-number">2</span> Cauchy</h1>
+<h2 id="architecture"><span class="header-section-number">2.1</span> Architecture</h2>
+<pre><code>                        http://117.51.150.168:80/index.php?r=cauchy/myproject
+
+                                      +---------------+
+                                      |               |
+                    +-----------------|    Browser    |
+                    |                 |     UI        |
+                    |                 +---------------+
+                    |  80                          ^
+                    v                               \  visdom
+              +-------------+                        \
+              | Nginx Proxy |                         \  8141 ~ 8199
+              +-------------+                          \
+                    |                                   \                      +-------------------+
+                    |  10081                             \                     |                   |
+                    v                                     \                    |   weights host    |
+      +------------------------------+   index.php         \                   |                   |
+      |         Web (enter)          |------+               \                  |    Http Server    |
+      +------------------------------|      |                \                 |                   |
+      |         Yii PHP Core         |      |                 \                +-------------------+
+      +------------------------------+      |                  \                            28889
+      |         Controllers          |&lt;-----+                   \
+      |           ^     ^            |    r=cauchy/action        \
+      |          /       \           |                            v
+      |         v         v          |                   +------------------------+
+      |      Views       Models      |                   |      | Visdom Process  |
+      +------------------------------+                   |      +-----------------+
+                            |                            |      |                 |
+                            |    /cauchy/train   8399    |Flask |Cauchy Framework |
+                            +-------------------------&gt;  |      |                 |
+                               /cauchy/free_port         |      +-----------------+
+                                                         |      | Task Process    |
+                                                         +------+-----------------+</code></pre>
+<h2 id="start-servers"><span class="header-section-number">2.2</span> Start Servers</h2>
+<ol type="1">
+<li>start the <strong>http server</strong> for downloading the pretrained models weights, listen 28889.</li>
+</ol>
+<blockquote>
+<p><code>python -m http.server --directory=/path/to/pretrained_models 28889</code></p>
+</blockquote>
+<ol start="2" type="1">
+<li>start the <strong>nginx proxy</strong>, listen 80, forword 80 to 10081(Yii).</li>
+</ol>
+<blockquote>
+<p><code>/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf</code></p>
+</blockquote>
+<ol start="3" type="1">
+<li>start <strong>yii server</strong> for interaction with web page, and cauchy framework, listen 10081.</li>
+</ol>
+<blockquote>
+<p><code>php /path/to/basic/yii serve $hostip --port 10081</code></p>
+</blockquote>
+<ol start="4" type="1">
+<li>start <strong>flask server</strong> for listening the task from yii server, listen 8399.</li>
+</ol>
+<blockquote>
+<p><code>cd /path/to/test/flask_services; python cauchy_services.py --port 8339</code></p>
+</blockquote>
+<h2 id="dynamic-process"><span class="header-section-number">2.3</span> Dynamic Process</h2>
+<p>see <code>test/flask_services/cauchy_services.py</code></p>
+<ol type="1">
+<li>start the <strong>visdom process</strong> when flask server received the <em><code>/cauchy/free_port</code></em> command.</li>
+</ol>
+<blockquote>
+<p><code>python -m visdom.server -port 8140</code></p>
+</blockquote>
+<ol start="2" type="1">
+<li>start the <strong>task process</strong> (train/test) when flask server received the <em><code>/cauchy/train[test]</code></em> command</li>
+</ol>
+<blockquote>
+<p><code>python run_tasks.py --hypes /path/to/hypes.json --viz_pid 21995 --viz_port 8140 --tmp_dir /tmp/tmpcyj84t5t</code></p>
+</blockquote>
+<p><strong>页面上每启动一个训练或评估任务, 都会对应的启动这个两个进程, 所有他们可以存在多个</strong></p>
+<h2 id="project-directory"><span class="header-section-number">2.4</span> Project Directory</h2>
+<pre><code>├── apis                   //
+│   └── cocoapi
+│       ├── common
+│       ├── LuaAPI
+│       ├── MatlabAPI
+│       └── PythonAPI
+├── cauchy                 // 框架核心
+│   ├── datasets           // 数据集操作: \
+│   │   ├── automl                1. 数据集格式成框架可以识别的结构(独立于框架) \
+│   │   ├── cls                   2. 迭代数据集
+│   │   ├── det
+│   │   ├── ins
+│   │   ├── pose
+│   │   ├── seg
+│   │   ├── tools
+│   │   └── track
+│   ├── extensions         //
+│   │   ├── ops
+│   │   └── tools
+│   ├── methods            // 负责任务主逻辑, 如: 数据加载, 算法模型选择, 模型评估, 训练监控
+│   │   ├── automl                1. 根据参数&quot;task&quot;进行任务类型的选择(cls, det..), 确定真正的runner执行体. \
+│   │   ├── cls                   2. 根据参数&quot;method&quot;选择算法模型, 然后进行训练(forward/backword). \
+│   │   ├── det
+│   │   ├── pose
+│   │   ├── seg
+│   │   └── tools
+│   ├── metrics            // 评估算法模型(针对val/test数据集)
+│   │   ├── cls
+│   │   ├── det
+│   │   ├── pose
+│   │   └── seg
+│   ├── models             // 根据以有的papers实现好的神经网络模型以及提供了损失方法
+│   │   ├── automl
+│   │   ├── backbones
+│   │   ├── cls
+│   │   ├── det
+│   │   ├── pose
+│   │   ├── rcnn
+│   │   ├── seg
+│   │   └── tools
+│   └── utils              //
+│       ├── helpers
+│       ├── parser
+│       ├── tools
+│       └── visualizer
+├── scripts                //
+│   ├── cls
+│   │   └── cifar
+│   ├── det
+│   │   └── voc
+│   └── seg
+│       ├── ade20k
+│       └── cityscapes
+└── test
+    ├── cauchy             // 单独调试算法模型, 不依赖WEB控制及传参
+    │   ├── hypes
+    │   └── proj1
+    └── flask_services     // Flask服务启动脚本, 与框架交互的唯一入口
+        └── project</code></pre>
+<h1 id="references"><span class="header-section-number">3</span> References</h1>
+<ul>
+<li><a href="https://www.cnblogs.com/jerehedu/p/7762046.html" class="uri" target="_blank" rel="noopener">https://www.cnblogs.com/jerehedu/p/7762046.html</a></li>
+<li><a href="https://blog.csdn.net/fujian9544/article/details/79567090" class="uri" target="_blank" rel="noopener">https://blog.csdn.net/fujian9544/article/details/79567090</a></li>
+</ul>
+</body>
+</html>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-09-16T12:56:11.909Z" itemprop="dateUpdated">2019-09-16 20:56:11</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://qrsforever.github.io">
+            <img src="/img/avatar.jpg" alt="qrsforever">
+            qrsforever
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cauchy/">Cauchy</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2019/08/21/Company/Cauthy/framework/&title=《(draft)机器学习CV框架》 — 大地小神&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2019/08/21/Company/Cauthy/framework/&title=《(draft)机器学习CV框架》 — 大地小神&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2019/08/21/Company/Cauthy/framework/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《(draft)机器学习CV框架》 — 大地小神&url=https://qrsforever.github.io/2019/08/21/Company/Cauthy/framework/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2019/08/21/Company/Cauthy/framework/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/08/22/Tools/How/ssh_x11/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">SSH远端服务器使用GUI</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/08/21/ML/Guide/datasets/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">(draft)数据集介绍</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <!-- <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script> -->
+    <script src="/js/av-min.js"></script>
+    <script src="/js/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "bpShGWdW8DpODhnDko5O2IBB-gzGzoHsz",
+            appKey: "rwmasTllBbHE69ADuLjFyFWf",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢打赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>qrsforever &copy; 2017 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2019/08/21/Company/Cauthy/framework/&title=《(draft)机器学习CV框架》 — 大地小神&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2019/08/21/Company/Cauthy/framework/&title=《(draft)机器学习CV框架》 — 大地小神&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2019/08/21/Company/Cauthy/framework/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《(draft)机器学习CV框架》 — 大地小神&url=https://qrsforever.github.io/2019/08/21/Company/Cauthy/framework/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2019/08/21/Company/Cauthy/framework/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://qrsforever.github.io/2019/08/21/Company/Cauthy/framework/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- lidong cha. -->
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- lidong end. -->
+
+</body>
+</html>

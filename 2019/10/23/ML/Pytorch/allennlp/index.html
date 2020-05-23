@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?cb4be66237379541488b8502a6eca006"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>(draft)AllenNLP框架 | 大地小神 | 你们都是大傻瓜, 我是天下大赢家</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Draft,Pytorch">
+    <meta name="description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta name="keywords" content="Draft,Pytorch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(draft)AllenNLP框架">
+<meta property="og:url" content="https://qrsforever.github.io/2019/10/23/ML/Pytorch/allennlp/index.html">
+<meta property="og:site_name" content="大地小神">
+<meta property="og:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-19T13:35:53.073Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="(draft)AllenNLP框架">
+<meta name="twitter:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
+    
+        <link rel="alternate" type="application/atom+xml" title="大地小神" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">qrsforever</h5>
+          <a href="mailto:985612771@qq.com" title="985612771@qq.com" class="mail">985612771@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://gitee.com/lidongai" target="_blank" >
+                <i class="icon icon-lg icon-code-fork"></i>
+                Gitee
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/705723886/" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                Twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2017/08/30/CV"  >
+                <i class="icon icon-lg icon-user-circle"></i>
+                Author
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">(draft)AllenNLP框架</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">(draft)AllenNLP框架</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-10-23T05:56:37.000Z" itemprop="datePublished" class="page-time">
+  2019-10-23
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#params"><span class="post-toc-text">0.1 params</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#references"><span class="post-toc-text">0.2 References</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-ML/Pytorch/allennlp"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">(draft)AllenNLP框架</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-10-23 13:56:37" datetime="2019-10-23T05:56:37.000Z"  itemprop="datePublished">2019-10-23</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+</head>
+<body>
+<p>Draft</p>
+<a id="more"></a>
+<p>AllenNLP是一个相对成熟的基于深度学习的NLP工具包,它 构建于 PyTorch 之上,它的设计遵循以下原则: (1)超模块化和轻量化.你可以使用自己喜欢的组件与 PyTorch 无缝连接. (2)经过广泛测试,易于扩展.测试覆盖率超过 90%,示例模型为你提供了很好的模板. (3)真正的填充和覆盖,让你可以毫无痛苦地轻松实现正确的模型.</p>
+<p>(4)易于实验.可以通过符合 json 规范的全面记录重现实验过程.</p>
+<hr>
+<p>包含的几个大类如下:</p>
+<p>Machine Comprehension:机器阅读</p>
+<p>Semantic Role Labeling:语义标注</p>
+<p>Coreference Resolution:指代消解</p>
+<p>Textual Entailment:文本蕴涵</p>
+<p>Named Entity Recognition:命名实体识别</p>
+<p>Constituency Parsing:成分句法分析</p>
+<p>语言推理任务</p>
+<p>问答和常识推理任务</p>
+<p>语义相似度和分类任务</p>
+<p>Sentiment Analysis <a href="http://www.realworldnlpbook.com/blog/training-sentiment-analyzer-using-allennlp.html" target="_blank" rel="noopener">情感分析</a></p>
+<hr>
+<p>Word Representations 词表示</p>
+<p>传统的词向量（例如word2vec）是上下文无关的</p>
+<ol type="1">
+<li><p>CEO of apple</p></li>
+<li><p>eat an apple</p></li>
+</ol>
+<p>举个例子：针对某一词多义的词汇 w="苹果" 文本序列1=“我 买了 六斤 苹果。” 文本序列2=“我 买了一个 苹果 7。” 上面两个文本序列中都出现了“苹果”这个词汇，但是在不同的句子中，它们的含义显示是不同的，一个属于水果领域，一个属于电子产品呢领域，如果针对“苹果”这个词汇同时训练两个词向量来分别刻画不同领域的信息呢？答案就是使用ELMo。</p>
+<p>在EMLo中，他们使用的是一个双向的LSTM语言模型，由一个前向和一个后向语言模型构成，目标函数就是取这两个方向语言模型的最大似然。</p>
+<hr>
+<p>Open AI GPT : Generative Pre-Training</p>
+<hr>
+<p>BERT: Biderectional Encoder Representations from Transformers</p>
+<hr>
+<p>深度学习中Embedding层</p>
+<p><a href="https://spaces.ac.cn/archives/4122" target="_blank" rel="noopener">推荐阅读</a></p>
+<p>词向量，英文名叫Word Embedding，按照字面意思，应该是词嵌入。</p>
+<p>词向量跟Word2Vec(google 先入为主, 把word to vector)不能在等同了, 后来有词ID映射为向量等</p>
+<p><a href="https://blog.csdn.net/u010412858/article/details/77848878" target="_blank" rel="noopener">有什么用</a></p>
+<p>嵌入层embedding在这里做的就是把单词“deep”用向量[.32, .02, .48, .21, .56, .15]来表达。然而并不是每一个单词 都会被一个向量来代替，而是被替换为用于查找嵌入矩阵中向量的索引。</p>
+<p><a href="https://blog.csdn.net/jiangpeng59/article/details/77533309" class="uri" target="_blank" rel="noopener">https://blog.csdn.net/jiangpeng59/article/details/77533309</a></p>
+<p><a href="https://blog.csdn.net/yyhhlancelot/article/details/86534793" target="_blank" rel="noopener">Input层与embedding层</a></p>
+<p>embedding，比如word2vec啊，glove啊，fasttext啊。它们都是经过不同的语料以及不同的训练方法训练而成的</p>
+<p><a href="https://blog.csdn.net/jiangjiang_jian/article/details/81194582" target="_blank" rel="noopener">Blog List</a></p>
+<p>单词嵌入是使用密集的矢量表示来表示单词和文档的一类方法</p>
+<p>定义一个词汇表为200的嵌入层（例如从0到199的整数编码的字，包括0到199），一个32维的向量空间，其中将嵌入单词 ，以及输入文档，每个单词有50个单词。 <code>Embedding(input_dim=200, output_dim=32, input_length=50)</code></p>
+<p>独热编码one-hot</p>
+<hr>
+<p>Glove词向量 Global Vectors for Word Representation</p>
+<p>https://nlp.stanford.edu/projects/glove/</p>
+<hr>
+<p>词性标注器:</p>
+<p>A Part-Of-Speech Tagger (POS Tagger) is a piece of software that reads text in some language and assigns parts of speech to each word (and other token), such as noun, verb, adjective, etc.</p>
+<p><a href="https://blog.csdn.net/lyjxcz/article/details/17082341" target="_blank" rel="noopener">Part-of-Speech 标记 含义</a></p>
+<p>POS词性标注</p>
+<p>NER实体识别</p>
+<hr>
+<p>Spacy功能简介 可以用于进行分词,命名实体识别,词性识别等等</p>
+<hr>
+<p>图解BiDAF中的单词嵌入、字符嵌入和上下文嵌入</p>
+<p><a href="https://www.jiqizhixin.com/articles/2019-10-09" class="uri" target="_blank" rel="noopener">https://www.jiqizhixin.com/articles/2019-10-09</a></p>
+<p><a href="https://www.jianshu.com/p/3af100e52568" class="uri" target="_blank" rel="noopener">https://www.jianshu.com/p/3af100e52568</a></p>
+<p>整个机器理解模型是一个层次化多阶段的过程， 包括以下六个层次：</p>
+<pre><code>字符嵌入层（Character embedding layer）
+其主要作用是将词映射到一个固定大小的向量， 这里我们使用字符水平的卷积神经网络（Character level CNN）， 该网络由Kim在2014年提出， 我们后续会对部分细节进行补充。
+词嵌入层（Word embedding layer）
+这里是使用预先训练的词嵌入模型， 将每一个词映射到固定大小的向量。
+上下文嵌入层（Contextual embedding layer）
+主要作用是给每一个词加一个上下文的线索（cue）， 前三层都是对问题和上下文进行应用
+注意流层（Attention flow layer）
+这里是组合问题和上下文的向量， 生成一个问题-察觉的特征向量集合。
+模型层（Modeling layer）
+本文是使用循环神经网络（RNN）来对上下文进行扫描
+输出层（Output layer）
+该层提供对问题的回答</code></pre>
+<hr>
+<p>词向量: 传统方式(共现矩阵) 和 语言模型</p>
+<p>https://blog.csdn.net/ibelieve8013/article/details/88323271</p>
+<p><a href="http://www.sohu.com/a/270730128_100191017" target="_blank" rel="noopener">数据集</a></p>
+<p><a href="https://blog.csdn.net/m0_37565948/article/details/84989565" target="_blank" rel="noopener">词向量发展史</a></p>
+<hr>
+<p><a href="https://www.infoq.cn/article/1fu*vYWCD8PlIartPZYV" target="_blank" rel="noopener">NLP 领域最优秀的 8 个预训练模型</a> <a href="https://www.analyticsvidhya.com/blog/2019/03/pretrained-models-get-started-nlp/" target="_blank" rel="noopener">NLP 领域最优秀的 8 个预训练模型</a></p>
+<p>迁移学习本质上是在一个数据集上训练模型，然后对该模型进行调整，以在不同的数据集上执行不同的自然语言处理功能 。</p>
+<p>自然语言处理应用能够快速增长，很大程度上要归功于通过预训练模型实现迁移学习的概念。在自然语言处理的背景下， 迁移学习本质上是在一个数据集上训练模型，然后对该模型进行调整，以在不同的数据集上执行不同的自然语言处理功能 。</p>
+<p>这一突破，使得每个人都能够轻松地完成任务，尤其是那些没有时间、也没有资源从头开始构建自然语言处理模型的人们 。对于想要学习或过渡到自然语言处理的初学者来讲，它也堪称完美。</p>
+<p>为什么要使用预训练模型？作者已尽其所能设计了基准模型。我们可以在自己的自然语言处理数据集上使用预训练模型， 而不是从头构建模型来解决类似的自然语言处理问题。</p>
+<p>尽管仍然需要进行一些微调，但它已经为我们节省了大量的时间和计算资源。</p>
+<hr>
+<p>Tokenizer是把你的文本转换成单词</p>
+<p>TokenIndexer是给这些形式编个号, 把最终的文本转换成序号表示的形式 TokenIndexer可以自动的为你生成单词编号，字母编号，pos_tags的编号。</p>
+<p><code>token_embedders</code>用于将index后的词转为tensor。常用的是Embedding类（可以读取预训练词向量）和TokenCharactersEncoder类。</p>
+<p>对于TextField，需要用TextFieldEmbedder，更具体地，BasicTextFieldEmbedder。 BasicTextFieldEmbedder用来管理多个token_embedder，这样单词可以有多种嵌入方式，嵌入之后进行拼接。</p>
+<hr>
+<ul>
+<li><p>分词，帮你用spacy，NLTK，或者简单的按空格分词处理。</p></li>
+<li><p>数据集的读取，它内置了很多数据集的读取，你可以在通过学习它的读取方式，在它的基础上对自己需要的数据集进行读取。</p></li>
+<li><p>转化词向量过程: Glove，ELMo，BERT等常用的都可以直接使用，需要word，char粒度的都可以。</p></li>
+</ul>
+<p><a href="https://www.cnblogs.com/huangyc/p/9861453.html" class="uri" target="_blank" rel="noopener">https://www.cnblogs.com/huangyc/p/9861453.html</a></p>
+<p>语言模型分为统计语言模型和神经网络语言模型</p>
+<hr>
+<p>Seq2Seq 序列问题和其他的机器学习问题最显著的一个区别就是序列中的值相互之间是有一个顺序的</p>
+<p>seq2seq学习的核心是使用循环神经网络将可变长度的输入序列映射到可变长度的输出序列</p>
+<hr>
+<h2 id="params"><span class="header-section-number">0.1</span> params</h2>
+<p><code>sorting_keys</code>顾名思义是定义了我们所有instance的排序方式，排序可以提高效率（花在padding token上面的计算减少)</p>
+<h2 id="references"><span class="header-section-number">0.2</span> References</h2>
+<ol>
+<li><p><a href="https://github.com/allenai/allennlp" class="uri" target="_blank" rel="noopener">https://github.com/allenai/allennlp</a></p></li>
+<li><p><a href="https://mlexplained.com/2019/01/30/an-in-depth-tutorial-to-allennlp-from-basics-to-elmo-and-bert/" class="uri" target="_blank" rel="noopener">https://mlexplained.com/2019/01/30/an-in-depth-tutorial-to-allennlp-from-basics-to-elmo-and-bert/</a></p></li>
+<li><p><a href="http://mlexplained.com/2017/12/29/attention-is-all-you-need-explained/" class="uri" target="_blank" rel="noopener">http://mlexplained.com/2017/12/29/attention-is-all-you-need-explained/</a></p></li>
+<li><p><a href="http://mlexplained.com/2019/01/07/paper-dissected-bert-pre-training-of-deep-bidirectional-transformers-for-language-understanding-explained/" class="uri" target="_blank" rel="noopener">http://mlexplained.com/2019/01/07/paper-dissected-bert-pre-training-of-deep-bidirectional-transformers-for-language-understanding-explained/</a></p></li>
+<li><p><a href="http://mlexplained.com/2018/06/15/paper-dissected-deep-contextualized-word-representations-explained/" class="uri" target="_blank" rel="noopener">http://mlexplained.com/2018/06/15/paper-dissected-deep-contextualized-word-representations-explained/</a></p></li>
+<li><p><a href="https://github.com/mhagiwara/realworldnlp" target="_blank" rel="noopener">realworldnlpbook</a></p></li>
+<li><p><a href="https://www.cnblogs.com/robert-dlut/p/9824346.html" class="uri" target="_blank" rel="noopener">https://www.cnblogs.com/robert-dlut/p/9824346.html</a></p></li>
+<li><p><a href="https://blog.csdn.net/m0_38133212/article/category/8640328/" class="uri" target="_blank" rel="noopener">https://blog.csdn.net/m0_38133212/article/category/8640328/</a></p></li>
+<li><p><a href="https://www.jianshu.com/p/17abfefc1b5b" target="_blank" rel="noopener">allennlp使用教程-简单</a></p></li>
+</ol>
+</body>
+</html>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-12-19T13:35:53.073Z" itemprop="dateUpdated">2019-12-19 21:35:53</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://qrsforever.github.io">
+            <img src="/img/avatar.jpg" alt="qrsforever">
+            qrsforever
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Draft/">Draft</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pytorch/">Pytorch</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2019/10/23/ML/Pytorch/allennlp/&title=《(draft)AllenNLP框架》 — 大地小神&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2019/10/23/ML/Pytorch/allennlp/&title=《(draft)AllenNLP框架》 — 大地小神&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2019/10/23/ML/Pytorch/allennlp/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《(draft)AllenNLP框架》 — 大地小神&url=https://qrsforever.github.io/2019/10/23/ML/Pytorch/allennlp/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2019/10/23/ML/Pytorch/allennlp/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/11/06/Tools/How/s3.amazonaws.com/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">亚马逊的默认服务器限速</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/10/10/Story/System/remove_snap/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">彻底删除Ubuntu snap</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <!-- <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script> -->
+    <script src="/js/av-min.js"></script>
+    <script src="/js/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "bpShGWdW8DpODhnDko5O2IBB-gzGzoHsz",
+            appKey: "rwmasTllBbHE69ADuLjFyFWf",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢打赏!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>qrsforever &copy; 2017 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qrsforever.github.io/2019/10/23/ML/Pytorch/allennlp/&title=《(draft)AllenNLP框架》 — 大地小神&pic=https://qrsforever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qrsforever.github.io/2019/10/23/ML/Pytorch/allennlp/&title=《(draft)AllenNLP框架》 — 大地小神&source=
+
+
+  
+  
+  
+  dummy
+  
+      code{white-space: pre-wrap;}
+      span.smallcap..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qrsforever.github.io/2019/10/23/ML/Pytorch/allennlp/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《(draft)AllenNLP框架》 — 大地小神&url=https://qrsforever.github.io/2019/10/23/ML/Pytorch/allennlp/&via=https://qrsforever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://qrsforever.github.io/2019/10/23/ML/Pytorch/allennlp/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://qrsforever.github.io/2019/10/23/ML/Pytorch/allennlp/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- lidong cha. -->
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- lidong end. -->
+
+</body>
+</html>

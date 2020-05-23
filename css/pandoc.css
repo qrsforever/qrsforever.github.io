@@ -43,6 +43,72 @@ pre code {
     margin: 36px auto;
 }
 
+/* workaround: codeblock table width */
+.post-content .highlight {
+    background: #f5f5f5;
+}
+
+.post-content .highlight td {
+    text-align: left;
+}
+
 div.sourceCode {
     background: #f5f5f5;
+}
+
+img.float-left {
+    display:inline;
+    float:left;
+    margin:5px 5px 5px 5px;
+    max-width: 47%;
+}
+
+img.float-right {
+    display:inline;
+    float:right;
+    margin:5px 5px 5px 5px;
+    max-width: 47%;
+}
+
+div.tableWidth80 table {
+    width: 80%;
+}
+
+div.tableBorder0 table, div.tableBorder0 table td, div.tableBorder0 table th {
+    border: 0;
+}
+
+dl {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+dt {
+    display: block;
+}
+
+dd {
+    display: block;
+    margin-inline-start: 40px;
+}
+
+.alert-info {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 18px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+}
+
+.post-content .header-section-number {
+    font-weight: 600;
+    color: #3c76ff;
 }

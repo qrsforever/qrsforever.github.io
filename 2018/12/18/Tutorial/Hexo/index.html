@@ -35,7 +35,7 @@
 <meta property="og:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://qrsforever.github.io/2018/12/18/Tutorial/Hexo/test.png">
-<meta property="og:updated_time" content="2019-07-25T13:33:14.576Z">
+<meta property="og:updated_time" content="2019-08-04T13:25:02.634Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(原创)Tutorial for Hexo">
 <meta name="twitter:description" content="dummy          code{white-space: pre-wrap;}       span.smallcaps{font-variant: small-caps;}       span.underline{text-decoration: underline;}       div.column{display: inline-block; vert">
@@ -110,6 +110,13 @@
             </li>
         
             <li class="waves-block waves-effect">
+              <a href="https://gitee.com/lidongai" target="_blank" >
+                <i class="icon icon-lg icon-code-fork"></i>
+                Gitee
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
               <a href="http://weibo.com/705723886/" target="_blank" >
                 <i class="icon icon-lg icon-weibo"></i>
                 Weibo
@@ -117,9 +124,16 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://zytforever.github.io" target="_blank" >
-                <i class="icon icon-lg icon-eye"></i>
-                Stocktech
+              <a href="https://twitter.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                Twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2017/08/30/CV"  >
+                <i class="icon icon-lg icon-user-circle"></i>
+                Author
               </a>
             </li>
         
@@ -217,9 +231,6 @@
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 <!-- vim-markdown-toc GFM -->
@@ -264,9 +275,6 @@ sudo apt install texlive</code></pre>
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.</p>
@@ -293,9 +301,6 @@ sudo apt install texlive</code></pre>
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 <p>Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.</p>
@@ -322,9 +327,6 @@ sudo apt install texlive</code></pre>
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 <p>NEW: DevDocs now comes with syntax highlighting. http://devdocs.io</p>
@@ -351,9 +353,6 @@ sudo apt install texlive</code></pre>
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 <p>Every interaction is both precious and an opportunity to delight.</p>
@@ -379,6 +378,16 @@ sudo apt install texlive</code></pre>
     [rectangle setX: 10 y: 10 width: 20 height: 20];
     {% endcodeblock %}</code></pre>
 <pre><code>[rectangle setX: 10 y: 10 width: 20 height: 20];</code></pre>
+<ul>
+<li>Case3:</li>
+</ul>
+<p>not work!!!</p>
+<pre><code>{% codeblock _.compact http://underscorejs.org/#compact Underscore.js %}
+    _.compact([0, 1, false, 2, '', 3]);
+    => [1, 2, 3]
+    {% endcodeblock %}</code></pre>
+<pre><code>_.compact([0, 1, false, 2, &#39;&#39;, 3]);
+=&gt; [1, 2, 3]</code></pre>
 <h2 id="include-posts"><span class="header-section-number">2.3</span> Include Posts</h2>
 <p>语法:</p>
 <pre><code>    {% post_path filename %}
@@ -426,7 +435,7 @@ sudo apt install texlive</code></pre>
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-07-25T13:33:14.576Z" itemprop="dateUpdated">2019-07-25 21:33:14</time>
+    最后更新时间：<time datetime="2019-08-04T13:25:02.634Z" itemprop="dateUpdated">2019-08-04 21:25:02</time>
 </span><br>
 
 
@@ -627,7 +636,7 @@ sudo apt install texlive</code></pre>
         </p>
     </div>
     <div class="bottom">
-        <p><span>qrsforever &copy; 2017 - 2019</span>
+        <p><span>qrsforever &copy; 2017 - 2020</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

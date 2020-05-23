@@ -103,6 +103,13 @@
             </li>
         
             <li class="waves-block waves-effect">
+              <a href="https://gitee.com/lidongai" target="_blank" >
+                <i class="icon icon-lg icon-code-fork"></i>
+                Gitee
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
               <a href="http://weibo.com/705723886/" target="_blank" >
                 <i class="icon icon-lg icon-weibo"></i>
                 Weibo
@@ -110,9 +117,16 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://zytforever.github.io" target="_blank" >
-                <i class="icon icon-lg icon-eye"></i>
-                Stocktech
+              <a href="https://twitter.com/qrsforever" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                Twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2017/08/30/CV"  >
+                <i class="icon icon-lg icon-user-circle"></i>
+                Author
               </a>
             </li>
         
@@ -167,14 +181,14 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
-            <article id="post-Note/Hadoop/Hadoop-Proxy-Delete"
+            <article id="post-ML/Scratch/nn_crossent"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2017-11-13 18:57:00" datetime="2017-11-13T10:57:00.000Z"  itemprop="datePublished">2017-11-13</time>
+        <time class="post-time" title="2019-07-01 22:47:37" datetime="2019-07-01T14:47:37.000Z"  itemprop="datePublished">2019-07-01</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
 
 
 
@@ -185,7 +199,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/11/13/Note/Hadoop/Hadoop-Proxy-Delete/">(原创)Hadoop之Delete实例代理流程</a>
+      <a class="post-title-link" href="/2019/07/01/ML/Scratch/nn_crossent/">(原创)神经网络之交叉熵代码实例</a>
     </h3>
   
 
@@ -209,26 +223,28 @@
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
+  <script src="/usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
 </head>
 <body>
 <!-- vim-markdown-toc GFM -->
 <ul>
-<li><a href="#框架图">框架图</a></li>
+<li><a href="#intro">Intro</a></li>
+<li><a href="#se-and-ce">SE and CE</a></li>
+<li><a href="#gradient">Gradient</a></li>
+<li><a href="#hiden">Hiden</a></li>
+<li><a href="#codes">Codes</a></li>
 </ul>
 <!-- vim-markdown-toc -->
     
 
-        <a href="/2017/11/13/Note/Hadoop/Hadoop-Proxy-Delete/" class="post-more waves-effect waves-button">
+        <a href="/2019/07/01/ML/Scratch/nn_crossent/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hadoop/">Hadoop</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scratch/">Scratch</a></li></ul>
 
     </div>
     
@@ -237,14 +253,14 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Note/Hadoop/Hadoop-Namenode-Delete"
+            <article id="post-Story/Passage/diff_mse_ce"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2017-11-10 21:01:00" datetime="2017-11-10T13:01:00.000Z"  itemprop="datePublished">2017-11-10</time>
+        <time class="post-time" title="2019-06-25 21:41:53" datetime="2019-06-25T13:41:53.000Z"  itemprop="datePublished">2019-06-25</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Story/">Story</a></li></ul>
 
 
 
@@ -255,7 +271,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/11/10/Note/Hadoop/Hadoop-Namenode-Delete/">(原创)Hadoop之Namenode的Delete命令代码流程</a>
+      <a class="post-title-link" href="/2019/06/25/Story/Passage/diff_mse_ce/">MSE和CE不同</a>
     </h3>
   
 
@@ -279,26 +295,28 @@
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
-<!-- vim-markdown-toc GFM -->
-<ul>
-<li><a href="#框架图">框架图</a></li>
-</ul>
-<!-- vim-markdown-toc -->
+<blockquote>
+<p><a href="https://www.reddit.com/r/MachineLearning/comments/3klqdh/q_whats_the_difference_between_crossentropy_and/" target="_blank" rel="noopener">What's the difference between cross-entropy and mean-squared-error loss functions?</a></p>
+<p>These loss functions have different derivatives and different purposes. From a probabilistic point of view, the cross-entropy arises as the natural cost function to use if you have a sigmoid or softmax nonlinearity in the output layer of your network, and you want to maximize the likelihood of classifying the input data correctly.</p>
+<p>If instead you assume the target is continuous and normally distributed, and you maximize the likelihood of the output of the net under these assumptions, you get the MSE (combined with a linear output layer).</p>
+<p>For classification, cross-entropy tends to be more suitable than MSE -- the underlying assumptions just make more sense for this setting. That said, you can train a classifier with the MSE loss and it will probably work fine (although it does not play very nicely with the sigmoid/softmax nonlinearities, a linear output layer would be a better choice in that case). For regression problems, you would almost always use the MSE.</p>
+<p>Another alternative for classification is to use a margin loss, which basically amounts to putting a (linear) SVM on top of your network.</p>
+</blockquote>
+</body>
+</html>
+
     
 
-        <a href="/2017/11/10/Note/Hadoop/Hadoop-Namenode-Delete/" class="post-more waves-effect waves-button">
+        <a href="/2019/06/25/Story/Passage/diff_mse_ce/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hadoop/">Hadoop</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Passage/">Passage</a></li></ul>
 
     </div>
     
@@ -307,14 +325,14 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Note/Hadoop/Hadoop-FsShell-Delete"
+            <article id="post-ML/Scratch/CE_error"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2017-10-24 20:08:00" datetime="2017-10-24T12:08:00.000Z"  itemprop="datePublished">2017-10-24</time>
+        <time class="post-time" title="2019-06-25 11:33:49" datetime="2019-06-25T03:33:49.000Z"  itemprop="datePublished">2019-06-25</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
 
 
 
@@ -325,7 +343,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/10/24/Note/Hadoop/Hadoop-FsShell-Delete/">(原创)Hadoop之FsShell的Delete命令代码流程</a>
+      <a class="post-title-link" href="/2019/06/25/ML/Scratch/CE_error/">(原创)交叉熵实例</a>
     </h3>
   
 
@@ -349,26 +367,29 @@
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
+  <script src="/usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
 </head>
 <body>
 <!-- vim-markdown-toc GFM -->
 <ul>
-<li><a href="#框架图">框架图</a></li>
+<li><a href="#神经网络">神经网络</a>
+<ul>
+<li><a href="#简图">简图</a></li>
+<li><a href="#描述">描述</a></li>
+<li><a href="#梯度">梯度</a></li>
+</ul></li>
 </ul>
 <!-- vim-markdown-toc -->
     
 
-        <a href="/2017/10/24/Note/Hadoop/Hadoop-FsShell-Delete/" class="post-more waves-effect waves-button">
+        <a href="/2019/06/25/ML/Scratch/CE_error/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hadoop/">Hadoop</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scratch/">Scratch</a></li></ul>
 
     </div>
     
@@ -377,11 +398,11 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Note/Python/Note-Scrapy-Request-URLs"
+            <article id="post-Note/Math/symbols"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2017-09-20 20:49:41" datetime="2017-09-20T12:49:41.000Z"  itemprop="datePublished">2017-09-20</time>
+        <time class="post-time" title="2019-06-25 09:53:18" datetime="2019-06-25T01:53:18.000Z"  itemprop="datePublished">2019-06-25</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
@@ -395,7 +416,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/09/20/Note/Python/Note-Scrapy-Request-URLs/">(原创)Scrapy之Requst URLs处理流程</a>
+      <a class="post-title-link" href="/2019/06/25/Note/Math/symbols/">数学符号表</a>
     </h3>
   
 
@@ -419,31 +440,27 @@
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
+  <script src="/usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
 </head>
 <body>
+<p><a href="https://gitee.com/lidongai/code_blog_post/raw/master/Tools/Math/symbols.md" target="_blank" rel="noopener">RAWCODE</a></p>
 <!-- vim-markdown-toc GFM -->
 <ul>
-<li><a href="#源码crawl">源码crawl()</a></li>
-<li><a href="#源码open_spider">源码open_spider()</a></li>
-<li><a href="#源码calllateronce">源码CallLaterOnce()</a></li>
-<li><a href="#源码loopingcall">源码LoopingCall()</a></li>
-<li><a href="#源码maybedeferred">源码maybeDeferred()</a></li>
-<li><a href="#疑问">疑问:</a></li>
+<li><a href="#统计学">统计学</a></li>
+<li><a href="#数学操作符">数学操作符</a></li>
+<li><a href="#机器学习">机器学习</a></li>
 </ul>
 <!-- vim-markdown-toc -->
     
 
-        <a href="/2017/09/20/Note/Python/Note-Scrapy-Request-URLs/" class="post-more waves-effect waves-button">
+        <a href="/2019/06/25/Note/Math/symbols/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Math/">Math</a></li></ul>
 
     </div>
     
@@ -452,14 +469,14 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Tools/How/How-Install-OpenGrok"
+            <article id="post-ML/Guide/cross_entropy_loss"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2017-09-13 11:05:32" datetime="2017-09-13T03:05:32.000Z"  itemprop="datePublished">2017-09-13</time>
+        <time class="post-time" title="2019-06-23 15:24:43" datetime="2019-06-23T07:24:43.000Z"  itemprop="datePublished">2019-06-23</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Tools/">Tools</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
 
 
 
@@ -470,7 +487,88 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/09/13/Tools/How/How-Install-OpenGrok/">(原创)如何使用Opengrok</a>
+      <a class="post-title-link" href="/2019/06/23/ML/Guide/cross_entropy_loss/">(原创)交叉熵损失函数</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+  <script src="/usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+</head>
+<body>
+<p><a href="https://gitee.com/lidongai/code_blog_post/raw/master/ML/Guide/cross_entropy_loss.md" target="_blank" rel="noopener">RAWCODE</a></p>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#百科">百科</a>
+<ul>
+<li><a href="#相关概念">相关概念</a></li>
+<li><a href="#交叉熵">交叉熵</a></li>
+<li><a href="#与似然的关系">与似然的关系</a></li>
+</ul></li>
+<li><a href="#交叉熵损失函数">交叉熵损失函数</a>
+<ul>
+<li><a href="#定义符号">定义符号</a></li>
+<li><a href="#logistic回归的交叉熵">Logistic回归的交叉熵</a></li>
+<li><a href="#softmax回归的交叉熵">Softmax回归的交叉熵</a></li>
+</ul></li>
+<li><a href="#参考">参考</a></li>
+</ul>
+<!-- vim-markdown-toc -->
+    
+
+        <a href="/2019/06/23/ML/Guide/cross_entropy_loss/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Guide/">Guide</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Note/IOT/Rule-Engine-Summary"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-06-17 15:59:42" datetime="2019-06-17T07:59:42.000Z"  itemprop="datePublished">2019-06-17</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/06/17/Note/IOT/Rule-Engine-Summary/">(原创)本地规则引擎设计</a>
     </h3>
   
 
@@ -552,28 +650,43 @@ code span.vs { color: #008080; } /* VerbatimString */
 code span.wa { color: #008000; font-weight: bold; } /* Warning */
   </style>
   <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 <!-- vim-markdown-toc GFM -->
 <ul>
-<li><a href="#环境配置">环境配置</a></li>
-<li><a href="#工程配置">工程配置</a></li>
-<li><a href="#建立或更新">建立或更新</a></li>
+<li><a href="#总体设计">总体设计</a></li>
+<li><a href="#日志系统">日志系统</a></li>
+<li><a href="#消息系统">消息系统</a></li>
+<li><a href="#引擎设计">引擎设计</a>
+<ul>
+<li><a href="#模型">模型</a>
+<ul>
+<li><a href="#设备模型">设备模型</a></li>
+<li><a href="#规则模型">规则模型</a></li>
+</ul></li>
+<li><a href="#clp语言">CLP语言</a></li>
+<li><a href="#rulepayload设计">RulePayload设计</a></li>
+<li><a href="#clp设计">CLP设计</a></li>
+<li><a href="#引擎uml">引擎UML</a></li>
+</ul></li>
+<li><a href="#httphandler">HttpHandler</a></li>
+<li><a href="#调试系统">调试系统</a>
+<ul>
+<li><a href="#系统监控python">系统监控(Python)</a></li>
+<li><a href="#规则配置js">规则配置(JS)</a></li>
+</ul></li>
 </ul>
 <!-- vim-markdown-toc -->
     
 
-        <a href="/2017/09/13/Tools/How/How-Install-OpenGrok/" class="post-more waves-effect waves-button">
+        <a href="/2019/06/17/Note/IOT/Rule-Engine-Summary/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How/">How</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Design/">Design</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOT/">IOT</a></li></ul>
 
     </div>
     
@@ -582,11 +695,74 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Note/Python/Note-Twisted-InlineCallback"
+            <article id="post-ML/Scratch/convolution_plot"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2017-09-11 15:06:16" datetime="2017-09-11T07:06:16.000Z"  itemprop="datePublished">2017-09-11</time>
+        <time class="post-time" title="2019-06-14 16:13:39" datetime="2019-06-14T08:13:39.000Z"  itemprop="datePublished">2019-06-14</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/06/14/ML/Scratch/convolution_plot/">(原创)用数据模拟卷积-初探</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+</head>
+<body>
+<p>网上很多写卷积的文档都是用"很简单"表示卷积so easy, 但草民认真读了他们的文章后, 反而对 卷积更不理解, 即使到现在还是不能理解, 这篇文章只是从数据上分析卷积过程, 很多疑点还需继 续探究</p>
+    
+
+        <a href="/2019/06/14/ML/Scratch/convolution_plot/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scratch/">Scratch</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Note/Jupyter/animations"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-06-13 16:18:35" datetime="2019-06-13T08:18:35.000Z"  itemprop="datePublished">2019-06-13</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
@@ -600,7 +776,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/09/11/Note/Python/Note-Twisted-InlineCallback/">(原创)Twisted InlineCallback 机制</a>
+      <a class="post-title-link" href="/2019/06/13/Note/Jupyter/animations/">Jupyter支持动态图</a>
     </h3>
   
 
@@ -624,43 +800,21 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
-<!-- vim-markdown-toc GFM -->
-<ul>
-<li><a href="#deferred的callback和addcallbacks方法">Deferred的callback和addCallbacks方法</a>
-<ul>
-<li><a href="#addcallbacks">addCallbacks()</a></li>
-<li><a href="#callback">callback()</a></li>
-<li><a href="#runcallbacks">runCallbacks()</a></li>
-</ul></li>
-<li><a href="#inlinecallbacks-实例">InlineCallbacks 实例</a>
-<ul>
-<li><a href="#实例源码">实例源码</a></li>
-<li><a href="#三个deffered对象">三个Deffered对象</a></li>
-<li><a href="#getremotedata生成器">getRemoteData()生成器</a></li>
-</ul></li>
-<li><a href="#inlinecallbacks-源码分析">InlineCallbacks 源码分析</a>
-<ul>
-<li><a href="#源码">源码</a></li>
-<li><span class="citation" data-cites="defer.inlineCallbacks">[@defer.inlineCallbacks 展开]</span>(#deferinlinecallbacks-展开)</li>
-<li><a href="#揭开谜底">揭开谜底</a></li>
-</ul></li>
-</ul>
-<!-- vim-markdown-toc -->
+<h1 id="参考"><span class="header-section-number">1</span> 参考</h1>
+<p>http://louistiao.me/posts/notebooks/embedding-matplotlib-animations-in-jupyter-notebooks/</p>
+<p>http://louistiao.me/posts/notebooks/embedding-matplotlib-animations-in-jupyter-as-interactive-javascript-widgets/</p>
     
 
-        <a href="/2017/09/11/Note/Python/Note-Twisted-InlineCallback/" class="post-more waves-effect waves-button">
+        <a href="/2019/06/13/Note/Jupyter/animations/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jupyter/">Jupyter</a></li></ul>
 
     </div>
     
@@ -669,14 +823,74 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Note/Android/Dalvik-Art-Snippet"
+            <article id="post-Story/Math/Guide_Vectors_and_Tensors"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2017-09-05 10:07:00" datetime="2017-09-05T02:07:00.000Z"  itemprop="datePublished">2017-09-05</time>
+        <time class="post-time" title="2019-06-12 10:03:33" datetime="2019-06-12T02:03:33.000Z"  itemprop="datePublished">2019-06-12</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/06/12/Story/Math/Guide_Vectors_and_Tensors/">A Student&#39;s Guide to Vectors and Tensors</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/css/pandoc.css">
+</head>
+<body>
+<p>非常形象的讲解张量</p>
+<p><a href="https://www.youtube.com/watch?v=f5liqUk0ZTw" target="_blank" rel="noopener">youtube</a></p>
+<p><a href="https://www.zhihu.com/question/23720923" target="_blank" rel="noopener">知乎部分翻译</a></p>
+</body>
+</html>
+
+    
+
+        <a href="/2019/06/12/Story/Math/Guide_Vectors_and_Tensors/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-ML/Scratch/simple_perceptron"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-06-03 23:53:37" datetime="2019-06-03T15:53:37.000Z"  itemprop="datePublished">2019-06-03</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ML/">ML</a></li></ul>
 
 
 
@@ -687,7 +901,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/09/05/Note/Android/Dalvik-Art-Snippet/">(原创)Dalvik与Art虚拟机-笔记片段</a>
+      <a class="post-title-link" href="/2019/06/03/ML/Scratch/simple_perceptron/">(原创)简单感知机-初探</a>
     </h3>
   
 
@@ -711,398 +925,19 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
-<!-- vim-markdown-toc GFM -->
-<ul>
-<li><a href="#what-are-dalvik-and-art">What are Dalvik and ART?</a></li>
-<li><a href="#whats-actually-different-between-art-and-dalvik">What's actually different between ART and Dalvik?</a>
-<ul>
-<li><a href="#just-in-time-compilation-jit">Just-in-time compilation (JIT)</a></li>
-<li><a href="#ahead-of-time-compilation-aot">Ahead-of-time compilation (AOT)</a></li>
-</ul></li>
-<li><a href="#虚拟机启动">虚拟机启动</a></li>
-</ul>
+<p>一个简单的小程序, 来了解感知机如何工作的, 激活函数为<strong>sign</strong></p>
     
 
-        <a href="/2017/09/05/Note/Android/Dalvik-Art-Snippet/" class="post-more waves-effect waves-button">
+        <a href="/2019/06/03/ML/Scratch/simple_perceptron/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Note/Python/Note-Twisted-Deffered-Machanism"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-09-01 16:41:00" datetime="2017-09-01T08:41:00.000Z"  itemprop="datePublished">2017-09-01</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/09/01/Note/Python/Note-Twisted-Deffered-Machanism/">(原创)笔记-Twisted的Deffered机制</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
-<head>
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>dummy</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<!-- vim-markdown-toc GFM -->
-<ul>
-<li><a href="#twisted介绍">Twisted介绍</a>
-<ul>
-<li><a href="#deffereds">Deffereds</a></li>
-<li><a href="#callback">Callback</a></li>
-<li><a href="#timeouts">Timeouts</a></li>
-</ul></li>
-<li><a href="#源码实例">源码实例</a>
-<ul>
-<li><a href="#代码-1-单回调">代码-1 (单回调)</a></li>
-<li><a href="#代码-2-多回调">代码-2 (多回调)</a></li>
-<li><a href="#代码-3-线程">代码-3 (线程)</a></li>
-</ul></li>
-<li><a href="#源码剖析">源码剖析</a>
-<ul>
-<li><a href="#deffered类">Deffered类</a></li>
-<li><a href="#reactor方法">reactor方法</a>
-<ul>
-<li><a href="#1-reactorcalllater">1. reactor.callLater()</a></li>
-<li><a href="#2-reactorrun">2. reactor.run()</a></li>
-<li><a href="#3-reactorcallinthread">3. reactor.callInThread()</a></li>
-</ul></li>
-</ul></li>
-</ul>
-<!-- vim-markdown-toc -->
-    
-
-        <a href="/2017/09/01/Note/Python/Note-Twisted-Deffered-Machanism/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Note/Python/Note-Scrapy-Start-Flow"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-08-31 16:01:00" datetime="2017-08-31T08:01:00.000Z"  itemprop="datePublished">2017-08-31</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Note/">Note</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/08/31/Note/Python/Note-Scrapy-Start-Flow/">(原创)Scrapy之命令行启动流程</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
-<head>
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>dummy</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; } /* Alert */
-code span.an { color: #008000; } /* Annotation */
-code span.at { } /* Attribute */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #0000ff; } /* ControlFlow */
-code span.ch { color: #008080; } /* Char */
-code span.cn { } /* Constant */
-code span.co { color: #008000; } /* Comment */
-code span.cv { color: #008000; } /* CommentVar */
-code span.do { color: #008000; } /* Documentation */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.im { } /* Import */
-code span.in { color: #008000; } /* Information */
-code span.kw { color: #0000ff; } /* Keyword */
-code span.op { } /* Operator */
-code span.ot { color: #ff4000; } /* Other */
-code span.pp { color: #ff4000; } /* Preprocessor */
-code span.sc { color: #008080; } /* SpecialChar */
-code span.ss { color: #008080; } /* SpecialString */
-code span.st { color: #008080; } /* String */
-code span.va { } /* Variable */
-code span.vs { color: #008080; } /* VerbatimString */
-code span.wa { color: #008000; font-weight: bold; } /* Warning */
-  </style>
-  <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<!-- vim-markdown-toc GFM -->
-<ul>
-<li><a href="#scrapy-命令启动">Scrapy 命令启动</a>
-<ul>
-<li><a href="#scrapy-crawl-执行流程">scrapy crawl 执行流程</a></li>
-<li><a href="#crawler-spider和engine">Crawler, Spider和Engine</a></li>
-</ul></li>
-</ul>
-<!-- vim-markdown-toc -->
-    
-
-        <a href="/2017/08/31/Note/Python/Note-Scrapy-Start-Flow/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Tutorial/Markdown"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-08-30 15:31:00" datetime="2017-08-30T07:31:00.000Z"  itemprop="datePublished">2017-08-30</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Tutorial/">Tutorial</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/08/30/Tutorial/Markdown/">(原创)Tutorial for Markdown</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
-<head>
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>dummy</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; } /* Alert */
-code span.an { color: #008000; } /* Annotation */
-code span.at { } /* Attribute */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #0000ff; } /* ControlFlow */
-code span.ch { color: #008080; } /* Char */
-code span.cn { } /* Constant */
-code span.co { color: #008000; } /* Comment */
-code span.cv { color: #008000; } /* CommentVar */
-code span.do { color: #008000; } /* Documentation */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.im { } /* Import */
-code span.in { color: #008000; } /* Information */
-code span.kw { color: #0000ff; } /* Keyword */
-code span.op { } /* Operator */
-code span.ot { color: #ff4000; } /* Other */
-code span.pp { color: #ff4000; } /* Preprocessor */
-code span.sc { color: #008080; } /* SpecialChar */
-code span.ss { color: #008080; } /* SpecialString */
-code span.st { color: #008080; } /* String */
-code span.va { } /* Variable */
-code span.vs { color: #008080; } /* VerbatimString */
-code span.wa { color: #008000; font-weight: bold; } /* Warning */
-  </style>
-  <link rel="stylesheet" href="/css/pandoc.css">
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-<!-- vim-markdown-toc GFM -->
-<ul>
-<li><a href="#markdown-基本语法">Markdown 基本语法</a>
-<ul>
-<li><a href="#块注释">块注释</a></li>
-<li><a href="#斜体">斜体</a></li>
-<li><a href="#粗体">粗体</a></li>
-<li><a href="#无序列表">无序列表</a></li>
-<li><a href="#有序列表">有序列表</a></li>
-<li><a href="#链接">链接</a></li>
-<li><a href="#锚点">锚点</a></li>
-<li><a href="#图片">图片</a></li>
-<li><a href="#代码">代码</a></li>
-<li><a href="#段落">段落</a></li>
-<li><a href="#换行">换行</a></li>
-<li><a href="#表格">表格</a></li>
-<li><a href="#分割线">分割线</a></li>
-<li><a href="#反斜杠">反斜杠</a></li>
-</ul></li>
-</ul>
-<!-- vim-markdown-toc -->
-    
-
-        <a href="/2017/08/30/Tutorial/Markdown/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scratch/">Scratch</a></li></ul>
 
     </div>
     
@@ -1115,7 +950,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
     
 <nav id="page-nav">
     <div class="inner">
-    <a class="extend prev" rel="prev" href="/page/7/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/9/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/7/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/9/">下一页</a>
     </div>
 </nav>
 
@@ -1134,7 +969,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
         </p>
     </div>
     <div class="bottom">
-        <p><span>qrsforever &copy; 2017 - 2019</span>
+        <p><span>qrsforever &copy; 2017 - 2020</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
